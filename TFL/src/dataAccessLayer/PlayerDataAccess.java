@@ -20,13 +20,12 @@ public class PlayerDataAccess {
 	em.getTransaction().begin();
     }
 
-    private static void createPlayer() {
-	em.getTransaction().begin();
+    private  void createPlayer() {
 	Player emp = new Player();
-	emp.setId(2);
+	emp.setId(3);
 	emp.setType(1);
-	emp.setUsername("paula");
-	emp.setPassword("pass");
+	emp.setUsername("george");
+	emp.setPassword("new");
 	emp.setRating(20.5);
 	emp.setAvailable(true);
 	em.persist(emp);
@@ -59,7 +58,8 @@ public class PlayerDataAccess {
 	return false;
     }
 
-    // public static void main(String[] args) {
-    // System.out.println(login("paula", "pass"));
-    // }
+     public static void main(String[] args) {
+    	 PlayerDataAccess pda=new PlayerDataAccess();
+    	 pda.createPlayer();
+     }
 }

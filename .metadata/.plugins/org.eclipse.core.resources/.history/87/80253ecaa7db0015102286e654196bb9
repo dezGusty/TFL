@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Login" style="width: 570px;">
+			<h:panelGrid id="loginPanel" columns="2">
+				<h:outputText value="Username"/>
+				<p:inputText id="username" value="#{loginView.username}"></p:inputText>
+				<p:spacer></p:spacer>
+				<h:outputText value="Password"/>
+				<p:inputText id="pass" value="#{loginView.password}"></p:inputText>
+				<p:spacer></p:spacer>
+ 				<p:spacer></p:spacer>
+ 				<h:commandButton value="Sing in" action="#{loginView.login}"  />
+ 				<p:spacer></p:spacer>
+ 				<p:button outcome="/resources/singup" value="Sing up"/>
+ 				<p:spacer></p:spacer>
+ 				<p:button outcome="/resources/viewgames" value="View games"/>
+			</h:panelGrid>
+		
+		</p:panel>
+            
+	</h:form>
+</h:body>
+</html>
