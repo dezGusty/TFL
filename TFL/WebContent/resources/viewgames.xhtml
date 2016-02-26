@@ -11,5 +11,13 @@
 </h:head>
 <h:body>
 	<h1>View games page!</h1>
+	<h:form>
+		<p:growl id="messages" showDetail="true"/>
+		<h:panelGrid>
+			 <h3 style="margin-top: 0">Editable Schedule</h3>
+			 <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2"> 
+             </p:schedule>
+		</h:panelGrid>
+	</h:form>
 </h:body>
 </html>

@@ -32,11 +32,35 @@ public class PlayerDataAccess {
 	em.getTransaction().commit();
     }
 
+    public  boolean createUser(String username, String password, int type,boolean available, double rating ) {
+    	try
+    	{
+    		Player emp = new Player();	
+        	emp.setType(type);
+        	emp.setUsername(username);
+        	emp.setPassword(password);
+        	emp.setRating(rating);
+        	emp.setAvailable(available);
+        	em.persist(emp);
+        	em.getTransaction().commit();
+    	}
+    	catch(Exception ex)
+    	{
+    		System.out.println(ex.getMessage());
+    		return false;
+    	}
+    	return true;
+        }
+    
     public boolean loginUser(String username, String password) {
 	TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c", Player.class);
 	List<Player> result = new ArrayList<Player>();
 	result = query.getResultList();
-
+   
+	for (Player player : result) {
+		System.out.println(player.toString());
+	}
+	
 	TypedQuery<Player> querynew = em
 		.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
 	querynew.setParameter("name", username);
@@ -58,8 +82,8 @@ public class PlayerDataAccess {
 	return false;
     }
 
-     public static void main(String[] args) {
-    	 PlayerDataAccess pda=new PlayerDataAccess();
-    	 pda.createPlayer();
-     }
+//     public static void main(String[] args) {
+//    	 PlayerDataAccess pda=new PlayerDataAccess();
+//    	 pda.createPlayer();
+//     }
 }

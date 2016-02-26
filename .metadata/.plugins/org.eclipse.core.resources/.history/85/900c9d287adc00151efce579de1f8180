@@ -1,0 +1,12 @@
+package views;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+
+import dataAccessLayer.PlayerDataAccess;
+
+@ManagedBean(name = "loginView")
+public class GamesView {
+
+}

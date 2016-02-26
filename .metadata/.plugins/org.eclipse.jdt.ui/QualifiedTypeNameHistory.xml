@@ -4,4 +4,5 @@
 <fullyQualifiedTypeName name="org.primefaces.context.RequestContext"/>
 <fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
 <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
+<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
 </qualifiedTypeNameHistroy>

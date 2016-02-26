@@ -15,11 +15,16 @@ public class GamePlayer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"ID\"")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name="game_id")
-	private Integer gameId;
+	//bi-directional many-to-one association to Game
+	@ManyToOne
+	private Game game;
+
+	//bi-directional many-to-one association to Player
+	@ManyToOne
+	private Player player;
 
 	public GamePlayer() {
 	}
@@ -32,12 +37,20 @@ public class GamePlayer implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getGameId() {
-		return this.gameId;
+	public Game getGame() {
+		return this.game;
 	}
 
-	public void setGameId(Integer gameId) {
-		this.gameId = gameId;
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	public Player getPlayer() {
+		return this.player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 }
