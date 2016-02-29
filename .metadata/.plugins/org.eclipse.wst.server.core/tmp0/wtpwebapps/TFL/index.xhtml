@@ -11,14 +11,15 @@
 </h:head>
 <h:body>
 	<h:form>
-		<p:panel header="Login" style="width: 570px;">
+		<p:panel header="Login" style="width: 1000px;">
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 			<h:panelGrid id="loginPanel" columns="2">
 				<h:outputText value="Username"/>
-				<p:inputText id="username" value="#{loginView.username}"></p:inputText>
+				<p:inputText id="username" value="#{loginView.username}" required="true" ></p:inputText>
 				<p:spacer></p:spacer>
 				<p:message for="username" ></p:message>
 				<h:outputText value="Password"/>
-				<p:inputText id="pass" value="#{loginView.password}"></p:inputText>
+				<p:inputText id="pass" value="#{loginView.password}" required="true" ></p:inputText>
 				<p:spacer></p:spacer>
  				<p:message for="pass"></p:message>
  				<p:spacer></p:spacer>

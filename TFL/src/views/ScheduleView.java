@@ -17,6 +17,8 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
+
+import dataAccessLayer.GameDataAccess;
  
 @ManagedBean
 @ViewScoped
@@ -34,6 +36,9 @@ public class ScheduleView implements Serializable {
     @PostConstruct
     public void init() {
         eventModel = new DefaultScheduleModel();
+        GameDataAccess gda=new GameDataAccess();
+        gda.listGames();
+        
         eventModel.addEvent(new DefaultScheduleEvent("Meci de fotbal", previousDay8Pm(), previousDay11Pm()));
         eventModel.addEvent(new DefaultScheduleEvent("Birthday Game", today1Pm(), today6Pm()));
         eventModel.addEvent(new DefaultScheduleEvent("Nothing", nextDay9Am(), nextDay11Am()));
@@ -59,7 +64,7 @@ public class ScheduleView implements Serializable {
 
     private Calendar today() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 20, 13, 4);
         return calendar;
     }
      
@@ -67,7 +72,7 @@ public class ScheduleView implements Serializable {
         Calendar t = (Calendar) today().clone();
         t.set(Calendar.AM_PM, Calendar.PM);
         t.set(Calendar.DATE, t.get(Calendar.DATE) - 1);
-        t.set(Calendar.HOUR, 8);     
+        t.set(Calendar.HOUR, 8);    
         return t.getTime();
     }
      

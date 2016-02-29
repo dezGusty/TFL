@@ -17,6 +17,18 @@ public class SingUpView {
     
     private boolean available;
     
+    private int type;
+    
+    public void setType(int value)
+    {
+    	this.type=value;
+    }
+    
+    public int getType()
+    {
+    	return this.type;
+    }
+    
     public void setCpass(String value)
     {
     	this.cpass=value;
@@ -55,9 +67,9 @@ public class SingUpView {
      
     public void save() {
     	PlayerDataAccess pda=new PlayerDataAccess();
-    	pda.createUser(this.name, this.pass, 1, this.available, 0.0);
+    	pda.createUser(this.name, this.pass, this.type, this.available, 0.0);
     	
-    	System.out.println(this.available+ " "+this.name+" "+this.pass);
+    	System.out.println(this.available+ " "+this.name+" "+this.pass+" "+this.type);
     	System.out.println("Data saved!");
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data Saved"));
     }

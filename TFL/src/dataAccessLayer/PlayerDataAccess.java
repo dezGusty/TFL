@@ -20,18 +20,6 @@ public class PlayerDataAccess {
 	em.getTransaction().begin();
     }
 
-    private  void createPlayer() {
-	Player emp = new Player();
-	emp.setId(3);
-	emp.setType(1);
-	emp.setUsername("george");
-	emp.setPassword("new");
-	emp.setRating(20.5);
-	emp.setAvailable(true);
-	em.persist(emp);
-	em.getTransaction().commit();
-    }
-
     public  boolean createUser(String username, String password, int type,boolean available, double rating ) {
     	try
     	{
@@ -52,7 +40,7 @@ public class PlayerDataAccess {
     	return true;
         }
     
-    public boolean loginUser(String username, String password) {
+    public Player loginUser(String username, String password) {
 	TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c", Player.class);
 	List<Player> result = new ArrayList<Player>();
 	result = query.getResultList();
@@ -72,18 +60,13 @@ public class PlayerDataAccess {
 		System.out.println(play.toString());
 		for (Player p : result) {
 		    if ((p.getUsername().compareTo(username) == 0) && (p.getPassword().compareTo(password) == 0)) {
-			return true;
+			return p;
 		    }
 		}
 	    }
 	} catch (Exception ex) {
 	    System.out.println("Username or password incorrect!");
 	}
-	return false;
+	return null;
     }
-
-//     public static void main(String[] args) {
-//    	 PlayerDataAccess pda=new PlayerDataAccess();
-//    	 pda.createPlayer();
-//     }
 }

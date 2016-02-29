@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>Singup page!</h1>
+	<h:form id="form">
+		<p:panel id="panel" header="Sing up">
+			<p:messages id="messages"/>
+			<h:panelGrid columns="3" cellpading="5">				
+				<p:outputLabel  value="Username"></p:outputLabel>
+				<p:inputText id="name" value="#{singUpView.name}" required="true" >
+					<f:validateLength minimum="2"></f:validateLength>
+				</p:inputText>
+				<p:message for="name" />
+				
+				<p:outputLabel  value="Password"></p:outputLabel>
+				 <p:password id="pass" value="#{singUpView.pass}" >
+				 	<f:validateLength minimum="2"></f:validateLength>
+				 </p:password>
+				<p:message for="pass" />
+				
+				<p:outputLabel  value="Confirm password"></p:outputLabel>
+				 <p:password id="cpass" value="#{singUpView.cpass}" >
+				 	<f:validateLength minimum="2"></f:validateLength>
+				 </p:password>
+				<p:message for="cpass" />
+				
+				<p:outputLabel  value="Available"></p:outputLabel>
+				<h:selectOneRadio value="#{singUpView.available}">
+   					<f:selectItem itemValue="true" itemLabel="Yes" />
+   					<f:selectItem itemValue="false" itemLabel="No" />
+   				</h:selectOneRadio>
+   				<p:spacer></p:spacer>
+   				
+   				<p:outputLabel  value="User type"></p:outputLabel>
+				<h:selectOneRadio value="#{singUpView.type}">
+   					<f:selectItem itemValue="true" itemLabel="Normal user" />
+   					<f:selectItem itemValue="false" itemLabel="Player" />
+   				</h:selectOneRadio>
+			</h:panelGrid>
+			
+		</p:panel>
+		<p:toolbar>
+			<f:facet name="left">
+            	<p:commandButton value="Submit" update="panel" actionListener="#{singUpView.save}"></p:commandButton>
+ 
+           		 <p:button outcome="/index" value="Back" />
+       		 </f:facet>
+		</p:toolbar>        
+
+	</h:form>
+</h:body>
+</html>

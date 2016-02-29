@@ -16,7 +16,7 @@
 			<p:messages id="messages"/>
 			<h:panelGrid columns="3" cellpading="5">				
 				<p:outputLabel  value="Username"></p:outputLabel>
-				<p:inputText id="name" value="#{singUpView.name}">
+				<p:inputText id="name" value="#{singUpView.name}" required="true" >
 					<f:validateLength minimum="2"></f:validateLength>
 				</p:inputText>
 				<p:message for="name" />
@@ -37,6 +37,13 @@
 				<h:selectOneRadio value="#{singUpView.available}">
    					<f:selectItem itemValue="true" itemLabel="Yes" />
    					<f:selectItem itemValue="false" itemLabel="No" />
+   				</h:selectOneRadio>
+   				<p:spacer></p:spacer>
+   				
+   				<p:outputLabel  value="User type"></p:outputLabel>
+				<h:selectOneRadio value="#{singUpView.type}" required="true">
+   					<f:selectItem itemValue="1" itemLabel="Normal user" />
+   					<f:selectItem itemValue="0" itemLabel="Player" />
    				</h:selectOneRadio>
 			</h:panelGrid>
 			
