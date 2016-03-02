@@ -1,0 +1,26 @@
+package views;
+import model.Game;
+import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+
+@ManagedBean(name = "gamesView")
+@ViewScoped
+public class GamesView implements Serializable{
+	
+    private static final long serialVersionUID = 1L;
+    private List<Game> games;
+    
+    @PostConstruct
+    public void init() {
+      //  games = service.createCars(100);
+    }
+    
+    public List<Game> getGames() {
+        return games;
+    }
+}

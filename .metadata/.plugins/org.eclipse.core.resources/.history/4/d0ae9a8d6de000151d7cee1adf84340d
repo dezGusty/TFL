@@ -1,0 +1,32 @@
+package views;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import model.Game;
+ 
+@ManagedBean
+@ViewScoped
+public class DataScrollerView implements Serializable {
+     
+    private List<Game> games;
+         
+    @ManagedProperty("#{carService}")
+    private DataService service;
+     
+    @PostConstruct
+    public void init() {
+       games = service.createCars(100);
+    }
+ 
+    public List<Car> getCars() {
+        return cars;
+    }
+ 
+    public void setService(CarService service) {
+        this.service = service;
+    }
+}

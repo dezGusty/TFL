@@ -1,0 +1,55 @@
+package dataAccessLayer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
+import model.Game;
+import model.GameLoser;
+import model.GamePlayer;
+import model.Player;
+
+public class GameDataAccess {
+	  public static EntityManagerFactory emf;
+	  public static EntityManager em;
+	  
+	  public GameDataAccess() {
+			emf = Persistence.createEntityManagerFactory("TFL");
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+	  }
+	  
+	  public static void listGames() {
+		  emf = Persistence.createEntityManagerFactory("TFL");
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g", Game.class);
+			List<Game> result = new ArrayList<Game>();
+			result = query.getResultList();
+		   
+			for (Game g : result) {
+				System.out.println("Date:" +g.getDate()+" ");
+				System.out.println("Game players:");
+				for(GamePlayer p:g.getGamePlayers())
+				{
+					System.out.println(p.getPlayer().getUsername());
+				}
+				for(GameLoser gl: g.getGameLosers())
+				{
+					System.out.println(gl.getPlayer().getUsername());
+				}
+				for(GameLoser gw: g.getGameWinners())
+				{
+					System.out.println(gw.getPlayer().getUsername());
+				}
+			}	
+	}
+	  public static void main(String[] args) {
+		 
+		listGames();
+	}
+}
