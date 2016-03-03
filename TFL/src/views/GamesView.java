@@ -21,14 +21,15 @@ public class GamesView implements Serializable{
     @ManagedProperty("#{gameDataAccess}")
     public GameDataAccess gamesData;
     
-    @PostConstruct
+    private Game selectedGame;
+
+	@PostConstruct
     public void init() {
     	//GameDataAccess gda=new GameDataAccess();
     	//GameDataAccess gamesData;
     	gamesData=new GameDataAccess();
     	games=gamesData.listGames();
-    	
-      //  games = service.createCars(100);
+    	selectedGame=new Game();
     }
     
     public List<Game> getGames() {
@@ -45,5 +46,13 @@ public class GamesView implements Serializable{
 
 	public void setGamesData(GameDataAccess gamesData) {
 		this.gamesData = gamesData;
+	}
+	
+	public Game getSelectedGame() {
+        return selectedGame;
+    }
+ 
+	public void setSelectedGame(Game selectedGame) {
+		this.selectedGame = selectedGame;
 	}
 }

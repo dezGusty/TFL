@@ -6,12 +6,22 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
+    
 <h:head>
+<link rel="stylesheet" type="text/css" href="mycss.css"/>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </h:head>
 <h:body>
 	<h:form>
-		<p:panel header="Login" style="width: 1000px;">
+		<p:panel header="Login">
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 			<h:panelGrid id="loginPanel" columns="2">
 				<h:outputText value="Username"/>
@@ -19,7 +29,7 @@
 				<p:spacer></p:spacer>
 				<p:message for="username" ></p:message>
 				<h:outputText value="Password"/>
-				<p:inputText id="pass" value="#{loginView.password}" required="true" ></p:inputText>
+				<p:password id="pass" value="#{loginView.password}" required="true" ></p:password>
 				<p:spacer></p:spacer>
  				<p:message for="pass"></p:message>
  				<p:spacer></p:spacer>
@@ -33,5 +43,6 @@
 		</p:panel>
             
 	</h:form>
+
 </h:body>
 </html>

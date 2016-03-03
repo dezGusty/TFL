@@ -1,9 +1,0 @@
-package dataAccessLayer;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-
-public class GameDataAccess {
-	  public static EntityManagerFactory emf;
-	  public static EntityManager em;
-}
