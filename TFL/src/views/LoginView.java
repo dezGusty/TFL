@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import dataAccessLayer.PlayerDataAccess;
 import model.Player;
 
 @ManagedBean(name = "loginView")
+@SessionScoped
 public class LoginView implements Serializable {
     /**
      * 

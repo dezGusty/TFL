@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+.ui-menu
+{
+	padding:0px;
+}
+.myform
+{
+	padding:0px;
+}
+.nopadding
+{
+	padding-left:0px;
+	padding-right:0px;
+}
+
+

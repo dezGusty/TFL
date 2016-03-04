@@ -1,0 +1,12 @@
+@CHARSET "ISO-8859-1";
+.ui-menubar .ui-menuitem-link
+{
+	padding:0px;
+}
+
+.ui-menu
+{
+	padding:0px;
+	background-color:red;
+}
+

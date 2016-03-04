@@ -8,6 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+
 	<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
 
@@ -16,63 +17,11 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" type="text/css" href="../mycss.css"/>
 </h:head>
 <h:body>
-	<div class="container">
-		<div class="row">
-				<p:panel id="panel">
-       				 <h:panelGrid columns="2" cellpadding="10" style="height:20px">
-          			  	<p:graphicImage style="height:30px" name="../images/ball.jpg" />
-            			<p:outputLabel value="Welcome, #{loginView.username} !"></p:outputLabel>
-        			 </h:panelGrid>
-
-    			</p:panel>
-		</div>
-		
-		<div class="row">
-			 	<div class="col-sm-3">
-        		<h:form>
-        				<p:menubar orientation="#verticaL">
-        					<p:submenu label="My account">
-                				<p:menuitem value="View my personal dates"></p:menuitem>
-               					 <p:menuitem value="Change  my password"></p:menuitem>
-       						 </p:submenu>	
-        				</p:menubar>
-        		</h:form>
-			  </div>
-			  <div class="col-sm-3">
-        		<h:form>
-        				<p:menubar orientation="#verticaL">
-        					<p:submenu label="Games">
-                				<p:menuitem value="View games history"></p:menuitem>
-               					 <p:menuitem value="Search games"></p:menuitem>
-       						 </p:submenu>	
-        				</p:menubar>
-        		</h:form>
-			  </div>
-			  <div class="col-sm-3">
-        		<h:form>
-        				<p:menubar orientation="#verticaL">
-        					<p:submenu label="Players">
-                				<p:menuitem value="View all players"></p:menuitem>
-               					 <p:menuitem value="Searc players"></p:menuitem>
-       						 </p:submenu>	
-        				</p:menubar>
-        		</h:form>
-			  </div>
-			  <div class="col-sm-3">
-			  	 	<h:form>
-        				<p:menubar orientation="#verticaL">
-        					<p:submenu label="Charts">
-                				<p:menuitem value="Games chart"></p:menuitem>
-               					 <p:menuitem value="Players chart"></p:menuitem>
-       						 </p:submenu>	
-        				</p:menubar>
-        			</h:form>
-			  </div>
-			  
-		</div>
-		</div>
+	<ui:insert name="header" >
+		<ui:include src="header.xhtml" />
+	</ui:insert>
 </h:body>
 </html>

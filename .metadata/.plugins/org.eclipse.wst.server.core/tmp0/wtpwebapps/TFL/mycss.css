@@ -1,1 +1,12 @@
 @CHARSET "ISO-8859-1";
+.nopadding
+{
+	padding-left:0px;
+	padding-right:0px;
+}
+.ui-helper-reset
+{
+	background-color:white;
+}
+
+
