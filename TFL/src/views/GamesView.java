@@ -55,4 +55,9 @@ public class GamesView implements Serializable{
 	public void setSelectedGame(Game selectedGame) {
 		this.selectedGame = selectedGame;
 	}
+	
+	public void getNextGames()
+	{
+		System.out.println("Get next games!");
+	}
 }

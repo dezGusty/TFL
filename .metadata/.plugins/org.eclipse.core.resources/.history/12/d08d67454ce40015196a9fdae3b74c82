@@ -1,0 +1,35 @@
+package views;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+
+import dataAccessLayer.GameDataAccess;
+import dataAccessLayer.PlayerDataAccess;
+import model.Game;
+import model.Player;
+
+@ManagedBean(name = "playersView")
+@ViewScoped
+public class PlayersView {
+
+	 private static final long serialVersionUID = 1L;
+	    public List<Player> players;
+	    
+	    @ManagedProperty("#{gameDataAccess}")
+	    public PlayerDataAccess playerData;
+	    
+	    private Game selectedPlayer;
+
+		@PostConstruct
+	    public void init() {
+
+			playerData=new PlayerDataAccess();
+	    	selectedPlayer=new Game();
+	    }
+	    
+	
+}

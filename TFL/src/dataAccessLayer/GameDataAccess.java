@@ -27,15 +27,7 @@ public class GameDataAccess implements Serializable {
 	public static EntityManagerFactory emf=Persistence.createEntityManagerFactory("TFL");
 	 public static EntityManager em = emf.createEntityManager();
 	  
-	 // public GameDataAccess() {
-		//	emf = Persistence.createEntityManagerFactory("TFL");
-			//em = emf.createEntityManager();
-			//em.getTransaction().begin();
-	//  }
-	  
 	  public  List<Game> listGames() {
-		 // emf = Persistence.createEntityManagerFactory("TFL");
-			//em = emf.createEntityManager();
 			em.getTransaction().begin();
 			TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g", Game.class);
 			List<Game> result = new ArrayList<Game>();
@@ -59,9 +51,5 @@ public class GameDataAccess implements Serializable {
 			}
 			return result;
 	}
-	 
-//	  public static void main(String[] args) {
-//		 
-//		listGames();
-//	}
+
 }

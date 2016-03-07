@@ -1,0 +1,7 @@
+package views;
+
+@ManagedBean
+public class PickListView {
+     
+  
+}

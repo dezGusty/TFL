@@ -123,6 +123,7 @@ public class Player implements Serializable {
 	public List<GamePlayer> getGamePlayers() {
 		return this.gamePlayers;
 	}
+	
 
 	public void setGamePlayers(List<GamePlayer> gamePlayers) {
 		this.gamePlayers = gamePlayers;
@@ -153,15 +154,15 @@ public class Player implements Serializable {
 	public GameWinner addGameWinner(GameWinner gameWinner) {
 		getGameWinners().add(gameWinner);
 		gameWinner.setPlayer(this);
-
 		return gameWinner;
 	}
 
 	public GameWinner removeGameWinner(GameWinner gameWinner) {
 		getGameWinners().remove(gameWinner);
 		gameWinner.setPlayer(null);
-
 		return gameWinner;
 	}
+	
+	
 
 }

@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+.container{
+	margin:auto;
+}
+tr.ui-widget-header
+{
+	background-color:#000000;
+}
+

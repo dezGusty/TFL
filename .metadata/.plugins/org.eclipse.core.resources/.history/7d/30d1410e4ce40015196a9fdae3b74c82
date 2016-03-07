@@ -1,0 +1,10 @@
+package views;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean(name = "playersView")
+@ViewScoped
+public class PlayersView {
+
+}

@@ -3,11 +3,9 @@
 <fullyQualifiedTypeName name="org.primefaces.context.RequestContext"/>
 <fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
 <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
-<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
 <fullyQualifiedTypeName name="org.hibernate.mapping.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
-<fullyQualifiedTypeName name="model.Player"/>
 <fullyQualifiedTypeName name="model.GamePlayer"/>
 <fullyQualifiedTypeName name="model.GameLoser"/>
 <fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
@@ -18,4 +16,8 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="model.Player"/>
+<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 </qualifiedTypeNameHistroy>

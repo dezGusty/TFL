@@ -2,9 +2,12 @@
 .container{
 	margin:auto;
 }
-.row
+tr.ui-widget-header
 {
-	margin: auto;
-	text-align: center;
+	background-color:transparent;
+}
+tr.ui-panelgrid-header
+{
+	background-color:transparent;
 }
 

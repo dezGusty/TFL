@@ -26,7 +26,7 @@
 				<p:panel id="panel">
        				 <h:panelGrid columns="2" cellpadding="10" style="height:20px">
           			  	<p:graphicImage style="height:30px" name="../images/ball.jpg" />
-            			<p:outputLabel value="Welcome, #{loginView.username} !"></p:outputLabel>
+            			<p:outputLabel value="Welcome, #{loginView.currentPlayer.username} !"></p:outputLabel>
         			 </h:panelGrid>
 
     			</p:panel>
@@ -47,8 +47,8 @@
         		<h:form class="myform">
         				<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
         					<p:submenu label="Games">
-                				 <p:menuitem value="View games history"></p:menuitem>
-               					 <p:menuitem value="Search games"></p:menuitem>
+        						 <p:menuitem value="View next games" action="gamesView.getNextGames()"></p:menuitem>
+                				 <p:menuitem value="View games history" outcome="/resources/viewgames.xhtml"></p:menuitem>
        						 </p:submenu>	
         				</p:menubar>
         		</h:form>
@@ -58,8 +58,8 @@
         		<h:form class="myform">
         				<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
         					<p:submenu label="Players">
-                				<p:menuitem value="View all players"></p:menuitem>
-               					 <p:menuitem value="Search players"></p:menuitem>
+                				<p:menuitem value="View all players" outcome="/resources/viewplayers.xhtml"></p:menuitem>
+               					 <p:menuitem value="Make teams" outcome="/resources/makeTeams.xhtml"></p:menuitem>
        						 </p:submenu>	
         				</p:menubar>
         		</h:form>
