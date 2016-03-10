@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.primefaces.context.RequestContext"/>
-<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
-<fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
 <fullyQualifiedTypeName name="org.hibernate.mapping.List"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
 <fullyQualifiedTypeName name="model.GamePlayer"/>
 <fullyQualifiedTypeName name="model.GameLoser"/>
 <fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
-<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ApplicationScoped"/>
-<fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
 <fullyQualifiedTypeName name="model.Game"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
-<fullyQualifiedTypeName name="model.Player"/>
-<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
+<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
+<fullyQualifiedTypeName name="org.primefaces.model.DualListModel"/>
+<fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.primefaces.event.TransferEvent"/>
+<fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
+<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
+<fullyQualifiedTypeName name="org.primefaces.event.SelectEvent"/>
+<fullyQualifiedTypeName name="org.primefaces.event.UnselectEvent"/>
+<fullyQualifiedTypeName name="javax.faces.convert.FacesConverter"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="model.Player"/>
 </qualifiedTypeNameHistroy>

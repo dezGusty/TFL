@@ -24,11 +24,18 @@ public class GameDataAccess implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static EntityManagerFactory emf=Persistence.createEntityManagerFactory("TFL");
-	 public static EntityManager em = emf.createEntityManager();
+	public  EntityManagerFactory emf=Persistence.createEntityManagerFactory("TFL");
+	public  EntityManager em = emf.createEntityManager();
 	  
-	  public  List<Game> listGames() {
-			em.getTransaction().begin();
+	public GameDataAccess()
+	{
+		if(em.getTransaction().isActive()==false)
+		  {
+			  em.getTransaction().begin();
+		  }
+	}
+	
+	public  List<Game> listGames() {
 			TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g", Game.class);
 			List<Game> result = new ArrayList<Game>();
 			result = query.getResultList();

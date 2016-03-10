@@ -1,0 +1,135 @@
+-- Table: public.player
+
+-- DROP TABLE public.player;
+
+CREATE TABLE public.player
+(
+  username text,
+  password text,
+  type integer,
+  rating double precision,
+  available boolean,
+  id integer NOT NULL DEFAULT nextval('player_id_seq'::regclass),
+  CONSTRAINT player_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.player
+  OWNER TO postgres;
+
+
+
+-- Table: public.games
+
+-- DROP TABLE public.games;
+
+CREATE TABLE public.games
+(
+  date date,
+  difference integer,
+  id integer NOT NULL DEFAULT nextval('games_id_seq'::regclass),
+  CONSTRAINT games_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.games
+  OWNER TO postgres;
+
+
+
+
+-- Table: public.game_winners
+
+-- DROP TABLE public.game_winners;
+
+CREATE TABLE public.game_winners
+(
+  id_game integer,
+  id_player integer,
+  id integer NOT NULL DEFAULT nextval('game_winners_id_seq'::regclass),
+  CONSTRAINT game_winners_pkey PRIMARY KEY (id),
+  CONSTRAINT game_id FOREIGN KEY (id_game)
+      REFERENCES public.games (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT player_id FOREIGN KEY (id_player)
+      REFERENCES public.player (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.game_winners
+  OWNER TO postgres;
+
+
+-- Table: public.game_losers
+
+-- DROP TABLE public.game_losers;
+
+CREATE TABLE public.game_losers
+(
+  id_player integer,
+  id_game integer,
+  id integer NOT NULL DEFAULT nextval('game_losers_id_seq'::regclass),
+  CONSTRAINT game_losers_pkey PRIMARY KEY (id),
+  CONSTRAINT game_id FOREIGN KEY (id_game)
+      REFERENCES public.games (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT player_id FOREIGN KEY (id_player)
+      REFERENCES public.player (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.game_losers
+  OWNER TO postgres;
+
+
+
+-- Table: public.game_players
+
+-- DROP TABLE public.game_players;
+
+CREATE TABLE public.game_players
+(
+  game_id integer,
+  player_id integer,
+  id integer NOT NULL DEFAULT nextval('game_players_id_seq'::regclass),
+  CONSTRAINT game_players_pkey PRIMARY KEY (id),
+  CONSTRAINT game_id FOREIGN KEY (game_id)
+      REFERENCES public.games (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT player_id FOREIGN KEY (player_id)
+      REFERENCES public.player (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.game_players
+  OWNER TO postgres;
+
+
+-- Table: public.player_ratings
+
+-- DROP TABLE public.player_ratings;
+
+CREATE TABLE public.player_ratings
+(
+  id_player integer,
+  rating double precision,
+  date date,
+  id integer NOT NULL DEFAULT nextval('player_ratings_id_seq'::regclass),
+  CONSTRAINT player_ratings_pkey PRIMARY KEY (id),
+  CONSTRAINT player_id FOREIGN KEY (id_player)
+      REFERENCES public.player (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.player_ratings
+  OWNER TO postgres;

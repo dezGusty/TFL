@@ -25,8 +25,6 @@ public class GamesView implements Serializable{
 
 	@PostConstruct
     public void init() {
-    	//GameDataAccess gda=new GameDataAccess();
-    	//GameDataAccess gamesData;
     	gamesData=new GameDataAccess();
     	games=gamesData.listGames();
     	selectedGame=new Game();

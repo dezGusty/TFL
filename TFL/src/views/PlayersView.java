@@ -1,6 +1,6 @@
 package views;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +13,7 @@ import model.Player;
 
 @ManagedBean(name = "playersView")
 @ViewScoped
-public class PlayersView {
+public class PlayersView implements Serializable{
 
 	 private static final long serialVersionUID = 1L;
 	    public List<Player> players;
@@ -22,12 +22,11 @@ public class PlayersView {
 	    public PlayerDataAccess playerData;
 	    
 	    private Player selectedPlayer;
-
+	    
+	    
 		@PostConstruct
 	    public void init() {
-
 			playerData=new PlayerDataAccess();
-			players=new ArrayList<Player>();
 			players=playerData.listPlayers();
 	    	selectedPlayer=new Player();
 	    }

@@ -14,16 +14,9 @@ import java.util.List;
 @Table(name="games")
 @NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
 public class Game implements Serializable {
-	@Override
-	public String toString() {
-		return "Game [id=" + id + ", date=" + date + ", difference=" + difference + ", gameLosers=" + gameLosers
-				+ ", gamePlayers=" + gamePlayers + ", gameWinners=" + gameWinners + "]";
-	}
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@Temporal(TemporalType.DATE)
@@ -135,5 +128,12 @@ public class Game implements Serializable {
 
 		return gameWinner;
 	}
+	
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", date=" + date + ", difference=" + difference + ", gameLosers=" + gameLosers
+				+ ", gamePlayers=" + gamePlayers + ", gameWinners=" + gameWinners + "]";
+	}
+
 
 }

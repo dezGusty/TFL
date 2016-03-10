@@ -12,11 +12,9 @@ import javax.persistence.*;
 @Table(name="game_losers")
 @NamedQuery(name="GameLoser.findAll", query="SELECT g FROM GameLoser g")
 public class GameLoser implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	//bi-directional many-to-one association to Game

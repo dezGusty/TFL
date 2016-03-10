@@ -30,14 +30,35 @@
 </h:head>
 <h:body>
 	<ui:insert name="header">
-		<ui:include src="/resources/header.xhtml" />
+		<ui:include src="/resources/user.xhtml" />
 	</ui:insert>
 
 	<div class="container">
 		<div class="row">
 			<h:form id="form">
-				<p:dataScroller value="#{playersView.players}" var="player" chunkSize="10">
-					<f:facet name="header">Scroll Down to Load More Games</f:facet>
+				<p:dataScroller value="#{playersView.players}" var="player"
+					chunkSize="10">
+					<f:facet name="header">
+            Scroll Down to Load More Games
+        </f:facet>
+
+					<h:panelGrid columns="2" style="width:100%"
+						columnClasses="logo,detail">
+						<p:graphicImage name="../images/images.jpg" />
+
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Id:" />
+								<h:outputText value="#{player.id}" style="font-weight: bold" />
+
+								<h:outputText value="Name:" />
+								<h:outputText value="#{player.username}" style="font-weight: bold" />
+								
+								<h:outputText value="Rating:" />
+								<h:outputText value="#{player.rating}" style="font-weight: bold" />
+							</h:panelGrid>
+						</p:outputPanel>
+					</h:panelGrid>
 				</p:dataScroller>
 			</h:form>
 		</div>

@@ -1,11 +1,11 @@
 package dataAccessLayer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,14 +15,19 @@ import model.Player;
 
 @ManagedBean(name = "playerDataAccess")
 @ApplicationScoped
-public class PlayerDataAccess {
-	public static EntityManagerFactory emf;
-	public static EntityManager em;
+public class PlayerDataAccess implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static EntityManagerFactory emf= Persistence.createEntityManagerFactory("TFL");
+	public static EntityManager em= emf.createEntityManager();
 
 	public PlayerDataAccess() {
-		emf = Persistence.createEntityManagerFactory("TFL");
-		em = emf.createEntityManager();
-		em.getTransaction().begin();
+		if(!em.getTransaction().isActive())
+		  {
+			  em.getTransaction().begin();
+		  }
 	}
 
 	public boolean createUser(String username, String password, int type, boolean available, double rating) {
@@ -43,6 +48,8 @@ public class PlayerDataAccess {
 	}
 
 	public Player loginUser(String username, String password) {
+
+		
 		TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c", Player.class);
 		List<Player> result = new ArrayList<Player>();
 		result = query.getResultList();
@@ -62,6 +69,7 @@ public class PlayerDataAccess {
 				System.out.println(play.toString());
 				for (Player p : result) {
 					if ((p.getUsername().compareTo(username) == 0) && (p.getPassword().compareTo(password) == 0)) {
+						System.out.println(p.getPlayerRatings());
 						return p;
 					}
 				}
@@ -94,13 +102,13 @@ public class PlayerDataAccess {
 	}
 	
 	  public  List<Player> listPlayers() {
-			em.getTransaction().begin();
-			TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p", Player.class);
+		    TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p",Player.class);
 			List<Player> result = new ArrayList<Player>();
 			result = query.getResultList();
 		   
 			for (Player g : result) {
-				System.out.println("ID"+g.getId()+" Name:" +g.getUsername()+" Rating:"+g.getRating());
+				System.out.println("ID"+g.getId()+" Password:" +g.getPassword()+" Username"+g.getUsername());
+				System.out.println("Game players:");
 			}
 			return result;
 	}

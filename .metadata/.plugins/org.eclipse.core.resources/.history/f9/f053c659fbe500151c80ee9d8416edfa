@@ -1,0 +1,10 @@
+package model;
+
+
+import javax.faces.convert.Converter;
+public class URLConverter implements Converter{
+	//...
+}
+public class PlayerConverter implements Converter {
+
+}

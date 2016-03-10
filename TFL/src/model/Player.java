@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+
+import javax.faces.convert.FacesConverter;
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,24 +12,19 @@ import java.util.List;
  * 
  */
 @Entity
+@FacesConverter("player")
 @NamedQuery(name="Player.findAll", query="SELECT p FROM Player p")
 public class Player implements Serializable {
-	@Override
-	public String toString() {
-		return "Player [id=" + id + ", available=" + available + ", password=" + password + ", rating=" + rating
-				+ ", type=" + type + ", username=" + username + ", gameLosers=" + gameLosers + ", gamePlayers="
-				+ gamePlayers + ", gameWinners=" + gameWinners + "]";
-	}
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	private Boolean available;
 
 	private String password;
+
+	private String picture;
 
 	private double rating;
 
@@ -46,6 +43,10 @@ public class Player implements Serializable {
 	//bi-directional many-to-one association to GameWinner
 	@OneToMany(mappedBy="player")
 	private List<GameWinner> gameWinners;
+
+	//bi-directional many-to-one association to PlayerRating
+	@OneToMany(mappedBy="player")
+	private List<PlayerRating> playerRatings;
 
 	public Player() {
 	}
@@ -72,6 +73,14 @@ public class Player implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPicture() {
+		return this.picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	public double getRating() {
@@ -123,7 +132,6 @@ public class Player implements Serializable {
 	public List<GamePlayer> getGamePlayers() {
 		return this.gamePlayers;
 	}
-	
 
 	public void setGamePlayers(List<GamePlayer> gamePlayers) {
 		this.gamePlayers = gamePlayers;
@@ -154,15 +162,46 @@ public class Player implements Serializable {
 	public GameWinner addGameWinner(GameWinner gameWinner) {
 		getGameWinners().add(gameWinner);
 		gameWinner.setPlayer(this);
+
 		return gameWinner;
 	}
 
 	public GameWinner removeGameWinner(GameWinner gameWinner) {
 		getGameWinners().remove(gameWinner);
 		gameWinner.setPlayer(null);
+
 		return gameWinner;
 	}
+
+	public List<PlayerRating> getPlayerRatings() {
+		for(PlayerRating pl:this.playerRatings)
+		{
+			System.out.println("Player"+pl.getPlayer().getUsername()+" Rating"+pl.getRating());
+		}
+		return this.playerRatings;
+	}
+
+	public void setPlayerRatings(List<PlayerRating> playerRatings) {
+		this.playerRatings = playerRatings;
+	}
+
+	public PlayerRating addPlayerRating(PlayerRating playerRating) {
+		getPlayerRatings().add(playerRating);
+		playerRating.setPlayer(this);
+
+		return playerRating;
+	}
+
+	public PlayerRating removePlayerRating(PlayerRating playerRating) {
+		getPlayerRatings().remove(playerRating);
+		playerRating.setPlayer(null);
+
+		return playerRating;
+	}
 	
-	
+	@Override
+	public String toString() {
+		return id + "##" + username+ "##" + password+ "##" + this.rating + "##" + this.available + "##" +this.type+"##"+this.picture;
+	}
 
 }

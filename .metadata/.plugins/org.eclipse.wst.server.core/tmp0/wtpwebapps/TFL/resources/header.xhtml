@@ -37,7 +37,7 @@
         			<h:form class="myform">
         				<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
         					<p:submenu label="My account">
-                				<p:menuitem value="View my dates" outcome="/resources/viewpersonaldates.xhtml"></p:menuitem>
+                				<p:menuitem value="View my personal dates" outcome="/resources/viewpersonaldates.xhtml"></p:menuitem>
                					 <p:menuitem value="Change password" outcome="/resources/changepassword.xhtml"></p:menuitem>
        						 </p:submenu>	
         				</p:menubar>
@@ -47,7 +47,7 @@
         		<h:form class="myform">
         				<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
         					<p:submenu label="Games">
-        						 <p:menuitem value="View next games" action="gamesView.getNextGames()"></p:menuitem>
+        						 <p:menuitem value="View next games" outcome="/resources/viewnextgames.xhtml"></p:menuitem>
                 				 <p:menuitem value="View games history" outcome="/resources/viewgames.xhtml"></p:menuitem>
        						 </p:submenu>	
         				</p:menubar>
@@ -68,8 +68,7 @@
 			  	 	<h:form>
         				<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
         					<p:submenu label="Charts">
-                				<p:menuitem value="Games chart"></p:menuitem>
-               					 <p:menuitem value="Players chart"></p:menuitem>
+                				<p:menuitem value="Create chart for selected players"></p:menuitem>
        						 </p:submenu>	
         				</p:menubar>
         			</h:form>
