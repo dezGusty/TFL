@@ -34,8 +34,9 @@ public class PlayerConverter implements Converter {
 		}
 		catch(Exception ex)
 		{
-			System.out.println("Ups");
+			System.out.println(ex.getMessage());
 		}
+		System.out.println(newPlayer.toString());
 		return newPlayer;
 	}
 

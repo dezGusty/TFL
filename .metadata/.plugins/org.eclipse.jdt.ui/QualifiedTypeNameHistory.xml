@@ -9,14 +9,12 @@
 <fullyQualifiedTypeName name="model.Game"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
 <fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
 <fullyQualifiedTypeName name="org.primefaces.model.DualListModel"/>
 <fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.primefaces.event.TransferEvent"/>
 <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
 <fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
@@ -25,4 +23,12 @@
 <fullyQualifiedTypeName name="javax.faces.convert.FacesConverter"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="model.Player"/>
+<fullyQualifiedTypeName name="org.primefaces.model.chart.LineChartModel"/>
+<fullyQualifiedTypeName name="org.primefaces.model.chart.DateAxis"/>
+<fullyQualifiedTypeName name="org.primefaces.model.chart.AxisType"/>
+<fullyQualifiedTypeName name="org.primefaces.model.chart.LineChartSeries"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="model.PlayerRating"/>
+<fullyQualifiedTypeName name="dataAccessLayer.PlayerRatingAccess"/>
 </qualifiedTypeNameHistroy>

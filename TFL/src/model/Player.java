@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.faces.convert.FacesConverter;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -49,6 +51,7 @@ public class Player implements Serializable {
 	private List<PlayerRating> playerRatings;
 
 	public Player() {
+         playerRatings=new ArrayList<PlayerRating>();
 	}
 
 	public Integer getId() {
@@ -174,10 +177,6 @@ public class Player implements Serializable {
 	}
 
 	public List<PlayerRating> getPlayerRatings() {
-		for(PlayerRating pl:this.playerRatings)
-		{
-			System.out.println("Player"+pl.getPlayer().getUsername()+" Rating"+pl.getRating());
-		}
 		return this.playerRatings;
 	}
 
