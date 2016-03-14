@@ -35,7 +35,7 @@ public class GameDataAccess implements Serializable {
 		  }
 	}
 	
-	public  List<Game> listGames() {
+	public List<Game> listGames() {
 			TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g", Game.class);
 			List<Game> result = new ArrayList<Game>();
 			result = query.getResultList();
@@ -57,6 +57,33 @@ public class GameDataAccess implements Serializable {
 				}
 			}
 			return result;
+	}
+	
+	public  List<Game> listNextGames() {
+		TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g where g.date > current_date", Game.class);
+		List<Game> result = new ArrayList<Game>();
+		result = query.getResultList();
+	   
+		for (Game g : result) {
+			System.out.println("ID"+g.getId()+" Date:" +g.getDate()+" Difference"+g.getDifference());
+//			for(GamePlayer p:g.getGamePlayers())
+//			{
+//				System.out.println(p.getPlayer().getUsername());
+//			}
+//			for(GameLoser gl: g.getGameLosers())
+//			{
+//				System.out.println(gl.getPlayer().getUsername());
+//			}
+//			for(GameWinner gw: g.getGameWinners())
+//			{
+//				System.out.println(gw.getPlayer().getUsername());
+//			}
+		}
+		return result;
+}
+	public static void main(String[] args) {
+		GameDataAccess gda=new GameDataAccess();
+		gda.listNextGames();
 	}
 
 }

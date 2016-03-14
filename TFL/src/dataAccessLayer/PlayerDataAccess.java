@@ -101,15 +101,18 @@ public class PlayerDataAccess implements Serializable{
 		return null;
 	}
 	
+	public Player changeAvailable(Player player,boolean available)
+	{
+		Player play = em.find(Player.class, player.getId());
+		play.setAvailable(available);	
+		em.getTransaction().commit();
+		return play;
+	}
+	
 	  public  List<Player> listPlayers() {
 		    TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p",Player.class);
 			List<Player> result = new ArrayList<Player>();
 			result = query.getResultList();
-		   
-//			for (Player g : result) {
-//				System.out.println("ID"+g.getId()+" Password:" +g.getPassword()+" Username"+g.getUsername());
-//				System.out.println("Game players:");
-//			}
 			return result;
 	}
 

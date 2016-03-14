@@ -15,58 +15,55 @@
 	</ui:insert>
 	<div class="container">
 		<div class="row">
-		<h:form id="form">
-			<p:dataScroller value="#{gamesView.games}" var="game" chunkSize="10">
-				<f:facet name="header">
-            Scroll Down to Load More Games
-        </f:facet>
-				<h:panelGrid columns="4" style="width:100%">
-					<p:commandLink update=":form:gameDetail"
-						oncomplete="PF('gameDialog').show()">
-						<f:setPropertyActionListener value="#{game}"
-							target="#{gamesView.selectedGame}" />
-						<p:graphicImage name="../images/ball.jpg" />
-					</p:commandLink>
-					<p:outputPanel>
-						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputText value="Id:" />
-							<h:outputText value="#{game.id}" style="font-weight: bold" />
+			<h:form id="form">
+				<p:dataScroller value="#{nextGamesView.games}" var="game"
+					chunkSize="10">
+					<f:facet name="header">Next games</f:facet>
+					<h:panelGrid columns="5" style="width:100%">
+						
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Date: " />
+								<h:outputText value="#{game.date}" style="font-weight: bold" />
+							</h:panelGrid>
+						</p:outputPanel>
+						
+						<p:button outcome="/index" icon="ui-icon ui-icon-heart"
+							value="View teams"></p:button>
+							
+						<p:button outcome="/index" icon="ui-icon ui-icon-heart"
+							value="Play"></p:button>
+							
+						<p:button outcome="/index" icon="ui-icon ui-icon-heart"
+							value="Generate teams"></p:button>
+						
+						<p:button outcome="/index" icon="ui-icon ui-icon-heart"
+							value="Delete"></p:button>
+					</h:panelGrid>
+				</p:dataScroller>
 
-							<h:outputText value="Date:" />
-							<h:outputText value="#{game.date}" style="font-weight: bold" />
+				<p:dialog header="Game details" widgetVar="gameDialog" modal="true"
+					showEffect="blind" hideEffect="explode" resizable="false">
+					<p:outputPanel id="gameDetail" style="text-align:center;">
+						<p:panelGrid columns="2"
+							rendered="#{not empty nextGamesView.selectedGame}">
+							<f:facet name="header">
+								<p:graphicImage name="../images/ball.jpg" />
+							</f:facet>
 
-							<h:outputText value="Difference:" />
-							<h:outputText value="#{game.difference}"
-								style="font-weight: bold" />
-						</h:panelGrid>
+							<h:outputText value="Id" />
+							<h:outputText value="#{nextGamesView.selectedGame.id}" />
+
+							<h:outputText value="Date" />
+							<h:outputText value="#{nextGamesView.selectedGame.date}" />
+
+							<h:outputText value="Difference" />
+							<h:outputText value="#{nextGamesView.selectedGame.difference}" />
+						</p:panelGrid>
 					</p:outputPanel>
-					<p:button outcome="/index" icon="ui-icon ui-icon-heart"
-						value="View players"></p:button>
-				</h:panelGrid>
-			</p:dataScroller>
-
-			<p:dialog header="Game details" widgetVar="gameDialog" modal="true"
-				showEffect="blind" hideEffect="explode" resizable="false">
-				<p:outputPanel id="gameDetail" style="text-align:center;">
-					<p:panelGrid columns="2"
-						rendered="#{not empty gamesView.selectedGame}">
-						<f:facet name="header">
-							<p:graphicImage name="../images/ball.jpg" />
-						</f:facet>
-
-						<h:outputText value="Id" />
-						<h:outputText value="#{gamesView.selectedGame.id}" />
-
-						<h:outputText value="Date" />
-						<h:outputText value="#{gamesView.selectedGame.date}" />
-
-						<h:outputText value="Difference" />
-						<h:outputText value="#{gamesView.selectedGame.difference}" />
-					</p:panelGrid>
-				</p:outputPanel>
-			</p:dialog>
-		</h:form>
-	</div>
+				</p:dialog>
+			</h:form>
+		</div>
 	</div>
 </h:body>
 </html>

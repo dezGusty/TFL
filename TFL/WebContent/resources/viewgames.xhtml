@@ -20,7 +20,7 @@
 				<f:facet name="header">
             Scroll Down to Load More Games
         </f:facet>
-				<h:panelGrid columns="4" style="width:100%">
+				<h:panelGrid columns="5" style="width:100%">
 					<p:commandLink update=":form:gameDetail"
 						oncomplete="PF('gameDialog').show()">
 						<f:setPropertyActionListener value="#{game}"
@@ -29,9 +29,6 @@
 					</p:commandLink>
 					<p:outputPanel>
 						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputText value="Id:" />
-							<h:outputText value="#{game.id}" style="font-weight: bold" />
-
 							<h:outputText value="Date:" />
 							<h:outputText value="#{game.date}" style="font-weight: bold" />
 
@@ -40,8 +37,17 @@
 								style="font-weight: bold" />
 						</h:panelGrid>
 					</p:outputPanel>
+					
+					<p:commandLink update=":form:gameDetail"  oncomplete="PF('gameDialog').show()">
+						<f:setPropertyActionListener value="#{game}" target="#{gamesView.selectedGame}" />
+						<p:outputLabel value="View details"></p:outputLabel>
+					</p:commandLink>
+					
 					<p:button outcome="/index" icon="ui-icon ui-icon-heart"
-						value="View players"></p:button>
+						value="View Teams"></p:button>
+						
+					<p:button outcome="/index" icon="ui-icon ui-icon-heart"
+						value="Add game result"></p:button>
 				</h:panelGrid>
 			</p:dataScroller>
 

@@ -31,4 +31,5 @@
 <fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="model.PlayerRating"/>
 <fullyQualifiedTypeName name="dataAccessLayer.PlayerRatingAccess"/>
+<fullyQualifiedTypeName name="org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy"/>
 </qualifiedTypeNameHistroy>

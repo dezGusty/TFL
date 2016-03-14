@@ -1,0 +1,18 @@
+package views;
+import model.Game;
+import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+
+import dataAccessLayer.GameDataAccess;
+
+
+@ManagedBean(name = "gamesView")
+@ViewScoped
+public class NextGamesView {
+
+}

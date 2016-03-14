@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+		crossorigin="anonymous" />
+
+	<!-- Optional theme -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+		integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+		crossorigin="anonymous" />
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="../mycss.css" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<div class="container">
+			<p:growl id="msg" />
+			<div class="row">
+				<div class="col-sm-6 nopadding">
+					<p:panel id="panel">
+						<h:panelGrid columns="2" cellpadding="10" style="height:20px">
+							<p:graphicImage style="height:30px" name="../images/ball.jpg" />
+							<p:outputLabel
+								value="Welcome, #{loginView.currentPlayer.username} !"></p:outputLabel>
+						</h:panelGrid>
+					</p:panel>
+				</div>
+				<div class="col-sm-3 nopadding">
+					<p:panel>
+						<h:panelGrid columns="2" cellpadding="10" style="height:20px">
+							<h:outputText value="Available: " />
+							<p:inputSwitch value="#{loginView.currentPlayer.available}">
+								<p:ajax listener="#{loginView.addMessage }" update="msg"  />
+							</p:inputSwitch>
+						</h:panelGrid>
+					</p:panel>
+				</div>
+				<div class="col-sm-3 nopadding">
+					<p:panel>
+						<h:panelGrid columns="1" cellpadding="10" style="height:20px">
+							<h:commandButton value="Logout" action="#{loginView.logout}"  />
+						</h:panelGrid>
+					</p:panel>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3 nopadding">
+					<h:form class="myform">
+						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
+							<p:submenu label="My account">
+								<p:menuitem value="View my personal dates"
+									outcome="/resources/viewpersonaldates.xhtml"></p:menuitem>
+								<p:menuitem value="Change password"
+									outcome="/resources/changepassword.xhtml"></p:menuitem>
+							</p:submenu>
+						</p:menubar>
+					</h:form>
+				</div>
+				<div class="col-sm-3 nopadding">
+					<h:form class="myform">
+						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
+							<p:submenu label="Games">
+								<p:menuitem value="View next games"
+									outcome="/resources/viewnextgames.xhtml"></p:menuitem>
+								<p:menuitem value="View games history"
+									outcome="/resources/viewgames.xhtml"></p:menuitem>
+							</p:submenu>
+						</p:menubar>
+					</h:form>
+				</div>
+
+				<div class="col-sm-3 nopadding">
+					<h:form class="myform">
+						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
+							<p:submenu label="Players">
+								<p:menuitem value="View all players"
+									outcome="/resources/viewplayers.xhtml"></p:menuitem>
+								<p:menuitem value="Make teams"
+									outcome="/resources/makeTeams.xhtml"></p:menuitem>
+							</p:submenu>
+						</p:menubar>
+					</h:form>
+				</div>
+				<div class="col-sm-3 nopadding">
+					<h:form>
+						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
+							<p:submenu label="Charts">
+								<p:menuitem value="Create chart for selected players"
+									outcome="/resources/viewCharts.xhtml"></p:menuitem>
+							</p:submenu>
+						</p:menubar>
+					</h:form>
+				</div>
+
+			</div>
+		</div>
+	</ui:composition>
+</h:body>
+</html>
