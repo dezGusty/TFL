@@ -22,7 +22,6 @@
 <fullyQualifiedTypeName name="org.primefaces.event.UnselectEvent"/>
 <fullyQualifiedTypeName name="javax.faces.convert.FacesConverter"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="model.Player"/>
 <fullyQualifiedTypeName name="org.primefaces.model.chart.LineChartModel"/>
 <fullyQualifiedTypeName name="org.primefaces.model.chart.DateAxis"/>
 <fullyQualifiedTypeName name="org.primefaces.model.chart.AxisType"/>
@@ -32,4 +31,6 @@
 <fullyQualifiedTypeName name="model.PlayerRating"/>
 <fullyQualifiedTypeName name="dataAccessLayer.PlayerRatingAccess"/>
 <fullyQualifiedTypeName name="org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy"/>
+<fullyQualifiedTypeName name="model.Player"/>
+<fullyQualifiedTypeName name="javax.faces.event.ActionEvent"/>
 </qualifiedTypeNameHistroy>

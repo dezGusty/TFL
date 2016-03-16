@@ -127,7 +127,6 @@ public class LoginView implements Serializable {
 				this.winner = this.currentPlayer.getGameWinners().size();
 				this.looser = this.currentPlayer.getGameLosers().size();
 				
-				this.currentPlayer.setAvailable(false);
 				System.out.println("Available from login:"+this.currentPlayer.getAvailable());
 				if (currentPlayer.getType() == null) {
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -162,6 +161,28 @@ public class LoginView implements Serializable {
 		}
 	}
 	
+	public void redirectToGames(ActionEvent actionEvent)
+	{
+		System.out.println("Hello from redirect to games!");
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		if(this.currentPlayer.getType()==1)
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/nextusergames.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/viewnextgames.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	  public void changePassword() {
 		  if(this.oldPass.compareTo(this.currentPlayer.getPassword())==0)
 		  {
@@ -178,30 +199,30 @@ public class LoginView implements Serializable {
 		  }
 	}
 	  
-	  public void addMessage() {
-		 	if(this.currentPlayer.getAvailable()==true)
-		 	{
-		 		System.out.println("Available will be set false");
-		 		PlayerDataAccess pda=new PlayerDataAccess();
-		 		this.currentPlayer=pda.changeAvailable(this.currentPlayer, false);
-		 		System.out.println("Available:"+this.currentPlayer.getAvailable());
-		 	}
-		 	else
-		 		
-		 	{
-		 		if(this.currentPlayer.getAvailable()==false)
-		 		{
-		 			PlayerDataAccess pda=new PlayerDataAccess();
-					this.currentPlayer=pda.changeAvailable(this.currentPlayer, true);
-			 		System.out.println("Availabble will be set true");
-			 		System.out.println("Available:"+this.currentPlayer.getAvailable());
-		 		}
-		 	}
-	        String summary = this.currentPlayer.getAvailable() ? "Checked" : "Unchecked";
-	        System.out.println("Available from add message:"+this.currentPlayer.getAvailable());
-	        
-	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
-	    }
-    
+//	  public void addMessage() {
+//		 	if(this.currentPlayer.getAvailable()==true)
+//		 	{
+//		 		System.out.println("Available will be set false");
+//		 		PlayerDataAccess pda=new PlayerDataAccess();
+//		 		this.currentPlayer=pda.changeAvailable(this.currentPlayer, false);
+//		 		System.out.println("Available:"+this.currentPlayer.getAvailable());
+//		 	}
+//		 	else
+//		 		
+//		 	{
+//		 		if(this.currentPlayer.getAvailable()==false)
+//		 		{
+//		 			PlayerDataAccess pda=new PlayerDataAccess();
+//					this.currentPlayer=pda.changeAvailable(this.currentPlayer, true);
+//			 		System.out.println("Availabble will be set true");
+//			 		System.out.println("Available:"+this.currentPlayer.getAvailable());
+//		 		}
+//		 	}
+//	        String summary = this.currentPlayer.getAvailable() ? "Checked" : "Unchecked";
+//	        System.out.println("Available from add message:"+this.currentPlayer.getAvailable());
+//	        
+//	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+//	    }
+
     
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="C:\Users\Paula\.m2\repository\postgresql\postgresql\9.1-901-1.jdbc4" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="SelfEncapsulateFieldWizard">
 		<item value="false" key="GenerateJavadoc"/>
 	</section>

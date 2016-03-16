@@ -26,7 +26,7 @@ public class GamesView implements Serializable{
 	@PostConstruct
     public void init() {
     	gamesData=new GameDataAccess();
-    	games=gamesData.listGames();
+    	games=gamesData.listPreviousGames();
     	selectedGame=new Game();
     }
     
@@ -52,10 +52,5 @@ public class GamesView implements Serializable{
  
 	public void setSelectedGame(Game selectedGame) {
 		this.selectedGame = selectedGame;
-	}
-	
-	public void getNextGames()
-	{
-		System.out.println("Get next games!");
 	}
 }

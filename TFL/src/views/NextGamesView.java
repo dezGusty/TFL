@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 
 import dataAccessLayer.GameDataAccess;
 
@@ -58,4 +59,12 @@ public class NextGamesView implements Serializable{
 		{
 			System.out.println("Get next games!");
 		}
+		
+		public void buttonAction(ActionEvent actionEvent) {
+	        System.out.println("Welcome to Primefaces!!");
+	    }
+		
+		public void play(ActionEvent actionEvent) {
+	        System.out.println("Welcome to Primefaces!!");
+	    }
 }

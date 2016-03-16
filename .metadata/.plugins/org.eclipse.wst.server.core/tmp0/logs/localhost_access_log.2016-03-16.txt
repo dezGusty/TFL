@@ -1,0 +1,15 @@
+127.0.0.1 - - [16/Mar/2016:08:44:01 +0200] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:07 +0200] "GET /TFL/faces/index.xhtml HTTP/1.1" 200 4981
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:07 +0200] "GET /TFL/faces/javax.faces.resource/theme.css?ln=primefaces-aristo HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:07 +0200] "GET /TFL/faces/javax.faces.resource/primefaces.css?ln=primefaces&v=5.3 HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:07 +0200] "GET /TFL/faces/javax.faces.resource/jquery/jquery.js?ln=primefaces&v=5.3 HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:07 +0200] "GET /TFL/faces/javax.faces.resource/jquery/jquery-plugins.js?ln=primefaces&v=5.3 HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:07 +0200] "GET /TFL/faces/javax.faces.resource/primefaces.js?ln=primefaces&v=5.3 HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:07 +0200] "GET /TFL/faces/javax.faces.resource/spacer/dot_clear.gif?ln=primefaces&v=5.3 HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:08 +0200] "GET /TFL/faces/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png?ln=primefaces-aristo HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:08 +0200] "GET /TFL/faces/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png?ln=primefaces-aristo HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:46 +0200] "GET /TFL/faces/javax.faces.resource/images/ui-bg_highlight-hard_80_85b2cb_1x100.png?ln=primefaces-aristo HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:44:47 +0200] "POST /TFL/faces/index.xhtml HTTP/1.1" 500 3306
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:46:00 +0200] "POST /TFL/faces/index.xhtml HTTP/1.1" 500 3306
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:52:41 +0200] "POST /TFL/faces/index.xhtml HTTP/1.1" 500 3306
+0:0:0:0:0:0:0:1 - - [16/Mar/2016:08:52:42 +0200] "POST /TFL/faces/index.xhtml HTTP/1.1" 500 3306

@@ -78,8 +78,7 @@
 					<h:form class="myform">
 						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
 							<p:submenu label="Games">
-								<p:menuitem value="View next games"
-									outcome="/resources/viewnextgames.xhtml"></p:menuitem>
+								<p:menuitem value="View next games" actionListener="#{loginView.redirectToGames}" ></p:menuitem>
 								<p:menuitem value="View games history"
 									outcome="/resources/viewgames.xhtml"></p:menuitem>
 							</p:submenu>
