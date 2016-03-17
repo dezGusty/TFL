@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpSession;
 
+import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
 import model.Player;
 
@@ -100,7 +103,6 @@ public class LoginView implements Serializable {
 
 	public String getUsername() {
 	return this.username;
-
     }
 
     public void setUsername(String value) {
@@ -115,6 +117,18 @@ public class LoginView implements Serializable {
 	this.password = value;
     }
 
+	public void logout(ActionEvent event)  {
+
+	    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		System.out.println("Logout pressed!");
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		try {
+			context.redirect(context.getRequestContextPath() + "/faces/index.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public String login() throws IOException {
 
 		PlayerDataAccess pda = new PlayerDataAccess();
@@ -128,39 +142,20 @@ public class LoginView implements Serializable {
 				this.looser = this.currentPlayer.getGameLosers().size();
 				
 				System.out.println("Available from login:"+this.currentPlayer.getAvailable());
-				if (currentPlayer.getType() == null) {
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-							"Warning!", "This username does not have rights!"));
-					return "/index";
-				} else {
 					if (currentPlayer.getType() == 1) {
 						ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-						context.redirect(context.getRequestContextPath() + "/faces/resources/user.xhtml");
+						context.redirect(context.getRequestContextPath() + "/faces/resources/userview.xhtml");
 					} else {
 						ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 						context.redirect(context.getRequestContextPath() + "/faces/resources/adminuser.xhtml");
 					}
-				}
 			}
 		}
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Incorrect username or password!"));
 		return "/index";
 	}
-	
-	public void buttonAction(ActionEvent actionEvent) {
-		System.out.println("Hello from logout!");
-		this.username=null;
-		this.password=null;
-		this.currentPlayer=new Player();
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-		try {
-			context.redirect(context.getRequestContextPath() + "/faces/index.xhtml");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
+
 	public void redirectToGames(ActionEvent actionEvent)
 	{
 		System.out.println("Hello from redirect to games!");
@@ -168,7 +163,40 @@ public class LoginView implements Serializable {
 		if(this.currentPlayer.getType()==1)
 		{
 			try {
+				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+				NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+				GameDataAccess gda=new GameDataAccess();
+				firstBean.setGames(gda.listNextGames());
+				System.out.println("Done");
 				context.redirect(context.getRequestContextPath() + "/faces/resources/nextusergames.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/viewnextgames.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void redirectToHistory(ActionEvent actionEvent)
+	{
+		System.out.println("Hello from redirect to history!");
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		if(this.currentPlayer.getType()==1)
+		{
+			try {
+				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+				NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+				GameDataAccess gda=new GameDataAccess();
+				firstBean.setGames(gda.listPreviousGames());
+				System.out.println(gda.listPreviousGames());
+				System.out.println("Done");
+				context.redirect(context.getRequestContextPath() + "/faces/resources/historyuser.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -199,30 +227,11 @@ public class LoginView implements Serializable {
 		  }
 	}
 	  
-//	  public void addMessage() {
-//		 	if(this.currentPlayer.getAvailable()==true)
-//		 	{
-//		 		System.out.println("Available will be set false");
-//		 		PlayerDataAccess pda=new PlayerDataAccess();
-//		 		this.currentPlayer=pda.changeAvailable(this.currentPlayer, false);
-//		 		System.out.println("Available:"+this.currentPlayer.getAvailable());
-//		 	}
-//		 	else
-//		 		
-//		 	{
-//		 		if(this.currentPlayer.getAvailable()==false)
-//		 		{
-//		 			PlayerDataAccess pda=new PlayerDataAccess();
-//					this.currentPlayer=pda.changeAvailable(this.currentPlayer, true);
-//			 		System.out.println("Availabble will be set true");
-//			 		System.out.println("Available:"+this.currentPlayer.getAvailable());
-//		 		}
-//		 	}
-//	        String summary = this.currentPlayer.getAvailable() ? "Checked" : "Unchecked";
-//	        System.out.println("Available from add message:"+this.currentPlayer.getAvailable());
-//	        
-//	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
-//	    }
-
-    
+	  public void changeAvailability() {
+	        String summary = this.currentPlayer.getAvailable() ? "Available" : "Unavailable";
+	        System.out.println("Change availability to "+this.currentPlayer.getAvailable());
+			PlayerDataAccess playerAccess=new PlayerDataAccess();
+			 playerAccess.changeAvailable(this.currentPlayer);
+	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+	    }  
 }

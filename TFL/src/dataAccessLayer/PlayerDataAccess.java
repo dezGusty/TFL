@@ -42,14 +42,13 @@ public class PlayerDataAccess implements Serializable{
 			em.getTransaction().commit();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
+	
 			return false;
 		}
 		return true;
 	}
 
-	public Player loginUser(String username, String password) {
-
-		
+	public Player loginUser(String username, String password) {	
 		TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c", Player.class);
 		List<Player> result = new ArrayList<Player>();
 		result = query.getResultList();
@@ -100,13 +99,13 @@ public class PlayerDataAccess implements Serializable{
 		}
 		return null;
 	}
-	
-	public Player changeAvailable(Player player,boolean available)
+
+	public Player changeAvailable(Player player)
 	{
 		Player play = em.find(Player.class, player.getId());
-		play.setAvailable(available);	
-		em.getTransaction().commit();
-		return play;
+		em.persist(play);
+        em.getTransaction().commit();
+        return play;
 	}
 	
 	  public  List<Player> listPlayers() {
@@ -116,4 +115,15 @@ public class PlayerDataAccess implements Serializable{
 			return result;
 	}
 
+//	  public static void main(String[] args) {
+//		PlayerDataAccess pda=new PlayerDataAccess();
+//
+//		Player p=new Player();
+//		p=pda.listPlayers().get(1);
+//		System.out.println(p.toString());
+//		Player p1=new Player();
+//		p1=pda.changeAvailable(p, true);
+//		System.out.println(p1.getUsername()+" "+p1.getAvailable());
+//		System.out.println("Done");
+//	}
 }

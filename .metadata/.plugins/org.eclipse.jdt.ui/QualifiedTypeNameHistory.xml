@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
-<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
 <fullyQualifiedTypeName name="org.primefaces.model.DualListModel"/>
 <fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
 <fullyQualifiedTypeName name="org.primefaces.event.TransferEvent"/>
@@ -33,4 +32,6 @@
 <fullyQualifiedTypeName name="org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy"/>
 <fullyQualifiedTypeName name="model.Player"/>
 <fullyQualifiedTypeName name="javax.faces.event.ActionEvent"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
 </qualifiedTypeNameHistroy>

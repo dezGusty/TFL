@@ -25,15 +25,15 @@ public class Game implements Serializable {
 	private Integer difference;
 
 	//bi-directional many-to-one association to GameLoser
-	@OneToMany(mappedBy="game")
+	@OneToMany(mappedBy="game" ,fetch = FetchType.EAGER)
 	private List<GameLoser> gameLosers;
 
 	//bi-directional many-to-one association to GamePlayer
-	@OneToMany(mappedBy="game")
+	@OneToMany(mappedBy="game",fetch = FetchType.EAGER)
 	private List<GamePlayer> gamePlayers;
 
 	//bi-directional many-to-one association to GameWinner
-	@OneToMany(mappedBy="game")
+	@OneToMany(mappedBy="game",fetch = FetchType.EAGER)
 	private List<GameWinner> gameWinners;
 
 	public Game() {

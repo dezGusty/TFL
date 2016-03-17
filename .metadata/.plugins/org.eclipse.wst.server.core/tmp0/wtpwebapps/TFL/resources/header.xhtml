@@ -37,27 +37,32 @@
 					<p:panel id="panel">
 						<h:panelGrid columns="2" cellpadding="10" style="height:20px">
 							<p:graphicImage style="height:30px" name="../images/ball.jpg" />
-							<p:outputLabel
-								value="Welcome, #{loginView.currentPlayer.username} !"></p:outputLabel>
+							<p:outputLabel value="Welcome, #{loginView.currentPlayer.username} !"></p:outputLabel>
 						</h:panelGrid>
 					</p:panel>
 				</div>
 				<div class="col-sm-3 nopadding">
+				<h:form>
 					<p:panel>
 						<h:panelGrid columns="2" cellpadding="10" style="height:20px">
 							<h:outputText value="Available: " />
 							<p:inputSwitch value="#{loginView.currentPlayer.available}">
-								<p:ajax listener="#{loginView.addMessage }" update="msg"  />
+								<p:ajax listener="#{loginView.changeAvailability}" update="msg" />
 							</p:inputSwitch>
 						</h:panelGrid>
 					</p:panel>
+				</h:form>
 				</div>
 				<div class="col-sm-3 nopadding">
+				<h:form>
 					<p:panel>
+					
 						<h:panelGrid columns="1" cellpadding="10" style="height:20px">
-							<p:commandButton value="Logout"  actionListener="#{loginView.buttonAction}"  icon="ui-icon-disk" />
+							<p:commandButton value="Logout"
+								actionListener="#{loginView.logout}" />
 						</h:panelGrid>
 					</p:panel>
+					</h:form>
 				</div>
 			</div>
 
@@ -66,10 +71,8 @@
 					<h:form class="myform">
 						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
 							<p:submenu label="My account">
-								<p:menuitem value="View my personal dates"
-									outcome="/resources/viewpersonaldates.xhtml"></p:menuitem>
-								<p:menuitem value="Change password"
-									outcome="/resources/changepassword.xhtml"></p:menuitem>
+								<p:menuitem value="View my personal dates" outcome="/resources/viewpersonaldates.xhtml"></p:menuitem>
+								<p:menuitem value="Change password" outcome="/resources/changepassword.xhtml"></p:menuitem>
 							</p:submenu>
 						</p:menubar>
 					</h:form>
@@ -78,9 +81,8 @@
 					<h:form class="myform">
 						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
 							<p:submenu label="Games">
-								<p:menuitem value="View next games" actionListener="#{loginView.redirectToGames}" ></p:menuitem>
-								<p:menuitem value="View games history"
-									outcome="/resources/viewgames.xhtml"></p:menuitem>
+								<p:menuitem value="View next games" actionListener="#{loginView.redirectToGames}"></p:menuitem>
+								<p:menuitem value="View games history" actionListener="#{loginView.redirectToHistory}" ></p:menuitem>
 							</p:submenu>
 						</p:menubar>
 					</h:form>
@@ -90,10 +92,8 @@
 					<h:form class="myform">
 						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
 							<p:submenu label="Players">
-								<p:menuitem value="View all players"
-									outcome="/resources/viewplayers.xhtml"></p:menuitem>
-								<p:menuitem value="Make teams"
-									outcome="/resources/makeTeams.xhtml"></p:menuitem>
+								<p:menuitem value="View all players"></p:menuitem>
+								<p:menuitem value="Make teams"></p:menuitem>
 							</p:submenu>
 						</p:menubar>
 					</h:form>
@@ -102,8 +102,7 @@
 					<h:form>
 						<p:menubar orientation="#verticaL" style="margin:0px; padding:0px">
 							<p:submenu label="Charts">
-								<p:menuitem value="Create chart for selected players"
-									outcome="/resources/viewCharts.xhtml"></p:menuitem>
+								<p:menuitem value="Create chart for selected players"></p:menuitem>
 							</p:submenu>
 						</p:menubar>
 					</h:form>

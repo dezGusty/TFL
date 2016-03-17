@@ -25,18 +25,16 @@ public class GameDataAccess implements Serializable {
 	* 
 	*/
 	private static final long serialVersionUID = 1L;
-	public EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
-	public EntityManager em = emf.createEntityManager();
 
 	public GameDataAccess() {
-		if (em.getTransaction().isActive() == false) {
-			em.getTransaction().begin();
+		if (EntityManagerHelper.em.getTransaction().isActive() == false) {
+			EntityManagerHelper.em.getTransaction().begin();
 		}
 	}
 
 	public List<Game> listPreviousGames() {
 		System.out.println("List previous games!");
-		TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g where g.date < current_date", Game.class);
+		TypedQuery<Game> query =EntityManagerHelper.em.createQuery("SELECT g FROM Game g where g.date < current_date", Game.class);
 		List<Game> result = new ArrayList<Game>();
 		result = query.getResultList();
 
@@ -47,7 +45,7 @@ public class GameDataAccess implements Serializable {
 	}
 
 	public List<Game> listGames() {
-		TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g", Game.class);
+		TypedQuery<Game> query =EntityManagerHelper.em.createQuery("SELECT g FROM Game g", Game.class);
 		List<Game> result = new ArrayList<Game>();
 		result = query.getResultList();
 
@@ -68,7 +66,7 @@ public class GameDataAccess implements Serializable {
 	}
 
 	public List<Game> listNextGames() {
-		TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g where g.date > current_date", Game.class);
+		TypedQuery<Game> query = EntityManagerHelper.em.createQuery("SELECT g FROM Game g where g.date > current_date", Game.class);
 		List<Game> result = new ArrayList<Game>();
 		result = query.getResultList();
 
@@ -90,35 +88,31 @@ public class GameDataAccess implements Serializable {
 		return result;
 	}
 
-	public boolean playGame(Game game, Player player) {
-		System.out.println("Game to play"+game.toString());
-		System.out.println("Player: "+player.toString());
+	public boolean playGame(Game game, Player player) {		
+		Player play =EntityManagerHelper.em.find(Player.class, player.getId());
+		System.out.println("Player ID:"+play.getId());
+		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());
+		System.out.println("Game ID:"+findGame.getId());
 		
-//		TypedQuery<Game> query = em.createQuery("SELECT g FROM Game g where g.date > current_date", Game.class);
-//		List<Game> result = new ArrayList<Game>();
-//		result = query.getResultList();
-//
-//		for (Game g : result) {
-//			System.out.println("ID" + g.getId() + " Date:" + g.getDate() + " Difference" + g.getDifference());
-			// for(GamePlayer p:g.getGamePlayers())
-			// {
-			// System.out.println(p.getPlayer().getUsername());
-			// }
-			// for(GameLoser gl: g.getGameLosers())
-			// {
-			// System.out.println(gl.getPlayer().getUsername());
-			// }
-			// for(GameWinner gw: g.getGameWinners())
-			// {
-			// System.out.println(gw.getPlayer().getUsername());
-			// }
-		//}
+		GamePlayer gp=new GamePlayer();
+		gp.setGame(findGame);
+		gp.setPlayer(player);
+		
+		game.addGamePlayer(gp);
+		player.addGamePlayer(gp);
+
+		//gp.setId(1000);
+		EntityManagerHelper.em.persist(gp);
+		EntityManagerHelper.em.persist(findGame);
+		EntityManagerHelper.em.persist(play);
+		
+		EntityManagerHelper.em.getTransaction().commit();
 		return true;
 	}
 	
-	public static void main(String[] args) {
-		GameDataAccess gda = new GameDataAccess();
-		gda.listNextGames();
-	}
+//	public static void main(String[] args) {
+//		GameDataAccess gda = new GameDataAccess();
+//		gda.listNextGames();
+//	}
 
 }
