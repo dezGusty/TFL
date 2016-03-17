@@ -1,3 +1,26 @@
+-- Table: public.team_player
+
+-- DROP TABLE public.team_player;
+
+CREATE TABLE public.team_player
+(
+  id_player integer,
+  id integer NOT NULL DEFAULT nextval('team_player_id_seq'::regclass),
+  id_team integer,
+  CONSTRAINT team_player_pkey PRIMARY KEY (id),
+  CONSTRAINT player_id FOREIGN KEY (id_player)
+      REFERENCES public.player (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT team_player_id_team_fkey FOREIGN KEY (id_team)
+      REFERENCES public.team (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.team_player
+  OWNER TO postgres;
+
 -- Table: public.team
 
 -- DROP TABLE public.team;
@@ -16,19 +39,4 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE public.team
-  OWNER TO postgres;
-
-CREATE TABLE public.team_player
-(
-  id_player integer,
-  id integer NOT NULL DEFAULT nextval('team_player_id_seq'::regclass),
-  CONSTRAINT team_player_pkey PRIMARY KEY (id),
-  CONSTRAINT player_id FOREIGN KEY (id_player)
-      REFERENCES public.player (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE public.team_player
   OWNER TO postgres;

@@ -1,11 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
-import javax.faces.convert.FacesConverter;
 import javax.persistence.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,12 +10,20 @@ import java.util.List;
  * 
  */
 @Entity
-@FacesConverter("player")
 @NamedQuery(name="Player.findAll", query="SELECT p FROM Player p")
 public class Player implements Serializable {
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", available=" + available + ", password=" + password + ", picture=" + picture
+				+ ", rating=" + rating + ", type=" + type + ", username=" + username + ", gameLosers=" + gameLosers
+				+ ", gamePlayers=" + gamePlayers + ", gameWinners=" + gameWinners + ", playerRatings=" + playerRatings
+				+ ", teamPlayers=" + teamPlayers + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	private Boolean available;
@@ -35,23 +39,26 @@ public class Player implements Serializable {
 	private String username;
 
 	//bi-directional many-to-one association to GameLoser
-	@OneToMany(mappedBy="player")
+	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private List<GameLoser> gameLosers;
 
 	//bi-directional many-to-one association to GamePlayer
-	@OneToMany(mappedBy="player")
+	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private List<GamePlayer> gamePlayers;
 
 	//bi-directional many-to-one association to GameWinner
-	@OneToMany(mappedBy="player")
+	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private List<GameWinner> gameWinners;
 
 	//bi-directional many-to-one association to PlayerRating
-	@OneToMany(mappedBy="player")
+	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private List<PlayerRating> playerRatings;
 
+	//bi-directional many-to-one association to TeamPlayer
+	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
+	private List<TeamPlayer> teamPlayers;
+
 	public Player() {
-         playerRatings=new ArrayList<PlayerRating>();
 	}
 
 	public Integer getId() {
@@ -197,10 +204,27 @@ public class Player implements Serializable {
 
 		return playerRating;
 	}
-	
-	@Override
-	public String toString() {
-		return id + "##" + username+ "##" + password+ "##" + this.rating + "##" + this.available + "##" +this.type+"##"+this.picture;
+
+	public List<TeamPlayer> getTeamPlayers() {
+		return this.teamPlayers;
+	}
+
+	public void setTeamPlayers(List<TeamPlayer> teamPlayers) {
+		this.teamPlayers = teamPlayers;
+	}
+
+	public TeamPlayer addTeamPlayer(TeamPlayer teamPlayer) {
+		getTeamPlayers().add(teamPlayer);
+		teamPlayer.setPlayer(this);
+
+		return teamPlayer;
+	}
+
+	public TeamPlayer removeTeamPlayer(TeamPlayer teamPlayer) {
+		getTeamPlayers().remove(teamPlayer);
+		teamPlayer.setPlayer(null);
+
+		return teamPlayer;
 	}
 
 }

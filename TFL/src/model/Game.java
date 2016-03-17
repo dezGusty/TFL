@@ -14,9 +14,16 @@ import java.util.List;
 @Table(name="games")
 @NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
 public class Game implements Serializable {
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", date=" + date + ", difference=" + difference + ", gameLosers=" + gameLosers
+				+ ", gamePlayers=" + gamePlayers + ", gameWinners=" + gameWinners + ", teams=" + teams + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@Temporal(TemporalType.DATE)
@@ -25,16 +32,20 @@ public class Game implements Serializable {
 	private Integer difference;
 
 	//bi-directional many-to-one association to GameLoser
-	@OneToMany(mappedBy="game" ,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="game", fetch=FetchType.EAGER)
 	private List<GameLoser> gameLosers;
 
 	//bi-directional many-to-one association to GamePlayer
-	@OneToMany(mappedBy="game",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="game", fetch=FetchType.EAGER)
 	private List<GamePlayer> gamePlayers;
 
 	//bi-directional many-to-one association to GameWinner
-	@OneToMany(mappedBy="game",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="game", fetch=FetchType.EAGER)
 	private List<GameWinner> gameWinners;
+
+	//bi-directional many-to-one association to Team
+	@OneToMany(mappedBy="gameBean", fetch=FetchType.EAGER)
+	private List<Team> teams;
 
 	public Game() {
 	}
@@ -128,12 +139,27 @@ public class Game implements Serializable {
 
 		return gameWinner;
 	}
-	
-	@Override
-	public String toString() {
-		return "Game [id=" + id + ", date=" + date + ", difference=" + difference + ", gameLosers=" + gameLosers
-				+ ", gamePlayers=" + gamePlayers + ", gameWinners=" + gameWinners + "]";
+
+	public List<Team> getTeams() {
+		return this.teams;
 	}
 
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
+	}
+
+	public Team addTeam(Team team) {
+		getTeams().add(team);
+		team.setGameBean(this);
+
+		return team;
+	}
+
+	public Team removeTeam(Team team) {
+		getTeams().remove(team);
+		team.setGameBean(null);
+
+		return team;
+	}
 
 }

@@ -1,0 +1,18 @@
+package model;
+
+import java.util.Date;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value="Dali", date="2016-03-17T18:52:51.449+0200")
+@StaticMetamodel(Game.class)
+public class Game_ {
+	public static volatile SingularAttribute<Game, Integer> id;
+	public static volatile SingularAttribute<Game, Date> date;
+	public static volatile SingularAttribute<Game, Integer> difference;
+	public static volatile ListAttribute<Game, GameLoser> gameLosers;
+	public static volatile ListAttribute<Game, GamePlayer> gamePlayers;
+	public static volatile ListAttribute<Game, GameWinner> gameWinners;
+}

@@ -1,0 +1,13 @@
+package model;
+
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value="Dali", date="2016-03-17T18:52:51.641+0200")
+@StaticMetamodel(GameLoser.class)
+public class GameLoser_ {
+	public static volatile SingularAttribute<GameLoser, Integer> id;
+	public static volatile SingularAttribute<GameLoser, Game> game;
+	public static volatile SingularAttribute<GameLoser, Player> player;
+}

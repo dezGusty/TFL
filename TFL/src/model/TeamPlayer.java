@@ -15,10 +15,18 @@ public class TeamPlayer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name="id_player")
-	private Integer idPlayer;
+	//bi-directional many-to-one association to Player
+	@ManyToOne
+	@JoinColumn(name="id_player")
+	private Player player;
+
+	//bi-directional many-to-one association to Team
+	@ManyToOne
+	@JoinColumn(name="id_team")
+	private Team team;
 
 	public TeamPlayer() {
 	}
@@ -31,12 +39,20 @@ public class TeamPlayer implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getIdPlayer() {
-		return this.idPlayer;
+	public Player getPlayer() {
+		return this.player;
 	}
 
-	public void setIdPlayer(Integer idPlayer) {
-		this.idPlayer = idPlayer;
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+	public Team getTeam() {
+		return this.team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 }
