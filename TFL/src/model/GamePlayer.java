@@ -1,7 +1,12 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
+
+import dataAccessLayer.EntityManagerHelper;
 
 
 /**
@@ -53,4 +58,21 @@ public class GamePlayer implements Serializable {
 		this.player = player;
 	}
 
+	public boolean isPlayingGame(Player player, Game game)
+	{
+		for(GamePlayer playerGame: player.getGamePlayers())
+		{
+			if(playerGame.getGame().getId()==game.getId())
+			{
+				System.out.println("Player "+player.getId()+" id already playing game "+game.getId());
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "ID: " + id + "gameID:" + game.getId() + "Player: " + player.getId();
+	}
 }

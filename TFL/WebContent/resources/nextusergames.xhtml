@@ -47,8 +47,8 @@
 				</p:column>
 				<p:column headerText="Difference">#{game.difference}</p:column>
 				<p:column >
-					<p:commandButton title="Play this game" value="Play this game"
-                        actionListener="#{nextGamesView.remove(game)}"
+					<p:commandButton value="Play this game"
+                        actionListener="#{nextGamesView.play(game)}"
                         ajax="false" />
 				</p:column>
 				<p:column >

@@ -20,13 +20,13 @@ public class PlayerDataAccess implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static EntityManagerFactory emf= Persistence.createEntityManagerFactory("TFL");
-	public static EntityManager em= emf.createEntityManager();
+	//public static EntityManagerFactory emf= Persistence.createEntityManagerFactory("TFL");
+	//public static EntityManager em= emf.createEntityManager();
 
 	public PlayerDataAccess() {
-		if(!em.getTransaction().isActive())
+		if(!EntityManagerHelper.em.getTransaction().isActive())
 		  {
-			  em.getTransaction().begin();
+			EntityManagerHelper.em.getTransaction().begin();
 		  }
 	}
 
@@ -38,8 +38,8 @@ public class PlayerDataAccess implements Serializable{
 			emp.setPassword(password);
 			emp.setRating(rating);
 			emp.setAvailable(available);
-			em.persist(emp);
-			em.getTransaction().commit();
+			EntityManagerHelper.em.persist(emp);
+			EntityManagerHelper.em.getTransaction().commit();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 	
@@ -49,7 +49,7 @@ public class PlayerDataAccess implements Serializable{
 	}
 
 	public Player loginUser(String username, String password) {	
-		TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c", Player.class);
+		TypedQuery<Player> query = EntityManagerHelper.em.createQuery("SELECT c FROM Player c", Player.class);
 		List<Player> result = new ArrayList<Player>();
 		result = query.getResultList();
 
@@ -57,7 +57,7 @@ public class PlayerDataAccess implements Serializable{
 			System.out.println(player.toString());
 		}
 
-		TypedQuery<Player> querynew = em
+		TypedQuery<Player> querynew = EntityManagerHelper.em
 				.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
 		querynew.setParameter("name", username);
 		querynew.setParameter("pass", password);
@@ -81,7 +81,7 @@ public class PlayerDataAccess implements Serializable{
 
 	public Player changePasswordForPlayer(int playerId, String password) {
 
-		TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c WHERE c.id = :id", Player.class);
+		TypedQuery<Player> query = EntityManagerHelper.em.createQuery("SELECT c FROM Player c WHERE c.id = :id", Player.class);
 		query.setParameter("id", playerId);
 
 		Player play = new Player();
@@ -90,8 +90,8 @@ public class PlayerDataAccess implements Serializable{
 			if (play.getId() != 0) {
 				System.out.println(play.getPassword() + " este parola ce va fi schimbata!");
 				play.setPassword(password);
-				em.persist(play);
-				em.getTransaction().commit();
+				EntityManagerHelper.em.persist(play);
+				EntityManagerHelper.em.getTransaction().commit();
 				return play;
 			}
 		} catch (Exception ex) {
@@ -102,14 +102,14 @@ public class PlayerDataAccess implements Serializable{
 
 	public Player changeAvailable(Player player)
 	{
-		Player play = em.find(Player.class, player.getId());
-		em.persist(play);
-        em.getTransaction().commit();
+		Player play = EntityManagerHelper.em.find(Player.class, player.getId());
+		EntityManagerHelper.em.persist(play);
+		EntityManagerHelper.em.getTransaction().commit();
         return play;
 	}
 	
 	  public  List<Player> listPlayers() {
-		    TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p",Player.class);
+		    TypedQuery<Player> query =EntityManagerHelper.em.createQuery("SELECT p FROM Player p",Player.class);
 			List<Player> result = new ArrayList<Player>();
 			result = query.getResultList();
 			return result;

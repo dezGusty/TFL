@@ -38,7 +38,7 @@
 		<h:form>
 
 			<p:dataTable value="#{nextGamesView.games}" var="game">
-				<f:facet name="header">History for normal user</f:facet>
+				<f:facet name="header">My next games(normal user)</f:facet>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Date"></h:outputText>
@@ -47,9 +47,7 @@
 				</p:column>
 				<p:column headerText="Difference">#{game.difference}</p:column>
 				<p:column >
-					<p:commandButton  value="View teams" 
-                        actionListener="#{nextGamesView.remove(game)}"
-                        ajax="true" />
+					<p:commandButton  value="View teams" actionListener="#{nextGamesView.viewTeams(game)}" ajax="true" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

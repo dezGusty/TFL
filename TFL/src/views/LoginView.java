@@ -2,6 +2,8 @@ package views;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
+import model.Game;
 import model.Player;
 
 @ManagedBean(name = "loginView")
@@ -137,13 +140,23 @@ public class LoginView implements Serializable {
 			currentPlayer = pda.loginUser(this.username, this.password);
 
 			if (currentPlayer != null) {
+				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+				NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+				GameDataAccess gda=new GameDataAccess();
+				firstBean.setGames(gda.listGamesForPlayer(this.currentPlayer));
+				for(Game gg:firstBean.getGames())
+				{
+					System.out.println(gg.getDate());
+				}
 				this.playedGames = this.currentPlayer.getGamePlayers().size();
 				this.winner = this.currentPlayer.getGameWinners().size();
 				this.looser = this.currentPlayer.getGameLosers().size();
 				
-				System.out.println("Available from login:"+this.currentPlayer.getAvailable());
+				//System.out.println("Available from login:"+this.currentPlayer.getAvailable());
 					if (currentPlayer.getType() == 1) {
+						firstBean.setGames(gda.listGamesForPlayer(this.currentPlayer));
 						ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+						
 						context.redirect(context.getRequestContextPath() + "/faces/resources/userview.xhtml");
 					} else {
 						ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
@@ -160,14 +173,14 @@ public class LoginView implements Serializable {
 	{
 		System.out.println("Hello from redirect to games!");
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+		NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+		GameDataAccess gda=new GameDataAccess();
+		firstBean.setGames(gda.listNextGames());
+		
 		if(this.currentPlayer.getType()==1)
 		{
 			try {
-				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-				NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-				GameDataAccess gda=new GameDataAccess();
-				firstBean.setGames(gda.listNextGames());
-				System.out.println("Done");
 				context.redirect(context.getRequestContextPath() + "/faces/resources/nextusergames.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -176,7 +189,7 @@ public class LoginView implements Serializable {
 		else
 		{
 			try {
-				context.redirect(context.getRequestContextPath() + "/faces/viewnextgames.xhtml");
+				context.redirect(context.getRequestContextPath() + "/faces/resources/nextadmingames.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

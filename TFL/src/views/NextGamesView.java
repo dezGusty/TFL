@@ -1,17 +1,16 @@
 package views;
 import model.Game;
-import model.Player;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import dataAccessLayer.GameDataAccess;
 
@@ -59,26 +58,29 @@ public class NextGamesView implements Serializable{
 			this.selectedGame = selectedGame;
 		}
 		
-		public void play(ActionEvent actionEvent) {
-	        System.out.println("Welcome to Primefaces!!");
-	    }
-		
-		public void remove(Game game) {
-			System.out.println("Remove!");
+		public void play(Game game) {
+			System.out.println("PlayGame!");
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
-			//System.out.println("Done");
-			//System.out.println(firstBean.getCurrentPlayer().getId());
 			GameDataAccess gda=new GameDataAccess();
 			gda.playGame(game, firstBean.getCurrentPlayer());
-			System.out.println(firstBean.getCurrentPlayer().getUsername()+" is plaing on "+game.getDate());
-//		    try {
-//		        //actorService.remove(actor);
-//		        //actorList = actorService.searchAll();
-//		    } catch (Exception e) {
-//		        e.printStackTrace();
-//		    }
 			System.out.println("Done");
 		}
+		
+		public void viewTeams(Game game)
+		{
+			System.out.println("View teams");
+			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+			GameDataAccess gda=new GameDataAccess();
+			gda.listGameTeams(game);
+			
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/viewteams.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 }
 
