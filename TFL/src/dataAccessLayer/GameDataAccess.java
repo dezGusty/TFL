@@ -6,10 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.el.ELContext;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import javax.persistence.TypedQuery;
 
 import model.Game;
@@ -18,8 +16,6 @@ import model.GamePlayer;
 import model.GameWinner;
 import model.Player;
 import model.Team;
-import model.TeamPlayer;
-import views.LoginView;
 
 @ManagedBean(name = "gameDataAccess")
 @ApplicationScoped
@@ -83,7 +79,7 @@ public class GameDataAccess implements Serializable {
 
 	
 	public  List<Game> listGamesForPlayer(Player player) {
-		
+
 		//TypedQuery<Game> query = EntityManagerHelper.em.createQuery("SELECT g FROM Game g where g.date > current_date", Game.class);
 		Player p=EntityManagerHelper.em.find(Player.class, player.getId());
 		//System.out.println(p.toString());
@@ -92,7 +88,7 @@ public class GameDataAccess implements Serializable {
 
 		Date currentDate=new Date();
 		currentDate=Calendar.getInstance().getTime();		
-		for (GamePlayer gp : player.getGamePlayers()) {
+		for (GamePlayer gp : p.getGamePlayers()) {
 			
 			System.out.println("ID" + gp.getId()+"GameID: "+gp.getGame().getId()+"GameDate:" +gp.getGame().getDate());
 			if(gp.getGame().getDate().after(currentDate))
@@ -107,9 +103,7 @@ public class GameDataAccess implements Serializable {
 	
 	public void playGame(Game game, Player player) {		
 		Player play =EntityManagerHelper.em.find(Player.class, player.getId());
-		//System.out.println("Player ID:"+play.getId());
-		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());
-		//System.out.println("Game ID:"+findGame.getId());		
+		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());	
 		GamePlayer gp=new GamePlayer();
 		if(gp.isPlayingGame(play, findGame)==false)
 		{
@@ -124,22 +118,21 @@ public class GameDataAccess implements Serializable {
 		}
 	}
 	
-	public static void main(String[] args) {
-		Game g=new Game();
-		g=EntityManagerHelper.em.find(Game.class, 1);
-		for(Team t:listGameTeams(g))
-		{
-			System.out.println(t.getName());
-		}
-		listGameTeams(g);
-	}
+//	public static void main(String[] args) {
+//		Game g=new Game();
+//		g=EntityManagerHelper.em.find(Game.class, 1);
+//		for(Team t:listGameTeams(g))
+//		{
+//			System.out.println(t.getName());
+//		}
+//		listGameTeams(g);
+//	}
 
-	public static List<Team> listGameTeams(Game game)
+	public List<Team> listGameTeams(Game game)
 	{
-		System.out.println("List game teams");
 		Game g=new Game();
-		g=EntityManagerHelper.em.find(Game.class, 1);
-		if(g.getTeams().size()==2)
+		g=EntityManagerHelper.em.find(Game.class, game.getId());
+		if(g.getTeams()!=null)
 		{
 			return g.getTeams();
 		}

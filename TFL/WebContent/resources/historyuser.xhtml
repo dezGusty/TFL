@@ -48,7 +48,7 @@
 				<p:column headerText="Difference">#{game.difference}</p:column>
 				<p:column >
 					<p:commandButton  value="View teams" 
-                        actionListener="#{nextGamesView.remove(game)}"
+                        actionListener="#{nextGamesView.viewTeams(game)}"
                         ajax="true" />
 				</p:column>
 			</p:dataTable>

@@ -1,6 +1,9 @@
 package model;
 
 import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;

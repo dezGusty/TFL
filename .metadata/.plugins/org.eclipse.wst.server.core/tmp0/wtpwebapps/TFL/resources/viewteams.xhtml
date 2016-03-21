@@ -29,16 +29,18 @@
 	<link rel="stylesheet" type="text/css" href="../mycss.css" />
 </h:head>
 <h:body>
-	<ui:insert name="header">
+	<!-- <ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
+	-->
 
+	<ui:composition>
 	<div class="container">
 		<div class="row">
 			<h:form>
 				<p:growl id="msg" showDetail="true" escape="false" />
 				<h3>Game teams</h3>
-				<p:pickList id="PojoPickList" value="#{teamsView.players}"
+				<p:pickList id="PojoPickList" value="#{teamsView.players}" rendered="#{teamsView.existTeams}"
 					var="theme" effect="bounce" itemValue="#{theme}"
 					itemLabel="#{theme.username}" showSourceControls="true"
 					showTargetControls="true" showCheckbox="true" responsive="true"
@@ -52,26 +54,19 @@
 						update="msg" />
 					<p:ajax event="select" listener="#{teamsView.onSelect}"
 						update="msg" />
-					<p:ajax event="unselect" listener="#{pickListView.onUnselect}"
+					<p:ajax event="unselect" listener="#{teamsView.onUnselect}"
 						update="msg" />
-					<p:ajax event="reorder" listener="#{pickListView.onReorder}"
+					<p:ajax event="reorder" listener="#{teamsView.onReorder}"
 						update="msg" />
-
-					<!--  <p:column style="width:10%">
-						<h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
-					</p:column>-->
 
 					<p:column style="width:90%;">
 						<h:outputText value="#{theme.username}" />
 					</p:column>
 				</p:pickList>
 
-				<p:commandButton id="pojoSubmit" value="Submit"
-					update="displayThemes" oncomplete="PF('themesDialog').show()"
-					style="margin-top:5px" />
+				<p:commandButton id="pojoSubmit" value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" />
 					
-				<p:dialog modal="true" showEffect="fade" hideEffect="fade"
-					widgetVar="themesDialog">
+				<p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="themesDialog">
 					<h:panelGrid id="displayThemes" columns="2">
 						<h:outputText value="Source: " style="font-weight:bold" />
 						<ui:repeat value="#{teamsView.players.source}" var="theme">
@@ -86,6 +81,7 @@
 				</p:dialog>
 			</h:form>
 		</div>
-	</div>
+	    </div>
+	</ui:composition>
 </h:body>
 </html>

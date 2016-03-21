@@ -20,8 +20,6 @@ public class PlayerDataAccess implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//public static EntityManagerFactory emf= Persistence.createEntityManagerFactory("TFL");
-	//public static EntityManager em= emf.createEntityManager();
 
 	public PlayerDataAccess() {
 		if(!EntityManagerHelper.em.getTransaction().isActive())
