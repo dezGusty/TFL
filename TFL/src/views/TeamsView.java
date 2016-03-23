@@ -83,9 +83,18 @@ public class TeamsView implements Serializable{
 			this.teamTwo = teamTwo;
 		}
 
+		 public void info() {
+		        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces Rocks."));
+		 }
+		 
+		 
+		 
+		 
 		@PostConstruct
 	    public void init() {
 
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "There are players!"));
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
 			if(firstBean.getSelectedGame()!=null)
@@ -118,10 +127,14 @@ public class TeamsView implements Serializable{
 								this.themesTarget.add(player.getPlayer());
 								System.out.println(player.getPlayer().getUsername());
 							}
+							FacesContext.getCurrentInstance().addMessage(null,
+									new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "There are players!"));
 						}
 						else
 						{
 							this.existTeams=false;
+							FacesContext.getCurrentInstance().addMessage(null,
+									new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "The teams are not setted yet!"));
 						}
 					}
 				}

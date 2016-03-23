@@ -35,11 +35,12 @@
 	-->
 
 	<ui:composition>
-	<div class="container">
+	<div class="container">	
+	<h:form>
 		<div class="row">
-			<h:form>
-				<p:growl id="msg" showDetail="true" escape="false" />
-				<h3>Game teams</h3>
+			 <p:outputLabel value="There are no teams yet!" rendered="#{!teamsView.existTeams}" />
+		</div>
+		<div class="row">
 				<p:pickList id="PojoPickList" value="#{teamsView.players}" rendered="#{teamsView.existTeams}"
 					var="theme" effect="bounce" itemValue="#{theme}"
 					itemLabel="#{theme.username}" showSourceControls="true"
@@ -64,7 +65,7 @@
 					</p:column>
 				</p:pickList>
 
-				<p:commandButton id="pojoSubmit" value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" />
+				<!--<p:commandButton id="pojoSubmit" value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" />-->
 					
 				<p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="themesDialog">
 					<h:panelGrid id="displayThemes" columns="2">
@@ -79,9 +80,9 @@
 						</ui:repeat>
 					</h:panelGrid>
 				</p:dialog>
-			</h:form>
 		</div>
-	    </div>
+	</h:form>
+	</div>
 	</ui:composition>
 </h:body>
 </html>
