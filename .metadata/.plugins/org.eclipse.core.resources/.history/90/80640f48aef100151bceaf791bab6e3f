@@ -1,0 +1,36 @@
+package dataAccessLayer;
+
+import model.Game;
+import model.Team;
+import model.TeamPlayer;
+
+public class TeamPlayerDataAccess {
+
+	public TeamPlayerDataAccess() {
+		if(!EntityManagerHelper.em.getTransaction().isActive())
+		  {
+			EntityManagerHelper.em.getTransaction().begin();
+		  }
+	}
+	
+	public static boolean createNewTeam(String teamName,Game game) {
+		try {
+			
+			TeamPlayer tp=new TeamPlayer();
+			
+			EntityManagerHelper.em.persist(newTeam);
+			EntityManagerHelper.em.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+	
+			return false;
+		}
+		return true;
+	}
+	public static void main(String[] args) {
+		GameDataAccess gda=new GameDataAccess();	
+		Game g=new Game();
+		g=gda.listGames().get(0);
+		createNewTeam("ccc",g);
+	}
+}

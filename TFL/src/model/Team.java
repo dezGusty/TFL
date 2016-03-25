@@ -77,5 +77,19 @@ public class Team implements Serializable {
 
 		return teamPlayer;
 	}
+	
+	public boolean inThisTeam(int playerID)
+	{
+		for(TeamPlayer tp: this.teamPlayers)
+		{
+			int a=tp.getPlayer().getId();
+			if(a==playerID)
+			{
+				System.out.println("Player "+tp.getPlayer().getUsername()+" already in this team");
+				return false;
+			}
+		}
+		return true;
+	}
 
 }

@@ -77,6 +77,37 @@ public class GameDataAccess implements Serializable {
 		return result;
 	}
 
+	public boolean removeGame(int gameId) {
+		
+		Game g=EntityManagerHelper.em.find(Game.class, gameId);
+		if(g!=null)
+		{
+			for(Team gt:g.getTeams())
+			{
+				Team gameTeam= EntityManagerHelper.em.find(Team.class, gt.getId());
+				EntityManagerHelper.em.remove(gameTeam);
+				EntityManagerHelper.em.getTransaction().commit();
+				g.removeTeam(gt);
+			}
+			for(GamePlayer gp:g.getGamePlayers())
+			{
+				GamePlayer gamePlay=EntityManagerHelper.em.find(GamePlayer.class,gp.getId());
+				EntityManagerHelper.em.remove(gamePlay);
+				//EntityManagerHelper.em.getTransaction().commit();
+			}
+			
+			EntityManagerHelper.em.remove(g);
+			//EntityManagerHelper.em.getTransaction().commit();
+			System.out.println("Game found and removed");
+			EntityManagerHelper.em.getTransaction().commit();
+			return true;
+		}
+		else
+		{
+			System.out.println("Game not found");
+		}
+		return false;
+	}
 	
 	public  List<Game> listGamesForPlayer(Player player) {
 
@@ -118,15 +149,10 @@ public class GameDataAccess implements Serializable {
 		}
 	}
 	
-//	public static void main(String[] args) {
-//		Game g=new Game();
-//		g=EntityManagerHelper.em.find(Game.class, 1);
-//		for(Team t:listGameTeams(g))
-//		{
-//			System.out.println(t.getName());
-//		}
-//		listGameTeams(g);
-//	}
+	public static void main(String[] args) {
+		GameDataAccess gda=new GameDataAccess();
+		gda.removeGame(5);
+	}
 
 	public List<Team> listGameTeams(Game game)
 	{

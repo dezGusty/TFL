@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+		crossorigin="anonymous" />
+
+	<!-- Optional theme -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+		integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+		crossorigin="anonymous" />
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="../mycss.css" />
+</h:head>
+<h:body>
+	<!-- <ui:insert name="header">
+		<ui:include src="/resources/header.xhtml" />
+	</ui:insert>
+	-->
+
+	<ui:composition>
+	<div class="container">	
+	<h:form>
+		<div class="row">
+			 <p:outputLabel value="There are no teams yet!" rendered="#{!teamsView.existTeams}" />
+		</div>
+		
+		<div class="row">
+				<p:pickList id="PojoPickList" value="#{teamsView.players}" rendered="#{teamsView.existTeams}"
+					var="theme" effect="bounce" itemValue="#{theme}"
+					itemLabel="#{theme.username}" showSourceControls="true"
+					showTargetControls="true" showCheckbox="true" responsive="true"
+					showSourceFilter="true" showTargetFilter="true"
+					filterMatchMode="contains" converter="playerConverter">
+
+					<f:facet name="sourceCaption" >#{teamsView.teamOne.name}</f:facet>
+					<f:facet name="targetCaption">#{teamsView.teamTwo.name}</f:facet>
+
+					<p:ajax event="transfer" listener="#{teamsView.onTransfer}"
+						update="msg" />
+					<p:ajax event="select" listener="#{teamsView.onSelect}"
+						update="msg" />
+					<p:ajax event="unselect" listener="#{teamsView.onUnselect}"
+						update="msg" />
+					<p:ajax event="reorder" listener="#{teamsView.onReorder}"
+						update="msg" />
+
+					<p:column style="width:90%;">
+						<h:outputText value="#{theme.username}" />
+					</p:column>
+				</p:pickList>
+
+				
+				<!--<p:commandButton id="pojoSubmit" value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" />-->
+					
+				<p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="themesDialog">
+					<h:panelGrid id="displayThemes" columns="2">
+						<h:outputText value="Source: " style="font-weight:bold" />
+						<ui:repeat value="#{teamsView.players.source}" var="theme">
+							<h:outputText value="#{theme.username}" style="margin-right:5px" />
+						</ui:repeat>
+
+						<h:outputText value="Target: " style="font-weight:bold" />
+						<ui:repeat value="#{teamsView.players.target}" var="theme">
+							<h:outputText value="#{theme.username}" style="margin-right:5px" />
+						</ui:repeat>
+					</h:panelGrid>
+				</p:dialog>
+		</div>
+		<!--  <div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<p:commandButton  value="Next" actionListener="#{teamsView.nextTeam()}"  ajax="true" />
+			</div>
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-4">
+			</div>
+		</div>
+	    </div>-->
+		
+	</h:form>
+	</div>
+	</ui:composition>
+</h:body>
+</html>

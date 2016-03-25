@@ -1,0 +1,280 @@
+package views;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.el.ELContext;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
+
+import org.primefaces.event.TransferEvent;
+import org.primefaces.event.UnselectEvent;
+import org.primefaces.model.DualListModel;
+
+import dataAccessLayer.EntityManagerHelper;
+import dataAccessLayer.GameDataAccess;
+import dataAccessLayer.PlayerDataAccess;
+import dataAccessLayer.TeamDataAccess;
+import dataAccessLayer.TeamPlayerDataAccess;
+import model.Game;
+import model.Player;
+import model.Team;
+import model.TeamPlayer;
+
+@ManagedBean(name = "teamsView")
+@ApplicationScoped
+public class TeamsView implements Serializable {
+
+	/**
+	* 
+	*/
+	private static final long serialVersionUID = 1L;
+
+	@ManagedProperty("#{playerDataAccess}")
+	private PlayerDataAccess service;
+
+	private boolean existTeams;
+
+	public boolean isExistTeams() {
+		return existTeams;
+	}
+
+	public void setExistTeams(boolean existTeams) {
+		this.existTeams = existTeams;
+	}
+
+	public List<Player> themesSource = new ArrayList<Player>();
+
+	public List<Player> themesTarget = new ArrayList<Player>();
+
+	private DualListModel<Player> players;
+
+	private Team teamOne;
+
+	private Team teamTwo;
+
+	private Game selectedGame;
+
+	public Game getSelectedGame() {
+		return selectedGame;
+	}
+
+	public void setSelectedGame(Game selectedGame) {
+		this.selectedGame = selectedGame;
+	}
+
+	public Team getTeamOne() {
+		return teamOne;
+	}
+
+	public void setTeamOne(Team teamOne) {
+		this.teamOne = teamOne;
+	}
+
+	public Team getTeamTwo() {
+		return teamTwo;
+	}
+
+	public void setTeamTwo(Team teamTwo) {
+		this.teamTwo = teamTwo;
+	}
+
+	@PostConstruct
+	public void init() {
+		System.out.println("Hello from init!");
+		
+		System.out.println("Current game:"+this.selectedGame.getDate());
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+		NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+
+			if (firstBean.getSelectedGame() != null) {
+				System.out.println("There is a selected game");
+				System.out.println(firstBean.getSelectedGame().getDate());
+				this.selectedGame = firstBean.getSelectedGame();
+				Game g = new Game();
+				g = EntityManagerHelper.em.find(Game.class, this.selectedGame.getId());
+				if (g != null) {
+					GameDataAccess gda = new GameDataAccess();
+
+					List<Team> list = gda.listGameTeams(g);
+					if (list != null) {
+						if (list.size() != 0) {
+							this.existTeams = true;
+							this.setTeamOne(list.get(0));
+							System.out.println("Team one players:");
+							for (TeamPlayer player : this.teamOne.getTeamPlayers()) {
+								this.themesSource.add(player.getPlayer());
+							}
+							this.setTeamTwo(list.get(1));
+							System.out.println("Second team players:");
+							for (TeamPlayer player : this.teamTwo.getTeamPlayers()) {
+								this.themesTarget.add(player.getPlayer());
+								System.out.println(player.getPlayer().getUsername());
+							}
+						} else {
+							this.existTeams = false;
+							FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+									"Warning!", "The teams are not setted yet!"));
+						}
+					}
+				}
+				players = new DualListModel<>(themesSource, themesTarget);
+			} else {
+				System.out.println("No selected game!");
+				this.existTeams = false;
+			}
+	}
+
+	public PlayerDataAccess getService() {
+		return service;
+	}
+
+	public void setService(PlayerDataAccess service) {
+		this.service = service;
+	}
+
+	public DualListModel<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(DualListModel<Player> themes) {
+		this.players = themes;
+	}
+
+	public void onTransfer(TransferEvent event) {
+		// StringBuilder builder = new StringBuilder();
+		//
+		// for(Object item : event.getItems()) {
+		// System.out.println(((Player)item).toString());
+		// builder.append(((Player) item).getUsername());
+		// }
+
+		// System.out.println("AfterTransfer:");
+
+		 System.out.println("Source:");
+		this.themesSource = this.players.getSource();
+		 for(Player p: this.themesSource)
+		 {
+		 System.out.println(p.getUsername());
+		 }
+
+		System.out.println("Target:");
+		this.themesTarget = this.players.getTarget();
+		 for(Player p: this.themesTarget)
+		 {
+		 System.out.println(p.getUsername());
+		 }
+
+		// FacesMessage msg = new FacesMessage();
+		// msg.setSeverity(FacesMessage.SEVERITY_INFO);
+		// msg.setSummary("Items Transferred");
+		// msg.setDetail(builder.toString());
+		//
+		// FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+
+	public void onSelect(SelectEvent event) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		// context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+		// "Item Selected", event.getObject().toString()));
+	}
+
+	public void onUnselect(UnselectEvent event) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		// context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+		// "Item Unselected", event.getObject().toString()));
+	}
+
+	public void onReorder() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		// context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+		// "List Reordered", null));
+	}
+
+	public void nextTeam() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		System.out.println("Source:");
+		for (Player p : this.themesSource) {
+			System.out.println(p.getUsername());
+		}
+
+		System.out.println("Target:");
+		for (Player p : this.themesTarget) {
+			System.out.println(p.getUsername());
+		}
+	}
+
+	public void saveTeams() {
+		System.out.println("Create teams for game: "+this.getSelectedGame().getId());
+		System.out.println("Game has "+this.selectedGame.getTeams().size()+" teams");
+		
+		TeamDataAccess tda=new TeamDataAccess();
+		if(this.selectedGame.getTeams().size()==2)
+		{
+			this.teamOne=this.selectedGame.getTeams().get(0);
+			this.teamTwo=this.selectedGame.getTeams().get(1);
+			System.out.println("Teams were setted");
+			System.out.println("team one is"+this.teamOne.getName());
+			System.out.println("second team is "+this.teamTwo.getName());
+		}
+		else
+		{
+			this.teamOne=tda.createNewTeam("firstTeam", this.selectedGame);
+			tda=new TeamDataAccess();
+			this.teamTwo=tda.createNewTeam("secondTeam", this.selectedGame);
+			
+			System.out.println("Teams were setted");
+			System.out.println("team one is"+this.teamOne.getName());
+			System.out.println("second team is "+this.teamTwo.getName());
+			
+		}
+
+		System.out.println("Source players");
+		for(Player p:this.themesSource)
+		{
+			System.out.println(p.toString());
+			tda.addNewPlayer(p.getId(),(Integer)this.teamOne.getId());
+		}
+		
+		System.out.println("target players");
+		for(Player p:this.themesTarget)
+		{
+			System.out.println(p.toString());
+			tda.addNewPlayer(p.getId(),(Integer) this.teamTwo.getId());
+		}
+	}
+		
+	public void backToHistory() {
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+		LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+		
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		if(firstBean.getCurrentPlayer().getType()==1)
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/userview.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/adminuser.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

@@ -1,0 +1,49 @@
+package views;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+
+import dataAccessLayer.PlayerDataAccess;
+import model.Player;
+
+@ManagedBean(name = "playersView")
+@SessionScoped
+public class PlayersView implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	 @ManagedProperty("#{playerDataAccess}")
+	 public PlayerDataAccess playerData;
+	 
+    public static List<Player> players;
+    
+    private Player selectedPlayer;
+
+	public static List<Player> getPlayers() {
+		return players;
+	}
+
+	public static void setPlayers(List<Player> players) {
+		PlayersView.players = players;
+	}
+
+	public Player getSelectedPlayer() {
+		return selectedPlayer;
+	}
+
+	public void setSelectedPlayer(Player selectedPlayer) {
+		this.selectedPlayer = selectedPlayer;
+	}
+	
+	@PostConstruct
+	public void init() {
+		this.playerData=new PlayerDataAccess();
+	}
+	
+	}
+}

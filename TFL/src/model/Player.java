@@ -12,12 +12,10 @@ import java.util.List;
 @Entity
 @NamedQuery(name="Player.findAll", query="SELECT p FROM Player p")
 public class Player implements Serializable {
+	
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", available=" + available + ", password=" + password + ", picture=" + picture
-				+ ", rating=" + rating + ", type=" + type + ", username=" + username + ", gameLosers=" + gameLosers
-				+ ", gamePlayers=" + gamePlayers + ", gameWinners=" + gameWinners + ", playerRatings=" + playerRatings
-				+ ", teamPlayers=" + teamPlayers + "]";
+		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -225,6 +223,32 @@ public class Player implements Serializable {
 		teamPlayer.setPlayer(null);
 
 		return teamPlayer;
+	}
+	
+	public double getMinRating()
+	{
+		double min=this.rating;
+		for(PlayerRating playerRating: this.playerRatings)
+		{
+			if(min>playerRating.getRating())
+			{
+				min=playerRating.getRating();
+			}
+		}
+		return min;
+	}
+
+	public double getMaxRating()
+	{
+		double max=this.rating;
+		for(PlayerRating playerRating: this.playerRatings)
+		{
+			if(max<playerRating.getRating())
+			{
+				max=playerRating.getRating();
+			}
+		}
+		return max;
 	}
 
 }

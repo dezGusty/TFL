@@ -195,20 +195,66 @@ public class LoginView implements Serializable {
 			}
 		}
 	}
+	public void redirectToCharts(ActionEvent actionEvent)
+	{
+		System.out.println("Hello from redirect to charts!");
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();		
+		if(this.currentPlayer.getType()==1)
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/userchart.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/adminchart.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+	
+	public void redirectToPlayers(ActionEvent actionEvent)
+	{
+		System.out.println("Hello from redirect to players!");
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();		
+		if(this.currentPlayer.getType()==1)
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/viewplayers.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/nextadmingames.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
 	
 	public void redirectToHistory(ActionEvent actionEvent)
 	{
 		System.out.println("Hello from redirect to history!");
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+		NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+		GameDataAccess gda=new GameDataAccess();
+		firstBean.setGames(gda.listPreviousGames());
+		System.out.println(gda.listPreviousGames());
+		System.out.println("Done");
+		
 		if(this.currentPlayer.getType()==1)
 		{
 			try {
-				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-				NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-				GameDataAccess gda=new GameDataAccess();
-				firstBean.setGames(gda.listPreviousGames());
-				System.out.println(gda.listPreviousGames());
-				System.out.println("Done");
 				context.redirect(context.getRequestContextPath() + "/faces/resources/historyuser.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -217,7 +263,7 @@ public class LoginView implements Serializable {
 		else
 		{
 			try {
-				context.redirect(context.getRequestContextPath() + "/faces/viewnextgames.xhtml");
+				context.redirect(context.getRequestContextPath() + "/faces/resources/historyadmin.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

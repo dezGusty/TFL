@@ -1,0 +1,12 @@
+package views;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean(name = "playersView")
+@SessionScoped
+public class PlayersView implements Serializable{
+
+}

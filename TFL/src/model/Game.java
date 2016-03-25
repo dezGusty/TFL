@@ -2,9 +2,9 @@ package model;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -51,6 +51,7 @@ public class Game implements Serializable {
 	private List<Team> teams;
 
 	public Game() {
+		this.teams=new ArrayList<Team>();
 	}
 
 	public Integer getId() {
@@ -164,5 +165,21 @@ public class Game implements Serializable {
 
 		return team;
 	}
+	
+	public boolean gameStatus(Player player)
+	{
+		for(GamePlayer gamePlayer:this.gamePlayers)
+		{
+			
+			int a=gamePlayer.getPlayer().getId();
+			int b=player.getId();
+			if(a==b)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 
 }

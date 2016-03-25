@@ -6,9 +6,6 @@ import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import model.Player;
@@ -110,18 +107,18 @@ public class PlayerDataAccess implements Serializable{
 		    TypedQuery<Player> query =EntityManagerHelper.em.createQuery("SELECT p FROM Player p",Player.class);
 			List<Player> result = new ArrayList<Player>();
 			result = query.getResultList();
+			for(Player p:result)
+			{
+				System.out.println(p.getUsername());
+			}
 			return result;
 	}
 
-//	  public static void main(String[] args) {
-//		PlayerDataAccess pda=new PlayerDataAccess();
-//
-//		Player p=new Player();
-//		p=pda.listPlayers().get(1);
-//		System.out.println(p.toString());
-//		Player p1=new Player();
-//		p1=pda.changeAvailable(p, true);
-//		System.out.println(p1.getUsername()+" "+p1.getAvailable());
-//		System.out.println("Done");
-//	}
+	  public static void main(String[] args) {
+		PlayerDataAccess pda=new PlayerDataAccess();
+		Player p=pda.listPlayers().get(0);
+		System.out.println(p.getUsername()+p.getPassword());
+		System.out.println(p.getMinRating());
+		System.out.println(p.getMaxRating());
+	}
 }

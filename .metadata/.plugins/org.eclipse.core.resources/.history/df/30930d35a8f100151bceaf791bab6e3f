@@ -1,0 +1,115 @@
+package views;
+import model.Game;
+import model.GamePlayer;
+import model.Player;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.el.ELContext;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
+import dataAccessLayer.GameDataAccess;
+
+@ManagedBean(name = "nextGamesView")
+@SessionScoped
+public class NextGamesView implements Serializable{
+
+	 private static final long serialVersionUID = 1L;
+	    public static List<Game> games;
+	    
+	    @ManagedProperty("#{gameDataAccess}")
+	    public GameDataAccess gamesData;
+	    
+	    private Game selectedGame;
+
+	    public List<Game> getGames() {
+	        return games;
+	    }
+	    
+	    public void setGames(List<Game> game) {
+	        games=game;
+	    }
+	 
+		public GameDataAccess getGamesData() {
+			return gamesData;
+		}
+
+		public void setGamesData(GameDataAccess gamesData) {
+			this.gamesData = gamesData;
+		}
+		
+		public Game getSelectedGame() {
+	        return selectedGame;
+	    }
+	 
+		public void setSelectedGame(Game selectedGame) {
+			this.selectedGame = selectedGame;
+		}
+		
+		public void play(Game game) {
+			System.out.println("PlayGame!");
+			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+			GameDataAccess gda=new GameDataAccess();
+			gda.playGame(game, firstBean.getCurrentPlayer());
+			System.out.println("Done");
+		}
+		
+		public void viewTeams(Game game)
+		{
+			this.setSelectedGame(game);
+			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+			
+			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();		
+			
+			if(firstBean.getCurrentPlayer().getType()==1)
+			{
+				try {
+					context.redirect(context.getRequestContextPath() + "/faces/resources/teamsuser.xhtml");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else
+			{
+				TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
+				System.out.println("Players subscribed to this game:");
+				List<GamePlayer> gamePlayers=new ArrayList<GamePlayer>();
+				gamePlayers=game.getGamePlayers();
+				
+				teamsBean.themesSource=new ArrayList<Player>();
+				for(int i=0;i<(gamePlayers.size()/2);i++)
+				{
+					teamsBean.themesSource.add(gamePlayers.get(i).getPlayer());
+				}
+				teamsBean.themesTarget=new ArrayList<Player>();
+				for(int i=(gamePlayers.size()/2);i<gamePlayers.size();i++)
+				{
+					teamsBean.themesTarget.add(gamePlayers.get(i).getPlayer());
+				}
+//				for(GamePlayer gp:gamePlayers)
+//				{
+//					teamsBean.themesSource.add(gp.getPlayer());
+//					System.out.println(gp.getPlayer().getUsername());
+//				}
+				try {
+					context.redirect(context.getRequestContextPath() + "/faces/resources/teamsadmin.xhtml");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+		
+}
+
