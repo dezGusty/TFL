@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,6 +32,8 @@ public class Team implements Serializable {
 	private List<TeamPlayer> teamPlayers;
 
 	public Team() {
+		this.gameBean=new Game();
+		this.teamPlayers=new ArrayList<TeamPlayer>();
 	}
 
 	public Integer getId() {
@@ -91,5 +95,5 @@ public class Team implements Serializable {
 		}
 		return true;
 	}
-
+	
 }

@@ -1,0 +1,15 @@
+package dataAccessLayer;
+
+import java.util.Comparator;
+
+import model.Player;
+
+public class MapComparator implements Comparator<Double> {
+
+	@Override
+	public int compare(Double arg0, Double arg1) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

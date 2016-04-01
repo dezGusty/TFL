@@ -198,9 +198,16 @@ public class LoginView implements Serializable {
 	public void redirectToCharts(ActionEvent actionEvent)
 	{
 		System.out.println("Hello from redirect to charts!");
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();		
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();	
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+		ChartView firstBean = (ChartView) elContext.getELResolver().getValue(elContext, null, "chartView");
+		
+		firstBean.addPlayerToChart(this.currentPlayer);
+		firstBean.createLineModels();
+		
 		if(this.currentPlayer.getType()==1)
 		{
+			
 			try {
 				context.redirect(context.getRequestContextPath() + "/faces/resources/userchart.xhtml");
 			} catch (IOException e) {
@@ -233,7 +240,7 @@ public class LoginView implements Serializable {
 		else
 		{
 			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/nextadmingames.xhtml");
+				context.redirect(context.getRequestContextPath() + "/faces/resources/adminplayersview.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

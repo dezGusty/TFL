@@ -1,6 +1,5 @@
 package dataAccessLayer;
 
-import model.Game;
 import model.Player;
 import model.Team;
 import model.TeamPlayer;
@@ -33,14 +32,24 @@ public class TeamPlayerDataAccess {
 	}
 	
 	public static void main(String[] args) {
-		GameDataAccess gda=new GameDataAccess();	
-		Game g=new Game();
-		g=gda.listGames().get(0);
-		 
-		PlayerDataAccess pda=new PlayerDataAccess();
-		Player p=new Player();
-		p=pda.listPlayers().get(0);
-		
-		createNewTeamPlayer(TeamDataAccess.listTeams().get(0),p);
+		TeamPlayerDataAccess tpda=new TeamPlayerDataAccess();
+		tpda.createNewTeamPlayer(1,1);
+		System.out.println("Done");
 	}
+	
+	public boolean createNewTeamPlayer(int teamId, int playerId)
+	{
+		Team t=EntityManagerHelper.em.find(Team.class,teamId);
+		Player p=EntityManagerHelper.em.find(Player.class,playerId);	
+		
+		TeamPlayer tp=new TeamPlayer();
+		tp.setPlayer(p);
+		tp.setTeam(t);
+		t.addTeamPlayer(tp);
+		EntityManagerHelper.em.persist(tp);
+		EntityManagerHelper.em.getTransaction().commit();
+		return true;
+	}
+	
+
 }

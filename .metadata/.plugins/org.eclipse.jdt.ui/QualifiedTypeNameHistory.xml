@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="org.hibernate.mapping.List"/>
 <fullyQualifiedTypeName name="model.GameLoser"/>
 <fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
 <fullyQualifiedTypeName name="javax.faces.convert.FacesConverter"/>
@@ -22,7 +21,6 @@
 <fullyQualifiedTypeName name="org.primefaces.event.UnselectEvent"/>
 <fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ViewScoped"/>
-<fullyQualifiedTypeName name="org.primefaces.model.DualListModel"/>
 <fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="org.primefaces.model.chart.LineChartModel"/>
@@ -33,15 +31,20 @@
 <fullyQualifiedTypeName name="org.primefaces.model.chart.AxisType"/>
 <fullyQualifiedTypeName name="model.GamePlayer"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ApplicationScoped"/>
-<fullyQualifiedTypeName name="model.Team"/>
 <fullyQualifiedTypeName name="model.Game"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="model.Player"/>
-<fullyQualifiedTypeName name="dataAccessLayer.TeamDataAccess"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="dataAccessLayer.TeamPlayerDataAccess"/>
 <fullyQualifiedTypeName name="org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="model.TeamPlayer"/>
 <fullyQualifiedTypeName name="dataAccessLayer.EntityManagerHelper"/>
+<fullyQualifiedTypeName name="model.Team"/>
+<fullyQualifiedTypeName name="org.primefaces.model.DualListModel"/>
+<fullyQualifiedTypeName name="dataAccessLayer.TeamDataAccess"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="model.Player"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
 </qualifiedTypeNameHistroy>

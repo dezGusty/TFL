@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
@@ -49,13 +47,15 @@ public class ChartView implements Serializable {
     @PostConstruct
     public void init() {
         this.players=new ArrayList<Player>();
-        ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
-		this.players.add(firstBean.getCurrentPlayer());
-		createLineModels();
+    	createLineModels();
     } 
     
-    private void createLineModels() {        
+    public void addPlayerToChart(Player player)
+    {
+    	this.players.add(player);
+    }
+    
+    public void createLineModels() {        
         lineModel2 = initCategoryModel();
         lineModel2.setTitle("Rating chart");
         lineModel2.setLegendPosition("e");
@@ -80,8 +80,9 @@ public class ChartView implements Serializable {
         {
         	ChartSeries playerLineChart = new ChartSeries();
         	playerLineChart.setLabel(p.getUsername());
-        	if(p.getPlayerRatings()!=null)
+        	if(!p.getPlayerRatings().isEmpty())
         	{
+        		System.out.println(p.getUsername()+"has ratings");
         		for(PlayerRating pl:p.getPlayerRatings())
             	{
         			System.out.println(pl.getDate().toString());

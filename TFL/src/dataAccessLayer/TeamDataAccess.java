@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
-
-import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
-
 import model.Game;
 import model.Player;
 import model.Team;
@@ -49,11 +46,12 @@ public class TeamDataAccess {
 				
 				EntityManagerHelper.em.persist(newTeam);
 				EntityManagerHelper.em.getTransaction().commit();
+				EntityManagerHelper.em.refresh(newTeam);
+				return newTeam;
 			}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-	
-			return newTeam;
+
 		}
 		return null;
 	}
@@ -76,6 +74,7 @@ public class TeamDataAccess {
 		}
 		return team;
 	}
+	
 	
 	public static void main(String[] args) {
 		TeamDataAccess tda=new TeamDataAccess();

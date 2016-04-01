@@ -1,0 +1,14 @@
+package dataAccessLayer;
+
+public class RatingComparator implements Comparator {
+	 @Override
+	    public int compare(Node1 x, Node1 y){
+	        if(x.dist<y.dist){
+	            return -1;
+	        }
+	        if(x.dist>y.dist){
+	            return 1;
+	        }
+	        return 0;
+	    }
+}

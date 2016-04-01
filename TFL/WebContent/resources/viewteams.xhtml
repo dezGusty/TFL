@@ -50,6 +50,7 @@
 					filterMatchMode="contains" converter="playerConverter">
 
 					<f:facet name="sourceCaption" >#{teamsView.teamOne.name}</f:facet>
+					
 					<f:facet name="targetCaption">#{teamsView.teamTwo.name}</f:facet>
 
 					<p:ajax event="transfer" listener="#{teamsView.onTransfer}"

@@ -1,0 +1,9 @@
+package dataAccessLayer;
+
+import java.util.Comparator;
+
+import model.Player;
+
+public class MapComparator implements Comparator<Player> {
+
+}

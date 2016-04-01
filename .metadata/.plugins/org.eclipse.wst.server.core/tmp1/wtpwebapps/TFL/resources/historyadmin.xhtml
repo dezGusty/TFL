@@ -35,9 +35,9 @@
 
 	<div class="container">
 		<div class="row">
-		<h:form>
+		<h:form >
 
-			<p:dataTable value="#{nextGamesView.games}" var="game">
+			<p:dataTable id="gameTable" value="#{nextGamesView.games}" var="game">
 				<f:facet name="header">History for admin user</f:facet>
 				
 				<p:column>
@@ -56,9 +56,14 @@
 				</p:column>
 				
 				<p:column>
-				<p:commandButton  value="Remove" 
+				<p:commandButton  value="Remove" update="gameTable"
                         actionListener="#{nextGamesView.remove(game)}"
                         ajax="true" />
+				</p:column>
+				
+				<p:column>
+						<p:commandButton value="Add game result"
+							actionListener="#{nextGamesView.addResult(game)}" ajax="true" />
 				</p:column>
 			</p:dataTable>
 

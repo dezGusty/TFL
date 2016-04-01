@@ -3,7 +3,10 @@ package views;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
@@ -46,6 +49,8 @@ public class TeamsView implements Serializable {
 		return existTeams;
 	}
 
+	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
+	
 	public void setExistTeams(boolean existTeams) {
 		this.existTeams = existTeams;
 	}
@@ -59,16 +64,6 @@ public class TeamsView implements Serializable {
 	private Team teamOne;
 
 	private Team teamTwo;
-
-	private Game selectedGame;
-
-	public Game getSelectedGame() {
-		return selectedGame;
-	}
-
-	public void setSelectedGame(Game selectedGame) {
-		this.selectedGame = selectedGame;
-	}
 
 	public Team getTeamOne() {
 		return teamOne;
@@ -88,47 +83,10 @@ public class TeamsView implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		System.out.println("Hello from init!");
-			
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-
-			if (firstBean.getSelectedGame() != null) {
-				System.out.println("There is a selected game");
-				System.out.println(firstBean.getSelectedGame().getDate());
-				this.selectedGame = firstBean.getSelectedGame();
-				Game g = new Game();
-				g = EntityManagerHelper.em.find(Game.class, this.selectedGame.getId());
-				if (g != null) {
-					//GameDataAccess gda = new GameDataAccess();
-
-					//List<Team> list = gda.listGameTeams(g);
-					//if (list != null) {
-						//if (list.size() != 0) {
-							this.existTeams = true;
-							//this.setTeamOne(list.get(0));
-							//System.out.println("Team one players:");
-							//for (TeamPlayer player : this.teamOne.getTeamPlayers()) {
-								//this.themesSource.add(player.getPlayer());
-							//}
-							//this.setTeamTwo(list.get(1));
-							//System.out.println("Second team players:");
-							//for (TeamPlayer player : this.teamTwo.getTeamPlayers()) {
-								//this.themesTarget.add(player.getPlayer());
-								//System.out.println(player.getPlayer().getUsername());
-							//}
-						} else {
-							this.existTeams = false;
-							FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-									"Warning!", "The teams are not setted yet!"));
-						//}
-					//}
-				}
-				players = new DualListModel<>(themesSource, themesTarget);
-			} else {
-				System.out.println("No selected game!");
-				this.existTeams = false;
-			}
+		if(players==null)
+		{
+			players=new DualListModel<Player>();
+		}	
 	}
 
 	public PlayerDataAccess getService() {
@@ -148,17 +106,10 @@ public class TeamsView implements Serializable {
 	}
 
 	public void onTransfer(TransferEvent event) {
-		// StringBuilder builder = new StringBuilder();
-		//
-		// for(Object item : event.getItems()) {
-		// System.out.println(((Player)item).toString());
-		// builder.append(((Player) item).getUsername());
-		// }
-
-		// System.out.println("AfterTransfer:");
-
+		
 		 System.out.println("Source:");
 		this.themesSource = this.players.getSource();
+		
 		 for(Player p: this.themesSource)
 		 {
 		 System.out.println(p.getUsername());
@@ -197,8 +148,19 @@ public class TeamsView implements Serializable {
 		// "List Reordered", null));
 	}
 
+//aici am ramas
 	public void nextTeam() {
-		FacesContext context = FacesContext.getCurrentInstance();
+
+		System.out.println("Next Team");
+		
+		List<List<Player>> playerList=new ArrayList<List<Player>>();
+		playerList.add(themesSource);
+		playerList.add(themesTarget);
+		
+		map.put("key1", playerList);
+		
+		map.get("key1");
+		
 		System.out.println("Source:");
 		for (Player p : this.themesSource) {
 			System.out.println(p.getUsername());
@@ -208,48 +170,51 @@ public class TeamsView implements Serializable {
 		for (Player p : this.themesTarget) {
 			System.out.println(p.getUsername());
 		}
+
+		System.out.println("From nextTeam");
+		for(List<List<Player>> p:map.values())
+		{
+			for(List<Player> list:p)
+			{
+				for(Player pl:list)
+				{
+					System.out.println(pl.getUsername());
+				}
+			}
+		}
 	}
 
 	public void saveTeams() {
-		System.out.println("Create teams for game: "+this.getSelectedGame().getId());
-		System.out.println("Game has "+this.selectedGame.getTeams().size()+" teams");
-		
-		TeamDataAccess tda=new TeamDataAccess();
-		if(this.selectedGame.getTeams().size()==2)
-		{
-			this.teamOne=this.selectedGame.getTeams().get(0);
-			this.teamTwo=this.selectedGame.getTeams().get(1);
-			System.out.println("Teams were setted");
-			System.out.println("team one is"+this.teamOne.getName());
-			System.out.println("second team is "+this.teamTwo.getName());
-		}
-		else
-		{
-			this.teamOne=tda.createNewTeam("firstTeam", this.selectedGame);
-			tda=new TeamDataAccess();
-			this.teamTwo=tda.createNewTeam("secondTeam", this.selectedGame);
-			
-			System.out.println("Teams were setted");
-			System.out.println("team one is"+this.teamOne.getName());
-			System.out.println("second team is "+this.teamTwo.getName());
-			
-		}
+		System.out.println("Hello from save teams!");
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+     	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+     	TeamDataAccess tda=new TeamDataAccess();
+     	Team a=tda.createNewTeam("firstTeam", firstBean.getSelectedGame());
+     	System.out.println(a.getId());
+     	tda=new TeamDataAccess();
+     	Team b=tda.createNewTeam("secondTeam", firstBean.getSelectedGame());
+     	System.out.println(b.getId());
+     	
+     	System.out.println("Done adding teams!");
+     	System.out.println("Players to add:");
+     	 System.out.println("Source:");
+ 		 for(Player p: this.themesSource)
+ 		 {
+ 			 TeamPlayerDataAccess tpda=new TeamPlayerDataAccess();
+ 			 tpda.createNewTeamPlayer(a.getId(), p.getId());
+ 			 System.out.println(p.getUsername());
+ 		 }
 
-		System.out.println("Source players");
-		for(Player p:this.themesSource)
-		{
-			System.out.println(p.toString());
-			tda.addNewPlayer(p.getId(),(Integer)this.teamOne.getId());
-		}
-		
-		System.out.println("target players");
-		for(Player p:this.themesTarget)
-		{
-			System.out.println(p.toString());
-			tda.addNewPlayer(p.getId(),(Integer) this.teamTwo.getId());
-		}
+ 		System.out.println("Target:");
+ 		 for(Player p: this.themesTarget)
+ 		 {
+ 			 TeamPlayerDataAccess tpda=new TeamPlayerDataAccess();
+			 tpda.createNewTeamPlayer(b.getId(), p.getId());
+			 System.out.println(p.getUsername());
+ 		 }
 	}
 		
+	
 	public void backToHistory() {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");

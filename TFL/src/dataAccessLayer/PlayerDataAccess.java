@@ -114,11 +114,25 @@ public class PlayerDataAccess implements Serializable{
 			return result;
 	}
 
+	  public boolean removePlayer(int playerId) {
+			
+			Player player=EntityManagerHelper.em.find(Player.class, playerId);
+			if(player!=null)
+			{			
+				EntityManagerHelper.em.remove(player);
+				System.out.println("Game found and removed");
+				EntityManagerHelper.em.getTransaction().commit();
+				return true;
+			}
+			else
+			{
+				System.out.println("Player not found");
+			}
+			return false;
+		}
+	  
 	  public static void main(String[] args) {
 		PlayerDataAccess pda=new PlayerDataAccess();
-		Player p=pda.listPlayers().get(0);
-		System.out.println(p.getUsername()+p.getPassword());
-		System.out.println(p.getMinRating());
-		System.out.println(p.getMaxRating());
+		pda.removePlayer(14);
 	}
 }

@@ -38,13 +38,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
-				<p:commandButton  value="Previous" actionListener="#{teamsView.nextTeam(game)}"  ajax="true" />
+				<p:commandButton  value="Previous" actionListener="#{teamsView.backToHistory()}"  ajax="true" />
 			</div>
 			<div class="col-sm-4">
 				<p:commandButton  value="Done" actionListener="#{teamsView.saveTeams()}"  ajax="true" />
 			</div>
 			<div class="col-sm-4">
-				<p:commandButton  value="Next" actionListener="#{teamsView.nextTeam(game)}"  ajax="true" />
+				<p:commandButton  value="Next" actionListener="#{teamsView.nextTeam()}"  ajax="true" />
 			</div>
 		</div>
 	</div>

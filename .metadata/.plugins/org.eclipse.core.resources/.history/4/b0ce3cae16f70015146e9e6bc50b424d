@@ -1,0 +1,16 @@
+package dataAccessLayer;
+
+import java.util.Comparator;
+
+public class RatingComparator implements Comparator {
+	 @Override
+	    public int compare(Player x, Player y){
+	        if(x.dist<y.dist){
+	            return -1;
+	        }
+	        if(x.dist>y.dist){
+	            return 1;
+	        }
+	        return 0;
+	    }
+}

@@ -81,23 +81,8 @@ public class GameDataAccess implements Serializable {
 		
 		Game g=EntityManagerHelper.em.find(Game.class, gameId);
 		if(g!=null)
-		{
-			for(Team gt:g.getTeams())
-			{
-				Team gameTeam= EntityManagerHelper.em.find(Team.class, gt.getId());
-				EntityManagerHelper.em.remove(gameTeam);
-				EntityManagerHelper.em.getTransaction().commit();
-				g.removeTeam(gt);
-			}
-			for(GamePlayer gp:g.getGamePlayers())
-			{
-				GamePlayer gamePlay=EntityManagerHelper.em.find(GamePlayer.class,gp.getId());
-				EntityManagerHelper.em.remove(gamePlay);
-				//EntityManagerHelper.em.getTransaction().commit();
-			}
-			
+		{			
 			EntityManagerHelper.em.remove(g);
-			//EntityManagerHelper.em.getTransaction().commit();
 			System.out.println("Game found and removed");
 			EntityManagerHelper.em.getTransaction().commit();
 			return true;
@@ -151,7 +136,7 @@ public class GameDataAccess implements Serializable {
 	
 	public static void main(String[] args) {
 		GameDataAccess gda=new GameDataAccess();
-		gda.removeGame(5);
+		gda.removeGame(6);
 	}
 
 	public List<Team> listGameTeams(Game game)

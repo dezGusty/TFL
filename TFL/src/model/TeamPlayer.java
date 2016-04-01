@@ -31,6 +31,12 @@ public class TeamPlayer implements Serializable {
 	public TeamPlayer() {
 	}
 
+	public TeamPlayer(Player player)
+	{
+		this.setTeam(null);
+		this.player=player;
+	}
+	
 	public Integer getId() {
 		return this.id;
 	}
@@ -54,5 +60,6 @@ public class TeamPlayer implements Serializable {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
+
 
 }
