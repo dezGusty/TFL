@@ -62,7 +62,25 @@
                         ajax="true" />
 				</p:column>
 			</p:dataTable>
+			
+			<p:commandLink  value="New game" type="button"  oncomplete="PF('newGameDlg').show();" resizable="false" update="dialogForm"  />
+		
 		</h:form>
+		
+		<h:form id="dialogForm">
+			<p:dialog header="Game result" widgetVar="newGameDlg" modal="true" height="100">
+   				 <h:outputText value="This is a Modal Dialog." />
+   				  <p:outputPanel id="gameDetail" style="text-align:center;">
+   				  		<p:panel columns="2">
+   				  			  <p:outputLabel for="popup" value="Date:" />
+      						  <p:calendar id="popup" value="#{nextGamesView.gameDate}" />
+      						  
+      						  <p:commandButton  value="Add" actionListener="#{nextGamesView.newGame}" ajax="true" />
+   				  		</p:panel>
+   				  </p:outputPanel>
+			</p:dialog>   
+		</h:form>
+			
 		</div>
 	</div>
 </h:body>

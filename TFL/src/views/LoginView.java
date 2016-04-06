@@ -2,8 +2,6 @@ package views;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
@@ -13,7 +11,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.servlet.http.HttpSession;
 
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;

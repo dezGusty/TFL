@@ -2,7 +2,6 @@ package dataAccessLayer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -27,8 +26,11 @@ public class TeamGenerator {
 	}
 	
     
-	private static List<List<Player>> resultList=new ArrayList<List<Player>>();
+	
+	public static List<List<Player>> resultList=new ArrayList<List<Player>>();
+	
 	public static List<Player> list=new ArrayList<Player>();
+	
 	
 	public static List<List<Player>> getResultList() {
 		return resultList;
@@ -41,6 +43,7 @@ public class TeamGenerator {
 
 	private static double totalValue=0;
 	
+	public static TreeMap<Double,List<Player>> map;
 	
 	public static void GetTotalValue(List<Player> players)
 	{
@@ -71,7 +74,7 @@ public class TeamGenerator {
     }  
 
     
-	public static  TreeMap<Double,List<Player>> generateTeams()
+	public static TreeMap<Double,List<Player>> generateTeams()
 	{
 			
 		Player[] array = new Player[list.size()];
@@ -82,8 +85,7 @@ public class TeamGenerator {
 		
 		getCombinations(array, 3, 0,new Player[3]);
 		
-		TreeMap<Double,List<Player>> map = new TreeMap<Double, List<Player>>(new MapComparator(totalValue));
-		 
+		 map = new TreeMap<Double, List<Player>>(new MapComparator(totalValue));
 		 double idealValue=0;
 		 
 		 for(List<Player> list:resultList)
@@ -127,6 +129,7 @@ public class TeamGenerator {
 		//getCombinations(array, 3, 0,new Player[3]);
 
 		//generez echipele impreuna cu 
+		
 		TreeMap<Double,List<Player>> map = new TreeMap<Double, List<Player>>(
 				new MapComparator(totalValue));
 		 map=generateTeams();		 

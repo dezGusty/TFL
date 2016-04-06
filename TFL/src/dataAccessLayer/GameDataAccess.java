@@ -1,6 +1,7 @@
 package dataAccessLayer;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -94,26 +95,38 @@ public class GameDataAccess implements Serializable {
 		return false;
 	}
 	
+	public Game setDifference(int gameId, int difference) {
+
+		Game g=EntityManagerHelper.em.find(Game.class, gameId);
+
+		if(g !=null)
+		{
+			g.setDifference(difference);
+			EntityManagerHelper.em.persist(g);
+			EntityManagerHelper.em.getTransaction().commit();
+			EntityManagerHelper.em.refresh(g);
+			return g;
+		}
+		return null;
+	}
+	
 	public  List<Game> listGamesForPlayer(Player player) {
 
-		//TypedQuery<Game> query = EntityManagerHelper.em.createQuery("SELECT g FROM Game g where g.date > current_date", Game.class);
 		Player p=EntityManagerHelper.em.find(Player.class, player.getId());
-		//System.out.println(p.toString());
 		List<Game> result = new ArrayList<Game>();
-		//result = query.getResultList();
 
-		Date currentDate=new Date();
+	    Date currentDate=new Date();
 		currentDate=Calendar.getInstance().getTime();		
 		for (GamePlayer gp : p.getGamePlayers()) {
 			
-			System.out.println("ID" + gp.getId()+"GameID: "+gp.getGame().getId()+"GameDate:" +gp.getGame().getDate());
+			//System.out.println("ID" + gp.getId()+"GameID: "+gp.getGame().getId()+"GameDate:" +gp.getGame().getDate());
 			if(gp.getGame().getDate().after(currentDate))
 			{
 				result.add(gp.getGame());
 			}
 		}
 		
-		System.out.println("Games seted!");
+		//System.out.println("Games seted!");
 		return result;
 	}
 	
@@ -136,8 +149,9 @@ public class GameDataAccess implements Serializable {
 	
 	public static void main(String[] args) {
 		GameDataAccess gda=new GameDataAccess();
-		gda.removeGame(6);
+		gda.addNewGame(null);
 	}
+	
 
 	public List<Team> listGameTeams(Game game)
 	{
@@ -148,5 +162,26 @@ public class GameDataAccess implements Serializable {
 			return g.getTeams();
 		}
 		return null;
+	}
+	
+	public Game addNewGame(Date date)
+	{
+		try
+		{
+			Game g=new Game();
+			String date_s = "2016-03-14"; 
+			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+			Date datee = dt.parse(date_s); 
+			g.setDate(datee);
+			EntityManagerHelper.em.persist(g);
+			EntityManagerHelper.em.getTransaction().commit();
+			return g;
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		return null;
+		
 	}
 }

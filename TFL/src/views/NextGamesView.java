@@ -2,13 +2,14 @@ package views;
 import model.Game;
 import model.GamePlayer;
 import model.Player;
-import model.Team;
 import model.TeamPlayer;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TreeMap;
 
 import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
@@ -20,16 +21,30 @@ import javax.faces.context.FacesContext;
 import org.primefaces.model.DualListModel;
 
 import dataAccessLayer.GameDataAccess;
-import dataAccessLayer.TeamDataAccess;
+import dataAccessLayer.TeamGenerator;
 
 @ManagedBean(name = "nextGamesView")
 @SessionScoped
 public class NextGamesView implements Serializable{
 
 	 private static final long serialVersionUID = 1L;
+	 
+	// private int indexOfMap=0;
+	 
 	    public static List<Game> games;
 	    
-	    @ManagedProperty("#{gameDataAccess}")
+	    private Date gameDate;
+	    
+	    public Date getGameDate() {
+			return gameDate;
+		}
+
+		public void setGameDate(Date gameDate) {
+			this.gameDate = gameDate;
+		}
+
+
+		@ManagedProperty("#{gameDataAccess}")
 	    public GameDataAccess gamesData;
 	    
 	    private Game selectedGame;
@@ -67,6 +82,18 @@ public class NextGamesView implements Serializable{
 			System.out.println("Done");
 		}
 		
+		public void show(Game game) {
+			System.out.println("show");
+			GameDataAccess gda=new GameDataAccess();
+			gda.setDifference(this.selectedGame.getId(),this.selectedGame.getDifference());
+		}
+		
+		public void newGame()
+		{
+			System.out.println("New game");
+			System.out.println(this.gameDate.toString());
+		}
+		
 		public void remove(Game game) {
 			System.out.println("Remove game "+game.getId());
 			GameDataAccess gda=new GameDataAccess();
@@ -74,10 +101,39 @@ public class NextGamesView implements Serializable{
 			games.remove(game);
 		}
 		
+		public void showMessage(Game game) {
+			this.selectedGame=game;
+			//System.out.println(this.selectedGame.getDate());
+			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+			TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
+			teamsBean.themesSource=new ArrayList<Player>();
+			teamsBean.themesTarget=new ArrayList<Player>();
+			if(game.getTeams()!=null)
+			{
+				//System.out.println("There are teams");
+				teamsBean.setExistTeams(true);
+				if(game.getTeams().size()==2)
+				{
+					for(TeamPlayer tp:game.getTeams().get(0).getTeamPlayers())
+					{
+						teamsBean.themesSource.add(tp.getPlayer());
+					}
+
+					for(TeamPlayer tp:game.getTeams().get(1).getTeamPlayers())
+					{
+						teamsBean.themesTarget.add(tp.getPlayer());
+					}
+				}
+			}
+			teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+			System.out.println("Show message");
+		}
+		
 		public void  addResult(Game game)
 		{
 			System.out.println("Add result to this game!");
 		}
+		
 		public void viewTeams(Game game)
 		{		
         	this.setSelectedGame(game);
@@ -114,6 +170,7 @@ public class NextGamesView implements Serializable{
 						list.add(player.getPlayer());
 					}
 
+					System.out.println("Generate teams method");
 					List<List<Player>> listed=this.generateTeams(list);
 					
 					for(List<Player> l:listed)
@@ -175,25 +232,61 @@ public class NextGamesView implements Serializable{
 			}
 		}
 
+		
 		public List<List<Player>> generateTeams(List<Player> players)
 		{
-			List<List<Player>> list=new ArrayList<List<Player>>();
-			List<Player> firstList=new ArrayList<Player>();
-			List<Player> secondList=new ArrayList<Player>();
 			
-			//prima jumatate de jucatpri din lista
-			for(int i=0;i<(players.size()/2);i++)
-			{
-				firstList.add(players.get(i));
-			}
+//			for(Player p:players)
+//			{
+//				System.out.println(p.getUsername());
+//			}
+			
+			List<List<Player>> list=new ArrayList<List<Player>>();
+			//TeamGenerator tg=new TeamGenerator();
+			//TreeMap<Double,List<Player>> map=new TreeMap<Double,List<Player>> ();
+			TeamGenerator.list=players;
+			TeamGenerator.generateTeams();
+			TeamGenerator.printMap(TeamGenerator.map);
+			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[0];
+			
+			List<Player> firstList = TeamGenerator.map.get(key);
 			list.add(firstList);
-			//a doua jumatate de jucatori din lista
-			for(int j=(players.size()/2);j<players.size();j++)
+			
+			
+//			System.out.println("First team:");
+//			for(Player p:firstList)
+//			{
+//				System.out.println(p.getUsername());
+//			}
+			
+			List<Player> secondList = new ArrayList<Player>();
+			
+			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
+			boolean existsInList=false;
+			for(Player p:players)
 			{
-				secondList.add(players.get(j));
+				existsInList=false;
+				for(Player pl:firstList)
+				{
+					if(p.getId()==pl.getId())
+					{
+						existsInList=true;
+						break;
+					}
+				}
+				if(!existsInList)
+				{
+					secondList.add(p);
+				}
+				
 			}
-		
+//			System.out.println("Second list:");
+//			for(Player p:secondList)
+//			{
+//				System.out.println(p.getUsername());
+//			}
 			list.add(secondList);
+
 			return list;
 		}
 		

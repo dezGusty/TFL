@@ -32,21 +32,26 @@
 	 <ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
-	<ui:insert name="header">
-		<ui:include src="/resources/viewteams.xhtml" />
-	</ui:insert>
+
 	<div class="container">
+		<h:panelGrid id="grid">
+		<ui:insert name="header">
+			<ui:include src="/resources/viewteams.xhtml" />
+		</ui:insert>
+		</h:panelGrid>
+		<h:form>
 		<div class="row">
-			<div class="col-sm-4">
-				<p:commandButton  value="Previous" actionListener="#{teamsView.backToHistory()}"  ajax="true" />
+			<div class="col-sm-4 nopadding">
+				<p:commandButton value="Next" actionListener="#{teamsView.getPreviousTeam}" ajax="false" />
 			</div>
-			<div class="col-sm-4">
-				<p:commandButton  value="Done" actionListener="#{teamsView.saveTeams()}"  ajax="true" />
+			<div class="col-sm-4 nopadding">
+				<p:commandButton value="Save teams" actionListener="#{teamsView.saveTeams()}" ajax="false" />
 			</div>
-			<div class="col-sm-4">
-				<p:commandButton  value="Next" actionListener="#{teamsView.nextTeam()}"  ajax="true" />
+			<div class="col-sm-4 nopadding">
+				<p:commandButton value="Next"  actionListener="#{teamsView.getNextTeam}" ajax="false" />
 			</div>
 		</div>
+		</h:form>
 	</div>
 </h:body>
 </html>

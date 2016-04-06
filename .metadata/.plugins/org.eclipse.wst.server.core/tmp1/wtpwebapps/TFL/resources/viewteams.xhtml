@@ -66,36 +66,7 @@
 						<h:outputText value="#{theme.username}" />
 					</p:column>
 				</p:pickList>
-
-				
-				<!--<p:commandButton id="pojoSubmit" value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" />-->
-					
-				<p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="themesDialog">
-					<h:panelGrid id="displayThemes" columns="2">
-						<h:outputText value="Source: " style="font-weight:bold" />
-						<ui:repeat value="#{teamsView.players.source}" var="theme">
-							<h:outputText value="#{theme.username}" style="margin-right:5px" />
-						</ui:repeat>
-
-						<h:outputText value="Target: " style="font-weight:bold" />
-						<ui:repeat value="#{teamsView.players.target}" var="theme">
-							<h:outputText value="#{theme.username}" style="margin-right:5px" />
-						</ui:repeat>
-					</h:panelGrid>
-				</p:dialog>
 		</div>
-		<!--  <div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-				<p:commandButton  value="Next" actionListener="#{teamsView.nextTeam()}"  ajax="true" />
-			</div>
-			<div class="col-sm-4">
-			</div>
-			<div class="col-sm-4">
-			</div>
-		</div>
-	    </div>-->
-		
 	</h:form>
 	</div>
 	</ui:composition>

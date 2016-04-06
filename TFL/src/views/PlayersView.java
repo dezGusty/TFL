@@ -13,9 +13,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
-import model.Game;
 import model.Player;
 
 @ManagedBean(name = "playersView")

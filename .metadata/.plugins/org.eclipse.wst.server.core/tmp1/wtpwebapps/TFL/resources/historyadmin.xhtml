@@ -62,33 +62,32 @@
 				</p:column>
 				
 				<p:column>
-						<p:commandButton value="Add game result"
-							actionListener="#{nextGamesView.addResult(game)}" ajax="true" />
+						<p:commandLink  value="Add game result" type="button"  actionListener="#{nextGamesView.showMessage(game)}" oncomplete="PF('resultDlg').show();" resizable="false" update="dialogForm"  />
 				</p:column>
 			</p:dataTable>
-
-
-			<!--  <p:dialog header="Game details" widgetVar="gameDialog" modal="true"
-					showEffect="blind" hideEffect="explode" resizable="false">
-					<p:outputPanel id="gameDetail" style="text-align:center;">
-						<p:panelGrid columns="2" rendered="#{not empty nextGamesView.selectedGame}">
-							<f:facet name="header">
-								<p:graphicImage name="../images/ball.jpg" />
-							</f:facet>
-
-							<h:outputText value="Id" />
-							<h:outputText value="#{nextGamesView.selectedGame.id}" />
-
-							<h:outputText value="Date" />
-							<h:outputText value="#{nextGamesView.selectedGame.date}" />
-
-							<h:outputText value="Difference" />
-							<h:outputText value="#{nextGamesView.selectedGame.difference}" />
-						</p:panelGrid>
-					</p:outputPanel>
-				</p:dialog>
-				-->
-		</h:form>
+			</h:form>
+	
+			<h:form id="dialogForm">
+			<p:dialog header="Game result" widgetVar="resultDlg" modal="true" height="100">
+   				 <h:outputText value="This is a Modal Dialog." />
+   				 <p:outputPanel id="gameDetail" style="text-align:center;">
+   				 		<p:panel columns="2" rendered="#{not empty nextGamesView.selectedGame}">
+   				 			<h:outputText value="Difference: " />
+							 <p:inplace id="ajax" editor="true">
+            						<p:inputText value="#{nextGamesView.selectedGame.difference}"  label="text" />
+       						 </p:inplace>
+       						 
+       						 <h:outputText></h:outputText>
+       						 <ui:insert name="header">
+									<ui:include src="/resources/viewteams.xhtml" />
+							</ui:insert>
+							
+							<p:commandButton  value="Save" actionListener="#{nextGamesView.show(nextGamesView.selectedGame)}" ajax="true" />
+							
+   				 		</p:panel> 				 	
+   				 </p:outputPanel>
+			</p:dialog>   
+			</h:form>
 		</div>
 	</div>
 </h:body>
