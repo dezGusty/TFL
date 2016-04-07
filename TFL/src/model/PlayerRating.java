@@ -16,12 +16,8 @@ public class PlayerRating implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-
-	@Override
-	public String toString() {
-		return "ID: " + id + " Date:" + date + "Rating:" + rating + " Player=" + player.getUsername() ;
-	}
 
 	@Temporal(TemporalType.DATE)
 	private Date date;

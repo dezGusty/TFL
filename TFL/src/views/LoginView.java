@@ -145,9 +145,9 @@ public class LoginView implements Serializable {
 				{
 					System.out.println(gg.getDate());
 				}
-				this.playedGames = this.currentPlayer.getGamePlayers().size();
-				this.winner = this.currentPlayer.getGameWinners().size();
-				this.looser = this.currentPlayer.getGameLosers().size();
+//				this.playedGames = this.currentPlayer.getGamePlayers().size();
+//				this.winner = this.currentPlayer.getGameWinners().size();
+//				this.looser = this.currentPlayer.getGameLosers().size();
 				
 				//System.out.println("Available from login:"+this.currentPlayer.getAvailable());
 					if (currentPlayer.getType() == 1) {

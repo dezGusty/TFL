@@ -7,7 +7,6 @@ import javax.persistence.TypedQuery;
 import model.Game;
 import model.Player;
 import model.Team;
-import model.TeamPlayer;
 
 public class TeamDataAccess {
 
@@ -61,17 +60,17 @@ public class TeamDataAccess {
 		System.out.println(player.getId()+" "+player.getUsername());
 		Team team= EntityManagerHelper.em.find(Team.class, teamId);
 		System.out.println(team.getId()+" "+team.getName());
-		if(team.inThisTeam(player.getId()))
-		{
-			TeamPlayer tp=new TeamPlayer();
-			tp.setPlayer(player);
-			tp.setTeam(team);
-			
-			team.addTeamPlayer(tp);
-			EntityManagerHelper.em.persist(tp);
-			EntityManagerHelper.em.merge(team);
-			EntityManagerHelper.em.getTransaction().commit();
-		}
+//		if(team.inThisTeam(player.getId()))
+//		{
+//			TeamPlayer tp=new TeamPlayer();
+//			tp.setPlayer(player);
+//			tp.setTeam(team);
+//			
+//			team.addTeamPlayer(tp);
+//			EntityManagerHelper.em.persist(tp);
+//			EntityManagerHelper.em.merge(team);
+//			EntityManagerHelper.em.getTransaction().commit();
+//		}
 		return team;
 	}
 	

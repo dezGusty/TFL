@@ -1,0 +1,10 @@
+package dataAccessLayer;
+
+import java.util.Comparator;
+
+import model.Player;
+import model.PlayerRating;
+
+public class PlayerRatingComparator implements Comparator<PlayerRating> {
+
+}

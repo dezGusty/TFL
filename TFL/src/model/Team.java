@@ -2,8 +2,6 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,18 +20,20 @@ public class Team implements Serializable {
 
 	private String name;
 
+	private double score;
+
+	private Boolean winner;
+
 	//bi-directional many-to-one association to Game
 	@ManyToOne
 	@JoinColumn(name="game")
 	private Game gameBean;
 
-	//bi-directional many-to-one association to TeamPlayer
-	@OneToMany(mappedBy="team", fetch=FetchType.EAGER)
-	private List<TeamPlayer> teamPlayers;
+	//bi-directional many-to-many association to Player
+	//@ManyToMany(mappedBy="teams", fetch=FetchType.EAGER)
+	private List<Player> players;
 
 	public Team() {
-		this.gameBean=new Game();
-		this.teamPlayers=new ArrayList<TeamPlayer>();
 	}
 
 	public Integer getId() {
@@ -52,6 +52,22 @@ public class Team implements Serializable {
 		this.name = name;
 	}
 
+	public double getScore() {
+		return this.score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
+	}
+
+	public Boolean getWinner() {
+		return this.winner;
+	}
+
+	public void setWinner(Boolean winner) {
+		this.winner = winner;
+	}
+
 	public Game getGameBean() {
 		return this.gameBean;
 	}
@@ -60,40 +76,12 @@ public class Team implements Serializable {
 		this.gameBean = gameBean;
 	}
 
-	public List<TeamPlayer> getTeamPlayers() {
-		return this.teamPlayers;
+	public List<Player> getPlayers() {
+		return this.players;
 	}
 
-	public void setTeamPlayers(List<TeamPlayer> teamPlayers) {
-		this.teamPlayers = teamPlayers;
+	public void setPlayers(List<Player> players) {
+		this.players = players;
 	}
 
-	public TeamPlayer addTeamPlayer(TeamPlayer teamPlayer) {
-		getTeamPlayers().add(teamPlayer);
-		teamPlayer.setTeam(this);
-
-		return teamPlayer;
-	}
-
-	public TeamPlayer removeTeamPlayer(TeamPlayer teamPlayer) {
-		getTeamPlayers().remove(teamPlayer);
-		teamPlayer.setTeam(null);
-
-		return teamPlayer;
-	}
-	
-	public boolean inThisTeam(int playerID)
-	{
-		for(TeamPlayer tp: this.teamPlayers)
-		{
-			int a=tp.getPlayer().getId();
-			if(a==playerID)
-			{
-				System.out.println("Player "+tp.getPlayer().getUsername()+" already in this team");
-				return false;
-			}
-		}
-		return true;
-	}
-	
 }

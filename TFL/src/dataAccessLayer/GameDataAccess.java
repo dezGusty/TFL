@@ -12,9 +12,6 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.TypedQuery;
 
 import model.Game;
-import model.GameLoser;
-import model.GamePlayer;
-import model.GameWinner;
 import model.Player;
 import model.Team;
 
@@ -53,15 +50,15 @@ public class GameDataAccess implements Serializable {
 		for (Game g : result) {
 			System.out.println("ID" + g.getId() + " Date:" + g.getDate() + " Difference" + g.getDifference());
 			System.out.println("Game players:");
-			for (GamePlayer p : g.getGamePlayers()) {
-				System.out.println(p.getPlayer().getUsername());
-			}
-			for (GameLoser gl : g.getGameLosers()) {
-				System.out.println(gl.getPlayer().getUsername());
-			}
-			for (GameWinner gw : g.getGameWinners()) {
-				System.out.println(gw.getPlayer().getUsername());
-			}
+//			for (GamePlayer p : g.getGamePlayers()) {
+//				System.out.println(p.getPlayer().getUsername());
+//			}
+//			for (GameLoser gl : g.getGameLosers()) {
+//				System.out.println(gl.getPlayer().getUsername());
+//			}
+//			for (GameWinner gw : g.getGameWinners()) {
+//				System.out.println(gw.getPlayer().getUsername());
+//			}
 		}
 		return result;
 	}
@@ -111,20 +108,23 @@ public class GameDataAccess implements Serializable {
 	}
 	
 	public  List<Game> listGamesForPlayer(Player player) {
-
+		
 		Player p=EntityManagerHelper.em.find(Player.class, player.getId());
 		List<Game> result = new ArrayList<Game>();
-
+		//result=p.getGames();
+		//return result;
+		
 	    Date currentDate=new Date();
-		currentDate=Calendar.getInstance().getTime();		
-		for (GamePlayer gp : p.getGamePlayers()) {
-			
-			//System.out.println("ID" + gp.getId()+"GameID: "+gp.getGame().getId()+"GameDate:" +gp.getGame().getDate());
-			if(gp.getGame().getDate().after(currentDate))
+		currentDate=Calendar.getInstance().getTime();	
+		
+		for(Game g: p.getGames())
+		{
+			if(g.getDate().after(currentDate))
 			{
-				result.add(gp.getGame());
+				result.add(g);
 			}
 		}
+
 		
 		//System.out.println("Games seted!");
 		return result;
@@ -133,23 +133,47 @@ public class GameDataAccess implements Serializable {
 	public void playGame(Game game, Player player) {		
 		Player play =EntityManagerHelper.em.find(Player.class, player.getId());
 		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());	
-		GamePlayer gp=new GamePlayer();
-		if(gp.isPlayingGame(play, findGame)==false)
-		{
-			gp.setGame(findGame);
-			gp.setPlayer(player);		
-			game.addGamePlayer(gp);
-			player.addGamePlayer(gp);
-			EntityManagerHelper.em.persist(gp);
-			EntityManagerHelper.em.persist(findGame);
-			EntityManagerHelper.em.persist(play);
-			EntityManagerHelper.em.getTransaction().commit();
-		}
+		//GamePlayer gp=new GamePlayer();
+		
+//		if(gp.isPlayingGame(play, findGame)==false)
+//		{
+//			gp.setGame(findGame);
+//			gp.setPlayer(player);		
+//			game.addGamePlayer(gp);
+//			player.addGamePlayer(gp);
+//			EntityManagerHelper.em.persist(gp);
+//			EntityManagerHelper.em.persist(findGame);
+//			EntityManagerHelper.em.persist(play);
+//			EntityManagerHelper.em.getTransaction().commit();
+//		}
+	}
+	
+	public void addGameWinner(Game game, Player player) {		
+		Player play =EntityManagerHelper.em.find(Player.class, player.getId());
+		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());	
+		//GameWinner gw=new GameWinner();
+		
+//		if(gw.isGameWinner(player, game)==false)
+//		{
+//			gw.setGame(findGame);
+//			gw.setPlayer(play);	
+//			gw.setId(4);
+//			findGame.addGameWinner(gw);
+//			play.addGameWinner(gw);
+//
+//			EntityManagerHelper.em.persist(gw);
+//			EntityManagerHelper.em.persist(findGame);
+//			EntityManagerHelper.em.persist(play);
+//			EntityManagerHelper.em.getTransaction().commit();
+//		}
 	}
 	
 	public static void main(String[] args) {
 		GameDataAccess gda=new GameDataAccess();
-		gda.addNewGame(null);
+		Player play =EntityManagerHelper.em.find(Player.class,12);
+		Game findGame=EntityManagerHelper.em.find(Game.class, 13);
+		gda.addGameWinner(findGame, play);
+		//gda.addNewGame(null);
 	}
 	
 
@@ -164,14 +188,14 @@ public class GameDataAccess implements Serializable {
 		return null;
 	}
 	
-	public Game addNewGame(Date date)
+	public Game addNewGame(String date)
 	{
 		try
 		{
 			Game g=new Game();
-			String date_s = "2016-03-14"; 
+			//String date_s = "2016-03-14"; 
 			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
-			Date datee = dt.parse(date_s); 
+			Date datee = dt.parse(date); 
 			g.setDate(datee);
 			EntityManagerHelper.em.persist(g);
 			EntityManagerHelper.em.getTransaction().commit();

@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import model.PlayerRating;
+
 import java.util.List;
 
 
@@ -12,14 +15,39 @@ import java.util.List;
 @Entity
 @NamedQuery(name="Player.findAll", query="SELECT p FROM Player p")
 public class Player implements Serializable {
-	
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public String toString() {
 		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
 	}
-
-	private static final long serialVersionUID = 1L;
-
+	
+	public double getMinRating()
+	{
+		double min=this.rating;
+		for(PlayerRating playerRating: this.playerRatings)
+		{
+			if(min>playerRating.getRating())
+			{
+				min=playerRating.getRating();
+			}
+		}
+		return min;
+	}
+	
+	public double getMaxRating()
+	{
+		double max=this.rating;
+		for(PlayerRating playerRating: this.playerRatings)
+		{
+			if(max<playerRating.getRating())
+			{
+				max=playerRating.getRating();
+			}
+		}
+		return max;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -36,25 +64,17 @@ public class Player implements Serializable {
 
 	private String username;
 
-	//bi-directional many-to-one association to GameLoser
-	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
-	private List<GameLoser> gameLosers;
-
-	//bi-directional many-to-one association to GamePlayer
-	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
-	private List<GamePlayer> gamePlayers;
-
-	//bi-directional many-to-one association to GameWinner
-	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
-	private List<GameWinner> gameWinners;
+	//bi-directional many-to-many association to Game
+	//@ManyToMany(mappedBy="players", fetch=FetchType.EAGER)
+	private List<Game> games;
 
 	//bi-directional many-to-one association to PlayerRating
 	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private List<PlayerRating> playerRatings;
 
-	//bi-directional many-to-one association to TeamPlayer
-	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
-	private List<TeamPlayer> teamPlayers;
+	//bi-directional many-to-many association to Team
+	
+	private List<Team> teams;
 
 	public Player() {
 	}
@@ -115,70 +135,12 @@ public class Player implements Serializable {
 		this.username = username;
 	}
 
-	public List<GameLoser> getGameLosers() {
-		return this.gameLosers;
+	public List<Game> getGames() {
+		return this.games;
 	}
 
-	public void setGameLosers(List<GameLoser> gameLosers) {
-		this.gameLosers = gameLosers;
-	}
-
-	public GameLoser addGameLoser(GameLoser gameLoser) {
-		getGameLosers().add(gameLoser);
-		gameLoser.setPlayer(this);
-
-		return gameLoser;
-	}
-
-	public GameLoser removeGameLoser(GameLoser gameLoser) {
-		getGameLosers().remove(gameLoser);
-		gameLoser.setPlayer(null);
-
-		return gameLoser;
-	}
-
-	public List<GamePlayer> getGamePlayers() {
-		return this.gamePlayers;
-	}
-
-	public void setGamePlayers(List<GamePlayer> gamePlayers) {
-		this.gamePlayers = gamePlayers;
-	}
-
-	public GamePlayer addGamePlayer(GamePlayer gamePlayer) {
-		getGamePlayers().add(gamePlayer);
-		gamePlayer.setPlayer(this);
-
-		return gamePlayer;
-	}
-
-	public GamePlayer removeGamePlayer(GamePlayer gamePlayer) {
-		getGamePlayers().remove(gamePlayer);
-		gamePlayer.setPlayer(null);
-
-		return gamePlayer;
-	}
-
-	public List<GameWinner> getGameWinners() {
-		return this.gameWinners;
-	}
-
-	public void setGameWinners(List<GameWinner> gameWinners) {
-		this.gameWinners = gameWinners;
-	}
-
-	public GameWinner addGameWinner(GameWinner gameWinner) {
-		getGameWinners().add(gameWinner);
-		gameWinner.setPlayer(this);
-
-		return gameWinner;
-	}
-
-	public GameWinner removeGameWinner(GameWinner gameWinner) {
-		getGameWinners().remove(gameWinner);
-		gameWinner.setPlayer(null);
-
-		return gameWinner;
+	public void setGames(List<Game> games) {
+		this.games = games;
 	}
 
 	public List<PlayerRating> getPlayerRatings() {
@@ -203,52 +165,14 @@ public class Player implements Serializable {
 		return playerRating;
 	}
 
-	public List<TeamPlayer> getTeamPlayers() {
-		return this.teamPlayers;
+	public List<Team> getTeams() {
+		return this.teams;
 	}
 
-	public void setTeamPlayers(List<TeamPlayer> teamPlayers) {
-		this.teamPlayers = teamPlayers;
-	}
-
-	public TeamPlayer addTeamPlayer(TeamPlayer teamPlayer) {
-		getTeamPlayers().add(teamPlayer);
-		teamPlayer.setPlayer(this);
-
-		return teamPlayer;
-	}
-
-	public TeamPlayer removeTeamPlayer(TeamPlayer teamPlayer) {
-		getTeamPlayers().remove(teamPlayer);
-		teamPlayer.setPlayer(null);
-
-		return teamPlayer;
-	}
-	
-	public double getMinRating()
-	{
-		double min=this.rating;
-		for(PlayerRating playerRating: this.playerRatings)
-		{
-			if(min>playerRating.getRating())
-			{
-				min=playerRating.getRating();
-			}
-		}
-		return min;
-	}
-
-	public double getMaxRating()
-	{
-		double max=this.rating;
-		for(PlayerRating playerRating: this.playerRatings)
-		{
-			if(max<playerRating.getRating())
-			{
-				max=playerRating.getRating();
-			}
-		}
-		return max;
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="id")
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
 	}
 
 }

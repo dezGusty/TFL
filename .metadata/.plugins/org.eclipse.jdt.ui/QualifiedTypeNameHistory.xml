@@ -11,8 +11,6 @@
 <fullyQualifiedTypeName name="org.primefaces.model.chart.LineChartSeries"/>
 <fullyQualifiedTypeName name="dataAccessLayer.PlayerRatingAccess"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="java.util.Calendar"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
 <fullyQualifiedTypeName name="org.primefaces.event.TransferEvent"/>
 <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
@@ -21,7 +19,6 @@
 <fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ViewScoped"/>
 <fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
-<fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="org.primefaces.model.chart.LineChartModel"/>
 <fullyQualifiedTypeName name="org.primefaces.model.chart.ChartSeries"/>
 <fullyQualifiedTypeName name="org.primefaces.model.chart.CategoryAxis"/>
@@ -36,7 +33,6 @@
 <fullyQualifiedTypeName name="org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="model.TeamPlayer"/>
-<fullyQualifiedTypeName name="dataAccessLayer.EntityManagerHelper"/>
 <fullyQualifiedTypeName name="model.Team"/>
 <fullyQualifiedTypeName name="dataAccessLayer.TeamDataAccess"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -47,6 +43,11 @@
 <fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
-<fullyQualifiedTypeName name="org.primefaces.model.DualListModel"/>
 <fullyQualifiedTypeName name="javax.faces.event.ActionEvent"/>
+<fullyQualifiedTypeName name="org.primefaces.model.DualListModel"/>
+<fullyQualifiedTypeName name="dataAccessLayer.EntityManagerHelper"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 </qualifiedTypeNameHistroy>
