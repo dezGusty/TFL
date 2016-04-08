@@ -40,6 +40,10 @@ public class LoginView implements Serializable {
     }
     
     public int getPlayedGames() {
+		if(this.currentPlayer.getGames()!=null)
+		{
+			playedGames= this.currentPlayer.getGames().size();
+		}
 		return playedGames;
 	}
 

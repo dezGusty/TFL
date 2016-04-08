@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,9 +33,17 @@ public class Team implements Serializable {
 
 	//bi-directional many-to-many association to Player
 	//@ManyToMany(mappedBy="teams", fetch=FetchType.EAGER)
+	@ManyToMany 
+    @JoinTable(name="team_player", 
+          joinColumns=@JoinColumn(name="id_team"),
+          inverseJoinColumns=@JoinColumn(name="id_player"))
 	private List<Player> players;
 
 	public Team() {
+		this.score=0.0;
+		this.gameBean=new Game();
+		this.players=new ArrayList<Player>();
+		this.winner=false;
 	}
 
 	public Integer getId() {
@@ -76,10 +86,13 @@ public class Team implements Serializable {
 		this.gameBean = gameBean;
 	}
 
+	
 	public List<Player> getPlayers() {
 		return this.players;
 	}
 
+//	@ManyToMany(fetch=FetchType.EAGER)
+//	@JoinTable(name="team_player")
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}

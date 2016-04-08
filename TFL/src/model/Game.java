@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import model.Player;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,9 +33,10 @@ public class Game implements Serializable {
 	private Integer difference;
 
 	//bi-directional many-to-many association to Player
-//	@ManyToMany(fetch=FetchType.EAGER)
-//	@JoinTable(name="game_players")
-	//@JoinColumn(name="id")
+	@ManyToMany 
+    @JoinTable(name="game_players", 
+          joinColumns=@JoinColumn(name="game_id"),
+          inverseJoinColumns=@JoinColumn(name="player_id"))
 	private List<Player> players;
 
 	
@@ -43,6 +45,10 @@ public class Game implements Serializable {
 	private List<Team> teams;
 
 	public Game() {
+		this.date=null;
+		this.difference=0;
+		this.players=new ArrayList<Player>();
+		this.teams=new ArrayList<Team>();
 	}
 
 	public Integer getId() {
@@ -73,8 +79,7 @@ public class Game implements Serializable {
 		return this.players;
 	}
 
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="game_players")
+
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
@@ -102,24 +107,23 @@ public class Game implements Serializable {
 	}
 	
 	//verifica daca jucatorul joaca deja la joc
-//	public boolean gameStatus(Player player)
-//	{
-//	{
-//		if(this.players!=null)
-//		{
-//			for(Player gamePlayer:this.players)
-//			{
-//				
-//				int a=gamePlayer.getPlayer().getId();
-//				int b=player.getId();
-//				if(a==b)
-//				{
-//					return true;
-//				}
-//			}
-//		}
-//		return false;
-	//}
+	public boolean gameStatus(Player player)
+	{
+		if(this.players!=null)
+		{
+			for(Player gamePlayer:this.players)
+			{
+				
+				int a=gamePlayer.getId();
+				int b=player.getId();
+				if(a==b)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 	public String dateToDisplay()
 	{

@@ -92,21 +92,57 @@ public class GameDataAccess implements Serializable {
 		return false;
 	}
 	
-	public Game setDifference(int gameId, int difference) {
+	public Game setDifference(int gameId, int difference,Team firstTeam, Team secondTeam) {
 
 		Game g=EntityManagerHelper.em.find(Game.class, gameId);
-
+		System.out.println("First team:");
+		for(Player p:firstTeam.getPlayers())
+		{
+			System.out.println(p.getUsername());
+		}
+		System.out.println("Second team:");
+		for(Player p:secondTeam.getPlayers())
+		{
+			System.out.println(p.getUsername());
+		}
+		
 		if(g !=null)
 		{
+			
 			g.setDifference(difference);
-			EntityManagerHelper.em.persist(g);
+//			g.addTeam(firstTeam);
+//			g.addTeam(secondTeam);
+			EntityManagerHelper.em.persist(firstTeam);
+			EntityManagerHelper.em.persist(secondTeam);
 			EntityManagerHelper.em.getTransaction().commit();
-			EntityManagerHelper.em.refresh(g);
+			
+			EntityManagerHelper.em.refresh(firstTeam);
+			EntityManagerHelper.em.refresh(secondTeam);
+			System.out.println("First team refreshed id:"+firstTeam.getId());
+			System.out.println("Second team refreshed id:"+secondTeam.getId());
+			
+			g.addTeam(firstTeam);
+			g.addTeam(secondTeam);
+//			g.addTeam(firstTeam);
+//			g.addTeam(secondTeam);
+//			EntityManagerHelper.em.persist(g);
+//			EntityManagerHelper.em.getTransaction().commit();
+//			EntityManagerHelper.em.refresh(g);
 			return g;
 		}
 		return null;
 	}
 	
+	public Team addTeamToGame(Team t,int  gId)
+	{
+		Game g=EntityManagerHelper.em.find(Game.class, gId);
+		Team team=EntityManagerHelper.em.find(Team.class, t.getId());
+		g.addTeam(team);
+		EntityManagerHelper.em.persist(g);
+		EntityManagerHelper.em.getTransaction().commit();
+		EntityManagerHelper.em.refresh(g);
+		return team;
+	}
 	public  List<Game> listGamesForPlayer(Player player) {
 		
 		Player p=EntityManagerHelper.em.find(Player.class, player.getId());
@@ -133,21 +169,21 @@ public class GameDataAccess implements Serializable {
 	public void playGame(Game game, Player player) {		
 		Player play =EntityManagerHelper.em.find(Player.class, player.getId());
 		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());	
-		//GamePlayer gp=new GamePlayer();
 		
-//		if(gp.isPlayingGame(play, findGame)==false)
-//		{
-//			gp.setGame(findGame);
-//			gp.setPlayer(player);		
-//			game.addGamePlayer(gp);
-//			player.addGamePlayer(gp);
-//			EntityManagerHelper.em.persist(gp);
-//			EntityManagerHelper.em.persist(findGame);
-//			EntityManagerHelper.em.persist(play);
-//			EntityManagerHelper.em.getTransaction().commit();
-//		}
+		if(findGame.gameStatus(play)==false)
+		{
+			findGame.getPlayers().add(play);
+			play.getGames().add(findGame);
+			EntityManagerHelper.em.persist(play);
+			EntityManagerHelper.em.persist(findGame);
+			EntityManagerHelper.em.getTransaction().commit();
+		}
+		else
+		{
+			System.out.println("Player already playing this game!");
+		}
 	}
-	
+	  
 	public void addGameWinner(Game game, Player player) {		
 		Player play =EntityManagerHelper.em.find(Player.class, player.getId());
 		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());	

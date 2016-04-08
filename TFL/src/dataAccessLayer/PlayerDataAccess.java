@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.TypedQuery;
 
 import model.Player;
+import model.Team;
 
 @ManagedBean(name = "playerDataAccess")
 @ApplicationScoped
@@ -133,6 +134,6 @@ public class PlayerDataAccess implements Serializable{
 	  
 	  public static void main(String[] args) {
 		PlayerDataAccess pda=new PlayerDataAccess();
-		pda.removePlayer(14);
+
 	}
 }

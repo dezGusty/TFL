@@ -6,7 +6,6 @@
 		<class>model.Player</class>
 		<class>model.PlayerRating</class>
 		<class>model.Team</class>
-		<class>model.TeamPlayer</class>
 		<properties>
             <property name="hibernate.show_sql" value="true" />
             <property name="javax.persistence.transactionType" value="RESOURCE_LOCAL" />

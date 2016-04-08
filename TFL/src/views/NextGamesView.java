@@ -1,6 +1,8 @@
 package views;
 import model.Game;
 import model.Player;
+import model.Team;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -73,34 +75,48 @@ public class NextGamesView implements Serializable{
 			System.out.println("PlayGame!");
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+			
 			GameDataAccess gda=new GameDataAccess();
 			gda.playGame(game, firstBean.getCurrentPlayer());
+			
 			System.out.println("Done");
 		}
 		
 		public void addResult(Game game) {
+		
 			System.out.println("show");
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			TeamsView firstBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
 			
+			
 			System.out.println("Winners:");
+			Team winnersTeam=new Team();
 			for(Player p:firstBean.themesSource)
 			{
 				System.out.println(p.getUsername());
+				//winnersTeam.getPlayers().addAll(firstBean.themesSource);
 			}
+			winnersTeam.getPlayers().addAll(firstBean.themesSource);
 			
+			Team loserTeam=new Team();
 			System.out.println("Losers:");
 			
 			for(Player p:firstBean.themesTarget)
-			{
+			{	
 				System.out.println(p.getUsername());
 			}
+			loserTeam.getPlayers().addAll(firstBean.themesTarget);
+			
+			game.addTeam(winnersTeam);
+			game.addTeam(loserTeam);
 			
 			System.out.println("Game: "+game.dateToDisplay()+" difference "+game.getDifference());
 
 			GameDataAccess gda=new GameDataAccess();
-			//gda.setDifference(this.selectedGame.getId(),this.selectedGame.getDifference());
+			gda.setDifference(this.selectedGame.getId(),this.selectedGame.getDifference(),winnersTeam,loserTeam);
 		}
+		
+		
 		
 		public void newGame()
 		{
@@ -127,22 +143,16 @@ public class NextGamesView implements Serializable{
 			TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
 			teamsBean.themesSource=new ArrayList<Player>();
 			teamsBean.themesTarget=new ArrayList<Player>();
+			
 			if(game.getTeams()!=null)
 			{
-				//System.out.println("There are teams");
+				System.out.println("There are teams");
 				//setez echipele
 				teamsBean.setExistTeams(true);
 				if(game.getTeams().size()==2)
 				{
-//					for(TeamPlayer tp:game.getTeams().get(0).getTeamPlayers())
-//					{
-//						teamsBean.themesSource.add(tp.getPlayer());
-//					}
-//
-//					for(TeamPlayer tp:game.getTeams().get(1).getTeamPlayers())
-//					{
-//						teamsBean.themesTarget.add(tp.getPlayer());
-//					}
+					teamsBean.themesSource=game.getTeams().get(0).getPlayers();
+					teamsBean.themesTarget=game.getTeams().get(1).getPlayers();
 				}
 			}
 			teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
@@ -180,10 +190,10 @@ public class NextGamesView implements Serializable{
 					System.out.println("Players subscribed to this game:");
 					List<Player> list=new ArrayList<Player>();
 					
-//					for(GamePlayer player:this.selectedGame.getGamePlayers())
-//					{
-//						list.add(player.getPlayer());
-//					}
+					for(Player player:this.selectedGame.getPlayers())
+					{
+						list.add(player);
+					}
 
 					System.out.println("Generate teams method");
 					if(list.size()>2)
@@ -262,8 +272,6 @@ public class NextGamesView implements Serializable{
 		{
 			
 			List<List<Player>> list=new ArrayList<List<Player>>();
-			//TeamGenerator tg=new TeamGenerator();
-			//TreeMap<Double,List<Player>> map=new TreeMap<Double,List<Player>> ();
 			TeamGenerator.list=players;
 			TeamGenerator.generateTeams();
 			TeamGenerator.printMap(TeamGenerator.map);
@@ -273,11 +281,11 @@ public class NextGamesView implements Serializable{
 			list.add(firstList);
 			
 			
-//			System.out.println("First team:");
-//			for(Player p:firstList)
-//			{
-//				System.out.println(p.getUsername());
-//			}
+			System.out.println("First team:");
+			for(Player p:firstList)
+			{
+				System.out.println(p.getUsername());
+			}
 			
 			List<Player> secondList = new ArrayList<Player>();
 			
@@ -300,11 +308,11 @@ public class NextGamesView implements Serializable{
 				}
 				
 			}
-//			System.out.println("Second list:");
-//			for(Player p:secondList)
-//			{
-//				System.out.println(p.getUsername());
-//			}
+			System.out.println("Second list:");
+			for(Player p:secondList)
+			{
+				System.out.println(p.getUsername());
+			}
 			list.add(secondList);
 
 			return list;
