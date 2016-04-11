@@ -26,10 +26,50 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../mycss.css" />
+	 <link rel="stylesheet" type="text/css" href="../../style/headerCss.css" />
 </h:head>
 <h:body>
 	<ui:composition>
+	
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">	
+					<div class="col-xs-6 col-sm-6">
+						<p:panel id="panell">
+							<h:panelGrid columns="2" cellpadding="10">
+								<p:graphicImage style="height:30px" name="../images/ball.jpg" />
+								<p:outputLabel value="Welcome, #{loginView.currentPlayer.username} !"></p:outputLabel>
+							</h:panelGrid>
+						</p:panel>
+					</div>
+					
+					<div class="col-xs-6 col-sm-3">
+						<h:form>
+							<p:panel>
+								<h:panelGrid columns="2" cellpadding="10" >
+								<h:outputText value="Available: " />
+								<p:inputSwitch value="#{loginView.currentPlayer.available}">
+								<p:ajax listener="#{loginView.changeAvailability}" />
+								</p:inputSwitch>
+							</h:panelGrid>
+							</p:panel>
+						</h:form>
+					</div>
+					
+					<div class="col-xs-6 col-sm-3">
+						<h:form>
+							<p:panel>
+								<h:panelGrid columns="1" cellpadding="10" style="height:20px">
+									<p:commandButton value="Logout" actionListener="#{loginView.logout}" />
+								</h:panelGrid>
+							</p:panel>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
 		<div class="container">
 			<p:growl id="msg" />
 			<div class="row">

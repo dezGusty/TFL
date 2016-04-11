@@ -1,0 +1,11 @@
+@CHARSET "ISO-8859-1";
+
+.jumbotron
+{
+	background-color: black;
+}
+div
+{
+	background-color: black;
+}
+

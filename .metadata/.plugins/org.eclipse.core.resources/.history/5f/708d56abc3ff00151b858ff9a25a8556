@@ -1,0 +1,51 @@
+@CHARSET "ISO-8859-1";
+
+
+.list-group-item
+{
+	border:0px;
+	text-align:center;
+}
+
+input[type="submit"]
+{
+	height: 50%;
+	width:50%;
+}
+
+button
+{
+	height: 50%;
+	width:50%;
+}
+.ui-inputfield
+{
+	width:100%;
+}
+
+.col-sm-4 usandpass
+{
+	text-align:right;
+}
+.img-responsive
+{
+	height:100%;
+	width:100%;
+}
+.jumbotron
+{
+	min-height: 20px;
+	background: url('../images/fotball.png') no-repeat center center;
+	
+}
+
+
+
+
+
+
+
+
+
+
+

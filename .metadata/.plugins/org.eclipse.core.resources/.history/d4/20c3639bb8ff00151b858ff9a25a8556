@@ -1,0 +1,27 @@
+@CHARSET "ISO-8859-1";
+
+.jumbotron
+{
+
+}
+
+.list-group-item
+{
+	border:0px;
+	text-align:center;
+}
+
+input[type="submit"]
+{
+	height: 30%;
+	width:50%;
+}
+
+#pass
+{
+	height: 30%;
+	width:50%;
+}
+
+
+

@@ -1,0 +1,12 @@
+@CHARSET "ISO-8859-1";
+
+.jumbotron
+{
+
+}
+
+.list-group-item
+{
+	border:0px;
+}
+
