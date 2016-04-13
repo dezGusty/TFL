@@ -30,8 +30,17 @@ public class LoginView implements Serializable {
     private int winner;
     private int looser;
     private boolean value;
+    private boolean click;
  
-    public boolean getValue() {
+    public boolean isClick() {
+		return click;
+	}
+
+	public void setClick(boolean click) {
+		this.click = click;
+	}
+
+	public boolean getValue() {
         return value;
     }
  
@@ -133,13 +142,24 @@ public class LoginView implements Serializable {
 		}
 	}
 	
+	public void showMenu(ActionEvent event)  {
+		System.out.println("Show menu");
+	   if(this.click)
+	   {
+		   this.click=false;
+	   }
+	   else
+	   {
+		   this.click=true;
+	   }
+	}
+	
 	public String login() throws IOException {
 
 		PlayerDataAccess pda = new PlayerDataAccess();
 		if ((this.username != null) && (this.password != null)) {
 			currentPlayer = new Player();
 			currentPlayer = pda.loginUser(this.username, this.password);
-
 			if (currentPlayer != null) {
 				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 				NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
@@ -172,6 +192,7 @@ public class LoginView implements Serializable {
 
 	public void redirectToGames(ActionEvent actionEvent)
 	{
+		this.click=false;
 		System.out.println("Hello from redirect to games!");
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
@@ -196,8 +217,32 @@ public class LoginView implements Serializable {
 			}
 		}
 	}
+	
+	public void redirectToPersonalDates(ActionEvent actionEvent)
+	{
+		this.click=false;
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		try {
+			context.redirect(context.getRequestContextPath() + "/faces/resources/viewpersonaldates.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void redirectToChangePass(ActionEvent actionEvent)
+	{
+		this.click=false;
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		try {
+			context.redirect(context.getRequestContextPath() + "/faces/resources/changepassword.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void redirectToCharts(ActionEvent actionEvent)
 	{
+		this.click=false;
 		System.out.println("Hello from redirect to charts!");
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();	
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
@@ -228,6 +273,7 @@ public class LoginView implements Serializable {
 	
 	public void redirectToPlayers(ActionEvent actionEvent)
 	{
+		this.click=false;
 		System.out.println("Hello from redirect to players!");
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();		
 		if(this.currentPlayer.getType()==1)
@@ -251,6 +297,7 @@ public class LoginView implements Serializable {
 	
 	public void redirectToHistory(ActionEvent actionEvent)
 	{
+		this.click=false;
 		System.out.println("Hello from redirect to history!");
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
@@ -279,6 +326,7 @@ public class LoginView implements Serializable {
 	}
 	
 	  public void changePassword() {
+		  this.click=false;
 		  if(this.oldPass.compareTo(this.currentPlayer.getPassword())==0)
 		  {
 			  System.out.println("Old password is correct!");
@@ -295,6 +343,7 @@ public class LoginView implements Serializable {
 	}
 	  
 	  public void changeAvailability() {
+		    this.click=false;
 	        String summary = this.currentPlayer.getAvailable() ? "Available" : "Unavailable";
 	        System.out.println("Change availability to "+this.currentPlayer.getAvailable());
 			PlayerDataAccess playerAccess=new PlayerDataAccess();

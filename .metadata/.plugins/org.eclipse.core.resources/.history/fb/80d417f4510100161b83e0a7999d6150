@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+
+.jumbotron
+{
+	padding-bottom: 0px;
+	padding-top: 0ox;
+}
+#panell
+{
+
+	height:100%;
+}
+
+
+
+

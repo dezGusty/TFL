@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+.jumbotron
+{
+	padding-bottom: 0px;
+	padding-top: 0px;
+	margin-bottom: 0px;
+}
+#panell
+{
+
+	height:100%;
+}
+#menubutton
+{
+	background-color: white;
+	border:none;
+}
+
+
+
+

@@ -53,14 +53,10 @@
 					
 					<f:facet name="targetCaption">#{teamsView.teamTwo.name}</f:facet>
 
-					<p:ajax event="transfer" listener="#{teamsView.onTransfer}"
-						update="msg" />
-					<p:ajax event="select" listener="#{teamsView.onSelect}"
-						update="msg" />
-					<p:ajax event="unselect" listener="#{teamsView.onUnselect}"
-						update="msg" />
-					<p:ajax event="reorder" listener="#{teamsView.onReorder}"
-						update="msg" />
+					<p:ajax event="transfer" listener="#{teamsView.onTransfer}"/>
+					<p:ajax event="select" listener="#{teamsView.onSelect}" />
+					<p:ajax event="unselect" listener="#{teamsView.onUnselect}"/>
+					<p:ajax event="reorder" listener="#{teamsView.onReorder}" />
 
 					<p:column style="width:90%;">
 						<h:outputText value="#{theme.username}" />

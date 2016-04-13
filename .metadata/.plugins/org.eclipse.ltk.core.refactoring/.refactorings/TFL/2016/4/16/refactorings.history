@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;headerCss.css&apos; to &apos;resources&apos;&#x0D;&#x0A;- Original project: &apos;TFL&apos;&#x0D;&#x0A;- Destination element: &apos;resources&apos;&#x0D;&#x0A;- Original element: &apos;headerCss.css&apos;" description="Copy file" element1="WebContent/style/headerCss.css" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1460539915809" target="/TFL/WebContent/resources" units="0" version="1.0"/>
+</session>

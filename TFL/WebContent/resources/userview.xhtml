@@ -28,15 +28,29 @@
 		crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="../mycss.css" />
 </h:head>
-<h:body>
+<h:body >
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
 
-	<div class="container">
+	<div class="container" style="height:70vh;">
+		<div class="row" style="height:50%;">
+			<div class="col-xs-6 col-sm-12" style="height:100%;">
+				<img src="../images/next.jpg" class="img-responsive" alt="Cinque Terre" style="width:100%;height:100%"/> 
+			</div>
+		</div>
+		<div class="row" style="height:50%;">
+			<div class="col-xs-6 col-sm-6" style="height:100%;">
+				<img src="../images/history.jpg" class="img-responsive" alt="Cinque Terre" style="width:100%;height:100%"/> 
+			</div>
+			<div class="col-xs-6 col-sm-6" style="height:100%;">
+				<img src="../images/players.jpg" class="img-responsive" alt="Cinque Terre" style="width:100%;height:100%"/> 
+			</div>
+		</div>
+		
 		<div class="row">
 		<h:form>
-
+			
 			<p:dataTable value="#{nextGamesView.games}" var="game">
 				<f:facet name="header">My next games(normal user)</f:facet>
 				<p:column>
