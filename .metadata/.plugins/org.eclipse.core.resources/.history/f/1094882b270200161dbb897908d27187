@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+h3
+{
+	font-size: 48px;
+	padding: 10%;
+}
+
+.row
+{
+	text-align: center;
+}
+#whitefont
+{
+	color: white;
+}
+.col-xs-6
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+

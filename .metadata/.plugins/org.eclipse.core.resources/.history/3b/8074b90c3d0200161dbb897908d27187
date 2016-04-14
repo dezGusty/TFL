@@ -1,0 +1,43 @@
+@CHARSET "ISO-8859-1";
+h3
+{
+	font-size: 48px;
+	padding: 10%;
+}
+
+.row
+{
+	text-align: center;
+}
+#whitefont
+{
+	color: white;
+}
+
+div.col-xs-6.col-sm-6
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.ui-panelgrid .ui-panelgrid-cell
+{
+	border-style: hidden;
+}
+
+.ui-widget-content
+{
+	border:none;
+}
+
+.ui-panelgrid .ui-panelgrid-header
+{
+	background-color: white;
+}
+
+tr.ui-widget-header
+{
+	
+}
+
+

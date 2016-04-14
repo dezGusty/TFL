@@ -190,6 +190,11 @@ public class LoginView implements Serializable {
 		return "/index";
 	}
 
+	public void redirectToGame()
+	{
+		System.out.println("redirect to games");
+	}
+	
 	public void redirectToGames(ActionEvent actionEvent)
 	{
 		this.click=false;

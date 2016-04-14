@@ -26,9 +26,9 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../mycss.css" />
 </h:head>
 <h:body>
+	<h:outputStylesheet name="../style/userViewCss.css" />
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
@@ -41,7 +41,7 @@
 			
 			<div class="col-sm-6">
 			<p:panelGrid columns="2" style="margin: auto; width:80%;">
-				<f:facet name="header" style="backgound-color:#000">
+				<f:facet name="header" style="border:none">
 					<p:graphicImage name="../images/ball.jpg" />
 				</f:facet>
 

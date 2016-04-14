@@ -35,6 +35,10 @@ div.col-sm-7.menu
 {
 	background-color:grey;
 } 
+ui-widget-content ui-datatable-odd
+{
+	background:none;
+}
 
 
 
