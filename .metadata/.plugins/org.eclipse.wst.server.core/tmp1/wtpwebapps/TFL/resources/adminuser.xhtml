@@ -26,9 +26,10 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../style/headerCss.css" />
+	<link rel="stylesheet" type="text/css" href="../style/adminCss.css" />
 </h:head>
 <h:body>
+	<h:outputStylesheet name="../style/adminCss.css" />
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
@@ -37,7 +38,7 @@
 		<div class="row">
 		<h:form id="gamesForm">
 
-			<p:dataTable value="#{nextGamesView.games}" var="game" >
+			<p:dataTable value="#{nextGamesView.games}" var="game">
 				<f:facet name="header">My next games(admin user)</f:facet>
 				<p:column>
 					<f:facet name="header">

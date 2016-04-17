@@ -80,9 +80,7 @@ public class PlayersView implements Serializable{
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-
-		
+			}	
 		System.out.println("Hello!");
 	}
 	
@@ -92,6 +90,10 @@ public class PlayersView implements Serializable{
 		this.players=new ArrayList<Player>();
 		this.playerData=new PlayerDataAccess();
 	    this.players=this.playerData.listPlayers();
+	    for(Player p:this.players)
+	    {
+	    	System.out.println("Picture "+p.getPicture());
+	    }
 	    
 	}
 	

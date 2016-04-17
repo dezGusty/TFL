@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+		crossorigin="anonymous" />
+
+	<!-- Optional theme -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+		integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+		crossorigin="anonymous" />
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="../mycss.css" />
+</h:head>
+<h:body>
+    <h:outputStylesheet name="../style/userViewCss.css" />
+	<ui:composition>
+	<div class="container">	
+		<div class="ui-grid ui-grid-responsive" styleClass="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+					<h:form>
+					<p:outputLabel value="There are no players subscribed yet!" rendered="#{!teamsView.existTeams}" />
+					</h:form>
+				</div>
+			</div>
+			
+			<div class="ui-grid-row">
+			<div class="ui-grid-col-12">
+				<h:form>
+					<p:pickList id="PojoPickList" value="#{teamsView.players}" 
+					var="theme" effect="bounce" itemValue="#{theme}"
+					itemLabel="#{theme.username}"  showCheckbox="true" responsive="true"
+					filterMatchMode="contains" converter="playerConverter" rendered="#{teamsView.existTeams}">
+
+					<f:facet name="sourceCaption" >#{teamsView.teamOne.name}</f:facet>
+					
+					<f:facet name="targetCaption">#{teamsView.teamTwo.name}</f:facet>
+
+					<p:ajax event="transfer" listener="#{teamsView.onTransfer}"/>
+					<p:ajax event="select" listener="#{teamsView.onSelect}" />
+					<p:ajax event="unselect" listener="#{teamsView.onUnselect}"/>
+					<p:ajax event="reorder" listener="#{teamsView.onReorder}" />
+
+					<p:column style="width:90%;">
+						<h:outputText value="#{theme.username}" />
+					</p:column>
+					</p:pickList>
+				</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</ui:composition>
+</h:body>
+</html>

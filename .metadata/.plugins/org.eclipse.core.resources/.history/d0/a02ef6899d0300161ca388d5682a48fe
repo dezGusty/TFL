@@ -1,0 +1,4 @@
+.ui-datatable tbody td
+{
+	border:none;
+}

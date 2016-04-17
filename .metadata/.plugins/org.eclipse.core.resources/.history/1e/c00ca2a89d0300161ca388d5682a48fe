@@ -1,0 +1,5 @@
+.ui-datatable tbody td
+{
+	border:none;
+	background-color:blue;
+}

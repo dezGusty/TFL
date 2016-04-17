@@ -45,7 +45,7 @@ public class TeamsView implements Serializable {
 	private boolean existTeams;
 
 	public boolean isExistTeams() {
-		return existTeams;
+		return this.existTeams;
 	}
 
 	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();

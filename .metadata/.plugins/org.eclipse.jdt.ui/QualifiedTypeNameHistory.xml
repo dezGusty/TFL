@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="org.primefaces.context.RequestContext"/>
 <fullyQualifiedTypeName name="org.hibernate.mapping.List"/>
 <fullyQualifiedTypeName name="model.GameLoser"/>
-<fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
 <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
 <fullyQualifiedTypeName name="javax.faces.convert.FacesConverter"/>
@@ -50,4 +49,5 @@
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="model.Team"/>
+<fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
 </qualifiedTypeNameHistroy>

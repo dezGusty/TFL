@@ -11,24 +11,19 @@
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-		crossorigin="anonymous" />
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 
 	<!-- Optional theme -->
 	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-		integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-		crossorigin="anonymous" />
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"/>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../mycss.css" />
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style/adminCss.css" />
 </h:head>
 <h:body>
+	<h:outputStylesheet name="../style/adminCss.css" />
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
@@ -47,23 +42,17 @@
 				</p:column>
 				<p:column headerText="Rating">#{player.rating}</p:column>
 					<p:column>
-						<p:commandButton value="Remove from players" update="table"
+						<p:commandButton value="Remove from players" update="table" style="background-color: transparent;"
 							actionListener="#{playersView.remove(player)}" ajax="false" />
 					</p:column>
 					<p:column>
-						<p:commandButton value="View chart" update="gamesTable"
+						<p:commandButton value="View chart" update="gamesTable" style="background-color: transparent;"
 							actionListener="#{playersView.redirectToChart(player)}" ajax="false" />
 					</p:column>
 
 			</p:dataTable>			
 		</h:form>
-			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-   				<h:panelGrid id="playerDetails" columns="2">
-
-        		</h:panelGrid>
-			</p:dialog>   
-		</div>
-		
+		</div>	
 	</div>
 </h:body>
 </html>

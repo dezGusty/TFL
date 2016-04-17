@@ -26,9 +26,10 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../mycss.css" />
+	<link rel="stylesheet" type="text/css" href="../style/userViewCss.css" />
 </h:head>
 <h:body>
+	<h:outputStylesheet name="../style/userViewCss.css" />
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
@@ -47,7 +48,7 @@
 				</p:column>
 				<p:column headerText="Difference">#{game.difference}</p:column>
 				<p:column >
-					<p:commandButton  value="View teams" 
+					<p:commandButton  value="View teams" style="background-color:transparent;"
                         actionListener="#{nextGamesView.viewTeams(game)}"
                         ajax="true" />
 				</p:column>

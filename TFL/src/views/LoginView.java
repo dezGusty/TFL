@@ -31,8 +31,8 @@ public class LoginView implements Serializable {
     private int looser;
     private boolean value;
     private boolean click;
- 
-    public boolean isClick() {
+
+	public boolean isClick() {
 		return click;
 	}
 
@@ -155,7 +155,6 @@ public class LoginView implements Serializable {
 	}
 	
 	public String login() throws IOException {
-
 		PlayerDataAccess pda = new PlayerDataAccess();
 		if ((this.username != null) && (this.password != null)) {
 			currentPlayer = new Player();
@@ -237,6 +236,8 @@ public class LoginView implements Serializable {
 	public void redirectToChangePass(ActionEvent actionEvent)
 	{
 		this.click=false;
+		this.oldPass="";
+		this.newPass="";
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 		try {
 			context.redirect(context.getRequestContextPath() + "/faces/resources/changepassword.xhtml");
@@ -332,6 +333,9 @@ public class LoginView implements Serializable {
 	
 	  public void changePassword() {
 		  this.click=false;
+		  System.out.println("Old pass"+this.oldPass);
+		  System.out.println("new pass"+this.newPass);
+		  System.out.println("Confimr new pass"+this.confirmPass);
 		  if(this.oldPass.compareTo(this.currentPlayer.getPassword())==0)
 		  {
 			  System.out.println("Old password is correct!");

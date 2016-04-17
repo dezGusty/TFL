@@ -1,0 +1,83 @@
+@CHARSET "ISO-8859-1";
+h3
+{
+	font-size: 48px;
+	padding: 10%;
+}
+
+.row
+{
+	text-align: center;
+}
+#whitefont
+{
+	color: white;
+}
+.ui-grid-col-6
+{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+div.col-xs-6.col-sm-6
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.ui-panelgrid .ui-panelgrid-cell
+{
+	border-style: hidden;
+}
+
+.ui-widget-content
+{
+	border:none;
+}
+
+.ui-panelgrid .ui-panelgrid-header
+{
+	background-color: white;
+}
+
+tr.ui-widget-header
+{
+	background-color:transparent;
+	border: none;
+}
+
+.ui-widget-header
+{
+	border: none;
+}
+.ui-toolbar
+{
+	border:none;
+	background-color:transparent;
+	padding-left: 40%;
+    padding-right: 40%;
+}
+
+td
+{
+	padding: 10px;
+}
+.ui-datatable tbody td
+{
+	text-align: center;
+	border-style: none;
+	padding: 1%;
+}
+.ui-datatable-odd
+{
+	background:none;
+}
+.ui-datatable thead th
+{
+	
+}
+
+
+
+
+

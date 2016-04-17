@@ -72,12 +72,13 @@ public class NextGamesView implements Serializable{
 		}
 		
 		public void play(Game game) {
+			
 			System.out.println("PlayGame!");
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
 			
 			GameDataAccess gda=new GameDataAccess();
-			gda.playGame(game, firstBean.getCurrentPlayer());
+			gda.playGame(game.getId(), firstBean.getCurrentPlayer().getId());
 			
 			System.out.println("Done");
 		}
@@ -115,9 +116,7 @@ public class NextGamesView implements Serializable{
 			GameDataAccess gda=new GameDataAccess();
 			gda.setDifference(this.selectedGame.getId(),this.selectedGame.getDifference(),winnersTeam,loserTeam);
 		}
-		
-		
-		
+			
 		public void newGame()
 		{
 			System.out.println("New game");
@@ -178,6 +177,7 @@ public class NextGamesView implements Serializable{
 				if(this.selectedGame.getPlayers().isEmpty())
 				{
 					System.out.println("This game has no game players");
+					teamsBean.setExistTeams(false);
 					teamsBean.themesSource.removeAll(teamsBean.themesSource);
 					teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
 					teamsBean.setTeamOne(null);
@@ -186,6 +186,11 @@ public class NextGamesView implements Serializable{
 				}
 				else
 				{
+					teamsBean.setExistTeams(true);
+					for(Player player:this.selectedGame.getPlayers())
+					{
+						System.out.println(player.getUsername());
+					}
 					
 					System.out.println("Players subscribed to this game:");
 					List<Player> list=new ArrayList<Player>();
@@ -215,6 +220,7 @@ public class NextGamesView implements Serializable{
 					else
 					{
 						teamsBean.themesSource.removeAll(teamsBean.themesSource);
+						teamsBean.themesSource.addAll(list);
 						teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
 						teamsBean.setTeamOne(null);
 						teamsBean.setTeamTwo(null);
@@ -224,6 +230,7 @@ public class NextGamesView implements Serializable{
 			}
 			else
 			{
+				teamsBean.setExistTeams(true);
 				System.out.println("This game has "+this.selectedGame.getTeams().size()+" teams!");				
 				//verific daca jocul are 2 echipe
 				//in cazul in care are doua echipe afisez echipele

@@ -166,21 +166,33 @@ public class GameDataAccess implements Serializable {
 		return result;
 	}
 	
-	public void playGame(Game game, Player player) {		
-		Player play =EntityManagerHelper.em.find(Player.class, player.getId());
-		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());	
+	public void playGame(int gameId, int playerId) {		
 		
-		if(findGame.gameStatus(play)==false)
+		Player play =EntityManagerHelper.em.find(Player.class,playerId);
+		Game findGame=EntityManagerHelper.em.find(Game.class, gameId);	
+		System.out.println(play.getId());
+		System.out.println(findGame.getId());
+		
+		//trebuie scoasa intr-o noua metoda
+		boolean exist=false;
+		
+		for(Player p:findGame.getPlayers())
+		{
+			if(p.getId()==play.getId())
+			{
+				exist=true;
+			}
+			System.out.println("Player "+p.getId()+" already playing game "+findGame.getId());
+		}
+		
+		if(!exist)
 		{
 			findGame.getPlayers().add(play);
-			play.getGames().add(findGame);
-			EntityManagerHelper.em.persist(play);
 			EntityManagerHelper.em.persist(findGame);
 			EntityManagerHelper.em.getTransaction().commit();
-		}
-		else
-		{
-			System.out.println("Player already playing this game!");
+			EntityManagerHelper.em.refresh(findGame);
+			EntityManagerHelper.em.refresh(play);
+			System.out.println("Player "+play.getUsername()+" is now playing game "+ findGame.dateToDisplay());		
 		}
 	}
 	  
@@ -203,15 +215,6 @@ public class GameDataAccess implements Serializable {
 //			EntityManagerHelper.em.getTransaction().commit();
 //		}
 	}
-	
-	public static void main(String[] args) {
-		GameDataAccess gda=new GameDataAccess();
-		Player play =EntityManagerHelper.em.find(Player.class,12);
-		Game findGame=EntityManagerHelper.em.find(Game.class, 13);
-		gda.addGameWinner(findGame, play);
-		//gda.addNewGame(null);
-	}
-	
 
 	public List<Team> listGameTeams(Game game)
 	{
@@ -243,5 +246,10 @@ public class GameDataAccess implements Serializable {
 		}
 		return null;
 		
+	}
+	
+	public static void main(String[] args) {
+		GameDataAccess gda=new GameDataAccess();
+		gda.playGame(3, 1);
 	}
 }

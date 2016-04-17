@@ -26,7 +26,7 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../mycss.css" />
+	<link rel="stylesheet" type="text/css" href="../style/userViewCss.css" />
 </h:head>
 <h:body>
 	<h:outputStylesheet name="../style/userViewCss.css" />
@@ -37,15 +37,8 @@
 	<div class="container">
 		<div class="ui-grid ui-grid-responsive">
 			<div class="ui-grid-row">
-				<div class="ui-grid-col-1">
-				1
-				</div>
-				
-			</div>
-		</div>		
-		
-		<div class="row">
-		<h:form>
+				<div class="ui-grid-col-12">
+							<h:form>
 
 			<p:dataTable value="#{nextGamesView.games}" var="game">
 				<f:facet name="header">Next games for normal user</f:facet>
@@ -57,18 +50,22 @@
 				</p:column>
 				<p:column headerText="Difference">#{game.difference}</p:column>
 				<p:column >
-					<p:commandButton value="Play this game"
+					<p:commandButton value="Play this game" style="background-color:transparent;"
                         actionListener="#{nextGamesView.play(game)}"
                         ajax="false" />
 				</p:column>
 				<p:column >
-					<p:commandButton  value="View teams" 
+					<p:commandButton  value="View teams" style="background-color:transparent;"
                         actionListener="#{nextGamesView.viewTeams(game)}"
                         ajax="true" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
-		</div>
+				</div>
+				
+			</div>
+		</div>		
+	
 	</div>
 </h:body>
 </html>
