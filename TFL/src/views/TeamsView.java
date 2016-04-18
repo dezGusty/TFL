@@ -220,10 +220,35 @@ public class TeamsView implements Serializable {
 			players=new DualListModel<>(this.themesSource,this.themesTarget);
 	    }
 	 
+	 public void backToGames()
+	 {
+			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+			
+			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+			if(firstBean.getCurrentPlayer().getType()==1)
+			{
+				try {
+					context.redirect(context.getRequestContextPath() + "/faces/resources/nextusergames.xhtml");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else
+			{
+				try {
+					context.redirect(context.getRequestContextPath() + "/faces/resources/teamsadmin.xhtml");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+	 }
+	 
 	 public void getPreviousTeam(ActionEvent actionEvent) {
 			System.out.println("Previous Team");
 			System.out.println("Index of map:"+indexOfMap);
-			//System.out.println(TeamGenerator.map.size());
 			System.out.println("Inex to comapre: "+(TeamGenerator.map.size()-1));
 			if(indexOfMap==0)
 			{

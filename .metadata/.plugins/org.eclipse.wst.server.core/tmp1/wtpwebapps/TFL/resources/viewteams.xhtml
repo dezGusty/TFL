@@ -36,13 +36,13 @@
 			<div class="ui-grid-row">
 				<div class="ui-grid-col-12">
 					<h:form>
-					<p:outputLabel value="There are no players subscribed yet!" rendered="#{!teamsView.existTeams}" />
+						<p:outputLabel value="There are no players subscribed yet!" rendered="#{!teamsView.existTeams}" />
 					</h:form>
 				</div>
 			</div>
 			
 			<div class="ui-grid-row">
-			<div class="ui-grid-col-12">
+				<div class="ui-grid-col-12">
 				<h:form>
 					<p:pickList id="PojoPickList" value="#{teamsView.players}" 
 					var="theme" effect="bounce" itemValue="#{theme}"
@@ -65,6 +65,13 @@
 				</h:form>
 				</div>
 			</div>
+			
+			<div class="ui-grid-row">
+				<h:form style="padding-left:40%;padding-right:40%;">
+					<p:commandButton value="Back" actionListener="#{teamsView.backToGames}" ajax="false" />
+				</h:form>
+			</div>
+			
 		</div>
 	</div>
 	</ui:composition>

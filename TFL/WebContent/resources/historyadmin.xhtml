@@ -27,7 +27,7 @@
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
-
+	
 	<div class="container">
 		<div class="row">
 		<h:form >
@@ -62,27 +62,41 @@
 			</p:dataTable>
 			</h:form>
 	
-			<h:form id="dialogForm">
-			<p:dialog header="Game result" widgetVar="resultDlg" modal="true" height="100">
-   				 <h:outputText value="This is a Modal Dialog." />
-   				 <p:outputPanel id="gameDetail" style="text-align:center;">
-   				 		<p:panel columns="2" rendered="#{not empty nextGamesView.selectedGame}">
-   				 			<h:outputText value="Difference: " />
-							 <p:inplace id="ajax" editor="true">
+				<p:dialog header="Game result" widgetVar="resultDlg" modal="true" style="width:50%;">
+					<div class="ui-grid ui-grid-responsive" >
+						<div class="ui-grid-row">
+						
+							<div class="ui-grid-col-12">
+								<h:outputText value="This is a Modal Dialog." />
+							</div>
+	
+						</div>
+						
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-6">
+								<h:outputText value="Difference: " />
+							</div>
+							<div class="ui-grid-col-6" >
+								<p:inplace id="ajax" editor="true">
             						<p:inputText value="#{nextGamesView.selectedGame.difference}"  label="text" />
-       						 </p:inplace>
-       						 
-       						 <h:outputText></h:outputText>
-       						 <ui:insert name="header">
+       							 </p:inplace>
+							</div>
+						</div>
+						
+						<div class="ui-grid-row">
+						 	<ui:insert name="header">
 									<ui:include src="/resources/viewteams.xhtml" />
 							</ui:insert>
-							
-							<p:commandButton  value="Save" actionListener="#{nextGamesView.addResult(nextGamesView.selectedGame)}" ajax="true" />
-							
-   				 		</p:panel> 				 	
-   				 </p:outputPanel>
-			</p:dialog>   
-			</h:form>
+						</div>
+						
+						<div class="ui-grid-row">
+							<h:form id="dialogForm" styleClass="smallButton" style="width:50%;">
+						 		<p:commandButton  value="Save" actionListener="#{nextGamesView.addResult(nextGamesView.selectedGame)}" ajax="true" style="padding-left:40%;padding-right:40%;"/>
+							</h:form>
+						</div>
+						
+					</div>
+				</p:dialog>   
 		</div>
 	</div>
 </h:body>

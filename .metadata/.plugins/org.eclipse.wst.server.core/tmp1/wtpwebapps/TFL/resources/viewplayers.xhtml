@@ -26,7 +26,7 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../userViewCss.css" />
+	<link rel="stylesheet" type="text/css" href="../style/userViewCss.css" />
 </h:head>
 <h:body>
 	<h:outputStylesheet name="../style/userViewCss.css" />
@@ -40,6 +40,11 @@
 
 			<p:dataTable value="#{playersView.players}" var="player">
 				<f:facet name="header">Players view for user</f:facet>
+				<p:column>
+					<div class="divnew">
+						<p:graphicImage style="height:50px" name="#{player.picture}" />
+					</div>
+				</p:column>
 				<p:column>
 					 <f:facet name="header">
 						<h:outputText value="Name"></h:outputText>

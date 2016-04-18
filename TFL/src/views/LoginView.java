@@ -188,11 +188,6 @@ public class LoginView implements Serializable {
 				new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Incorrect username or password!"));
 		return "/index";
 	}
-
-	public void redirectToGame()
-	{
-		System.out.println("redirect to games");
-	}
 	
 	public void redirectToGames(ActionEvent actionEvent)
 	{

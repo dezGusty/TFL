@@ -41,6 +41,15 @@ public class ChartView implements Serializable {
 		this.lineModel = lineModel2;
 	}
 	
+	private boolean existRatings;
+	
+	public boolean isExistRatings() {
+		return existRatings;
+	}
+	public void setExistRatings(boolean existRatings) {
+		this.existRatings = existRatings;
+	}
+
 	private List<Player> players;
 
     private LineChartModel lineModel;
@@ -57,13 +66,12 @@ public class ChartView implements Serializable {
     }
     
     public void createLineModels() {      
-    	
+   
         lineModel = initCategoryModel();
         lineModel.setTitle("Rating chart");
         lineModel.setLegendPosition("e");
         lineModel.setShowPointLabels(true);
         
-        //setez axa X sa fie de tip Date
         DateAxis axis = new DateAxis("Dates");
         lineModel.getAxes().put(AxisType.X, axis);
         
@@ -71,43 +79,47 @@ public class ChartView implements Serializable {
         
         Axis yAxis = lineModel.getAxis(AxisType.Y);
         yAxis.setLabel("Rating");
-//        if(this.players.size()!=0)
-//        {
-//        	System.out.println("There are players");
-//        }
-//        else
-//        {
-//        	System.out.println("There are no players");
-//        }
     }
     
     private LineChartModel initCategoryModel() {
     	
         LineChartModel model = new LineChartModel();
- 
-        for(Player p:this.players)
+        
+        if(this.players !=null)
         {
-        	System.out.println(p.getUsername());
-        	ChartSeries playerLineChart = new ChartSeries();
-        	playerLineChart.setLabel(p.getUsername());
-        	if(!p.getPlayerRatings().isEmpty())
+        	if(this.players.size()==1)
         	{
-        		//System.out.println(p.getUsername()+"has ratings");
-        		for(PlayerRating pl:p.getPlayerRatings())
-            	{
-        			//System.out.println(pl.getDate().toString());
-        			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-            		playerLineChart.set(sdf.format(pl.getDate()), pl.getRating());
-            	}
-            	model.addSeries(playerLineChart);
-            	//System.out.println(p.getUsername());
+        		if(this.players.get(0).getPlayerRatings()==null)
+        		{
+        			this.existRatings=false;
+        		}
         	}
         	else
         	{
-        		System.out.println("This player has no ratings!");
+        		for(Player p:this.players)
+                {
+                	System.out.println(p.getUsername());
+                	ChartSeries playerLineChart = new ChartSeries();
+                	playerLineChart.setLabel(p.getUsername());
+                	if(!p.getPlayerRatings().isEmpty())
+                	{
+                		//System.out.println(p.getUsername()+"has ratings");
+                		for(PlayerRating pl:p.getPlayerRatings())
+                    	{
+                			//System.out.println(pl.getDate().toString());
+                			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                    		playerLineChart.set(sdf.format(pl.getDate()), pl.getRating());
+                    	}
+                    	model.addSeries(playerLineChart);
+                    	//System.out.println(p.getUsername());
+                	}
+                	else
+                	{
+                		System.out.println("This player has no ratings!");
+                	}
+                } 
         	}
-        } 
-        
+        }        
         return model;
     }
 	

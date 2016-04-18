@@ -126,3 +126,173 @@ apr. 16, 2016 09:51:26.43 console.error:
 apr. 16, 2016 09:51:26.45   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
 apr. 16, 2016 09:51:48.55 console.error: 
 apr. 16, 2016 09:51:48.57   Protocol error (noSuchActor): No such actor for ID: server1.conn1.animationsActor23
+
+apr. 18, 2016 09:10:13.11 NEW SESSION
+apr. 18, 2016 09:10:13.11 console.error: mobileview: 
+apr. 18, 2016 09:10:13.27   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 18, 2016 09:10:13.33   Stack:
+apr. 18, 2016 09:10:13.49     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 18, 2016 09:10:13.51 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 18, 2016 09:10:13.57 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 18, 2016 09:10:13.58 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 18, 2016 09:10:13.61 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 18, 2016 09:10:13.61 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 18, 2016 09:10:13.63 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 18, 2016 09:10:13.71 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 18, 2016 09:10:13.74 
+apr. 18, 2016 09:10:13.74 console.error: mobileview: 
+apr. 18, 2016 09:10:13.76   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 18, 2016 09:10:13.82   Stack:
+apr. 18, 2016 09:10:13.88     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 18, 2016 09:10:13.97 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 18, 2016 09:10:14.00 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 18, 2016 09:10:14.03 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 18, 2016 09:10:14.03 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 18, 2016 09:10:14.04 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 18, 2016 09:10:14.08 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 18, 2016 09:10:14.10 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 18, 2016 09:10:14.13 
+apr. 18, 2016 09:24:16.50 1460960656529	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+apr. 18, 2016 09:24:16.97 1460960656996	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+apr. 18, 2016 10:15:38.12 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 18, 2016 10:20:03.91 *************************
+apr. 18, 2016 10:20:03.92 A coding exception was thrown in a Promise resolution callback.
+apr. 18, 2016 10:20:03.93 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 18, 2016 10:20:03.93 
+apr. 18, 2016 10:20:03.94 Full message: TypeError: dummyElement is null
+apr. 18, 2016 10:20:03.94 Full stack: TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 18, 2016 10:20:03.95 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 18, 2016 10:20:03.95 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 18, 2016 10:20:03.97 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 18, 2016 10:20:03.97 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 18, 2016 10:20:03.98 
+apr. 18, 2016 10:20:03.98 *************************
+apr. 18, 2016 10:20:03.98 console.error: 
+apr. 18, 2016 10:20:03.99   Message: TypeError: dummyElement is null
+apr. 18, 2016 10:20:03.99   Stack:
+apr. 18, 2016 10:20:04.00     TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 18, 2016 10:20:04.00 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 18, 2016 10:20:04.01 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 18, 2016 10:20:04.01 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 18, 2016 10:20:04.01 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 18, 2016 10:20:04.02 
+apr. 18, 2016 10:21:28.33 console.error: 
+apr. 18, 2016 10:21:28.33   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:21:28.35   Stack:
+apr. 18, 2016 10:21:28.35     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:21:28.36 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:21:28.43 
+apr. 18, 2016 10:21:28.46 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:21:28.47 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:21:28.47 console.error: 
+apr. 18, 2016 10:21:28.48   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:21:58.16 console.error: 
+apr. 18, 2016 10:21:58.18   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:21:58.18   Stack:
+apr. 18, 2016 10:21:58.19     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:21:58.19 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:21:58.20 
+apr. 18, 2016 10:21:58.20 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:21:58.21 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:21:58.22 console.error: 
+apr. 18, 2016 10:21:58.23   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:25:38.46 console.error: 
+apr. 18, 2016 10:25:38.47   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:25:38.47   Stack:
+apr. 18, 2016 10:25:38.47     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:25:38.48 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:25:38.50 
+apr. 18, 2016 10:25:38.52 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:25:38.53 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:25:38.54 console.error: 
+apr. 18, 2016 10:25:38.54   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:25:40.45 console.error: 
+apr. 18, 2016 10:25:40.46   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:25:40.46   Stack:
+apr. 18, 2016 10:25:40.47     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:25:40.48 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:25:40.50 
+apr. 18, 2016 10:25:40.51 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:25:40.52 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:25:40.53 console.error: 
+apr. 18, 2016 10:25:40.54   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:25:41.97 console.error: 
+apr. 18, 2016 10:25:41.97   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:25:41.97   Stack:
+apr. 18, 2016 10:25:41.98     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:25:41.98 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:25:42.00 
+apr. 18, 2016 10:25:42.03 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:25:42.03 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:25:42.04 console.error: 
+apr. 18, 2016 10:25:42.04   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:42:07.77 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 18, 2016 10:53:26.25 console.error: 
+apr. 18, 2016 10:53:26.26   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:53:26.26   Stack:
+apr. 18, 2016 10:53:26.26     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:53:26.28 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:53:26.29 
+apr. 18, 2016 10:53:26.30 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:53:26.30 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:53:26.31 console.error: 
+apr. 18, 2016 10:53:26.31   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:53:29.56 console.error: 
+apr. 18, 2016 10:53:29.57   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:53:29.57   Stack:
+apr. 18, 2016 10:53:29.58     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:53:29.58 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:53:29.59 
+apr. 18, 2016 10:53:29.60 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:53:29.60 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:53:29.61 console.error: 
+apr. 18, 2016 10:53:29.62   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:55:30.25 console.error: 
+apr. 18, 2016 10:55:30.26   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:55:30.26   Stack:
+apr. 18, 2016 10:55:30.27     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:55:30.27 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:55:30.31 
+apr. 18, 2016 10:55:30.31 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:55:30.32 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:55:30.33 console.error: 
+apr. 18, 2016 10:55:30.33   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:55:32.12 console.error: 
+apr. 18, 2016 10:55:32.12   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 10:55:32.12   Stack:
+apr. 18, 2016 10:55:32.13     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:55:32.13 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:55:32.14 
+apr. 18, 2016 10:55:32.14 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 18, 2016 10:55:32.15 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 18, 2016 10:55:32.15 console.error: 
+apr. 18, 2016 10:55:32.15   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 18, 2016 11:02:49.50 console.error: 
+apr. 18, 2016 11:02:49.51   Protocol error (noSuchActor): No such actor for ID: server1.conn1.animationsActor23
+apr. 18, 2016 11:43:56.62 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 18, 2016 12:06:43.02 *************************
+apr. 18, 2016 12:06:43.02 A coding exception was thrown in a Promise resolution callback.
+apr. 18, 2016 12:06:43.03 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 18, 2016 12:06:43.03 
+apr. 18, 2016 12:06:43.03 Full message: TypeError: dummyElement is null
+apr. 18, 2016 12:06:43.04 Full stack: TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 18, 2016 12:06:43.04 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 18, 2016 12:06:43.05 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 18, 2016 12:06:43.05 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 18, 2016 12:06:43.05 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 18, 2016 12:06:43.06 
+apr. 18, 2016 12:06:43.06 *************************
+apr. 18, 2016 12:06:43.07 console.error: 
+apr. 18, 2016 12:06:43.07   Message: TypeError: dummyElement is null
+apr. 18, 2016 12:06:43.07   Stack:
+apr. 18, 2016 12:06:43.08     TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 18, 2016 12:06:43.08 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 18, 2016 12:06:43.09 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 18, 2016 12:06:43.09 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 18, 2016 12:06:43.09 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 18, 2016 12:06:43.10 
+apr. 18, 2016 12:07:23.39 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 18, 2016 12:10:15.25 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 18, 2016 12:16:39.67 console.error: 
+apr. 18, 2016 12:16:39.67   Protocol error (noSuchActor): No such actor for ID: server1.conn4.animationsActor23
+apr. 18, 2016 12:19:27.20 console.warn: Asynchronous operation was aborted as selection changed.
