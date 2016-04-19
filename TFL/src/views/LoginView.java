@@ -168,11 +168,6 @@ public class LoginView implements Serializable {
 				{
 					System.out.println(gg.getDate());
 				}
-//				this.playedGames = this.currentPlayer.getGamePlayers().size();
-//				this.winner = this.currentPlayer.getGameWinners().size();
-//				this.looser = this.currentPlayer.getGameLosers().size();
-				
-				//System.out.println("Available from login:"+this.currentPlayer.getAvailable());
 					if (currentPlayer.getType() == 1) {
 						firstBean.setGames(gda.listGamesForPlayer(this.currentPlayer));
 						ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
@@ -222,6 +217,12 @@ public class LoginView implements Serializable {
 		this.click=false;
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 		try {
+				if(this.currentPlayer.getGames()!=null)
+				{
+					this.playedGames=this.currentPlayer.GetTotalPlayedGames();
+				}
+				this.winner=this.currentPlayer.GetGames(true);
+				this.looser=this.currentPlayer.GetGames(false);
 			context.redirect(context.getRequestContextPath() + "/faces/resources/viewpersonaldates.xhtml");
 		} catch (IOException e) {
 			e.printStackTrace();

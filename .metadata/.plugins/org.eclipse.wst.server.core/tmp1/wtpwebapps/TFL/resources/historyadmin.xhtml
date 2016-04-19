@@ -20,10 +20,10 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
-	<link rel="stylesheet" type="text/css" href="../style/adminCss.css" />
+	<link rel="stylesheet" type="text/css" href="../style/historyAdminCss.css" />
 </h:head>
 <h:body>
-	<h:outputStylesheet name="../style/adminCss.css" />
+	<h:outputStylesheet name="../style/historyAdminCss.css" />
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
@@ -90,9 +90,11 @@
 						</div>
 						
 						<div class="ui-grid-row">
-							<h:form id="dialogForm" styleClass="smallButton" style="width:50%;">
-						 		<p:commandButton  value="Save" actionListener="#{nextGamesView.addResult(nextGamesView.selectedGame)}" ajax="true" style="padding-left:40%;padding-right:40%;"/>
+							<div class="ui-grid-col-12">
+							<h:form id="dialogForm">
+						 		<p:commandButton  styleClass="smallButton" value="Save" actionListener="#{nextGamesView.addResult(nextGamesView.selectedGame)}" ajax="true" style="padding-left:40%;padding-right:40%;"/>
 							</h:form>
+							</div>
 						</div>
 						
 					</div>

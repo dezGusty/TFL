@@ -26,15 +26,18 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="../style/userViewCss.css" />
 </h:head>
 <h:body>
-	<h:outputStylesheet name="../style/userViewCss.css" />
+	<f:facet name="last">
+		<h:outputStylesheet rel="stylesheet" name="../style/userViewCss.css" />
+	</f:facet>
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
 
 	<div class="container">
-		<div class="row text-center">
+		<div class="row">
 			<div class="col-sm-3">
 			<span></span>
 			</div>
@@ -45,26 +48,26 @@
 					<p:graphicImage name="../images/ball.jpg" />
 				</f:facet>
 
-				<h:outputText value="Name:" />
+				<h:outputText styleClass="fontChange" value="Name:" />
 				<h:outputText value="#{loginView.currentPlayer.username}" />
 
 				<h:outputText value="ID:" />
 				<h:outputText value="#{loginView.currentPlayer.id}" />
 
 				<h:outputText value="Rating:" />
-				<h:outputText value="#{loginView.currentPlayer.rating}" />
+				<h:outputText  value="#{loginView.currentPlayer.rating}" />
 
 				<h:outputText value="Available:" />
 				<h:outputText value="#{loginView.currentPlayer.available}" />
 
 				<h:outputText value="Total played games:" />
-				<h:outputText value="#{loginView.playedGames}" />
+				<h:outputText  value="#{loginView.playedGames}" />
 
 				<h:outputText value="Winner:" />
-				<h:outputText value="#{loginView.winner}" />
+				<h:outputText  value="#{loginView.winner}" />
 
 				<h:outputText value="Loser:" />
-				<h:outputText value="#{loginView.looser}" />
+				<h:outputText styleClass="fontChange" value="#{loginView.looser}" />
 			</p:panelGrid>
 			</div>
 			

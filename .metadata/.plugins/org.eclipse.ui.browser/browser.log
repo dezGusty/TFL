@@ -296,3 +296,411 @@ apr. 18, 2016 12:10:15.25 console.warn: Asynchronous operation was aborted as se
 apr. 18, 2016 12:16:39.67 console.error: 
 apr. 18, 2016 12:16:39.67   Protocol error (noSuchActor): No such actor for ID: server1.conn4.animationsActor23
 apr. 18, 2016 12:19:27.20 console.warn: Asynchronous operation was aborted as selection changed.
+
+apr. 19, 2016 10:02:54.33 NEW SESSION
+apr. 19, 2016 10:02:54.33 console.error: mobileview: 
+apr. 19, 2016 10:02:54.64   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 19, 2016 10:02:54.64   Stack:
+apr. 19, 2016 10:02:54.64     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 19, 2016 10:02:54.65 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 19, 2016 10:02:54.65 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 19, 2016 10:02:54.66 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 19, 2016 10:02:54.67 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 19, 2016 10:02:54.67 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 10:02:54.67 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 10:02:54.68 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 10:02:54.68 
+apr. 19, 2016 10:02:54.69 console.error: mobileview: 
+apr. 19, 2016 10:02:54.69   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 19, 2016 10:02:54.70   Stack:
+apr. 19, 2016 10:02:54.70     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 19, 2016 10:02:54.70 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 19, 2016 10:02:54.71 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 19, 2016 10:02:54.71 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 19, 2016 10:02:54.71 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 19, 2016 10:02:54.72 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 10:02:54.72 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 10:02:54.73 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 10:02:54.73 
+apr. 19, 2016 10:17:09.80 1461050229709	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+apr. 19, 2016 10:17:10.18 1461050230158	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+apr. 19, 2016 10:38:17.07 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 19, 2016 10:43:53.89 console.error: 
+apr. 19, 2016 10:43:53.90   Message: Error: Failed to fetch http://localhost:8080/TFL/faces/javax.faces.resource/primefaces.css?ln=primefaces&v=5.3. Code 2152398850.
+apr. 19, 2016 10:43:53.94   Stack:
+apr. 19, 2016 10:43:53.95     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 10:43:53.95 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 10:43:53.96 
+apr. 19, 2016 10:43:53.96 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 10:43:53.97 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 10:52:01.71 console.error: 
+apr. 19, 2016 10:52:01.71   navigated; resolution of _defaultNode aborted
+apr. 19, 2016 10:57:19.06 console.error: 
+apr. 19, 2016 10:57:19.06   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 10:57:19.07   Stack:
+apr. 19, 2016 10:57:19.07     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 10:57:19.07 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 10:57:19.08 
+apr. 19, 2016 10:57:19.08 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 10:57:19.09 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 10:57:19.10 console.error: 
+apr. 19, 2016 10:57:19.12   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 10:57:20.40 console.error: 
+apr. 19, 2016 10:57:20.41   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 10:57:20.41   Stack:
+apr. 19, 2016 10:57:20.42     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 10:57:20.42 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 10:57:20.42 
+apr. 19, 2016 10:57:20.43 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 10:57:20.43 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 10:57:20.46 console.error: 
+apr. 19, 2016 10:57:20.47   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:18:25.11 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 19, 2016 11:26:06.39 console.error: 
+apr. 19, 2016 11:26:06.46   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:26:06.47   Stack:
+apr. 19, 2016 11:26:06.47     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:26:06.48 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:26:06.48 
+apr. 19, 2016 11:26:06.49 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:26:06.49 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:26:06.50 console.error: 
+apr. 19, 2016 11:26:06.51   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:31:11.87 console.error: 
+apr. 19, 2016 11:31:11.88   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:31:11.88   Stack:
+apr. 19, 2016 11:31:11.89     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:31:11.89 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:31:11.89 
+apr. 19, 2016 11:31:11.91 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:31:11.91 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:31:11.93 console.error: 
+apr. 19, 2016 11:31:11.94   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:31:13.36 console.error: 
+apr. 19, 2016 11:31:13.36   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:31:13.36   Stack:
+apr. 19, 2016 11:31:13.37     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:31:13.37 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:31:13.38 
+apr. 19, 2016 11:31:13.39 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:31:13.40 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:31:13.41 console.error: 
+apr. 19, 2016 11:31:13.42   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:31:17.91 console.error: 
+apr. 19, 2016 11:31:17.91   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:31:17.92   Stack:
+apr. 19, 2016 11:31:17.92     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:31:17.94 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:31:17.96 
+apr. 19, 2016 11:31:18.07 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:31:18.10 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:31:18.11 console.error: 
+apr. 19, 2016 11:31:18.12   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:49:16.19 console.error: 
+apr. 19, 2016 11:49:16.20   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:49:16.20   Stack:
+apr. 19, 2016 11:49:16.21     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:49:16.21 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:49:16.27 
+apr. 19, 2016 11:49:16.29 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:49:16.30 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:49:16.31 console.error: 
+apr. 19, 2016 11:49:16.31   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:49:21.59 console.error: 
+apr. 19, 2016 11:49:21.59   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 11:49:21.67   Stack:
+apr. 19, 2016 11:49:21.69     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:49:21.71 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:49:22.74 
+apr. 19, 2016 11:49:22.75 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 11:49:22.75 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 11:49:22.76 console.error: 
+apr. 19, 2016 11:49:22.76   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:10:04.30 console.error: 
+apr. 19, 2016 12:10:04.30   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:10:04.31   Stack:
+apr. 19, 2016 12:10:04.32     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:10:04.32 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:10:04.32 
+apr. 19, 2016 12:10:04.33 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:10:04.35 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:10:04.35 console.error: 
+apr. 19, 2016 12:10:04.36   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:10:05.65 console.error: 
+apr. 19, 2016 12:10:05.65   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:10:05.66   Stack:
+apr. 19, 2016 12:10:05.66     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:10:05.67 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:10:05.67 
+apr. 19, 2016 12:10:05.68 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:10:05.68 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:10:05.69 console.error: 
+apr. 19, 2016 12:10:05.71   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:10:20.40 console.error: 
+apr. 19, 2016 12:10:20.40   Message: Error: Failed to fetch http://localhost:8080/TFL/faces/style/userViewCss.css. Code 2152398850.
+apr. 19, 2016 12:10:20.40   Stack:
+apr. 19, 2016 12:10:20.41     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:10:20.41 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:10:20.42 
+apr. 19, 2016 12:10:20.43 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:10:20.44 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:10:24.80 console.error: 
+apr. 19, 2016 12:10:24.80   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:10:24.81   Stack:
+apr. 19, 2016 12:10:24.82     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:10:24.82 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:10:24.83 
+apr. 19, 2016 12:10:24.84 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:10:24.84 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:10:24.87 console.error: 
+apr. 19, 2016 12:10:24.88   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:28:54.30 console.error: 
+apr. 19, 2016 12:28:54.32   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:28:54.33   Stack:
+apr. 19, 2016 12:28:54.33     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:28:54.34 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:28:54.34 
+apr. 19, 2016 12:28:54.35 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 12:28:54.35 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 12:28:54.36 console.error: 
+apr. 19, 2016 12:28:54.36   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 12:32:48.64 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 19, 2016 12:34:22.85 *************************
+apr. 19, 2016 12:34:22.85 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:34:22.86 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:34:22.86 
+apr. 19, 2016 12:34:22.87 Full message: TypeError: dummyElement is null
+apr. 19, 2016 12:34:22.87 Full stack: TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 19, 2016 12:34:22.88 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 19, 2016 12:34:22.88 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:34:22.88 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:34:22.89 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:34:22.89 
+apr. 19, 2016 12:34:22.90 *************************
+apr. 19, 2016 12:34:22.90 console.error: 
+apr. 19, 2016 12:34:22.91   Message: TypeError: dummyElement is null
+apr. 19, 2016 12:34:22.91   Stack:
+apr. 19, 2016 12:34:22.91     TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 19, 2016 12:34:22.92 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 19, 2016 12:34:22.92 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:34:22.93 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:34:22.93 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:34:22.93 
+apr. 19, 2016 12:35:06.54 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 19, 2016 12:36:53.21 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 19, 2016 12:47:10.50 console.error: 
+apr. 19, 2016 12:47:10.57   Error writing response to: children
+apr. 19, 2016 12:47:10.57 *************************
+apr. 19, 2016 12:47:10.58 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:47:10.58 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:47:10.58 
+apr. 19, 2016 12:47:10.59 Full message: TypeError: this.walker is null
+apr. 19, 2016 12:47:10.59 Full stack: exports.NodeActor<.form@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:254:9
+apr. 19, 2016 12:47:10.60 types.addActorType/type<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:294:44
+apr. 19, 2016 12:47:10.60 types.addArrayType/<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:40
+apr. 19, 2016 12:47:10.60 types.addArrayType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:24
+apr. 19, 2016 12:47:10.62 types.addDictType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:233:23
+apr. 19, 2016 12:47:10.63 RetVal<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:529:12
+apr. 19, 2016 12:47:10.64 Response<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:682:1
+apr. 19, 2016 12:47:10.65 Response<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:680:23
+apr. 19, 2016 12:47:10.66 actorProto/</handler/sendReturn@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1023:24
+apr. 19, 2016 12:47:10.66 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:47:10.67 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:47:10.67 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:47:10.68 
+apr. 19, 2016 12:47:10.68 *************************
+apr. 19, 2016 12:47:10.68 console.error: 
+apr. 19, 2016 12:47:10.69   Message: TypeError: this.walker is null
+apr. 19, 2016 12:47:10.69   Stack:
+apr. 19, 2016 12:47:10.70     exports.NodeActor<.form@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:254:9
+apr. 19, 2016 12:47:10.70 types.addActorType/type<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:294:44
+apr. 19, 2016 12:47:10.71 types.addArrayType/<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:40
+apr. 19, 2016 12:47:10.71 types.addArrayType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:24
+apr. 19, 2016 12:47:10.72 types.addDictType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:233:23
+apr. 19, 2016 12:47:10.72 RetVal<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:529:12
+apr. 19, 2016 12:47:10.73 Response<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:682:1
+apr. 19, 2016 12:47:10.73 Response<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:680:23
+apr. 19, 2016 12:47:10.73 actorProto/</handler/sendReturn@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1023:24
+apr. 19, 2016 12:47:10.74 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:47:10.74 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:47:10.75 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:47:10.76 
+apr. 19, 2016 12:47:10.76 exports.NodeActor<.form@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:254:9
+apr. 19, 2016 12:47:10.77 types.addActorType/type<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:294:44
+apr. 19, 2016 12:47:10.77 types.addArrayType/<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:40
+apr. 19, 2016 12:47:10.78 types.addArrayType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:24
+apr. 19, 2016 12:47:10.78 types.addDictType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:233:23
+apr. 19, 2016 12:47:10.79 RetVal<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:529:12
+apr. 19, 2016 12:47:10.79 Response<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:682:1
+apr. 19, 2016 12:47:10.80 Response<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:680:23
+apr. 19, 2016 12:47:10.80 actorProto/</handler/sendReturn@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1023:24
+apr. 19, 2016 12:47:10.81 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:47:10.81 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:47:10.82 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:47:10.82 console.error: 
+apr. 19, 2016 12:47:10.83   Protocol error (unknownError): TypeError: this.walker is null
+apr. 19, 2016 12:48:19.86 onPacket threw an exception: Error: Server did not specify an actor, dropping packet: {"error":"unknownError","message":"error occurred while processing 'detach: TypeError: this.walker is null\nStack: exports.NodeActor<.conn@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:227:5\nPool<.parent@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:737:24\nPool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:803:18\nActor<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:892:5\nexports.NodeActor<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:236:5\nPool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9\nActor<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:892:5\nWalkerActor<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:1390:5\nPool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9\nActor<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:892:5\nexports.InspectorActor<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3718:5\nexports.InspectorActor<.disconnect@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3730:5\nAP_remove@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/common.js:263:7\nAP_destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/common.js:225:7\nDSC_removeActorPool/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/main.js:1427:32\nDSC_removeActorPool@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/main.js:1427:9\nBTA_detach@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:1349:7\nBTA_onDetach@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:1395:10\nDSC_onPacket@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/main.js:1643:15\nLocalDebuggerTransport.prototype.send/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/transport/transport.js:569:11\nmakeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14\nmakeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14\nLine: 227, column: 5"}
+apr. 19, 2016 12:48:19.87 Stack: DebuggerClient.prototype.onPacket@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/client/main.js:931:1
+apr. 19, 2016 12:48:19.87 LocalDebuggerTransport.prototype.send/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/transport/transport.js:569:11
+apr. 19, 2016 12:48:19.87 makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+apr. 19, 2016 12:48:19.88 makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+apr. 19, 2016 12:48:19.89 Line: 931, column: 1
+apr. 19, 2016 12:49:04.62 *************************
+apr. 19, 2016 12:49:04.63 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:49:04.64 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:49:04.65 
+apr. 19, 2016 12:49:04.65 Full message: TypeError: this._toolbox is null
+apr. 19, 2016 12:49:04.66 Full stack: InspectorPanel.prototype.selection@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/inspector/inspector-panel.js:126:5
+apr. 19, 2016 12:49:04.66 CM_inspectNode/<@chrome://browser/content/nsContextMenu.js:591:9
+apr. 19, 2016 12:49:04.67 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:49:04.67 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:49:04.67 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:49:04.68 
+apr. 19, 2016 12:49:04.68 *************************
+apr. 19, 2016 12:49:10.63 *************************
+apr. 19, 2016 12:49:10.64 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:49:10.65 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:49:10.65 
+apr. 19, 2016 12:49:10.66 Full message: TypeError: this._toolbox is null
+apr. 19, 2016 12:49:10.66 Full stack: InspectorPanel.prototype.selection@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/inspector/inspector-panel.js:126:5
+apr. 19, 2016 12:49:10.67 CM_inspectNode/<@chrome://browser/content/nsContextMenu.js:591:9
+apr. 19, 2016 12:49:10.67 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:49:10.68 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:49:10.68 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:49:10.69 
+apr. 19, 2016 12:49:10.69 *************************
+apr. 19, 2016 12:49:14.26 *************************
+apr. 19, 2016 12:49:14.26 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:49:14.27 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:49:14.28 
+apr. 19, 2016 12:49:14.29 Full message: TypeError: this._toolbox is null
+apr. 19, 2016 12:49:14.29 Full stack: InspectorPanel.prototype.selection@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/inspector/inspector-panel.js:126:5
+apr. 19, 2016 12:49:14.30 CM_inspectNode/<@chrome://browser/content/nsContextMenu.js:591:9
+apr. 19, 2016 12:49:14.31 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:49:14.32 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:49:14.32 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:49:14.33 
+apr. 19, 2016 12:49:14.34 *************************
+apr. 19, 2016 12:49:16.74 *************************
+apr. 19, 2016 12:49:16.75 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:49:16.76 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:49:16.77 
+apr. 19, 2016 12:49:16.77 Full message: TypeError: this._toolbox is null
+apr. 19, 2016 12:49:16.78 Full stack: InspectorPanel.prototype.selection@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/inspector/inspector-panel.js:126:5
+apr. 19, 2016 12:49:16.79 CM_inspectNode/<@chrome://browser/content/nsContextMenu.js:591:9
+apr. 19, 2016 12:49:16.80 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:49:16.80 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:49:16.80 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:49:16.81 
+apr. 19, 2016 12:49:16.81 *************************
+apr. 19, 2016 12:50:12.80 *************************
+apr. 19, 2016 12:50:12.80 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:50:12.81 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:50:12.81 
+apr. 19, 2016 12:50:12.82 Full message: TypeError: this._toolbox is null
+apr. 19, 2016 12:50:12.82 Full stack: InspectorPanel.prototype.selection@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/inspector/inspector-panel.js:126:5
+apr. 19, 2016 12:50:12.82 CM_inspectNode/<@chrome://browser/content/nsContextMenu.js:591:9
+apr. 19, 2016 12:50:12.83 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:50:12.83 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:50:12.83 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:50:12.84 
+apr. 19, 2016 12:50:12.84 *************************
+apr. 19, 2016 12:50:47.06 *************************
+apr. 19, 2016 12:50:47.07 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:50:47.08 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:50:47.08 
+apr. 19, 2016 12:50:47.09 Full message: TypeError: this._toolbox is null
+apr. 19, 2016 12:50:47.10 Full stack: InspectorPanel.prototype.selection@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/inspector/inspector-panel.js:126:5
+apr. 19, 2016 12:50:47.10 CM_inspectNode/<@chrome://browser/content/nsContextMenu.js:591:9
+apr. 19, 2016 12:50:47.10 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:50:47.11 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:50:47.11 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:50:47.12 
+apr. 19, 2016 12:50:47.12 *************************
+apr. 19, 2016 12:50:57.32 *************************
+apr. 19, 2016 12:50:57.33 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 12:50:57.34 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 12:50:57.35 
+apr. 19, 2016 12:50:57.35 Full message: TypeError: this._toolbox is null
+apr. 19, 2016 12:50:57.36 Full stack: InspectorPanel.prototype.selection@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/inspector/inspector-panel.js:126:5
+apr. 19, 2016 12:50:57.36 CM_inspectNode/<@chrome://browser/content/nsContextMenu.js:591:9
+apr. 19, 2016 12:50:57.37 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 12:50:57.37 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 12:50:57.38 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 12:50:57.38 
+apr. 19, 2016 12:50:57.39 *************************
+apr. 19, 2016 12:50:59.22 Handler function BrowserTabList.prototype.handleEvent threw an exception: TypeError: this.threadActor is null
+apr. 19, 2016 12:50:59.26 Stack: BTA_exit@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:971:7
+apr. 19, 2016 12:50:59.27 BrowserTabActor.prototype.exit@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:1960:3
+apr. 19, 2016 12:50:59.27 BrowserTabList.prototype._handleActorClose@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:441:3
+apr. 19, 2016 12:50:59.28 BrowserTabList.prototype.handleEvent<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:518:7
+apr. 19, 2016 12:50:59.29 makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+apr. 19, 2016 12:50:59.29 _beginRemoveTab@chrome://browser/content/tabbrowser.xml:2245:13
+apr. 19, 2016 12:50:59.29 removeTab@chrome://browser/content/tabbrowser.xml:2130:18
+apr. 19, 2016 12:50:59.30 onxblclick@chrome://browser/content/tabbrowser.xml:5886:1
+apr. 19, 2016 12:50:59.30 Line: 971, column: 7
+apr. 19, 2016 12:55:29.44 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 19, 2016 13:05:46.96 console.error: 
+apr. 19, 2016 13:05:46.97   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 13:05:46.97   Stack:
+apr. 19, 2016 13:05:46.98     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 13:05:46.98 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 13:05:46.98 
+apr. 19, 2016 13:05:47.00 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 13:05:47.00 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 13:05:47.01 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 19, 2016 13:05:47.02 console.error: 
+apr. 19, 2016 13:05:47.03   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 19, 2016 13:05:55.47 *************************
+apr. 19, 2016 13:05:55.47 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 13:05:55.48 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 13:05:55.48 
+apr. 19, 2016 13:05:55.48 Full message: TypeError: can't access dead object
+apr. 19, 2016 13:05:55.49 Full stack: StyleSheetActor<.href@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:448:5
+apr. 19, 2016 13:05:55.49 StyleSheetActor<._fetchSourceMap/</map<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:754:11
+apr. 19, 2016 13:05:55.50 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 13:05:55.50 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 13:05:55.50 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 13:05:55.51 
+apr. 19, 2016 13:05:55.51 *************************
+apr. 19, 2016 13:06:26.80 console.error: 
+apr. 19, 2016 13:06:26.81   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css. Code 2152398850.
+apr. 19, 2016 13:06:26.81   Stack:
+apr. 19, 2016 13:06:26.82     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 13:06:26.82 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 13:06:26.83 
+apr. 19, 2016 13:06:26.83 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 19, 2016 13:06:26.84 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 19, 2016 13:08:42.66 *************************
+apr. 19, 2016 13:08:42.66 A coding exception was thrown in a Promise resolution callback.
+apr. 19, 2016 13:08:42.67 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 19, 2016 13:08:42.67 
+apr. 19, 2016 13:08:42.68 Full message: TypeError: decl.commentOffsets is undefined
+apr. 19, 2016 13:08:42.68 Full stack: RuleRewriter.prototype.setPropertyEnabled@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/shared/css-parsing-utils.js:740:11
+apr. 19, 2016 13:08:42.69 Rule.prototype.setPropertyEnabled/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:830:7
+apr. 19, 2016 13:08:42.69 Rule.prototype.applyProperties/resultPromise<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:731:11
+apr. 19, 2016 13:08:42.70 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 13:08:42.70 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 13:08:42.70 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 13:08:42.71 
+apr. 19, 2016 13:08:42.71 *************************
+apr. 19, 2016 13:08:42.72 console.error: 
+apr. 19, 2016 13:08:42.72   Message: TypeError: decl.commentOffsets is undefined
+apr. 19, 2016 13:08:42.72   Stack:
+apr. 19, 2016 13:08:42.73     RuleRewriter.prototype.setPropertyEnabled@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/shared/css-parsing-utils.js:740:11
+apr. 19, 2016 13:08:42.73 Rule.prototype.setPropertyEnabled/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:830:7
+apr. 19, 2016 13:08:42.74 Rule.prototype.applyProperties/resultPromise<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:731:11
+apr. 19, 2016 13:08:42.74 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 13:08:42.74 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 13:08:42.75 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 13:08:42.75 
+apr. 19, 2016 13:08:44.05 console.error: 
+apr. 19, 2016 13:08:44.05   Message: TypeError: decl.commentOffsets is undefined
+apr. 19, 2016 13:08:44.06   Stack:
+apr. 19, 2016 13:08:44.06     RuleRewriter.prototype.setPropertyEnabled@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/shared/css-parsing-utils.js:740:11
+apr. 19, 2016 13:08:44.07 Rule.prototype.setPropertyEnabled/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:830:7
+apr. 19, 2016 13:08:44.07 Rule.prototype.applyProperties/resultPromise<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:731:11
+apr. 19, 2016 13:08:44.08 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 19, 2016 13:08:44.08 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 19, 2016 13:08:44.08 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 19, 2016 13:08:44.09 

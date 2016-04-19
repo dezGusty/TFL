@@ -39,7 +39,10 @@ ui-widget-content ui-datatable-odd
 {
 	background:none;
 }
-
+.ui-inputswitch-off
+{
+	height:100%;
+}
 
 
 

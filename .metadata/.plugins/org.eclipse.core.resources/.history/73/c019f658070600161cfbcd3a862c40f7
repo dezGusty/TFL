@@ -1,0 +1,123 @@
+@CHARSET "ISO-8859-1";
+h3
+{
+	font-size: 48px;
+	padding: 10%;
+}
+
+.row
+{
+	text-align: center;
+}
+
+#whitefont
+{
+	color: white;
+}
+
+div.col-xs-6.col-sm-6
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.ui-panelgrid .ui-panelgrid-cell
+{
+	border-style: hidden;
+}
+
+.ui-widget-content
+{
+	border:none;
+}
+
+.ui-panelgrid .ui-panelgrid-header
+{
+	background-color: white;
+}
+
+tr.ui-widget-header
+{
+	background-color:transparent;
+	border: none;
+}
+
+.ui-widget-header
+{
+	border: none;
+}
+.ui-toolbar
+{
+	border:none;
+	background-color:transparent;
+	padding-left: 40%;
+    padding-right: 40%;
+}
+
+td
+{
+	padding: 10px;
+}
+.ui-datatable tbody td
+{
+	text-align: center;
+	border-style: none;
+	padding: 1%;
+}
+.ui-datatable-odd
+{
+	background:none;
+}
+.ui-datatable thead th
+{
+	background-color: transparent;
+	border: none;
+}
+.ui-picklist.ui-picklist-responsive
+{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+ui-grid ui-grid-responsive
+{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.classForStyling
+{
+	-moz-box-shadow: 0px 10px 14px -7px #1c1b18;
+	-webkit-box-shadow: 0px 10px 14px -7px #1c1b18;
+	box-shadow: 0px 10px 14px -7px #1c1b18;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eae0c2), color-stop(1, #ccc2a6));
+	background:-moz-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-webkit-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-o-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:-ms-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eae0c2', endColorstr='#ccc2a6',GradientType=0);
+	background-color:#eae0c2;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+.row text-center
+{
+	background-color: blue;
+}
+
+
+
+
+
+

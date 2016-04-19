@@ -65,7 +65,7 @@ public class Player implements Serializable {
 	private String username;
 
 	//bi-directional many-to-many association to Game
-	@ManyToMany(mappedBy="players")
+	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
 	private List<Game> games;
 
 	//bi-directional many-to-one association to PlayerRating
@@ -73,7 +73,7 @@ public class Player implements Serializable {
 	private List<PlayerRating> playerRatings;
 
 	//bi-directional many-to-many association to Team
-	@ManyToMany(mappedBy="players")
+	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
 	private List<Team> teams;
 
 	public Player() {
@@ -171,6 +171,36 @@ public class Player implements Serializable {
 
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
+	}
+	
+	public int GetGames(boolean winned)
+	{
+		int count=0;
+		if(this.teams==null)
+		{
+			return 0;
+		}
+		else
+		{
+			for(Team team: this.teams)
+			{
+				
+				if(team.getWinner()==winned)
+				{
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+	
+	public int GetTotalPlayedGames()
+	{
+		if(this.games!=null)
+		{
+			return this.games.size();
+		}
+		return 0;
 	}
 
 }
