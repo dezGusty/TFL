@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+	<ui:composition>
+		<h:form>
+			<div class="ui-grid ui-grid-responsive">
+				<div class="ui-grid-row" style="text-align:center;margin-left: 12%; margin-right: 12%;">
+					<div class="ui-grid-col-2">
+						<p:panel>
+							<p:commandButton value="Menu" actionListener="#{loginView.showMenu}" update="menu" ajax="false" />
+						</p:panel>
+					</div>
+					
+					<div class="ui-grid-col-6" style="text-align:left;">
+						<p:panel id="panell">
+							<h:panelGrid columns="2" cellpadding="10">
+								<p:graphicImage style="height:30px" name="../images/ball.jpg" />
+								<p:outputLabel value="Welcome, #{loginView.currentPlayer.username} !"></p:outputLabel>
+							</h:panelGrid>
+						</p:panel>
+					</div>
+					
+					<div class="ui-grid-col-4">
+						<p:panel>
+								<p:commandButton value="Logout" actionListener="#{loginView.logout}" />
+						</p:panel>
+					</div>
+				</div>
+				
+				<div class="ui-grid-row" style="text-align:center;background: rgba(255,236,216,0.6); position:absolute; z-index:200">
+					<p:menu toggleable="true" styleClass="menu" id="menu" rendered="#{loginView.click}" style="background:none;border:0px;">
+       					<p:submenu styleClass=".ui-menu .ui-widget-header h3" label="My account" style="background:none;border:0px;">
+           						 <p:menuitem value="View my personal dates" actionListener="#{loginView.redirectToPersonalDates}"></p:menuitem>
+            					 <p:menuitem value="Change password" actionListener="#{loginView.redirectToChangePass}" ></p:menuitem>
+       					</p:submenu>
+       					<p:submenu styleClass=".ui-menu .ui-widget-header h3" label="Games" style="background:none;border:0px;">
+         						  <p:menuitem value="View next games" actionListener="#{loginView.redirectToGames}"></p:menuitem>
+								  <p:menuitem value="View games history" actionListener="#{loginView.redirectToHistory}" ></p:menuitem>
+      					 </p:submenu>
+        			    <p:submenu styleClass=".ui-menu .ui-widget-header h3" label="Players" style="background:none;border:0px;">
+           						 <p:menuitem value="View all players" actionListener="#{loginView.redirectToPlayers}"></p:menuitem>
+        				</p:submenu>
+        				<p:submenu styleClass=".ui-menu .ui-widget-header h3" label="Charts" style="background:none;border:0px;">
+           						 <p:menuitem value="View charts" actionListener="#{loginView.redirectToCharts}"></p:menuitem>
+        				</p:submenu>
+   					</p:menu>
+				</div>
+			</div>
+		</h:form>	
+	</ui:composition>
+</h:body>
+</html>

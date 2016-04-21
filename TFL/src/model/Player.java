@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 import model.PlayerRating;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class Player implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	
 	@Override
 	public String toString() {
 		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
@@ -77,6 +79,9 @@ public class Player implements Serializable {
 	private List<Team> teams;
 
 	public Player() {
+		this.teams=new ArrayList<Team>();
+		this.games=new ArrayList<Game>();
+		this.playerRatings=new ArrayList<PlayerRating>();
 	}
 
 	public Integer getId() {
@@ -176,21 +181,21 @@ public class Player implements Serializable {
 	public int GetGames(boolean winned)
 	{
 		int count=0;
-		if(this.teams==null)
-		{
-			return 0;
-		}
+
+		if(this.getTeams()==null)
+			System.out.println("No teams");
 		else
 		{
-			for(Team team: this.teams)
+			for(Team t:this.getTeams())
 			{
-				
-				if(team.getWinner()==winned)
+				if(t.getWinner()==true)
 				{
 					count++;
 				}
+				System.out.println(t.getWinner());
 			}
 		}
+		System.out.println("winned games: "+count);
 		return count;
 	}
 	

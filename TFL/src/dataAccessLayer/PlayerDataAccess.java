@@ -134,6 +134,31 @@ public class PlayerDataAccess implements Serializable{
 	  
 	  public static void main(String[] args) {
 		PlayerDataAccess pda=new PlayerDataAccess();
+		Player play=pda.loginUser("paula", "parc");
+		if(play==null)
+		{
+			System.out.println("Player null");
+		}
+		else
+		{
+			int count=0;
+			System.out.println(play.getUsername());
+			System.out.println(play.getRating());		
+			if(play.getTeams()==null)
+				System.out.println("No teams");
+			else
+			{
+				for(Team t:play.getTeams())
+				{
+					if(t.getWinner()==true)
+					{
+						count++;
+					}
+					System.out.println(t.getWinner());
+				}
+			}
+			System.out.println("winned games: "+count);
+		}	
 
 	}
 }

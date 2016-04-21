@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<f:facet name="last">
+		<h:outputStylesheet  name="../style/headerCss.css" />
+	</f:facet>
+	
+	<ui:insert name="header">
+		<ui:include src="/resources/header.xhtml" />
+	</ui:insert>
+	
+	<h:form>
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+					<p:outputPanel>
+						<h:commandLink title="Games history" actionListener="#{loginView.redirectToGames}">
+  				  			<h:graphicImage id="img" name="../images/next.jpg" style="display:block;width:100%;height:100%"  />	
+						</h:commandLink>
+					</p:outputPanel>
+				</div>
+			</div>
+			
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6">
+					<p:outputPanel>
+							<h:commandLink title="Games history" actionListener="#{loginView.redirectToHistory}">
+  				  				<h:graphicImage name="../images/history.jpg" style="display:block;width:100%;height:100%"  />
+						 	 </h:commandLink>
+						</p:outputPanel>
+				</div>
+			</div>
+			
+		</div>
+	</h:form>
+
+</h:body>
+</html>

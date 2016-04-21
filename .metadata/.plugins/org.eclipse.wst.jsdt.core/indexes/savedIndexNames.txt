@@ -3,7 +3,6 @@ INDEX VERSION 1.3+D:\Code\TFL\.metadata\.plugins\org.eclipse.wst.jsdt.core\index
 308481106.index
 92777326.index
 4073266626.index
-4073266626.index
 412087859.index
 3765591694.index
 429392875.index

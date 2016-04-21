@@ -1,0 +1,20 @@
+.ui-widget-content
+{
+	border:none;
+}
+
+.ui-grid-row
+{
+	text-align:center;
+	margin-left: 12%;
+	margin-right: 12%;
+}
+
+.ui-panelgrid-cell
+{
+	width:50%;
+	border:none;
+}
+
+
+

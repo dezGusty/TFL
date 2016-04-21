@@ -221,8 +221,11 @@ public class LoginView implements Serializable {
 				{
 					this.playedGames=this.currentPlayer.GetTotalPlayedGames();
 				}
-				this.winner=this.currentPlayer.GetGames(true);
-				this.looser=this.currentPlayer.GetGames(false);
+				if(this.currentPlayer.getTeams()!=null)
+				{
+					this.winner=this.currentPlayer.GetGames(true);
+					this.looser=this.currentPlayer.GetGames(false);
+				}
 			context.redirect(context.getRequestContextPath() + "/faces/resources/viewpersonaldates.xhtml");
 		} catch (IOException e) {
 			e.printStackTrace();

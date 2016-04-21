@@ -42,11 +42,11 @@
 				</p:column>
 				<p:column headerText="Rating">#{player.rating}</p:column>
 					<p:column>
-						<p:commandButton value="Remove from players" update="table" style="background-color: transparent;"
+						<p:commandButton value="Remove from players" update="table" style="background-color: transparent;border:none;"
 							actionListener="#{playersView.remove(player)}" ajax="false" />
 					</p:column>
 					<p:column>
-						<p:commandButton value="View chart" update="gamesTable" style="background-color: transparent;"
+						<p:commandButton value="View chart" update="gamesTable" style="background-color: transparent;border:none;"
 							actionListener="#{playersView.redirectToChart(player)}" ajax="false" />
 					</p:column>
 

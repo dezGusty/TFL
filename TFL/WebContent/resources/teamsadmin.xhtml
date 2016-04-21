@@ -26,33 +26,51 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../mycss.css" />
+	<link rel="stylesheet" type="text/css" href="../style/adminCss.css" />
 </h:head>
 <h:body>
+
+	<f:facet name="last">
+		<h:outputStylesheet rel="stylesheet" name="../style/adminCss.css" />
+	</f:facet>
+	
 	 <ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
 
 	<div class="container">
-		<h:panelGrid id="grid">
-		<ui:insert name="header">
-			<ui:include src="/resources/viewteams.xhtml" />
-		</ui:insert>
-		</h:panelGrid>
-		<h:form>
-		<div class="row">
-			<div class="col-sm-4 nopadding">
-				<p:commandButton value="Next" actionListener="#{teamsView.getPreviousTeam}" ajax="false" />
+		<div class="ui-grid ui-grid-responsive">
+		
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+					<ui:insert name="header">
+						<ui:include src="/resources/viewteams.xhtml" />
+					</ui:insert>
+				</div>
 			</div>
-			<div class="col-sm-4 nopadding">
-				<p:commandButton value="Save teams" actionListener="#{teamsView.saveTeams()}" ajax="false" />
+	
+			<h:form>
+			<div class="ui-grid-row" style="padding-top:1%">
+			
+				<div class="ui-grid-col-4" style="text-align:center;">
+					<p:commandButton value="Next" actionListener="#{teamsView.getPreviousTeam}" ajax="false" />
+				</div>
+				
+				<div class="ui-grid-col-4" style="text-align:center;">
+					<p:commandButton value="Save teams" actionListener="#{teamsView.saveTeams()}" ajax="false" />
+				</div>
+				
+				<div class="ui-grid-col-4" style="text-align:center;">
+					<p:commandButton value="Next"  actionListener="#{teamsView.getNextTeam}" ajax="false" />
+				</div>
+
 			</div>
-			<div class="col-sm-4 nopadding">
-				<p:commandButton value="Next"  actionListener="#{teamsView.getNextTeam}" ajax="false" />
-			</div>
+			</h:form>
+			
 		</div>
-		</h:form>
+		
 	</div>
+	
 </h:body>
 </html>
 	

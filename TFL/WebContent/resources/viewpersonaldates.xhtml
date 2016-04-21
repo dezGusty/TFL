@@ -7,74 +7,55 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
+<h:head></h:head>
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-		crossorigin="anonymous" />
-
-	<!-- Optional theme -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-		integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-		crossorigin="anonymous" />
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../style/userViewCss.css" />
-</h:head>
 <h:body>
 	<f:facet name="last">
-		<h:outputStylesheet rel="stylesheet" name="../style/userViewCss.css" />
+		<h:outputStylesheet rel="stylesheet" name="../style/headerCss.css" />
 	</f:facet>
+	
 	<ui:insert name="header">
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3">
-			<span></span>
-			</div>
-			
-			<div class="col-sm-6">
-			<p:panelGrid columns="2" style="margin: auto; width:80%;">
-				<f:facet name="header" style="border:none">
-					<p:graphicImage name="../images/ball.jpg" />
-				</f:facet>
+	<h:form>
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+					<p:panelGrid columns="2" style="margin: auto; width:80%;">
+				       	<f:facet name="header" style="border:none">
+					     <p:graphicImage name="../images/ball.jpg" />
+				     	 </f:facet>
 
-				<h:outputText styleClass="fontChange" value="Name:" />
-				<h:outputText value="#{loginView.currentPlayer.username}" />
+					 	<h:outputText style="float:right" value="Name:" />
+						<h:outputText style="float:left" value="#{loginView.currentPlayer.username}" />
 
-				<h:outputText value="ID:" />
-				<h:outputText value="#{loginView.currentPlayer.id}" />
+						<h:outputText style="float:right" value="ID:" />
+						<h:outputText style="float:left" value="#{loginView.currentPlayer.id}" />
 
-				<h:outputText value="Rating:" />
-				<h:outputText  value="#{loginView.currentPlayer.rating}" />
+						<h:outputText style="float:right" value="Rating:" />
+						<h:outputText style="float:left" value="#{loginView.currentPlayer.rating}" />
 
-				<h:outputText value="Available:" />
-				<h:outputText value="#{loginView.currentPlayer.available}" />
+						<h:outputText style="float:right" value="Available:" />
+						<h:outputText style="float:left" value="#{loginView.currentPlayer.available}" />
 
-				<h:outputText value="Total played games:" />
-				<h:outputText  value="#{loginView.playedGames}" />
+						<h:outputText style="float:right" value="Total played games:" />
+						<h:outputText style="float:left"  value="#{loginView.playedGames}" />
 
-				<h:outputText value="Winner:" />
-				<h:outputText  value="#{loginView.winner}" />
+						<h:outputText style="float:right" value="Winner:" />
+						<h:outputText style="float:left"  value="#{loginView.winner}" />
 
-				<h:outputText value="Loser:" />
-				<h:outputText styleClass="fontChange" value="#{loginView.looser}" />
-			</p:panelGrid>
-			</div>
-			
-			<div class="col-sm-3">
-			<span></span>
+						<h:outputText style="float:right" value="Loser:" />
+						<h:outputText style="float:left"  value="#{loginView.looser}" />
+						
+						<h:outputText style="float:right" value="Available: " />
+						<p:inputSwitch style="float:left" value="#{loginView.currentPlayer.available}">
+								<p:ajax listener="#{loginView.changeAvailability}" />
+						</p:inputSwitch>							
+					</p:panelGrid>
+				</div>
 			</div>
 		</div>
-	</div>
+	</h:form>
 </h:body>
 </html>

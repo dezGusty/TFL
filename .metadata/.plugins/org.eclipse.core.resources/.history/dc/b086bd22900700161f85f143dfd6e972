@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+.ui-datatable tbody td
+{
+	border:none;
+}
+.ui-widget-content
+{
+	border:none;
+}
+.ui-datatable thead th
+{
+	background-color: transparent;
+	border: none;
+}
+
+.ui-datatable-odd{
+	background-color: transparent;
+}
+
+.ui-dialog .ui-dialog-content
+{
+	text-align:center;
+}
+
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only
+{
+	
+}

@@ -704,3 +704,600 @@ apr. 19, 2016 13:08:44.08 Handler.prototype.process@resource://gre/modules/Promi
 apr. 19, 2016 13:08:44.08 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
 apr. 19, 2016 13:08:44.08 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
 apr. 19, 2016 13:08:44.09 
+
+apr. 21, 2016 10:02:51.30 NEW SESSION
+apr. 21, 2016 10:02:51.30 console.error: mobileview: 
+apr. 21, 2016 10:02:52.08   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 21, 2016 10:02:52.09   Stack:
+apr. 21, 2016 10:02:52.10     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:02:52.10 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 21, 2016 10:02:52.11 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:02:52.11 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 21, 2016 10:02:52.11 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 21, 2016 10:02:52.12 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:02:52.12 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:02:52.13 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:02:52.13 
+apr. 21, 2016 10:02:52.14 console.error: mobileview: 
+apr. 21, 2016 10:02:52.14   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 21, 2016 10:02:52.14   Stack:
+apr. 21, 2016 10:02:52.15     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:02:52.15 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 21, 2016 10:02:52.15 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:02:52.16 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 21, 2016 10:02:52.16 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 21, 2016 10:02:52.16 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:02:52.17 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:02:52.17 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:02:52.17 
+apr. 21, 2016 10:07:01.33 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 21, 2016 10:11:39.25 *************************
+apr. 21, 2016 10:11:39.29 A coding exception was thrown in a Promise resolution callback.
+apr. 21, 2016 10:11:39.30 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 21, 2016 10:11:39.30 
+apr. 21, 2016 10:11:39.31 Full message: TypeError: can't access dead object
+apr. 21, 2016 10:11:39.31 Full stack: StyleSheetActor<.href@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:448:5
+apr. 21, 2016 10:11:39.32 StyleSheetActor<._fetchSourceMap/</map<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:754:11
+apr. 21, 2016 10:11:39.32 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:11:39.33 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:11:39.33 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:11:39.34 
+apr. 21, 2016 10:11:39.34 *************************
+apr. 21, 2016 10:11:41.23 console.error: 
+apr. 21, 2016 10:11:41.24   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 10:11:41.25   Stack:
+apr. 21, 2016 10:11:41.25     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 10:11:41.26 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 10:11:41.26 
+apr. 21, 2016 10:11:41.27 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 10:11:41.27 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 10:11:41.28 console.error: 
+apr. 21, 2016 10:11:41.28   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 10:17:00.55 1461223020542	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+apr. 21, 2016 10:17:01.00 1461223020986	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+apr. 21, 2016 10:20:36.60 console.error: 
+apr. 21, 2016 10:20:36.64   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:36.65 
+apr. 21, 2016 10:20:36.65 Request stack:
+apr. 21, 2016 10:20:36.66 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:36.66 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:36.67 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:36.67 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:36.68 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:36.68 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:36.70 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:36.71 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:36.71 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:36.72 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:36.72 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:36.73 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:36.73 
+apr. 21, 2016 10:20:36.75   Stack:
+apr. 21, 2016 10:20:36.75     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:36.75 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:36.76 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:36.76 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:36.77 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:36.77 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:36.77 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:36.78 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:36.78 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:36.79 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:36.79 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:36.80 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:36.80 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:36.81 
+apr. 21, 2016 10:20:36.81 console.error: 
+apr. 21, 2016 10:20:36.82   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:36.82 
+apr. 21, 2016 10:20:36.82 Request stack:
+apr. 21, 2016 10:20:36.83 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:36.83 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:36.84 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:36.84 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:36.85 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:36.85 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:36.85 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:36.86 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:36.86 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:36.87 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:36.88 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:36.88 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:36.89 
+apr. 21, 2016 10:20:36.89   Stack:
+apr. 21, 2016 10:20:36.90     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:36.90 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:36.91 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:36.91 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:36.92 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:36.92 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:36.93 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:36.93 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:36.94 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:36.94 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:36.95 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:36.95 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:36.96 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:36.96 
+apr. 21, 2016 10:20:36.97 console.error: 
+apr. 21, 2016 10:20:36.98   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:36.98 
+apr. 21, 2016 10:20:36.99 Request stack:
+apr. 21, 2016 10:20:36.99 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:37.00 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:37.00 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:37.01 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:37.01 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:37.02 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:37.02 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:37.03 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:37.32 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:37.33 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:37.33 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:37.34 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:37.35 
+apr. 21, 2016 10:20:37.35   Stack:
+apr. 21, 2016 10:20:37.36     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:37.36 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:37.37 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:37.37 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:37.38 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:37.38 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:37.39 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:37.39 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:37.40 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:37.40 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:37.41 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:37.41 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:37.42 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:37.42 
+apr. 21, 2016 10:20:37.43 console.error: 
+apr. 21, 2016 10:20:37.43   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:37.44 
+apr. 21, 2016 10:20:37.44 Request stack:
+apr. 21, 2016 10:20:37.45 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:37.45 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:37.46 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:37.46 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:37.46 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:37.47 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:37.47 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:37.48 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:37.48 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:37.49 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:37.49 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:37.50 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:37.50 
+apr. 21, 2016 10:20:37.51   Stack:
+apr. 21, 2016 10:20:37.51     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:37.51 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:37.52 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:37.52 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:37.53 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:37.53 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:37.54 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:37.54 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:37.56 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:37.57 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:37.59 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:37.60 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:37.60 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:37.61 
+apr. 21, 2016 10:20:37.61 console.error: 
+apr. 21, 2016 10:20:37.62   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:37.62 
+apr. 21, 2016 10:20:37.63 Request stack:
+apr. 21, 2016 10:20:37.63 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:37.63 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:37.64 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:37.64 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:37.65 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:37.65 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:37.66 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:37.66 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:37.67 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:37.67 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:37.68 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:37.68 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:37.69 
+apr. 21, 2016 10:20:37.69   Stack:
+apr. 21, 2016 10:20:37.70     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:37.70 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:37.71 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:37.71 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:37.72 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:37.72 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:37.73 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:37.73 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:37.74 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:37.74 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:37.75 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:37.75 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:37.76 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:37.76 
+apr. 21, 2016 10:20:37.77 console.error: 
+apr. 21, 2016 10:20:37.78   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:37.78 
+apr. 21, 2016 10:20:37.78 Request stack:
+apr. 21, 2016 10:20:37.79 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:37.79 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:37.80 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:37.80 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:37.81 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:37.81 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:37.82 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:37.83 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:37.83 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:37.84 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:37.84 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:37.85 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:37.85 
+apr. 21, 2016 10:20:37.86   Stack:
+apr. 21, 2016 10:20:37.86     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:37.87 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:37.87 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:37.87 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:37.88 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:37.88 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:37.89 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:37.89 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:37.90 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:37.90 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:37.91 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:37.91 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:37.92 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:37.92 
+apr. 21, 2016 10:20:37.93 console.error: 
+apr. 21, 2016 10:20:37.93   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:37.94 
+apr. 21, 2016 10:20:37.94 Request stack:
+apr. 21, 2016 10:20:37.95 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:37.95 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:37.96 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:37.96 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:37.97 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:37.97 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:37.98 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:37.98 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:37.99 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:38.00 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:38.00 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:38.01 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:38.01 
+apr. 21, 2016 10:20:38.02   Stack:
+apr. 21, 2016 10:20:38.02     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:38.03 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:38.03 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:38.04 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:38.04 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:38.05 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:38.05 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:38.06 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:38.08 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:38.09 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:38.09 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:38.10 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:38.10 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:38.11 
+apr. 21, 2016 10:20:38.11 console.error: 
+apr. 21, 2016 10:20:38.12   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:38.12 
+apr. 21, 2016 10:20:38.13 Request stack:
+apr. 21, 2016 10:20:38.13 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:38.14 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:38.15 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:38.41 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:38.41 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:38.42 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:38.43 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:38.44 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:38.45 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:38.45 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:38.46 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:38.46 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:38.47 
+apr. 21, 2016 10:20:38.47   Stack:
+apr. 21, 2016 10:20:38.48     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:38.48 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:38.49 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:38.49 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:38.50 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:38.50 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:38.51 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:38.51 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:38.52 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:38.52 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:38.53 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:38.53 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:38.54 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:38.55 
+apr. 21, 2016 10:20:38.55 console.error: 
+apr. 21, 2016 10:20:38.56   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:38.56 
+apr. 21, 2016 10:20:38.57 Request stack:
+apr. 21, 2016 10:20:38.57 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:38.58 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:38.58 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:38.59 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:38.59 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:38.60 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:38.60 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:38.61 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:38.61 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:38.62 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:38.63 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:38.63 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:38.64 
+apr. 21, 2016 10:20:38.64   Stack:
+apr. 21, 2016 10:20:38.65     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:38.65 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:38.66 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:38.66 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:38.67 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:38.67 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:38.68 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:38.68 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:38.69 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:38.69 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:38.70 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:38.70 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:38.71 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:38.71 
+apr. 21, 2016 10:20:38.71 console.error: 
+apr. 21, 2016 10:20:38.72   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:38.72 
+apr. 21, 2016 10:20:38.73 Request stack:
+apr. 21, 2016 10:20:38.73 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:38.74 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:38.74 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:38.75 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:38.75 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:38.75 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:38.76 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:38.76 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:38.77 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:38.77 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:38.78 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:38.78 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:38.78 
+apr. 21, 2016 10:20:38.79   Stack:
+apr. 21, 2016 10:20:38.79     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:38.80 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:38.80 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:38.81 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:38.81 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:38.82 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:38.82 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:38.83 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:39.15 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:39.15 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:39.16 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:39.17 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:39.17 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:39.18 
+apr. 21, 2016 10:20:39.18 console.error: 
+apr. 21, 2016 10:20:39.19   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:39.19 
+apr. 21, 2016 10:20:39.20 Request stack:
+apr. 21, 2016 10:20:39.20 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:39.21 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:39.21 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:39.23 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:39.23 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:39.24 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:39.24 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:39.25 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:39.25 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:39.26 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:39.26 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:39.27 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:39.27 
+apr. 21, 2016 10:20:39.28   Stack:
+apr. 21, 2016 10:20:39.28     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:39.29 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:39.29 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:39.30 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:39.30 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:39.31 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:39.31 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:39.32 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:39.33 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:39.33 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:39.34 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:39.35 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:39.35 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:39.35 
+apr. 21, 2016 10:20:39.36 console.error: 
+apr. 21, 2016 10:20:39.36   Message: Error: Connection closed, pending request to server1.conn0.731, type getOriginalLocation failed
+apr. 21, 2016 10:20:39.37 
+apr. 21, 2016 10:20:39.37 Request stack:
+apr. 21, 2016 10:20:39.38 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+apr. 21, 2016 10:20:39.38 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+apr. 21, 2016 10:20:39.39 StyleRuleFront<.getOriginalLocation@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1785:12
+apr. 21, 2016 10:20:39.39 Rule.prototype.getOriginalSourceStrings@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:570:12
+apr. 21, 2016 10:20:39.40 RuleEditor.prototype.updateSourceLink@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2834:7
+apr. 21, 2016 10:20:39.41 RuleEditor.prototype._create@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2719:5
+apr. 21, 2016 10:20:39.41 RuleEditor@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2673:3
+apr. 21, 2016 10:20:39.42 CssRuleView.prototype._createEditors@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2298:23
+apr. 21, 2016 10:20:39.42 CssRuleView.prototype._populate/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:2103:7
+apr. 21, 2016 10:20:39.43 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:39.43 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:39.44 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:39.44 
+apr. 21, 2016 10:20:39.45   Stack:
+apr. 21, 2016 10:20:39.45     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+apr. 21, 2016 10:20:39.46 StyleSheetFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/stylesheets.js:1004:5
+apr. 21, 2016 10:20:39.46 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:39.46 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:39.47 PageStyleFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1025:5
+apr. 21, 2016 10:20:39.47 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+apr. 21, 2016 10:20:39.48 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+apr. 21, 2016 10:20:39.48 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3919:5
+apr. 21, 2016 10:20:39.49 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1834:13
+apr. 21, 2016 10:20:39.49 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+apr. 21, 2016 10:20:39.49 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:20:39.50 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:20:39.50 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:20:39.51 
+apr. 21, 2016 10:20:39.51 console.error: 
+apr. 21, 2016 10:20:39.52   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23
+apr. 21, 2016 10:21:05.54 console.error: mobileview: 
+apr. 21, 2016 10:21:05.55   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 21, 2016 10:21:05.55   Stack:
+apr. 21, 2016 10:21:05.56     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:21:05.56 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 21, 2016 10:21:05.56 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:21:05.57 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 21, 2016 10:21:05.57 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 21, 2016 10:21:05.58 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:21:05.58 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:21:05.59 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:21:05.59 
+apr. 21, 2016 10:21:05.60 console.error: mobileview: 
+apr. 21, 2016 10:21:05.60   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 21, 2016 10:21:05.61   Stack:
+apr. 21, 2016 10:21:05.61     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:21:05.61 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 21, 2016 10:21:05.62 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:21:05.62 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 21, 2016 10:21:05.63 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 21, 2016 10:21:05.63 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:21:05.63 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:21:05.64 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:21:05.64 
+apr. 21, 2016 10:30:58.36 console.error: mobileview: 
+apr. 21, 2016 10:30:58.49   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 21, 2016 10:30:58.50   Stack:
+apr. 21, 2016 10:30:58.54     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:30:58.54 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 21, 2016 10:30:58.55 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:30:58.56 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 21, 2016 10:30:58.56 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 21, 2016 10:30:58.57 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:30:58.59 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:30:58.60 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:30:58.60 
+apr. 21, 2016 10:30:58.61 console.error: mobileview: 
+apr. 21, 2016 10:30:58.61   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 21, 2016 10:30:58.62   Stack:
+apr. 21, 2016 10:30:58.63     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:30:58.63 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 21, 2016 10:30:58.64 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 21, 2016 10:30:58.65 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 21, 2016 10:30:58.65 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 21, 2016 10:30:58.66 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:30:58.66 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:30:58.67 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:30:58.67 
+apr. 21, 2016 10:44:00.07 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 21, 2016 10:45:13.54 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 21, 2016 10:49:11.52 *************************
+apr. 21, 2016 10:49:11.53 A coding exception was thrown in a Promise resolution callback.
+apr. 21, 2016 10:49:11.53 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 21, 2016 10:49:11.53 
+apr. 21, 2016 10:49:11.54 Full message: TypeError: dummyElement is null
+apr. 21, 2016 10:49:11.55 Full stack: TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 21, 2016 10:49:11.55 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 21, 2016 10:49:11.56 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:49:11.56 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:49:11.57 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:49:11.57 
+apr. 21, 2016 10:49:11.58 *************************
+apr. 21, 2016 10:49:11.58 console.error: 
+apr. 21, 2016 10:49:11.58   Message: TypeError: dummyElement is null
+apr. 21, 2016 10:49:11.59   Stack:
+apr. 21, 2016 10:49:11.60     TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 21, 2016 10:49:11.60 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 21, 2016 10:49:11.61 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:49:11.61 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:49:11.62 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:49:11.62 
+apr. 21, 2016 10:49:25.80 *************************
+apr. 21, 2016 10:49:25.80 A coding exception was thrown in a Promise resolution callback.
+apr. 21, 2016 10:49:25.81 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 21, 2016 10:49:25.81 
+apr. 21, 2016 10:49:25.81 Full message: TypeError: dummyElement is null
+apr. 21, 2016 10:49:25.82 Full stack: TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 21, 2016 10:49:25.82 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 21, 2016 10:49:25.83 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:49:25.83 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:49:25.83 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:49:25.84 
+apr. 21, 2016 10:49:25.84 *************************
+apr. 21, 2016 10:49:25.85 console.error: 
+apr. 21, 2016 10:49:25.85   Message: TypeError: dummyElement is null
+apr. 21, 2016 10:49:25.86   Stack:
+apr. 21, 2016 10:49:25.86     TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 21, 2016 10:49:25.87 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 21, 2016 10:49:25.87 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 21, 2016 10:49:25.88 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 21, 2016 10:49:25.88 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 21, 2016 10:49:25.88 
+apr. 21, 2016 11:20:23.83 console.error: 
+apr. 21, 2016 11:20:23.83   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 11:20:23.84   Stack:
+apr. 21, 2016 11:20:23.85     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 11:20:23.85 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 11:20:23.86 
+apr. 21, 2016 11:20:23.87 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 11:20:23.87 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 11:20:23.88 console.error: 
+apr. 21, 2016 11:20:23.88   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 11:51:37.12 [GFX1-]: Too many dropped/corrupted frames, disabling DXVA
+apr. 21, 2016 12:12:43.09 console.error: 
+apr. 21, 2016 12:12:43.19   Protocol error (noSuchActor): No such actor for ID: server1.conn1.animationsActor23
+apr. 21, 2016 12:26:24.81 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 21, 2016 12:39:24.46 console.error: 
+apr. 21, 2016 12:39:24.46   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:39:24.47   Stack:
+apr. 21, 2016 12:39:24.48     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:39:24.52 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:39:24.53 
+apr. 21, 2016 12:39:24.53 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:39:24.54 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:39:24.54 console.error: 
+apr. 21, 2016 12:39:24.56   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:39:29.18 console.error: 
+apr. 21, 2016 12:39:29.19   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:39:29.19   Stack:
+apr. 21, 2016 12:39:29.20     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:39:29.24 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:39:29.24 
+apr. 21, 2016 12:39:29.24 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:39:29.25 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:39:29.26 console.error: 
+apr. 21, 2016 12:39:29.26   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:40:43.18 console.error: 
+apr. 21, 2016 12:40:43.19   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:40:43.19   Stack:
+apr. 21, 2016 12:40:43.20     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:40:43.20 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:40:43.24 
+apr. 21, 2016 12:40:43.25 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:40:43.26 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:40:43.27 console.error: 
+apr. 21, 2016 12:40:43.27   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:42:08.68 console.error: 
+apr. 21, 2016 12:42:08.68   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:42:08.69   Stack:
+apr. 21, 2016 12:42:08.69     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:42:08.71 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:42:08.71 
+apr. 21, 2016 12:42:08.72 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:42:08.72 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:42:08.73 console.error: 
+apr. 21, 2016 12:42:08.73   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:44:09.99 console.error: 
+apr. 21, 2016 12:44:10.00   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 12:44:10.00   Stack:
+apr. 21, 2016 12:44:10.01     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:44:10.01 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:44:10.02 
+apr. 21, 2016 12:44:10.03 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 21, 2016 12:44:10.08 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 21, 2016 12:44:10.08 console.error: 
+apr. 21, 2016 12:44:10.09   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 21, 2016 14:00:03.77 console.error: 
+apr. 21, 2016 14:00:03.80   Protocol error (noSuchActor): No such actor for ID: server1.conn2.animationsActor23
+apr. 21, 2016 14:26:47.20 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 21, 2016 14:41:58.11 console.warn: Asynchronous operation was aborted as selection changed.
