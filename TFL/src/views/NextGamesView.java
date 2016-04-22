@@ -165,6 +165,7 @@ public class NextGamesView implements Serializable{
         	//iau userul pentru a verifica ce tip este(normal user sau admin)
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+			firstBean.setClick(false);
 			
 			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();		
 			TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");

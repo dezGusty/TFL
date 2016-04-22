@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+.ui-picklist.ui-picklist-responsive .ui-picklist-buttons button
+{
+	width:30px;
+}
+.ui-picklist.ui-widget.ui-helper-clearfix.ui-picklist-responsive
+{
+	width:80%;
+	margin-left: 25%;
+}

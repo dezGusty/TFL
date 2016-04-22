@@ -1301,3 +1301,102 @@ apr. 21, 2016 14:00:03.77 console.error:
 apr. 21, 2016 14:00:03.80   Protocol error (noSuchActor): No such actor for ID: server1.conn2.animationsActor23
 apr. 21, 2016 14:26:47.20 console.warn: Asynchronous operation was aborted as selection changed.
 apr. 21, 2016 14:41:58.11 console.warn: Asynchronous operation was aborted as selection changed.
+
+apr. 22, 2016 09:08:57.51 NEW SESSION
+apr. 22, 2016 09:08:57.51 console.error: mobileview: 
+apr. 22, 2016 09:08:57.73   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 22, 2016 09:08:57.74   Stack:
+apr. 22, 2016 09:08:57.74     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 22, 2016 09:08:57.75 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 22, 2016 09:08:57.75 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 22, 2016 09:08:57.76 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 22, 2016 09:08:57.77 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 22, 2016 09:08:57.77 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 22, 2016 09:08:57.78 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 22, 2016 09:08:57.78 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 22, 2016 09:08:57.79 
+apr. 22, 2016 09:08:57.79 console.error: mobileview: 
+apr. 22, 2016 09:08:57.79   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 22, 2016 09:08:57.80   Stack:
+apr. 22, 2016 09:08:57.80     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 22, 2016 09:08:57.81 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 22, 2016 09:08:57.81 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 22, 2016 09:08:57.81 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 22, 2016 09:08:57.82 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 22, 2016 09:08:57.82 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 22, 2016 09:08:57.82 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 22, 2016 09:08:57.83 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 22, 2016 09:08:57.83 
+apr. 22, 2016 09:12:13.25 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 22, 2016 09:58:55.12 console.error: mobileview: 
+apr. 22, 2016 09:58:55.42   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 22, 2016 09:58:55.43   Stack:
+apr. 22, 2016 09:58:55.43     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 22, 2016 09:58:55.44 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 22, 2016 09:58:55.44 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 22, 2016 09:58:55.45 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 22, 2016 09:58:55.45 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 22, 2016 09:58:55.46 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 22, 2016 09:58:55.46 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 22, 2016 09:58:55.47 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 22, 2016 09:58:55.48 
+apr. 22, 2016 09:58:55.48 console.error: mobileview: 
+apr. 22, 2016 09:58:55.49   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 22, 2016 09:58:55.50   Stack:
+apr. 22, 2016 09:58:55.53     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 22, 2016 09:58:55.53 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 22, 2016 09:58:55.54 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 22, 2016 09:58:55.54 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 22, 2016 09:58:55.55 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 22, 2016 09:58:55.55 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 22, 2016 09:58:55.56 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 22, 2016 09:58:55.57 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 22, 2016 09:58:55.57 
+apr. 22, 2016 10:17:02.19 1461309422178	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+apr. 22, 2016 10:17:02.65 1461309422645	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+apr. 22, 2016 10:49:21.84 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 22, 2016 10:53:25.74 *************************
+apr. 22, 2016 10:53:25.76 A coding exception was thrown in a Promise resolution callback.
+apr. 22, 2016 10:53:25.77 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+apr. 22, 2016 10:53:25.78 
+apr. 22, 2016 10:53:25.78 Full message: TypeError: dummyElement is null
+apr. 22, 2016 10:53:25.79 Full stack: TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 22, 2016 10:53:25.79 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 22, 2016 10:53:25.80 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 22, 2016 10:53:25.80 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 22, 2016 10:53:25.81 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 22, 2016 10:53:25.82 
+apr. 22, 2016 10:53:25.85 *************************
+apr. 22, 2016 10:53:25.87 console.error: 
+apr. 22, 2016 10:53:25.89   Message: TypeError: dummyElement is null
+apr. 22, 2016 10:53:25.91   Stack:
+apr. 22, 2016 10:53:25.93     TextProperty.prototype.updateComputed@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:1145:9
+apr. 22, 2016 10:53:25.95 Rule.prototype._applyPropertiesAuthored/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/styleinspector/rule-view.js:706:11
+apr. 22, 2016 10:53:25.98 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+apr. 22, 2016 10:53:25.99 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+apr. 22, 2016 10:53:26.00 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+apr. 22, 2016 10:53:26.01 
+apr. 22, 2016 10:57:31.15 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 22, 2016 11:01:44.72 console.error: 
+apr. 22, 2016 11:01:44.72   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 22, 2016 11:01:44.73   Stack:
+apr. 22, 2016 11:01:44.77     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 22, 2016 11:01:44.78 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 22, 2016 11:01:44.78 
+apr. 22, 2016 11:01:44.79 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 22, 2016 11:01:44.79 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 22, 2016 11:01:44.80 console.error: 
+apr. 22, 2016 11:01:44.81   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 22, 2016 11:08:05.54 console.error: 
+apr. 22, 2016 11:08:05.59   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 22, 2016 11:08:05.61   Stack:
+apr. 22, 2016 11:08:05.62     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 22, 2016 11:08:05.64 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 22, 2016 11:08:05.64 
+apr. 22, 2016 11:08:05.65 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:618:23
+apr. 22, 2016 11:08:05.66 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+apr. 22, 2016 11:08:05.66 console.error: 
+apr. 22, 2016 11:08:05.69   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+apr. 22, 2016 11:18:17.82 console.warn: Asynchronous operation was aborted as selection changed.
+apr. 22, 2016 11:31:50.25 hashcompleter: cancelling request to https://safebrowsing.google.com/safebrowsing/gethash?client=navclient-auto-ffox&appver=45.0.2&pver=2.2
+apr. 22, 2016 11:31:50.44 hashcompleter: notifying failure

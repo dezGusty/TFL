@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+.ui-datatable thead th
+{
+	border:none;
+}
+.ui-datatable tbody td
+{
+	
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+	<f:facet name="last">
+		<h:outputStylesheet  name="../style/headerCss.css" />
+	</f:facet>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/header.xhtml" />
+	</ui:insert>
+
+	<h:form>
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2">
+					<p:dataTable id="gamesTable" value="#{nextGamesView.games}" var="game">
+					<f:facet name="header">Next games admin user</f:facet>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Date"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{game.dateToDisplay()}"></h:outputText>
+					</p:column>
+					<p:column headerText="Difference">#{game.difference}</p:column>
+					<p:column>
+						<p:commandButton value="Play this game" style="background-color: transparent;"
+							actionListener="#{nextGamesView.play(game)}"
+							disabled="#{game.gameStatus(loginView.currentPlayer)}"
+							ajax="false" />
+					</p:column>
+					<p:column>
+						<p:commandButton value="Generate teams" style="background-color: transparent;"
+							actionListener="#{nextGamesView.viewTeams(game)}" ajax="false" />
+					</p:column>
+					<p:column>
+						<p:commandButton value="Cancel game" update="gamesTable" style="background-color: transparent;"
+							actionListener="#{nextGamesView.remove(game)}" ajax="false" />
+					</p:column>
+
+					<p:column>
+						<p:commandButton value="View teams" style="background-color: transparent;"
+							actionListener="#{nextGamesView.viewTeams(game)}" ajax="true" />
+					</p:column>
+						
+				</p:dataTable>
+				</div>
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>

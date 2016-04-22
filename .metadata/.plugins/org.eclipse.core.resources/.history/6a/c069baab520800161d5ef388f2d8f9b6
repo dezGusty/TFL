@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+		crossorigin="anonymous" />
+
+	<!-- Optional theme -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+		integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+		crossorigin="anonymous" />
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+</h:head>
+<h:body>
+
+	<f:facet name="last">
+		<h:outputStylesheet  name="../style/headerCss.css" />
+		<h:outputStylesheet  name="../style/nextUserGamesCss.css" />
+	</f:facet>
+
+	<ui:insert name="header">
+		<ui:include src="/resources/header.xhtml" />
+	</ui:insert>
+
+	<div class="container">
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+							<h:form>
+
+			<p:dataTable value="#{nextGamesView.games}" var="game">
+				<f:facet name="header">Next games for normal user</f:facet>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Date"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{game.date}"></h:outputText>
+				</p:column>
+				<p:column headerText="Difference">#{game.difference}</p:column>
+				<p:column >
+					<p:commandButton value="Play this game" style="background-color:transparent;"
+                        actionListener="#{nextGamesView.play(game)}"
+                        ajax="false" />
+				</p:column>
+				<p:column >
+					<p:commandButton value="View teams" style="background-color:transparent;"
+                        actionListener="#{nextGamesView.viewTeams(game)}"
+                        ajax="true" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+				</div>
+				
+			</div>
+		</div>		
+	
+	</div>
+</h:body>
+</html>

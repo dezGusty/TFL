@@ -4,11 +4,8 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.ChartSeries;
@@ -50,19 +47,24 @@ public class ChartView implements Serializable {
 		this.existRatings = existRatings;
 	}
 
-	private List<Player> players;
+	public List<Player> players=new ArrayList<Player>();
 
     private LineChartModel lineModel;
     
-    @PostConstruct
-    public void init() {
-        this.players=new ArrayList<Player>();
-    	createLineModels();
-    } 
-    
     public void addPlayerToChart(Player player)
     {
-    	this.players.add(player);
+    	boolean exists=false;
+    	for(Player p:this.players)
+    	{
+    		if(p.getId()==player.getId())
+    		{
+    			exists=true;
+    		}
+    	}
+    	if(exists==false)
+    	{
+    		this.players.add(player);
+    	}
     }
     
     public void createLineModels() {      
@@ -82,44 +84,42 @@ public class ChartView implements Serializable {
     }
     
     private LineChartModel initCategoryModel() {
-    	
+ 
         LineChartModel model = new LineChartModel();
-        
-        if(this.players !=null)
+ 
+        if(this.players==null)
         {
-        	if(this.players.size()==1)
+        	System.out.println("Null players!");
+        }
+        else
+        {
+        	System.out.println("Players not null");
+        	for(Player player:this.players)
         	{
-        		if(this.players.get(0).getPlayerRatings()==null)
+        		System.out.println(player.getUsername());
+        		//il adaug in chart numai daca are ratinguri
+
+        		if(player.getPlayerRatings().isEmpty())
+        		{
+        			System.out.println(player.getUsername()+"has no ratings!");
+        			this.existRatings=true;
+        		}
+        		else
         		{
         			this.existRatings=false;
+        			ChartSeries playerLineChart = new ChartSeries();
+        			playerLineChart.setLabel(player.getUsername());
+        			for(PlayerRating playerRating:player.getPlayerRatings())
+        			{
+        				System.out.println(playerRating.getRating());
+        				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                		playerLineChart.set(sdf.format(playerRating.getDate()), playerRating.getRating());
+        			}
+        			model.addSeries(playerLineChart);
         		}
         	}
-        	else
-        	{
-        		for(Player p:this.players)
-                {
-                	System.out.println(p.getUsername());
-                	ChartSeries playerLineChart = new ChartSeries();
-                	playerLineChart.setLabel(p.getUsername());
-                	if(!p.getPlayerRatings().isEmpty())
-                	{
-                		//System.out.println(p.getUsername()+"has ratings");
-                		for(PlayerRating pl:p.getPlayerRatings())
-                    	{
-                			//System.out.println(pl.getDate().toString());
-                			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-                    		playerLineChart.set(sdf.format(pl.getDate()), pl.getRating());
-                    	}
-                    	model.addSeries(playerLineChart);
-                    	//System.out.println(p.getUsername());
-                	}
-                	else
-                	{
-                		System.out.println("This player has no ratings!");
-                	}
-                } 
-        	}
-        }        
+        	
+        }  
         return model;
     }
 	

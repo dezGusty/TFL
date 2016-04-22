@@ -2,7 +2,6 @@ package views;
 
 import java.io.IOException;
 import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
@@ -11,7 +10,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
 import model.Game;
@@ -248,17 +246,18 @@ public class LoginView implements Serializable {
 	public void redirectToCharts(ActionEvent actionEvent)
 	{
 		this.click=false;
+		
 		System.out.println("Hello from redirect to charts!");
+		
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();	
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		ChartView firstBean = (ChartView) elContext.getELResolver().getValue(elContext, null, "chartView");
-		
+
 		firstBean.addPlayerToChart(this.currentPlayer);
 		firstBean.createLineModels();
 		
 		if(this.currentPlayer.getType()==1)
-		{
-			
+		{	
 			try {
 				context.redirect(context.getRequestContextPath() + "/faces/resources/userchart.xhtml");
 			} catch (IOException e) {
