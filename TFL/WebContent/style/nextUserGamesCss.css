@@ -1,9 +1,0 @@
-@CHARSET "ISO-8859-1";
-.ui-datatable tbody td
-{
-	border:none;
-}
-.ui-datatable.ui-widget
-{
-	padding-top:2%;
-}

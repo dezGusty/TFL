@@ -121,8 +121,8 @@ public class GameDataAccess implements Serializable {
 			System.out.println("First team refreshed id:"+firstTeam.getId());
 			System.out.println("Second team refreshed id:"+secondTeam.getId());
 			
-			g.addTeam(firstTeam);
-			g.addTeam(secondTeam);
+			//g.addTeam(firstTeam);
+			//g.addTeam(secondTeam);
 //			g.addTeam(firstTeam);
 //			g.addTeam(secondTeam);
 //			EntityManagerHelper.em.persist(g);
@@ -137,7 +137,7 @@ public class GameDataAccess implements Serializable {
 	{
 		Game g=EntityManagerHelper.em.find(Game.class, gId);
 		Team team=EntityManagerHelper.em.find(Team.class, t.getId());
-		g.addTeam(team);
+		//g.addTeam(team);
 		EntityManagerHelper.em.persist(g);
 		EntityManagerHelper.em.getTransaction().commit();
 		EntityManagerHelper.em.refresh(g);
@@ -197,8 +197,8 @@ public class GameDataAccess implements Serializable {
 	}
 	  
 	public void addGameWinner(Game game, Player player) {		
-		Player play =EntityManagerHelper.em.find(Player.class, player.getId());
-		Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());	
+		///Player play =EntityManagerHelper.em.find(Player.class, player.getId());
+		//Game findGame=EntityManagerHelper.em.find(Game.class, game.getId());	
 		//GameWinner gw=new GameWinner();
 		
 //		if(gw.isGameWinner(player, game)==false)
@@ -220,10 +220,10 @@ public class GameDataAccess implements Serializable {
 	{
 		Game g=new Game();
 		g=EntityManagerHelper.em.find(Game.class, game.getId());
-		if(g.getTeams()!=null)
-		{
-			return g.getTeams();
-		}
+//		if(g.getTeams()!=null)
+//		{
+//			return g.getTeams();
+//		}
 		return null;
 	}
 	
@@ -232,7 +232,6 @@ public class GameDataAccess implements Serializable {
 		try
 		{
 			Game g=new Game();
-			//String date_s = "2016-03-14"; 
 			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
 			Date datee = dt.parse(date); 
 			g.setDate(datee);

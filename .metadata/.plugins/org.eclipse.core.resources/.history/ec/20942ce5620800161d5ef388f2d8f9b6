@@ -1,5 +1,0 @@
-@CHARSET "ISO-8859-1";
-.ui-commandlink.ui-widget
-{
-	border:20px;
-}

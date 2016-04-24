@@ -2,7 +2,6 @@ package dataAccessLayer;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.TypedQuery;
 import model.Game;
 import model.Player;
@@ -32,26 +31,26 @@ public class TeamDataAccess {
 		Team newTeam=new Team();
 		Game gamee = EntityManagerHelper.em.find(Game.class, game.getId());
 		EntityManagerHelper.em.refresh(gamee);
-		System.out.println("This game has "+gamee.getTeams().size()+" teams!");
-		try {
-			if(gamee.getTeams().size()==2)
-			{
-				System.out.println("This game already has teams");
-			}
-			else
-			{
-				newTeam.setName(teamName);
-				newTeam.setGameBean(gamee);
-				
-				EntityManagerHelper.em.persist(newTeam);
-				EntityManagerHelper.em.getTransaction().commit();
-				EntityManagerHelper.em.refresh(newTeam);
-				return newTeam;
-			}
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-
-		}
+//		System.out.println("This game has "+gamee.getTeams().size()+" teams!");
+//		try {
+//			if(gamee.getTeams().size()==2)
+//			{
+//				System.out.println("This game already has teams");
+//			}
+//			else
+//			{
+//				newTeam.setName(teamName);
+//				newTeam.setGameBean(gamee);
+//				
+//				EntityManagerHelper.em.persist(newTeam);
+//				EntityManagerHelper.em.getTransaction().commit();
+//				EntityManagerHelper.em.refresh(newTeam);
+//				return newTeam;
+//			}
+//		} catch (Exception ex) {
+//			System.out.println(ex.getMessage());
+//
+//		}
 		return null;
 	}
 	

@@ -1,4 +1,3 @@
-activeuserprofiles=BAVE210C;Team
 eclipse.preferences.version=1
-org.eclipse.rse.systemtype.local.systemType.defaultUserId=paula.trifanov
-useridperkey=BAVE210C.Local\=paula.trifanov;
+org.eclipse.rse.systemtype.local.systemType.defaultUserId=Paula
+useridperkey=np.Local\=Paula;

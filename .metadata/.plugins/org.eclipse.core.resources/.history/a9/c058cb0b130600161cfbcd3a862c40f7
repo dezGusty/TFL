@@ -1,7 +1,0 @@
-@CHARSET "ISO-8859-1";
-
-.smallButton
-{
-	height:50%;
-	width:50%;
-}

@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+.ui-datatable tbody td
+{
+	border:none;
+	text-align: center;
+}

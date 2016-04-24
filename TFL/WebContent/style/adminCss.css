@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+.ui-widget-content.ui-datatable-even
+{
+	margin-top:20px;
+}
+.ui-datatable tbody td
+{
+	border:none;
+}

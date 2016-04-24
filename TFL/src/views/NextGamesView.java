@@ -108,8 +108,8 @@ public class NextGamesView implements Serializable{
 			}
 			loserTeam.getPlayers().addAll(firstBean.themesTarget);
 			
-			game.addTeam(winnersTeam);
-			game.addTeam(loserTeam);
+			//game.addTeam(winnersTeam);
+			//game.addTeam(loserTeam);
 			
 			System.out.println("Game: "+game.dateToDisplay()+" difference "+game.getDifference());
 
@@ -136,30 +136,31 @@ public class NextGamesView implements Serializable{
 		}
 		
 		public void showMessage(Game game) {
-			this.selectedGame=game;
-
-			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-			TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
-			teamsBean.themesSource=new ArrayList<Player>();
-			teamsBean.themesTarget=new ArrayList<Player>();
-			
-			if(game.getTeams()!=null)
-			{
-				System.out.println("There are teams");
-				//setez echipele
-				teamsBean.setExistTeams(true);
-				if(game.getTeams().size()==2)
-				{
-					teamsBean.themesSource=game.getTeams().get(0).getPlayers();
-					teamsBean.themesTarget=game.getTeams().get(1).getPlayers();
-				}
-			}
-			teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
-			System.out.println("Show message");
+//			this.selectedGame=game;
+//
+//			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+//			TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
+//			teamsBean.themesSource=new ArrayList<Player>();
+//			teamsBean.themesTarget=new ArrayList<Player>();
+//			
+//			if(game.getTeams()!=null)
+//			{
+//				System.out.println("There are teams");
+//				//setez echipele
+//				teamsBean.setExistTeams(true);
+//				if(game.getTeams().size()==2)
+//				{
+//					teamsBean.themesSource=game.getTeams().get(0).getPlayers();
+//					teamsBean.themesTarget=game.getTeams().get(1).getPlayers();
+//				}
+//			}
+//			teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+//			System.out.println("Show message");
 		}
 		
 		public void viewTeams(Game game)
 		{		
+			System.out.println("View teams method!");
         	this.setSelectedGame(game);
         	
         	//iau userul pentru a verifica ce tip este(normal user sau admin)
@@ -170,40 +171,49 @@ public class NextGamesView implements Serializable{
 			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();		
 			TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
 			
-			//verific daca jocul are echipe
-			if(this.selectedGame.getTeams().isEmpty() || this.selectedGame.getTeams().size()!=2)
-				//in cazul in care nu are verific daca are jucatori inscrisi
+//			//verific daca jocul are echipe
+			if(this.selectedGame.getTeam1()!=null && this.selectedGame.getTeam2()!=null)
 			{
-				System.out.println("This game has no teams!");
-				if(this.selectedGame.getPlayers().isEmpty())
+				System.out.println("Game has teams!");
+				teamsBean.setExistTeams(true);
+				teamsBean.setTeamOne(this.selectedGame.getTeam1());
+				teamsBean.themesSource=new ArrayList<Player>();
+				teamsBean.themesTarget=new ArrayList<Player>();
+				for(Player tp:teamsBean.getTeamOne().getPlayers())
 				{
-					System.out.println("This game has no game players");
-					teamsBean.setExistTeams(false);
-					teamsBean.themesSource.removeAll(teamsBean.themesSource);
-					teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
-					teamsBean.setTeamOne(null);
-					teamsBean.setTeamTwo(null);
-					teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+					teamsBean.themesSource.add(tp);
 				}
-				else
+				teamsBean.setTeamTwo(this.selectedGame.getTeam2());
+				for(Player tp:teamsBean.getTeamTwo().getPlayers())
+				{
+					teamsBean.themesTarget.add(tp);
+				}
+				teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+			}
+			else
+			{
+				System.out.println("Game has no teams!");
+				if(!this.selectedGame.getPlayers().isEmpty())
 				{
 					teamsBean.setExistTeams(true);
-					for(Player player:this.selectedGame.getPlayers())
+					System.out.println("This game has players subscribed!");
+					if(this.selectedGame.getPlayers().size()<=3)
 					{
-						System.out.println(player.getUsername());
+						teamsBean.themesSource.removeAll(teamsBean.themesSource);
+						teamsBean.themesSource.addAll(this.selectedGame.getPlayers());
+						teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
+						teamsBean.setTeamOne(new Team("Team name"));
+						teamsBean.setTeamTwo(new Team("Team name"));
+						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 					}
-					
-					System.out.println("Players subscribed to this game:");
-					List<Player> list=new ArrayList<Player>();
-					
-					for(Player player:this.selectedGame.getPlayers())
+					else
 					{
-						list.add(player);
-					}
-
-					System.out.println("Generate teams method");
-					if(list.size()>2)
-					{
+						List<Player> list=new ArrayList<Player>();
+						
+						for(Player player:this.selectedGame.getPlayers())
+						{
+							list.add(player);
+						}
 						List<List<Player>> listed=this.generateTeams(list);
 						
 						for(List<Player> l:listed)
@@ -218,43 +228,95 @@ public class NextGamesView implements Serializable{
 						teamsBean.themesTarget=listed.get(1);
 						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 					}
-					else
-					{
-						teamsBean.themesSource.removeAll(teamsBean.themesSource);
-						teamsBean.themesSource.addAll(list);
-						teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
-						teamsBean.setTeamOne(null);
-						teamsBean.setTeamTwo(null);
-						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
-					}
+				}
+				else
+				{
+					System.out.println("This game has no players subscribed!");
+					teamsBean.setExistTeams(false);
+					System.out.println("This game has no game players");
+					teamsBean.setExistTeams(false);
+					teamsBean.themesSource.removeAll(teamsBean.themesSource);
+					teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
+					teamsBean.setTeamOne(new Team("Team name"));
+					teamsBean.setTeamTwo(new Team("Team name"));
+					teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 				}
 			}
-			else
-			{
-				teamsBean.setExistTeams(true);
-				System.out.println("This game has "+this.selectedGame.getTeams().size()+" teams!");				
-				//verific daca jocul are 2 echipe
-				//in cazul in care are doua echipe afisez echipele
-				if(this.selectedGame.getTeams().size()==2)
-				{
-					teamsBean.setTeamOne(this.selectedGame.getTeams().get(0));
-					teamsBean.themesSource=new ArrayList<Player>();
-					teamsBean.themesTarget=new ArrayList<Player>();
-					for(Player tp:teamsBean.getTeamOne().getPlayers())
-					{
-						teamsBean.themesSource.add(tp);
-					}
-					teamsBean.setTeamTwo(this.selectedGame.getTeams().get(1));
-					for(Player tp:teamsBean.getTeamTwo().getPlayers())
-					{
-						teamsBean.themesTarget.add(tp);
-					}
-					teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
-					teamsBean.setExistTeams(true);
-				}			
-			}
-			
-			//redirectionez catre TeamsView in functie de tipul de user
+//			if(this.selectedGame.getTeams().isEmpty() || this.selectedGame.getTeams().size()!=2)
+//				//in cazul in care nu are verific daca are jucatori inscrisi
+//			{
+//				System.out.println("This game has no teams!");
+
+//				else
+//				{
+//					teamsBean.setExistTeams(true);
+//					for(Player player:this.selectedGame.getPlayers())
+//					{
+//						System.out.println(player.getUsername());
+//					}
+//					
+//					System.out.println("Players subscribed to this game:");
+//					List<Player> list=new ArrayList<Player>();
+//					
+//					for(Player player:this.selectedGame.getPlayers())
+//					{
+//						list.add(player);
+//					}
+//
+//					System.out.println("Generate teams method");
+//					if(list.size()>2)
+//					{
+//						List<List<Player>> listed=this.generateTeams(list);
+//						
+//						for(List<Player> l:listed)
+//						{
+//							System.out.println("Team");
+//							for(Player p:l)
+//							{
+//								System.out.println(p.toString());
+//							}
+//						}
+//						teamsBean.themesSource=listed.get(0);
+//						teamsBean.themesTarget=listed.get(1);
+//						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+//					}
+//					else
+//					{
+//						teamsBean.themesSource.removeAll(teamsBean.themesSource);
+//						teamsBean.themesSource.addAll(list);
+//						teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
+//						teamsBean.setTeamOne(new Team("Team name"));
+//						teamsBean.setTeamTwo(new Team("Team name"));
+//						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+//					}
+//				}
+//			}
+//			else
+//			{
+//				teamsBean.setExistTeams(true);
+//				System.out.println("This game has "+this.selectedGame.getTeams().size()+" teams!");				
+//				//verific daca jocul are 2 echipe
+//				//in cazul in care are doua echipe afisez echipele
+//				if(this.selectedGame.getTeams().size()==2)
+//				{
+//					teamsBean.setTeamOne(this.selectedGame.getTeams().get(0));
+//					teamsBean.themesSource=new ArrayList<Player>();
+//					teamsBean.themesTarget=new ArrayList<Player>();
+//					for(Player tp:teamsBean.getTeamOne().getPlayers())
+//					{
+//						teamsBean.themesSource.add(tp);
+//					}
+//					teamsBean.setTeamTwo(this.selectedGame.getTeams().get(1));
+//					for(Player tp:teamsBean.getTeamTwo().getPlayers())
+//					{
+//						teamsBean.themesTarget.add(tp);
+//					}
+//					teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+//					teamsBean.setExistTeams(true);
+//				}			
+//			}
+	
+//			//redirectionez catre TeamsView in functie de tipul de user
 			if(firstBean.getCurrentPlayer().getType()==1)
 			{
 				try {
@@ -277,8 +339,7 @@ public class NextGamesView implements Serializable{
 
 		
 		public List<List<Player>> generateTeams(List<Player> players)
-		{
-			
+		{	
 			List<List<Player>> list=new ArrayList<List<Player>>();
 			TeamGenerator.list=players;
 			TeamGenerator.generateTeams();
@@ -324,9 +385,5 @@ public class NextGamesView implements Serializable{
 			list.add(secondList);
 
 			return list;
-		}
-		
-		
-		
+		}		
 }
-

@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import javax.persistence.*;
-
 import model.Player;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,17 +36,17 @@ public class Game implements Serializable {
           joinColumns=@JoinColumn(name="game_id"),
           inverseJoinColumns=@JoinColumn(name="player_id"))
 	private List<Player> players;
-
-	
-	//bi-directional many-to-one association to Team
-	@OneToMany(mappedBy="gameBean", fetch=FetchType.EAGER)
-	private List<Team> teams;
+//
+//	
+//	//bi-directional many-to-one association to Team
+//	@OneToMany(mappedBy="gameBean", fetch=FetchType.EAGER)
+//	private List<Team> teams;
 
 	public Game() {
 		this.date=null;
 		this.difference=0;
 		this.players=new ArrayList<Player>();
-		this.teams=new ArrayList<Team>();
+		//this.teams=new ArrayList<Team>();
 	}
 
 	public Integer getId() {
@@ -75,6 +73,16 @@ public class Game implements Serializable {
 		this.difference = difference;
 	}
 
+	//bi-directional many-to-one association to Team
+		@ManyToOne
+		@JoinColumn(name="firstteam")
+		private Team team1;
+
+		//bi-directional many-to-one association to Team
+		@ManyToOne
+		@JoinColumn(name="secondteam")
+		private Team team2;
+		
 	public List<Player> getPlayers() {
 		return this.players;
 	}
@@ -84,27 +92,44 @@ public class Game implements Serializable {
 		this.players = players;
 	}
 
-	public List<Team> getTeams() {
-		return this.teams;
+
+	public Team getTeam1() {
+		return this.team1;
 	}
 
-	public void setTeams(List<Team> teams) {
-		this.teams = teams;
+	public void setTeam1(Team team1) {
+		this.team1 = team1;
 	}
 
-	public Team addTeam(Team team) {
-		getTeams().add(team);
-		team.setGameBean(this);
-
-		return team;
+	public Team getTeam2() {
+		return this.team2;
 	}
 
-	public Team removeTeam(Team team) {
-		getTeams().remove(team);
-		team.setGameBean(null);
-
-		return team;
+	public void setTeam2(Team team2) {
+		this.team2 = team2;
 	}
+	
+//	public List<Team> getTeams() {
+//		return this.teams;
+//	}
+//
+//	public void setTeams(List<Team> teams) {
+//		this.teams = teams;
+//	}
+
+//	public Team addTeam(Team team) {
+//		getTeams().add(team);
+//		team.setGameBean(this);
+//
+//		return team;
+//	}
+//
+//	public Team removeTeam(Team team) {
+//		getTeams().remove(team);
+//		team.setGameBean(null);
+//
+//		return team;
+//	}
 	
 	//verifica daca jucatorul joaca deja la joc
 	public boolean gameStatus(Player player)
