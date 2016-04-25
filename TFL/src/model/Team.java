@@ -31,14 +31,6 @@ public class Team implements Serializable {
           inverseJoinColumns=@JoinColumn(name="id_player"))
 	private List<Player> players;
 
-	//bi-directional many-to-one association to Game
-		@OneToMany(mappedBy="team1", fetch=FetchType.EAGER)
-		private List<Game> games1;
-
-		//bi-directional many-to-one association to Game
-		@OneToMany(mappedBy="team2", fetch=FetchType.EAGER)
-		private List<Game> games2;
-
 	public Team() {
 		this.score=0.0;
 		this.players=new ArrayList<Player>();
@@ -81,50 +73,6 @@ public class Team implements Serializable {
 
 	public void setWinner(Boolean winner) {
 		this.winner = winner;
-	}
-
-	public List<Game> getGames1() {
-		return this.games1;
-	}
-
-	public void setGames1(List<Game> games1) {
-		this.games1 = games1;
-	}
-
-	public Game addGames1(Game games1) {
-		getGames1().add(games1);
-		games1.setTeam1(this);
-
-		return games1;
-	}
-
-	public Game removeGames1(Game games1) {
-		getGames1().remove(games1);
-		games1.setTeam1(null);
-
-		return games1;
-	}
-
-	public List<Game> getGames2() {
-		return this.games2;
-	}
-
-	public void setGames2(List<Game> games2) {
-		this.games2 = games2;
-	}
-
-	public Game addGames2(Game games2) {
-		getGames2().add(games2);
-		games2.setTeam2(this);
-
-		return games2;
-	}
-
-	public Game removeGames2(Game games2) {
-		getGames2().remove(games2);
-		games2.setTeam2(null);
-
-		return games2;
 	}
 	
 	public List<Player> getPlayers() {

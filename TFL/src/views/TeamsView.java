@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.bean.ApplicationScoped;
@@ -15,18 +14,17 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
 import org.primefaces.event.SelectEvent;
-
 import org.primefaces.event.TransferEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.DualListModel;
 
+import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
 import dataAccessLayer.TeamDataAccess;
 import dataAccessLayer.TeamGenerator;
 import dataAccessLayer.TeamPlayerDataAccess;
-
+import model.Game;
 import model.Player;
 import model.Team;
 
@@ -44,15 +42,25 @@ public class TeamsView implements Serializable {
 
 	private boolean existTeams;
 
+	private boolean showNextPrevious;
+	
+	public boolean isShowNextPrevious() {
+		return showNextPrevious;
+	}
+
+	public void setShowNextPrevious(boolean showNextPrevious) {
+		this.showNextPrevious = showNextPrevious;
+	}
+
 	public boolean isExistTeams() {
 		return this.existTeams;
 	}
 
-	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
-	
 	public void setExistTeams(boolean existTeams) {
 		this.existTeams = existTeams;
 	}
+	
+	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
 
 	public List<Player> themesSource = new ArrayList<Player>();
 
@@ -60,9 +68,9 @@ public class TeamsView implements Serializable {
 
 	private DualListModel<Player> players;
 
-	private Team teamOne;
+	public Team teamOne;
 
-	private Team teamTwo;
+	public Team teamTwo;
 
 	public Team getTeamOne() {
 		return teamOne;
@@ -108,6 +116,7 @@ public class TeamsView implements Serializable {
 		
 		 System.out.println("Source:");
 		this.themesSource = this.players.getSource();
+		this.teamOne.setPlayers(this.players.getSource());
 		
 		 for(Player p: this.themesSource)
 		 {
@@ -116,6 +125,8 @@ public class TeamsView implements Serializable {
 
 		System.out.println("Target:");
 		this.themesTarget = this.players.getTarget();
+		this.teamTwo.setPlayers( this.players.getTarget());
+		
 		 for(Player p: this.themesTarget)
 		 {
 		 System.out.println(p.getUsername());
@@ -128,32 +139,8 @@ public class TeamsView implements Serializable {
 		//
 		// FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
-
-	public void onSelect(SelectEvent event) {
-		//FacesContext context = FacesContext.getCurrentInstance();
-		// context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-		// "Item Selected", event.getObject().toString()));
-	}
-
-	public void onUnselect(UnselectEvent event) {
-		//FacesContext context = FacesContext.getCurrentInstance();
-		// context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-		// "Item Unselected", event.getObject().toString()));
-	}
-
-	public void onReorder() {
-		//FacesContext context = FacesContext.getCurrentInstance();
-		// context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-		// "List Reordered", null));
-	}
-
+	
 	 public int indexOfMap=0;
-	 
-
-	 //nu sterge
-	public void nextTeam() {
-
-	}
 
 	 public void getNextTeam(ActionEvent actionEvent) {
 			System.out.println("Next Team");
@@ -182,11 +169,9 @@ public class TeamsView implements Serializable {
 			{
 				System.out.println(p.getUsername());
 			}
-			
-			
+				
 			this.themesSource=firstList;
-			
-			
+					
 			List<Player> secondList = new ArrayList<Player>();
 			
 			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
@@ -314,8 +299,40 @@ public class TeamsView implements Serializable {
 		
 		System.out.println("Hello from save teams!");
 		
-//		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-//     	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+		System.out.println("first team to save:"+this.teamOne.getName());
+		
+		 for(Player p: this.teamOne.getPlayers())
+	 	{
+			 System.out.println(p.getUsername());
+	 	}
+		
+		 System.out.println("second team to save:"+this.teamTwo.getName());
+		 for(Player p: this.teamTwo.getPlayers())
+		 {
+				 System.out.println(p.getUsername());
+		 }
+		 
+		 this.teamOne.setScore(0);
+		 this.teamTwo.setScore(0);
+		 this.teamOne.setWinner(false);
+		 this.teamTwo.setWinner(false);
+		 
+		 TeamDataAccess tda=new TeamDataAccess();
+		 this.teamOne=tda.createNewTeam(this.teamOne);
+		 this.teamTwo=new TeamDataAccess().createNewTeam(this.teamTwo);
+		 
+		 System.out.println("Saved teams:"+this.teamOne.getId()+" "+this.teamTwo.getId());
+		 
+		 
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+     	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+     	firstBean.getSelectedGame().setTeam1(this.teamOne);
+     	firstBean.getSelectedGame().setTeam2(this.teamTwo);
+     	
+     	GameDataAccess gda=new GameDataAccess();
+     	firstBean.setSelectedGame(gda.updateGame(firstBean.getSelectedGame()));
+
+          	
 //     	TeamDataAccess tda=new TeamDataAccess();
 //     	Team a=tda.createNewTeam("firstTeam", firstBean.getSelectedGame());
 //     	System.out.println(a.getId());

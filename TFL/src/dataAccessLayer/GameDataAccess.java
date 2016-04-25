@@ -92,6 +92,13 @@ public class GameDataAccess implements Serializable {
 		return false;
 	}
 	
+	public Game UpdateGame(int idToUpdate,Game game)
+	{
+		Game g=EntityManagerHelper.em.find(Game.class, idToUpdate);
+		
+		return g;
+	}
+	
 	public Game setDifference(int gameId, int difference,Team firstTeam, Team secondTeam) {
 
 		Game g=EntityManagerHelper.em.find(Game.class, gameId);
@@ -107,11 +114,11 @@ public class GameDataAccess implements Serializable {
 		}
 		
 		if(g !=null)
-		{
-			
+		{		
 			g.setDifference(difference);
-//			g.addTeam(firstTeam);
-//			g.addTeam(secondTeam);
+			g.setTeam1(firstTeam);
+			g.setTeam2(secondTeam);
+
 			EntityManagerHelper.em.persist(firstTeam);
 			EntityManagerHelper.em.persist(secondTeam);
 			EntityManagerHelper.em.getTransaction().commit();
@@ -121,13 +128,9 @@ public class GameDataAccess implements Serializable {
 			System.out.println("First team refreshed id:"+firstTeam.getId());
 			System.out.println("Second team refreshed id:"+secondTeam.getId());
 			
-			//g.addTeam(firstTeam);
-			//g.addTeam(secondTeam);
-//			g.addTeam(firstTeam);
-//			g.addTeam(secondTeam);
-//			EntityManagerHelper.em.persist(g);
-//			EntityManagerHelper.em.getTransaction().commit();
-//			EntityManagerHelper.em.refresh(g);
+			EntityManagerHelper.em.persist(g);
+			EntityManagerHelper.em.getTransaction().commit();
+			EntityManagerHelper.em.refresh(g);
 			return g;
 		}
 		return null;
@@ -216,15 +219,13 @@ public class GameDataAccess implements Serializable {
 //		}
 	}
 
-	public List<Team> listGameTeams(Game game)
+	public Game updateGame(Game gameToUpdate)
 	{
-		Game g=new Game();
-		g=EntityManagerHelper.em.find(Game.class, game.getId());
-//		if(g.getTeams()!=null)
-//		{
-//			return g.getTeams();
-//		}
-		return null;
+		Game newGame=EntityManagerHelper.em.find(Game.class, gameToUpdate.getId());
+		EntityManagerHelper.em.persist(newGame);
+    	EntityManagerHelper.em.getTransaction().commit();
+    	EntityManagerHelper.em.refresh(newGame);
+    	return newGame;
 	}
 	
 	public Game addNewGame(String date)

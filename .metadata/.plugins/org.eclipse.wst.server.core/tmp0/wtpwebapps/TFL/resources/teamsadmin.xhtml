@@ -31,7 +31,7 @@
 
 			<div class="ui-grid-row" style="padding-top:1%">
 				<div class="ui-grid-col-4" style="text-align:center;">
-					<p:commandButton value="Previous" actionListener="#{teamsView.getPreviousTeam}" ajax="false" />
+					<p:commandButton value="Previous" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}" ajax="false" />
 				</div>
 			
 				<div class="ui-grid-col-4" style="text-align:center;">
@@ -39,7 +39,7 @@
 				</div>
 				
 				<div class="ui-grid-col-4" style="text-align:center;">
-					<p:commandButton value="Next"  actionListener="#{teamsView.getNextTeam}" ajax="false" />
+					<p:commandButton value="Next" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}" ajax="false" />
 				</div>
 			 </div>	
 		</div>

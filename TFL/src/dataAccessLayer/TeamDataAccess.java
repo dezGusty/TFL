@@ -25,12 +25,22 @@ public class TeamDataAccess {
 			System.out.println(p.getName());
 		}
 		return result;
-}
+	}
 	
-	public Team createNewTeam(String teamName,Game game) {
-		Team newTeam=new Team();
-		Game gamee = EntityManagerHelper.em.find(Game.class, game.getId());
-		EntityManagerHelper.em.refresh(gamee);
+	public Team createNewTeam(Team teamToSave) {
+
+		Team t= EntityManagerHelper.em.find(Team.class, teamToSave.getId());
+		t.setName(teamToSave.getName());
+		t.setPlayers(teamToSave.getPlayers());
+		
+		EntityManagerHelper.em.persist(teamToSave);
+		EntityManagerHelper.em.getTransaction().commit();
+		EntityManagerHelper.em.refresh(teamToSave);
+		return teamToSave;
+		
+		//Team newTeam=new Team();
+		//Game gamee = EntityManagerHelper.em.find(Game.class, game.getId());
+		//EntityManagerHelper.em.refresh(gamee);
 //		System.out.println("This game has "+gamee.getTeams().size()+" teams!");
 //		try {
 //			if(gamee.getTeams().size()==2)
@@ -51,7 +61,6 @@ public class TeamDataAccess {
 //			System.out.println(ex.getMessage());
 //
 //		}
-		return null;
 	}
 	
 	public Team addNewPlayer(int playerId, int teamId) {
@@ -72,7 +81,6 @@ public class TeamDataAccess {
 //		}
 		return team;
 	}
-	
 	
 	public static void main(String[] args) {
 		TeamDataAccess tda=new TeamDataAccess();

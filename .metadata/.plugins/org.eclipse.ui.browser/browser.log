@@ -1,0 +1,367 @@
+
+apr. 25, 2016 10:24:31.95 NEW SESSION
+apr. 25, 2016 10:24:31.95 console.error: mobileview: 
+apr. 25, 2016 10:24:31.97   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 10:24:31.98   Stack:
+apr. 25, 2016 10:24:31.98     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:24:31.98 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 10:24:31.98 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:24:32.00 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 10:24:32.00 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 10:24:32.00 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 10:24:32.00 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 10:24:32.01 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 10:24:32.01 
+apr. 25, 2016 10:24:32.01 console.error: mobileview: 
+apr. 25, 2016 10:24:32.02   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 10:24:32.02   Stack:
+apr. 25, 2016 10:24:32.02     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:24:32.02 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 10:24:32.03 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:24:32.04 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 10:24:32.04 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 10:24:32.05 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 10:24:32.05 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 10:24:32.05 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 10:24:32.06 
+apr. 25, 2016 10:38:42.90 1461569922864	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+apr. 25, 2016 10:38:43.29 1461569923305	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+apr. 25, 2016 10:43:49.65 console.error: mobileview: 
+apr. 25, 2016 10:43:49.73   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 10:43:49.74   Stack:
+apr. 25, 2016 10:43:49.75     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:43:49.76 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 10:43:49.87 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:43:49.88 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 10:43:49.88 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 10:43:49.89 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 10:43:49.92 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 10:43:49.97 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 10:43:50.01 
+apr. 25, 2016 10:43:50.02 console.error: mobileview: 
+apr. 25, 2016 10:43:50.02   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 10:43:50.02   Stack:
+apr. 25, 2016 10:43:50.09     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:43:50.09 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 10:43:50.13 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:43:50.13 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 10:43:50.14 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 10:43:50.14 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 10:43:50.14 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 10:43:50.18 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 10:43:50.18 
+apr. 25, 2016 10:45:22.88 console.error: mobileview: 
+apr. 25, 2016 10:45:22.90   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 10:45:22.91   Stack:
+apr. 25, 2016 10:45:22.94     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:45:22.95 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 10:45:22.99 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:45:23.00 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 10:45:23.00 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 10:45:23.01 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 10:45:23.02 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 10:45:23.02 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 10:45:23.03 
+apr. 25, 2016 10:45:23.04 console.error: mobileview: 
+apr. 25, 2016 10:45:23.04   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 10:45:23.04   Stack:
+apr. 25, 2016 10:45:23.06     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:45:23.06 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 10:45:23.06 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:45:23.07 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 10:45:23.09 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 10:45:23.10 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 10:45:23.10 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 10:45:23.13 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 10:45:23.13 
+apr. 25, 2016 10:48:30.35 console.error: mobileview: 
+apr. 25, 2016 10:48:30.36   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 10:48:30.39   Stack:
+apr. 25, 2016 10:48:30.40     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:48:30.40 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 10:48:30.42 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:48:30.42 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 10:48:30.42 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 10:48:30.44 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 10:48:30.44 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 10:48:30.44 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 10:48:30.45 
+apr. 25, 2016 10:48:30.45 console.error: mobileview: 
+apr. 25, 2016 10:48:30.46   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 10:48:30.46   Stack:
+apr. 25, 2016 10:48:30.47     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:48:30.47 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 10:48:30.47 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 10:48:30.48 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 10:48:30.48 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 10:48:30.49 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 10:48:30.49 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 10:48:30.51 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 10:48:30.52 
+apr. 25, 2016 11:37:48.03 console.error: mobileview: 
+apr. 25, 2016 11:37:48.32   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 11:37:48.47   Stack:
+apr. 25, 2016 11:37:48.49     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:37:48.59 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 11:37:48.63 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:37:48.64 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 11:37:48.71 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 11:37:48.75 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 11:37:48.78 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 11:37:48.83 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 11:37:48.95 
+apr. 25, 2016 11:37:49.26 console.error: mobileview: 
+apr. 25, 2016 11:37:49.27   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 11:37:49.28   Stack:
+apr. 25, 2016 11:37:49.34     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:37:49.37 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 11:37:49.48 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:37:49.49 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 11:37:49.50 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 11:37:49.51 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 11:37:49.51 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 11:37:49.52 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 11:37:49.55 
+apr. 25, 2016 11:47:33.41 console.error: mobileview: 
+apr. 25, 2016 11:47:33.47   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 11:47:33.51   Stack:
+apr. 25, 2016 11:47:33.52     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:47:33.52 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 11:47:33.53 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:47:33.54 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 11:47:33.54 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 11:47:33.55 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 11:47:33.55 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 11:47:33.56 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 11:47:33.56 
+apr. 25, 2016 11:47:33.58 console.error: mobileview: 
+apr. 25, 2016 11:47:33.58   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 11:47:33.60   Stack:
+apr. 25, 2016 11:47:33.62     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:47:33.63 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 11:47:33.64 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:47:33.64 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 11:47:33.65 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 11:47:33.65 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 11:47:33.66 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 11:47:33.66 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 11:47:33.67 
+apr. 25, 2016 11:53:59.81 console.error: mobileview: 
+apr. 25, 2016 11:53:59.84   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 11:53:59.85   Stack:
+apr. 25, 2016 11:53:59.86     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:53:59.88 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 11:53:59.88 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:53:59.89 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 11:53:59.90 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 11:53:59.91 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 11:53:59.92 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 11:53:59.93 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 11:53:59.94 
+apr. 25, 2016 11:53:59.94 console.error: mobileview: 
+apr. 25, 2016 11:53:59.96   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 11:53:59.97   Stack:
+apr. 25, 2016 11:53:59.98     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:53:59.98 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 11:53:59.98 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 11:54:00.00 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 11:54:00.00 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 11:54:00.01 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 11:54:00.01 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 11:54:00.02 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 11:54:00.10 
+apr. 25, 2016 12:00:20.63 console.error: mobileview: 
+apr. 25, 2016 12:00:20.64   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 12:00:20.65   Stack:
+apr. 25, 2016 12:00:20.65     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:00:20.65 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 12:00:21.66 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:00:21.67 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 12:00:21.68 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 12:00:21.69 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 12:00:21.69 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 12:00:21.70 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 12:00:21.71 
+apr. 25, 2016 12:00:21.71 console.error: mobileview: 
+apr. 25, 2016 12:00:21.72   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 12:00:21.73   Stack:
+apr. 25, 2016 12:00:21.73     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:00:21.73 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 12:00:21.73 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:00:21.74 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 12:00:21.74 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 12:00:21.74 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 12:00:21.75 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 12:00:21.75 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 12:00:21.76 
+apr. 25, 2016 12:03:40.38 [Child 6428] WARNING: pipe error: 109: file c:/builds/moz2_slave/rel-m-rel-w32_bld-000000000000/build/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+apr. 25, 2016 12:14:11.33 NEW SESSION
+apr. 25, 2016 12:14:11.33 console.error: mobileview: 
+apr. 25, 2016 12:14:11.41   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 12:14:11.41   Stack:
+apr. 25, 2016 12:14:11.42     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:14:11.42 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 12:14:11.43 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:14:11.43 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 12:14:11.43 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 12:14:11.44 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 12:14:11.44 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 12:14:11.44 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 12:14:11.45 
+apr. 25, 2016 12:14:11.45 console.error: mobileview: 
+apr. 25, 2016 12:14:11.46   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 12:14:11.46   Stack:
+apr. 25, 2016 12:14:11.46     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:14:11.47 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 12:14:11.47 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:14:11.48 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 12:14:11.48 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 12:14:11.48 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 12:14:11.49 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 12:14:11.49 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 12:14:11.49 
+apr. 25, 2016 12:18:25.48 console.error: mobileview: 
+apr. 25, 2016 12:18:25.48   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 12:18:25.49   Stack:
+apr. 25, 2016 12:18:25.49     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:18:25.50 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 12:18:25.50 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:18:25.51 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 12:18:25.51 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 12:18:25.51 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 12:18:25.52 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 12:18:25.52 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 12:18:25.56 
+apr. 25, 2016 12:18:25.56 console.error: mobileview: 
+apr. 25, 2016 12:18:25.57   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 12:18:25.58   Stack:
+apr. 25, 2016 12:18:25.58     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:18:25.59 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 12:18:25.60 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 12:18:25.61 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 12:18:25.62 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 12:18:25.62 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 12:18:25.64 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 12:18:25.65 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 12:18:25.65 
+apr. 25, 2016 13:26:07.70 console.error: mobileview: 
+apr. 25, 2016 13:26:07.78   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:26:07.83   Stack:
+apr. 25, 2016 13:26:07.84     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:26:07.84 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:26:07.86 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:26:07.88 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:26:07.89 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:26:07.90 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:26:07.90 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:26:07.96 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:26:07.99 
+apr. 25, 2016 13:26:07.99 console.error: mobileview: 
+apr. 25, 2016 13:26:08.05   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:26:08.09   Stack:
+apr. 25, 2016 13:26:08.10     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:26:08.12 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:26:08.12 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:26:08.12 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:26:08.13 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:26:08.17 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:26:08.17 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:26:08.17 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:26:08.18 
+apr. 25, 2016 13:30:29.63 console.error: mobileview: 
+apr. 25, 2016 13:30:29.79   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:30:29.88   Stack:
+apr. 25, 2016 13:30:29.97     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:30:30.03 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:30:30.07 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:30:30.12 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:30:30.16 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:30:30.20 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:30:30.34 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:30:30.67 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:30:30.72 
+apr. 25, 2016 13:30:30.73 console.error: mobileview: 
+apr. 25, 2016 13:30:30.82   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:30:30.89   Stack:
+apr. 25, 2016 13:30:30.96     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:30:31.02 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:30:31.03 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:30:31.04 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:30:31.12 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:30:31.25 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:30:31.34 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:30:31.74 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:30:31.78 
+apr. 25, 2016 13:39:25.99 console.error: mobileview: 
+apr. 25, 2016 13:39:26.43   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:39:26.68   Stack:
+apr. 25, 2016 13:39:26.69     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:39:26.73 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:39:26.78 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:39:26.86 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:39:26.88 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:39:26.90 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:39:26.98 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:39:27.01 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:39:27.08 
+apr. 25, 2016 13:39:27.15 console.error: mobileview: 
+apr. 25, 2016 13:39:27.23   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:39:27.25   Stack:
+apr. 25, 2016 13:39:27.31     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:39:27.42 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:39:27.56 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:39:27.60 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:39:27.64 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:39:27.75 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:39:27.76 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:39:27.82 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:39:27.86 
+apr. 25, 2016 13:42:38.29 console.error: mobileview: 
+apr. 25, 2016 13:42:38.38   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:42:38.39   Stack:
+apr. 25, 2016 13:42:38.42     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:42:38.44 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:42:38.47 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:42:38.49 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:42:38.50 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:42:38.52 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:42:38.52 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:42:38.53 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:42:38.53 
+apr. 25, 2016 13:42:38.53 console.error: mobileview: 
+apr. 25, 2016 13:42:38.55   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:42:38.57   Stack:
+apr. 25, 2016 13:42:38.60     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:42:38.62 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:42:38.62 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:42:38.63 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:42:38.64 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:42:38.64 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:42:38.66 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:42:38.66 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:42:38.68 
+apr. 25, 2016 13:43:25.47 console.error: mobileview: 
+apr. 25, 2016 13:43:25.62   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:43:25.73   Stack:
+apr. 25, 2016 13:43:25.75     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:43:25.81 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:43:25.92 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:43:25.97 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:43:26.03 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:43:26.11 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:43:26.13 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:43:26.16 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:43:26.20 
+apr. 25, 2016 13:43:26.22 console.error: mobileview: 
+apr. 25, 2016 13:43:26.23   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+apr. 25, 2016 13:43:26.25   Stack:
+apr. 25, 2016 13:43:26.25     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:43:26.28 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+apr. 25, 2016 13:43:26.36 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+apr. 25, 2016 13:43:26.37 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+apr. 25, 2016 13:43:26.39 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+apr. 25, 2016 13:43:26.43 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+apr. 25, 2016 13:43:26.45 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+apr. 25, 2016 13:43:26.54 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+apr. 25, 2016 13:43:26.64 

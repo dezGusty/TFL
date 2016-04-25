@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
+<fullyQualifiedTypeName name="dataAccessLayer.TeamPlayerDataAccess"/>
+<fullyQualifiedTypeName name="model.Game"/>
+<fullyQualifiedTypeName name="dataAccessLayer.TeamDataAccess"/>
 </qualifiedTypeNameHistroy>

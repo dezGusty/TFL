@@ -176,18 +176,15 @@ public class NextGamesView implements Serializable{
 			{
 				System.out.println("Game has teams!");
 				teamsBean.setExistTeams(true);
+				
 				teamsBean.setTeamOne(this.selectedGame.getTeam1());
+				System.out.println("Team one:"+this.selectedGame.getTeam1().getName());
 				teamsBean.themesSource=new ArrayList<Player>();
 				teamsBean.themesTarget=new ArrayList<Player>();
-				for(Player tp:teamsBean.getTeamOne().getPlayers())
-				{
-					teamsBean.themesSource.add(tp);
-				}
+				teamsBean.themesSource.addAll(this.selectedGame.getTeam1().getPlayers());
 				teamsBean.setTeamTwo(this.selectedGame.getTeam2());
-				for(Player tp:teamsBean.getTeamTwo().getPlayers())
-				{
-					teamsBean.themesTarget.add(tp);
-				}
+				System.out.println("Second team:"+this.selectedGame.getTeam2().getName());
+				teamsBean.themesTarget.addAll(this.selectedGame.getTeam1().getPlayers());
 				teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 			}
 			else
@@ -208,6 +205,7 @@ public class NextGamesView implements Serializable{
 					}
 					else
 					{
+						teamsBean.setShowNextPrevious(true);
 						List<Player> list=new ArrayList<Player>();
 						
 						for(Player player:this.selectedGame.getPlayers())
@@ -242,79 +240,6 @@ public class NextGamesView implements Serializable{
 					teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 				}
 			}
-//			if(this.selectedGame.getTeams().isEmpty() || this.selectedGame.getTeams().size()!=2)
-//				//in cazul in care nu are verific daca are jucatori inscrisi
-//			{
-//				System.out.println("This game has no teams!");
-
-//				else
-//				{
-//					teamsBean.setExistTeams(true);
-//					for(Player player:this.selectedGame.getPlayers())
-//					{
-//						System.out.println(player.getUsername());
-//					}
-//					
-//					System.out.println("Players subscribed to this game:");
-//					List<Player> list=new ArrayList<Player>();
-//					
-//					for(Player player:this.selectedGame.getPlayers())
-//					{
-//						list.add(player);
-//					}
-//
-//					System.out.println("Generate teams method");
-//					if(list.size()>2)
-//					{
-//						List<List<Player>> listed=this.generateTeams(list);
-//						
-//						for(List<Player> l:listed)
-//						{
-//							System.out.println("Team");
-//							for(Player p:l)
-//							{
-//								System.out.println(p.toString());
-//							}
-//						}
-//						teamsBean.themesSource=listed.get(0);
-//						teamsBean.themesTarget=listed.get(1);
-//						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
-//					}
-//					else
-//					{
-//						teamsBean.themesSource.removeAll(teamsBean.themesSource);
-//						teamsBean.themesSource.addAll(list);
-//						teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
-//						teamsBean.setTeamOne(new Team("Team name"));
-//						teamsBean.setTeamTwo(new Team("Team name"));
-//						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
-//					}
-//				}
-//			}
-//			else
-//			{
-//				teamsBean.setExistTeams(true);
-//				System.out.println("This game has "+this.selectedGame.getTeams().size()+" teams!");				
-//				//verific daca jocul are 2 echipe
-//				//in cazul in care are doua echipe afisez echipele
-//				if(this.selectedGame.getTeams().size()==2)
-//				{
-//					teamsBean.setTeamOne(this.selectedGame.getTeams().get(0));
-//					teamsBean.themesSource=new ArrayList<Player>();
-//					teamsBean.themesTarget=new ArrayList<Player>();
-//					for(Player tp:teamsBean.getTeamOne().getPlayers())
-//					{
-//						teamsBean.themesSource.add(tp);
-//					}
-//					teamsBean.setTeamTwo(this.selectedGame.getTeams().get(1));
-//					for(Player tp:teamsBean.getTeamTwo().getPlayers())
-//					{
-//						teamsBean.themesTarget.add(tp);
-//					}
-//					teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
-//					teamsBean.setExistTeams(true);
-//				}			
-//			}
 	
 //			//redirectionez catre TeamsView in functie de tipul de user
 			if(firstBean.getCurrentPlayer().getType()==1)
