@@ -41,7 +41,6 @@ public class NextGamesView implements Serializable{
 			this.gameDate = gameDate;
 		}
 
-
 		@ManagedProperty("#{gameDataAccess}")
 	    public GameDataAccess gamesData;
 	    
@@ -78,8 +77,7 @@ public class NextGamesView implements Serializable{
 			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
 			
 			GameDataAccess gda=new GameDataAccess();
-			gda.playGame(game.getId(), firstBean.getCurrentPlayer().getId());
-			
+			gda.playGame(game.getId(), firstBean.getCurrentPlayer().getId());		
 			System.out.println("Done");
 		}
 		
@@ -130,8 +128,9 @@ public class NextGamesView implements Serializable{
 		 
 		public void remove(Game game) {
 			System.out.println("Remove game "+game.getId());
+			game.setArchive(true);
 			GameDataAccess gda=new GameDataAccess();
-			gda.removeGame(game.getId());
+			gda.updateGame(game);
 			games.remove(game);
 		}
 		
@@ -176,15 +175,17 @@ public class NextGamesView implements Serializable{
 			{
 				System.out.println("Game has teams!");
 				teamsBean.setExistTeams(true);
+				teamsBean.themesSource=new ArrayList<Player>();
+				teamsBean.themesTarget=new ArrayList<Player>();
 				
 				teamsBean.setTeamOne(this.selectedGame.getTeam1());
 				System.out.println("Team one:"+this.selectedGame.getTeam1().getName());
-				teamsBean.themesSource=new ArrayList<Player>();
-				teamsBean.themesTarget=new ArrayList<Player>();
 				teamsBean.themesSource.addAll(this.selectedGame.getTeam1().getPlayers());
+				
 				teamsBean.setTeamTwo(this.selectedGame.getTeam2());
 				System.out.println("Second team:"+this.selectedGame.getTeam2().getName());
-				teamsBean.themesTarget.addAll(this.selectedGame.getTeam1().getPlayers());
+				teamsBean.themesTarget.addAll(this.selectedGame.getTeam2().getPlayers());
+				
 				teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 			}
 			else
@@ -288,6 +289,7 @@ public class NextGamesView implements Serializable{
 			for(Player p:players)
 			{
 				existsInList=false;
+				
 				for(Player pl:firstList)
 				{
 					if(p.getId()==pl.getId())

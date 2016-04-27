@@ -13,7 +13,6 @@
 	<f:facet name="last">
 		<h:outputStylesheet  name="../style/normalUserCss.css" />
 		<h:outputStylesheet  name="../style/adminCss.css" />
-		
 	</f:facet>
 
 	<ui:insert name="header">
@@ -40,16 +39,12 @@
 							ajax="false" />
 					</p:column>
 					<p:column>
-						<p:commandButton value="Make teams" style="width:100%;"
-							actionListener="#{nextGamesView.viewTeams(game)}" ajax="false" />
-					</p:column>
-					<p:column>
 						<p:commandButton  value="Cancel" update="gamesTable" style="width:100%;"
 							actionListener="#{nextGamesView.remove(game)}" ajax="false" />
 					</p:column>
 
 					<p:column>
-						<p:commandButton value="View teams" style="width:100%;"
+						<p:commandButton value="Teams" style="width:100%;"
 							actionListener="#{nextGamesView.viewTeams(game)}" ajax="true" />
 					</p:column>
 						

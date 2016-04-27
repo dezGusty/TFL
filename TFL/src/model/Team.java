@@ -82,5 +82,14 @@ public class Team implements Serializable {
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
+	
+	public void addNewPlayer(Player p)
+	{
+		if(this.players==null)
+		{
+			this.players=new ArrayList<Player>();
+		}
+		this.players.add(p);
+	}
 
 }

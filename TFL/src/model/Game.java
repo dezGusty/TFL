@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-
 import javax.persistence.*;
 import model.Player;
 import java.util.ArrayList;
@@ -30,6 +29,8 @@ public class Game implements Serializable {
 
 	private Integer difference;
 
+	private Boolean archive;
+	
 	//bi-directional many-to-many association to Player
 	@ManyToMany 
     @JoinTable(name="game_players", 
@@ -107,6 +108,14 @@ public class Game implements Serializable {
 
 	public void setTeam2(Team team2) {
 		this.team2 = team2;
+	}
+	
+	public Boolean getArchive() {
+		return this.archive;
+	}
+
+	public void setArchive(Boolean archive) {
+		this.archive = archive;
 	}
 	
 //	public List<Team> getTeams() {

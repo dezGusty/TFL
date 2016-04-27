@@ -65,7 +65,7 @@ public class GameDataAccess implements Serializable {
 
 	
 	public List<Game> listNextGames() {
-		TypedQuery<Game> query = EntityManagerHelper.em.createQuery("SELECT g FROM Game g where g.date > current_date", Game.class);
+		TypedQuery<Game> query = EntityManagerHelper.em.createQuery("SELECT g FROM Game g where g.date > current_date and g.archive = false", Game.class);
 		List<Game> result = new ArrayList<Game>();
 		result = query.getResultList();
 
@@ -74,29 +74,18 @@ public class GameDataAccess implements Serializable {
 		}
 		return result;
 	}
-
-	public boolean removeGame(int gameId) {
-		
-		Game g=EntityManagerHelper.em.find(Game.class, gameId);
-		if(g!=null)
-		{			
-			EntityManagerHelper.em.remove(g);
-			System.out.println("Game found and removed");
-			EntityManagerHelper.em.getTransaction().commit();
-			return true;
-		}
-		else
-		{
-			System.out.println("Game not found");
-		}
-		return false;
-	}
 	
-	public Game UpdateGame(int idToUpdate,Game game)
+	public Game updateGame(Game game)
 	{
-		Game g=EntityManagerHelper.em.find(Game.class, idToUpdate);
+		Game gameToUpdate=EntityManagerHelper.em.find(Game.class,game.getId());
 		
-		return g;
+		if(gameToUpdate !=null)
+		{
+			EntityManagerHelper.em.merge(gameToUpdate);
+			EntityManagerHelper.em.getTransaction().commit();
+			EntityManagerHelper.em.refresh(gameToUpdate);
+		}
+		return gameToUpdate;
 	}
 	
 	public Game setDifference(int gameId, int difference,Team firstTeam, Team secondTeam) {
@@ -146,26 +135,22 @@ public class GameDataAccess implements Serializable {
 		EntityManagerHelper.em.refresh(g);
 		return team;
 	}
-	public  List<Game> listGamesForPlayer(Player player) {
+	
+    public  List<Game> listGamesForPlayer(Player player) {
 		
 		Player p=EntityManagerHelper.em.find(Player.class, player.getId());
 		List<Game> result = new ArrayList<Game>();
-		//result=p.getGames();
-		//return result;
 		
 	    Date currentDate=new Date();
 		currentDate=Calendar.getInstance().getTime();	
 		
 		for(Game g: p.getGames())
 		{
-			if(g.getDate().after(currentDate))
+			if(g.getDate().after(currentDate) && (g.getArchive()==false))
 			{
 				result.add(g);
 			}
 		}
-
-		
-		//System.out.println("Games seted!");
 		return result;
 	}
 	
@@ -173,30 +158,21 @@ public class GameDataAccess implements Serializable {
 		
 		Player play =EntityManagerHelper.em.find(Player.class,playerId);
 		Game findGame=EntityManagerHelper.em.find(Game.class, gameId);	
-		System.out.println(play.getId());
-		System.out.println(findGame.getId());
-		
-		//trebuie scoasa intr-o noua metoda
-		boolean exist=false;
-		
-		for(Player p:findGame.getPlayers())
+
+		if(findGame.gameStatus(play))
 		{
-			if(p.getId()==play.getId())
-			{
-				exist=true;
-			}
-			System.out.println("Player "+p.getId()+" already playing game "+findGame.getId());
+			System.out.println("Player "+play.getId()+" already playing game "+findGame.getId());
 		}
-		
-		if(!exist)
+		else
 		{
 			findGame.getPlayers().add(play);
 			EntityManagerHelper.em.persist(findGame);
 			EntityManagerHelper.em.getTransaction().commit();
 			EntityManagerHelper.em.refresh(findGame);
 			EntityManagerHelper.em.refresh(play);
-			System.out.println("Player "+play.getUsername()+" is now playing game "+ findGame.dateToDisplay());		
+			System.out.println("Player "+play.getUsername()+" is now playing game "+ findGame.dateToDisplay());	
 		}
+		
 	}
 	  
 	public void addGameWinner(Game game, Player player) {		
@@ -217,15 +193,6 @@ public class GameDataAccess implements Serializable {
 //			EntityManagerHelper.em.persist(play);
 //			EntityManagerHelper.em.getTransaction().commit();
 //		}
-	}
-
-	public Game updateGame(Game gameToUpdate)
-	{
-		Game newGame=EntityManagerHelper.em.find(Game.class, gameToUpdate.getId());
-		EntityManagerHelper.em.persist(newGame);
-    	EntityManagerHelper.em.getTransaction().commit();
-    	EntityManagerHelper.em.refresh(newGame);
-    	return newGame;
 	}
 	
 	public Game addNewGame(String date)
@@ -250,6 +217,11 @@ public class GameDataAccess implements Serializable {
 	
 	public static void main(String[] args) {
 		GameDataAccess gda=new GameDataAccess();
-		gda.playGame(3, 1);
+		Game gameToUpdate=EntityManagerHelper.em.find(Game.class,4);
+
+		gameToUpdate.setArchive(false);
+		
+		gameToUpdate=gda.updateGame(gameToUpdate);
+
 	}
 }

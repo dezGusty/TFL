@@ -14,16 +14,12 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import org.primefaces.event.SelectEvent;
 import org.primefaces.event.TransferEvent;
-import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.DualListModel;
-
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
 import dataAccessLayer.TeamDataAccess;
 import dataAccessLayer.TeamGenerator;
-import dataAccessLayer.TeamPlayerDataAccess;
 import model.Game;
 import model.Player;
 import model.Team;
@@ -299,65 +295,79 @@ public class TeamsView implements Serializable {
 		
 		System.out.println("Hello from save teams!");
 		
-		System.out.println("first team to save:"+this.teamOne.getName());
+		//System.out.println("first team to save:"+this.teamOne.getName());
 		
-		 for(Player p: this.teamOne.getPlayers())
-	 	{
-			 System.out.println(p.getUsername());
-	 	}
-		
-		 System.out.println("second team to save:"+this.teamTwo.getName());
-		 for(Player p: this.teamTwo.getPlayers())
-		 {
-				 System.out.println(p.getUsername());
-		 }
-		 
-		 this.teamOne.setScore(0);
-		 this.teamTwo.setScore(0);
-		 this.teamOne.setWinner(false);
-		 this.teamTwo.setWinner(false);
-		 
-		 TeamDataAccess tda=new TeamDataAccess();
-		 this.teamOne=tda.createNewTeam(this.teamOne);
-		 this.teamTwo=new TeamDataAccess().createNewTeam(this.teamTwo);
-		 
-		 System.out.println("Saved teams:"+this.teamOne.getId()+" "+this.teamTwo.getId());
-		 
-		 
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
      	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-     	firstBean.getSelectedGame().setTeam1(this.teamOne);
-     	firstBean.getSelectedGame().setTeam2(this.teamTwo);
      	
-     	GameDataAccess gda=new GameDataAccess();
-     	firstBean.setSelectedGame(gda.updateGame(firstBean.getSelectedGame()));
-
-          	
-//     	TeamDataAccess tda=new TeamDataAccess();
-//     	Team a=tda.createNewTeam("firstTeam", firstBean.getSelectedGame());
-//     	System.out.println(a.getId());
-//     	tda=new TeamDataAccess();
-//     	Team b=tda.createNewTeam("secondTeam", firstBean.getSelectedGame());
-//     	System.out.println(b.getId());
-//     	
-//     	System.out.println("Done adding teams!");
-//     	System.out.println("Players to add:");
-//     	 System.out.println("Source:");
-// 		 for(Player p: this.themesSource)
-// 		 {
-// 			 TeamPlayerDataAccess tpda=new TeamPlayerDataAccess();
-// 			 tpda.createNewTeamPlayer(a.getId(), p.getId());
-// 			 System.out.println(p.getUsername());
-// 		 }
-//
-// 		System.out.println("Target:");
-// 		 for(Player p: this.themesTarget)
-// 		 {
-// 			 TeamPlayerDataAccess tpda=new TeamPlayerDataAccess();
-//			 tpda.createNewTeamPlayer(b.getId(), p.getId());
+     	Game game=firstBean.getSelectedGame();
+     	this.teamOne.getPlayers().removeAll(this.teamOne.getPlayers());
+     	this.teamOne.getPlayers().addAll(this.themesSource);
+     	this.teamTwo.getPlayers().removeAll(this.teamTwo.getPlayers());
+     	this.teamTwo.getPlayers().addAll(this.themesTarget);
+     	if(game.getTeam1()!=null && game.getTeam2()!=null)
+     	{
+     		game.setTeam1(this.teamOne);
+     		game.setTeam2(this.teamTwo);
+     		GameDataAccess gda=new GameDataAccess();
+         	firstBean.setSelectedGame(gda.updateGame(game));
+     	}
+     	else
+     	{
+     		System.out.println("Make the teams first!");
+     		if(this.teamOne==null && this.teamTwo!=null)
+     		{
+     			System.out.println("First team or second is null");
+     		}
+     		else
+     		{
+     			TeamDataAccess tda=new TeamDataAccess();
+     			game.setTeam1(tda.createNewTeam(this.teamOne));
+     			System.out.println("First team: "+this.teamOne.getName());
+         		for(Player p:this.teamOne.getPlayers())
+         		{
+         			System.out.println(p.getUsername());
+         		}
+         		
+         		
+         		tda=new TeamDataAccess();
+     			game.setTeam2(tda.createNewTeam(this.teamTwo));
+         		System.out.println("Second team: "+this.teamTwo.getName());
+         		for(Player p:this.teamTwo.getPlayers())
+         		{
+         			System.out.println(p.getUsername());
+         		}
+         		
+         		GameDataAccess gda=new GameDataAccess();
+         		gda.updateGame(game); 		
+     		}
+     	}
+     	
+     	System.out.println("Done!");
+//		 for(Player p: this.teamOne.getPlayers())
+//	 	{
 //			 System.out.println(p.getUsername());
-// 		 }
-	}
+//	 	}
+		
+//		 System.out.println("second team to save:"+this.teamTwo.getName());
+//		 for(Player p: this.teamTwo.getPlayers())
+//		 {
+//				 System.out.println(p.getUsername());
+//		 }
+//		 
+//		 TeamDataAccess tda=new TeamDataAccess();
+//		 this.teamOne=tda.createNewTeam(this.teamOne);
+//		 this.teamTwo=new TeamDataAccess().createNewTeam(this.teamTwo);
+//		 
+//		 System.out.println("Saved teams:"+this.teamOne.getId()+" "+this.teamTwo.getId());
+//		 
+//     	firstBean.getSelectedGame().setTeam1(this.teamOne);
+//     	firstBean.getSelectedGame().setTeam2(this.teamTwo);
+//     	
+//     	GameDataAccess gda=new GameDataAccess();
+//     	firstBean.setSelectedGame(gda.updateGame(firstBean.getSelectedGame()));
+     	
+     	}
 		
 	
 	public void backToHistory() {

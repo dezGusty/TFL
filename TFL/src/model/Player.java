@@ -66,6 +66,8 @@ public class Player implements Serializable {
 
 	private String username;
 
+	private Boolean archive;
+	
 	//bi-directional many-to-many association to Game
 	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
 	private List<Game> games;
@@ -140,6 +142,14 @@ public class Player implements Serializable {
 		this.username = username;
 	}
 
+	public Boolean getArchive() {
+		return this.archive;
+	}
+
+	public void setArchive(Boolean archive) {
+		this.archive = archive;
+	}
+	
 	public List<Game> getGames() {
 		return this.games;
 	}

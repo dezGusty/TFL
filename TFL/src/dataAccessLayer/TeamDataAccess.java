@@ -27,40 +27,25 @@ public class TeamDataAccess {
 		return result;
 	}
 	
-	public Team createNewTeam(Team teamToSave) {
+	public Team updateTeam(Team teamToSave) {
 
 		Team t= EntityManagerHelper.em.find(Team.class, teamToSave.getId());
 		t.setName(teamToSave.getName());
 		t.setPlayers(teamToSave.getPlayers());
 		
-		EntityManagerHelper.em.persist(teamToSave);
+		EntityManagerHelper.em.merge(teamToSave);
 		EntityManagerHelper.em.getTransaction().commit();
 		EntityManagerHelper.em.refresh(teamToSave);
 		return teamToSave;
 		
-		//Team newTeam=new Team();
-		//Game gamee = EntityManagerHelper.em.find(Game.class, game.getId());
-		//EntityManagerHelper.em.refresh(gamee);
-//		System.out.println("This game has "+gamee.getTeams().size()+" teams!");
-//		try {
-//			if(gamee.getTeams().size()==2)
-//			{
-//				System.out.println("This game already has teams");
-//			}
-//			else
-//			{
-//				newTeam.setName(teamName);
-//				newTeam.setGameBean(gamee);
-//				
-//				EntityManagerHelper.em.persist(newTeam);
-//				EntityManagerHelper.em.getTransaction().commit();
-//				EntityManagerHelper.em.refresh(newTeam);
-//				return newTeam;
-//			}
-//		} catch (Exception ex) {
-//			System.out.println(ex.getMessage());
-//
-//		}
+	}
+	
+	public Team createNewTeam(Team team)
+	{
+		EntityManagerHelper.em.persist(team);
+		EntityManagerHelper.em.getTransaction().commit();
+		EntityManagerHelper.em.refresh(team);
+		return team;
 	}
 	
 	public Team addNewPlayer(int playerId, int teamId) {
@@ -84,6 +69,17 @@ public class TeamDataAccess {
 	
 	public static void main(String[] args) {
 		TeamDataAccess tda=new TeamDataAccess();
-		tda.addNewPlayer(14, 48);
+		Team t=new Team();
+		t.setName("name");
+		t.setScore(0);
+		t.setWinner(false);
+	
+		Player player = EntityManagerHelper.em.find(Player.class, 5);
+		t.addNewPlayer(player);
+		Player playertwo = EntityManagerHelper.em.find(Player.class, 16);
+		t.addNewPlayer(playertwo);
+		t=tda.createNewTeam(t);
+		System.out.println("Team id: "+t.getId());
+		
 	}
 }
