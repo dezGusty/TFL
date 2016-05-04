@@ -44,16 +44,16 @@
 						<p:commandButton value="Play" style="width:100%;"
 							actionListener="#{nextGamesView.play(game)}"
 							disabled="#{game.gameStatus(loginView.currentPlayer)}"
-							ajax="false" />
+							ajax="true" />
 					</p:column>
 					<p:column>
 						<p:commandButton  value="Cancel" update="gamesTable" style="width:100%;"
-							actionListener="#{nextGamesView.remove(game)}" ajax="false" />
+							actionListener="#{nextGamesView.remove(game)}" ajax="false"  />
 					</p:column>
 
 					<p:column>
 						<p:commandButton value="Teams" style="width:100%;"
-							actionListener="#{nextGamesView.viewTeams(game)}" ajax="true" />
+							actionListener="#{nextGamesView.teamsView(game)}" ajax="true" />
 					</p:column>
 						
 				</p:dataTable>

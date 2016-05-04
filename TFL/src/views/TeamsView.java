@@ -58,30 +58,30 @@ public class TeamsView implements Serializable {
 	
 	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
 
-	public List<Player> themesSource = new ArrayList<Player>();
+	public List<Player> themesSource=new ArrayList<Player>();
 
-	public List<Player> themesTarget = new ArrayList<Player>();
+	public List<Player> themesTarget=new ArrayList<Player>();
 
 	private DualListModel<Player> players;
 
-	public Team teamOne;
+	public String firstTeamName;
 
-	public Team teamTwo;
+	public String secondTeamName;
 
-	public Team getTeamOne() {
-		return teamOne;
+	public String getFirstTeamName() {
+		return firstTeamName;
 	}
 
-	public void setTeamOne(Team teamOne) {
-		this.teamOne = teamOne;
+	public void setFirstTeamName(String firstTeamName) {
+		this.firstTeamName = firstTeamName;
 	}
 
-	public Team getTeamTwo() {
-		return teamTwo;
+	public String getSecondTeamName() {
+		return secondTeamName;
 	}
 
-	public void setTeamTwo(Team teamTwo) {
-		this.teamTwo = teamTwo;
+	public void setSecondTeamName(String secondTeamName) {
+		this.secondTeamName = secondTeamName;
 	}
 
 	@PostConstruct
@@ -112,7 +112,6 @@ public class TeamsView implements Serializable {
 		
 		 System.out.println("Source:");
 		this.themesSource = this.players.getSource();
-		this.teamOne.setPlayers(this.players.getSource());
 		
 		 for(Player p: this.themesSource)
 		 {
@@ -121,8 +120,7 @@ public class TeamsView implements Serializable {
 
 		System.out.println("Target:");
 		this.themesTarget = this.players.getTarget();
-		this.teamTwo.setPlayers( this.players.getTarget());
-		
+
 		 for(Player p: this.themesTarget)
 		 {
 		 System.out.println(p.getUsername());
@@ -288,45 +286,42 @@ public class TeamsView implements Serializable {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
      	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
      	
-     	Game game=firstBean.getSelectedGame();
-     	this.teamOne.getPlayers().removeAll(this.teamOne.getPlayers());
-     	this.teamOne.getPlayers().addAll(this.themesSource);
-     	this.teamTwo.getPlayers().removeAll(this.teamTwo.getPlayers());
-     	this.teamTwo.getPlayers().addAll(this.themesTarget);
-     	if(game.getTeam1()!=null && game.getTeam2()!=null)
-     	{
-     		game.setTeam1(this.teamOne);
-     		game.setTeam2(this.teamTwo);
-     		GameDataAccess gda=new GameDataAccess();
-         	firstBean.setSelectedGame(gda.updateGame(game));
-     	}
-     	else
-     	{
-     		System.out.println("Make the teams first!");
-     		if(this.teamOne==null && this.teamTwo!=null)
-     		{
-     			System.out.println("First team or second is null");
-     		}
-     		else
-     		{
-     			game.setTeam1(TeamDataAccess.createNewTeam(this.teamOne));
-     			System.out.println("First team: "+this.teamOne.getName());
-         		for(Player p:this.teamOne.getPlayers())
-         		{
-         			System.out.println(p.getUsername());
-         		}
+     	//Game game=firstBean.getSelectedGame();
 
-     			game.setTeam2(TeamDataAccess.createNewTeam(this.teamTwo));
-         		System.out.println("Second team: "+this.teamTwo.getName());
-         		for(Player p:this.teamTwo.getPlayers())
-         		{
-         			System.out.println(p.getUsername());
-         		}
-         		
-         		GameDataAccess gda=new GameDataAccess();
-         		gda.updateGame(game); 		
-     		}
-     	}
+     	//if(game.getTeam1()!=null && game.getTeam2()!=null)
+     	//{
+     		//game.setTeam1(this.teamOne);
+     		//game.setTeam2(this.teamTwo);
+     		GameDataAccess gda=new GameDataAccess();
+         	//firstBean.setSelectedGame(gda.updateGame(game));
+     	//}
+     	//else
+     	//{
+     		//System.out.println("Make the teams first!");
+//     		if(this.teamOne==null && this.teamTwo!=null)
+//     		{
+//     			System.out.println("First team or second is null");
+//     		}
+//     		else
+//     		{
+//     			game.setTeam1(TeamDataAccess.createNewTeam(this.teamOne));
+//     			System.out.println("First team: "+this.teamOne.getName());
+//         		for(Player p:this.teamOne.getPlayers())
+//         		{
+//         			System.out.println(p.getUsername());
+//         		}
+//
+//     			game.setTeam2(TeamDataAccess.createNewTeam(this.teamTwo));
+//         		System.out.println("Second team: "+this.teamTwo.getName());
+//         		for(Player p:this.teamTwo.getPlayers())
+//         		{
+//         			System.out.println(p.getUsername());
+//         		}
+//         		
+//         		GameDataAccess gda=new GameDataAccess();
+//         		gda.updateGame(game); 		
+//     		}
+     	//}
 }
 		
 	public void backToHistory() {

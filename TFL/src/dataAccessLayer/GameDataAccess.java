@@ -27,6 +27,16 @@ public class GameDataAccess implements Serializable {
 	*/
 	private static final long serialVersionUID = 1L;
 
+	public static Game GetGame(int gameId)
+	{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Game game=em.find(Game.class, gameId);
+		em.close();
+		return game;
+	}
+	
 	public static List<Game> listPreviousGames() {
 		System.out.println("List previous games!");
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
@@ -184,7 +194,7 @@ public class GameDataAccess implements Serializable {
 
 		if(findGame.gameStatus(play))
 		{
-			return "Player "+play.getId()+" already playing game "+findGame.getId();
+			return "You are already playing game "+findGame.getId();
 		}
 		else
 		{
@@ -194,7 +204,7 @@ public class GameDataAccess implements Serializable {
 				em.getTransaction().commit();
 				em.refresh(findGame);
 				em.refresh(play);
-				return "Player "+play.getUsername()+" is now playing game "+ findGame.dateToDisplay();	
+				return "You are now playing game "+ findGame.dateToDisplay();	
 			}
 			catch(Exception ex)
 			{
@@ -227,5 +237,14 @@ public class GameDataAccess implements Serializable {
 	}
 	
 	public static void main(String[] args) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		Game game =em.find(Game.class,18);
+
+		for(Player p:game.getPlayers())
+		{
+			System.out.println(p.toString());
+		}
+		
 	}
 }

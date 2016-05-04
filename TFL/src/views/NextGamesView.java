@@ -38,8 +38,6 @@ public class NextGamesView implements Serializable{
 
 		@ManagedProperty("#{gameDataAccess}")
 	    public GameDataAccess gamesData;
-	    
-	    private Game selectedGame;
 
 	    public List<Game> getGames() {
 	        return games;
@@ -55,14 +53,6 @@ public class NextGamesView implements Serializable{
 
 		public void setGamesData(GameDataAccess gamesData) {
 			this.gamesData = gamesData;
-		}
-		
-		public Game getSelectedGame() {
-	        return selectedGame;
-	    }
-	 
-		public void setSelectedGame(Game selectedGame) {
-			this.selectedGame = selectedGame;
 		}
 		
 		public void play(Game game) {
@@ -103,7 +93,7 @@ public class NextGamesView implements Serializable{
 			//game.addTeam(loserTeam);
 			
 			System.out.println("Game: "+game.dateToDisplay()+" difference "+game.getDifference());
-			GameDataAccess.setDifference(this.selectedGame.getId(),this.selectedGame.getDifference(),winnersTeam,loserTeam);
+			//GameDataAccess.setDifference(this.selectedGame.getId(),this.selectedGame.getDifference(),winnersTeam,loserTeam);
 		}
 			
 		public void newGame()
@@ -124,62 +114,53 @@ public class NextGamesView implements Serializable{
 			games.remove(game);
 		}
 		
-		public void viewTeams(Game game)
-		{		
-			System.out.println("View teams method!");
-        	this.setSelectedGame(game);
-
+		public void teamsView(Game game)
+		{
+			System.out.println("Method!");
+			Game selectedGame=GameDataAccess.GetGame(game.getId());
+			
 			ELContext context = FacesContext.getCurrentInstance().getELContext();
 			LoginView firstBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
-			firstBean.setClick(false);
-	
 			TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
+			firstBean.setClick(false);
 			
-//			//verific daca jocul are echipe
-			if(this.selectedGame.getTeam1()!=null && this.selectedGame.getTeam2()!=null)
+			if(selectedGame.getTeam1()!=null && selectedGame.getTeam2()!=null)
 			{
-				System.out.println("Game has teams!");
-				teamsBean.setExistTeams(true);
-				teamsBean.themesSource=new ArrayList<Player>();
-				teamsBean.themesTarget=new ArrayList<Player>();
-				
-				teamsBean.setTeamOne(this.selectedGame.getTeam1());
-				System.out.println("Team one:"+this.selectedGame.getTeam1().getName());
-				teamsBean.themesSource.addAll(this.selectedGame.getTeam1().getPlayers());
-				
-				teamsBean.setTeamTwo(this.selectedGame.getTeam2());
-				System.out.println("Second team:"+this.selectedGame.getTeam2().getName());
-				teamsBean.themesTarget.addAll(this.selectedGame.getTeam2().getPlayers());
-				
-				teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+				System.out.println("Game has teams");
+				teamsBean.themesSource=selectedGame.getTeam1().getPlayers();
+				teamsBean.setFirstTeamName(selectedGame.getTeam1().getName());
+				teamsBean.themesTarget=selectedGame.getTeam2().getPlayers();
+				teamsBean.setSecondTeamName(selectedGame.getTeam2().getName());
 			}
 			else
 			{
-				System.out.println("Game has no teams!");
-				if(!this.selectedGame.getPlayers().isEmpty())
+				System.out.println("Game has no teams yet!");
+				teamsBean.setFirstTeamName("First team");
+				teamsBean.setSecondTeamName("Second team");
+				if(selectedGame.getPlayers().isEmpty())
 				{
-					teamsBean.setExistTeams(true);
-					System.out.println("This game has players subscribed!");
-					if(this.selectedGame.getPlayers().size()<=3)
+					System.out.println("There are no player subscribers");
+					teamsBean.themesSource.removeAll(teamsBean.themesSource);
+					teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
+				}
+				else
+				{
+					System.out.println("There are player subscribers");
+					if(selectedGame.getPlayers().size()<=3)
 					{
-						teamsBean.themesSource.removeAll(teamsBean.themesSource);
-						teamsBean.themesSource.addAll(this.selectedGame.getPlayers());
+						teamsBean.themesSource=selectedGame.getPlayers();
 						teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
-						teamsBean.setTeamOne(new Team("Team name"));
-						teamsBean.setTeamTwo(new Team("Team name"));
-						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 					}
 					else
 					{
-						teamsBean.setShowNextPrevious(true);
-						List<Player> list=new ArrayList<Player>();
+						System.out.println("There are more then 3 player subscribers!Subscribed players:");
 						
-						for(Player player:this.selectedGame.getPlayers())
+						for(Player p:selectedGame.getPlayers())
 						{
-							list.add(player);
+							System.out.println(p.toString());
 						}
-						List<List<Player>> listed=this.generateTeams(list);
-						
+						teamsBean.setShowNextPrevious(true);
+						List<List<Player>> listed=this.generateTeams(selectedGame.getPlayers());
 						for(List<Player> l:listed)
 						{
 							System.out.println("Team");
@@ -190,23 +171,10 @@ public class NextGamesView implements Serializable{
 						}
 						teamsBean.themesSource=listed.get(0);
 						teamsBean.themesTarget=listed.get(1);
-						teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 					}
-				}
-				else
-				{
-					System.out.println("This game has no players subscribed!");
-					teamsBean.setExistTeams(false);
-					System.out.println("This game has no game players");
-					teamsBean.setExistTeams(false);
-					teamsBean.themesSource.removeAll(teamsBean.themesSource);
-					teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
-					teamsBean.setTeamOne(new Team("Team name"));
-					teamsBean.setTeamTwo(new Team("Team name"));
-					teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
-				}
-			}
-			
+				}	
+			}	
+			teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
 			RedirectView.Redirect(firstBean.getCurrentPlayer(),  "/faces/resources/teamsuser.xhtml", "/faces/resources/teamsadmin.xhtml");
 		}
 
@@ -220,7 +188,6 @@ public class NextGamesView implements Serializable{
 			
 			List<Player> firstList = TeamGenerator.map.get(key);
 			list.add(firstList);
-			
 			
 			System.out.println("First team:");
 			for(Player p:firstList)
