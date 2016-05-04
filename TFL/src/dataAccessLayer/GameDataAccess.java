@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -19,7 +18,7 @@ import model.Player;
 import model.Team;
 
 @ManagedBean(name = "gameDataAccess")
-@ApplicationScoped
+@SessionScoped
 public class GameDataAccess implements Serializable {
 
 	/**
@@ -214,16 +213,18 @@ public class GameDataAccess implements Serializable {
 		}	
 	}
 
-	public Game addNewGame(String date)
+	public static Game addNewGame(String date)
 	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
 		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
 		try
 		{
 			Game g=new Game();
 			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
 			Date datee = dt.parse(date); 
 			g.setDate(datee);
+			g.setDifference(0);
 			em.persist(g);
 			em.getTransaction().commit();
 			return g;
@@ -239,8 +240,18 @@ public class GameDataAccess implements Serializable {
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
 		EntityManager em = emf.createEntityManager();
-		Game game =em.find(Game.class,18);
-
+		Game game =em.find(Game.class, 9);
+		if(game==null)
+		{
+			System.out.println("Game is null");
+		}
+		else
+		{
+			System.out.println(game.getDate());
+			System.out.println(game.getPlayers().size());
+		}
+//		Player play=em.find(Player.class,1);
+//		System.out.println(playGame(game.getId(),play.getId()));
 		for(Player p:game.getPlayers())
 		{
 			System.out.println(p.toString());

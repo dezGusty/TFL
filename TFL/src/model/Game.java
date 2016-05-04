@@ -6,7 +6,9 @@ import javax.persistence.*;
 import model.Player;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -14,12 +16,11 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="games")
+@Table(name="game")
 @NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
 public class Game implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -30,22 +31,18 @@ public class Game implements Serializable {
 	private Integer difference;
 
 	private Boolean archive;
-	
-	//bi-directional many-to-many association to Player
-	@ManyToMany (fetch = FetchType.EAGER)
-    @JoinTable(name="game_players", 
-          joinColumns=@JoinColumn(name="game_id"),
-          inverseJoinColumns=@JoinColumn(name="player_id"))
-	private List<Player> players;
 
-//	//bi-directional many-to-one association to Team
-//	@OneToMany(mappedBy="gameBean", fetch=FetchType.EAGER)
-//	private List<Team> teams;
+	//uni-directional many-to-many association to Player
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="game_player", 
+    joinColumns={@JoinColumn(name="game_id")}, 
+    inverseJoinColumns={@JoinColumn(name="player_id")})
+	private Set<Player> players;
 
 	public Game() {
 		this.date=null;
 		this.difference=0;
-		this.players=new ArrayList<Player>();
+		this.players=new HashSet<Player>();
 		//this.teams=new ArrayList<Team>();
 	}
 
@@ -74,24 +71,22 @@ public class Game implements Serializable {
 	}
 
 	//bi-directional many-to-one association to Team
-		@ManyToOne
-		@JoinColumn(name="firstteam")
-		private Team team1;
+	@ManyToOne
+	@JoinColumn(name="firstteam")
+	private Team team1;
 
 		//bi-directional many-to-one association to Team
-		@ManyToOne
-		@JoinColumn(name="secondteam")
-		private Team team2;
+	@ManyToOne
+	@JoinColumn(name="secondteam")
+	private Team team2;
 		
-	public List<Player> getPlayers() {
+	public Set<Player> getPlayers() {
 		return this.players;
 	}
 
-
-	public void setPlayers(List<Player> players) {
+	public void setPlayers(Set<Player> players) {
 		this.players = players;
 	}
-
 
 	public Team getTeam1() {
 		return this.team1;
@@ -116,29 +111,7 @@ public class Game implements Serializable {
 	public void setArchive(Boolean archive) {
 		this.archive = archive;
 	}
-	
-//	public List<Team> getTeams() {
-//		return this.teams;
-//	}
-//
-//	public void setTeams(List<Team> teams) {
-//		this.teams = teams;
-//	}
 
-//	public Team addTeam(Team team) {
-//		getTeams().add(team);
-//		team.setGameBean(this);
-//
-//		return team;
-//	}
-//
-//	public Team removeTeam(Team team) {
-//		getTeams().remove(team);
-//		team.setGameBean(null);
-//
-//		return team;
-//	}
-	
 	//verifica daca jucatorul joaca deja la joc
 	public boolean gameStatus(Player player)
 	{
@@ -163,5 +136,4 @@ public class Game implements Serializable {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(this.date);
 	}
-
 }

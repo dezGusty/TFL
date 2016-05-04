@@ -1,0 +1,108 @@
+package newmodel;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * The persistent class for the games database table.
+ * 
+ */
+@Entity
+@Table(name="games")
+@NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
+public class Game implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+
+	private Boolean archive;
+
+	@Temporal(TemporalType.DATE)
+	private Date date;
+
+	private Integer difference;
+
+	//uni-directional many-to-many association to Player
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="game_players",
+    joinColumns = @JoinColumn(name = "game_id", 
+                              referencedColumnName = "userid"), 
+    inverseJoinColumns = @JoinColumn(name = "groupid", 
+                              referencedColumnName = "groupid"))
+	private List<Player> players;
+
+	//uni-directional many-to-one association to Team
+	@ManyToOne
+	@JoinColumn(name="firstteam")
+	private Team team1;
+
+	//uni-directional many-to-one association to Team
+	@ManyToOne
+	@JoinColumn(name="secondteam")
+	private Team team2;
+
+	public Game() {
+	}
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Boolean getArchive() {
+		return this.archive;
+	}
+
+	public void setArchive(Boolean archive) {
+		this.archive = archive;
+	}
+
+	public Date getDate() {
+		return this.date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Integer getDifference() {
+		return this.difference;
+	}
+
+	public void setDifference(Integer difference) {
+		this.difference = difference;
+	}
+
+	public List<Player> getPlayers() {
+		return this.players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+
+	public Team getTeam1() {
+		return this.team1;
+	}
+
+	public void setTeam1(Team team1) {
+		this.team1 = team1;
+	}
+
+	public Team getTeam2() {
+		return this.team2;
+	}
+
+	public void setTeam2(Team team2) {
+		this.team2 = team2;
+	}
+
+}

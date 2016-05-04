@@ -843,3 +843,9 @@ mai 04, 2016 12:56:49.39 Handler.prototype.process@resource://gre/modules/Promis
 mai 04, 2016 12:56:49.46 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
 mai 04, 2016 12:56:49.49 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
 mai 04, 2016 12:56:49.54 
+
+mai 04, 2016 17:04:43.04 NEW SESSION
+mai 04, 2016 17:04:43.04 1462370683029	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+mai 04, 2016 17:04:44.10 1462370684104	addons.xpi	ERROR	Failed to clean updated system add-ons directories.: Win error 2 during operation DirectoryIterator.prototype.next on file C:\Users\Paula\AppData\Roaming\Mozilla\Firefox\Profiles\trxt8o8c.default\features (The system cannot find the file specified.
+mai 04, 2016 17:04:44.12 
+mai 04, 2016 17:04:44.13 ) ((unknown module)) No traceback available

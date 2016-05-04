@@ -63,7 +63,6 @@ public class Player implements Serializable {
 
 	private Boolean archive;
 	
-	//bi-directional many-to-many association to Game
 	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
 	private List<Game> games;
 

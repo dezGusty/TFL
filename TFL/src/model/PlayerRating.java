@@ -4,7 +4,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the player_ratings database table.
  * 
@@ -63,5 +62,4 @@ public class PlayerRating implements Serializable {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-
 }

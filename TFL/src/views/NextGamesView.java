@@ -146,9 +146,13 @@ public class NextGamesView implements Serializable{
 				else
 				{
 					System.out.println("There are player subscribers");
+					List <Player> newList=new ArrayList<Player>();
+					newList.addAll(selectedGame.getPlayers());
+					teamsBean.themesSource=newList;
+					
 					if(selectedGame.getPlayers().size()<=3)
 					{
-						teamsBean.themesSource=selectedGame.getPlayers();
+						teamsBean.themesSource=newList;
 						teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
 					}
 					else
@@ -160,7 +164,7 @@ public class NextGamesView implements Serializable{
 							System.out.println(p.toString());
 						}
 						teamsBean.setShowNextPrevious(true);
-						List<List<Player>> listed=this.generateTeams(selectedGame.getPlayers());
+						List<List<Player>> listed=this.generateTeams(newList);
 						for(List<Player> l:listed)
 						{
 							System.out.println("Team");
