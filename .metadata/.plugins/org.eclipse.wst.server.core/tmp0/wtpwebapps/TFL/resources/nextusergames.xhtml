@@ -21,6 +21,15 @@
 
 	<h:form>
 		<div class="ui-grid ui-grid-responsive withMargins">
+		
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+					<p:panel>
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+					</p:panel>
+				</div>
+			</div>
+			
 			<div class="ui-grid-row">
 				<div class="ui-grid-col-12">
 					<p:dataTable value="#{nextGamesView.games}" var="game">
@@ -32,7 +41,7 @@
 						</p:column>
 						<p:column headerText="Difference">#{game.difference}</p:column>
 						<p:column >
-							<p:commandButton value="Play this game" actionListener="#{nextGamesView.play(game)}" ajax="false" />
+							<p:commandButton value="Play this game" actionListener="#{nextGamesView.play(game)}" disabled="#{game.gameStatus(loginView.currentPlayer)}" ajax="false" />
 						</p:column>
 						<p:column >
 							<p:commandButton value="View teams" actionListener="#{nextGamesView.viewTeams(game)}" ajax="true" />

@@ -3,13 +3,13 @@ package dataAccessLayer;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
 import model.Player;
-import model.Team;
 
 @ManagedBean(name = "playerDataAccess")
 @ApplicationScoped
@@ -19,110 +19,113 @@ public class PlayerDataAccess implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public PlayerDataAccess() {
-		if(!EntityManagerHelper.em.getTransaction().isActive())
-		  {
-			EntityManagerHelper.em.getTransaction().begin();
-		  }
-	}
-
-	public boolean createUser(String username, String password, int type, boolean available, double rating) {
+	public static boolean createUser(String username, String password, int type, boolean available, double rating) {
 		try {
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+			EntityManager em = emf.createEntityManager();
+			if(!em.getTransaction().isActive())
+			{
+				em.getTransaction().begin();
+			}
 			Player emp = new Player();
 			emp.setType(type);
 			emp.setUsername(username);
 			emp.setPassword(password);
 			emp.setRating(rating);
 			emp.setAvailable(available);
-			EntityManagerHelper.em.persist(emp);
-			EntityManagerHelper.em.getTransaction().commit();
+			em.persist(emp);
+			em.getTransaction().commit();
+			em.close();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-	
 			return false;
 		}
 		return true;
 	}
 
-	public Player loginUser(String username, String password) {	
-		TypedQuery<Player> query = EntityManagerHelper.em.createQuery("SELECT c FROM Player c", Player.class);
-		List<Player> result = new ArrayList<Player>();
-		result = query.getResultList();
-
-		for (Player player : result) {
-			System.out.println(player.toString());
+	public static Player loginUser(String username, String password) {	
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		if(em.getTransaction().isActive())
+		{
+			em.getTransaction().begin();
 		}
-
-		TypedQuery<Player> querynew = EntityManagerHelper.em
-				.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
+		TypedQuery<Player> querynew = em.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
 		querynew.setParameter("name", username);
 		querynew.setParameter("pass", password);
 		Player play = new Player();
 		try {
 			play = querynew.getSingleResult();
-			if (play.getId() != 0) {
-				System.out.println(play.toString());
-				for (Player p : result) {
-					if ((p.getUsername().compareTo(username) == 0) && (p.getPassword().compareTo(password) == 0)) {
-						System.out.println(p.getPlayerRatings());
-						return p;
-					}
-				}
-			}
 		} catch (Exception ex) {
 			System.out.println("Username or password incorrect!");
 		}
-		return null;
+		em.close();
+		return play;
 	}
 
-	public Player changePasswordForPlayer(int playerId, String password) {
-
-		TypedQuery<Player> query = EntityManagerHelper.em.createQuery("SELECT c FROM Player c WHERE c.id = :id", Player.class);
-		query.setParameter("id", playerId);
-
-		Player play = new Player();
+	public static Player updatePassword(int playerId, String password) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Player play =em.find(Player.class, playerId);
+		//play=player;
 		try {
-			play = query.getSingleResult();
-			if (play.getId() != 0) {
-				System.out.println(play.getPassword() + " este parola ce va fi schimbata!");
-				play.setPassword(password);
-				EntityManagerHelper.em.persist(play);
-				EntityManagerHelper.em.getTransaction().commit();
+			    play.setPassword(password);
+			   System.out.println(play.getPassword());
+				//em.persist(player);
+				em.getTransaction().commit();
+				//em.refresh(player);
+				em.close();
 				return play;
-			}
 		} catch (Exception ex) {
-			System.out.println("Username or password incorrect!");
+			System.out.println(ex.getMessage());
 		}
 		return null;
 	}
 
-	public Player changeAvailable(Player player)
-	{
-		Player play = EntityManagerHelper.em.find(Player.class, player.getId());
-		EntityManagerHelper.em.persist(play);
-		EntityManagerHelper.em.getTransaction().commit();
+	public static Player changeAvailable(Player player)
+	{	
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Player play =em.find(Player.class, player.getId());
+		play.setAvailable(player.getAvailable());
+		em.persist(play);
+		em.getTransaction().commit();
+		em.refresh(play);
+		em.close();
         return play;
 	}
 	
-	  public  List<Player> listPlayers() {
-		    TypedQuery<Player> query =EntityManagerHelper.em.createQuery("SELECT p FROM Player p",Player.class);
+	  public static List<Player> listPlayers() {
+		  EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+			EntityManager em = emf.createEntityManager();
+			if(em.getTransaction().isActive())
+			{
+				em.getTransaction().begin();
+			}
+		    TypedQuery<Player> query =em.createQuery("SELECT p FROM Player p",Player.class);
 			List<Player> result = new ArrayList<Player>();
 			result = query.getResultList();
 			for(Player p:result)
 			{
 				System.out.println(p.getUsername());
 			}
+			em.close();
 			return result;
 	}
 
-	  public boolean removePlayer(int playerId) {
-			
-			Player player=EntityManagerHelper.em.find(Player.class, playerId);
+	  public static boolean removePlayer(int playerId) {
+		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+			EntityManager em = emf.createEntityManager();
+			em.getTransaction().begin();
+			Player player=em.find(Player.class, playerId);
 			if(player!=null)
 			{			
-				EntityManagerHelper.em.remove(player);
-				System.out.println("Game found and removed");
-				EntityManagerHelper.em.getTransaction().commit();
+				player.setArchive(true);
+				System.out.println("Player found and removed");
+				em.getTransaction().commit();
+				em.close();
 				return true;
 			}
 			else
@@ -133,32 +136,5 @@ public class PlayerDataAccess implements Serializable{
 		}
 	  
 	  public static void main(String[] args) {
-		PlayerDataAccess pda=new PlayerDataAccess();
-		Player play=pda.loginUser("paula", "parc");
-		if(play==null)
-		{
-			System.out.println("Player null");
-		}
-		else
-		{
-			int count=0;
-			System.out.println(play.getUsername());
-			System.out.println(play.getRating());		
-			if(play.getTeams()==null)
-				System.out.println("No teams");
-			else
-			{
-				for(Team t:play.getTeams())
-				{
-					if(t.getWinner()==true)
-					{
-						count++;
-					}
-					System.out.println(t.getWinner());
-				}
-			}
-			System.out.println("winned games: "+count);
-		}	
-
 	}
 }

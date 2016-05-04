@@ -1,18 +1,15 @@
 package views;
 
-import java.io.IOException;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
-import model.Game;
 import model.Player;
 
 @ManagedBean(name = "loginView")
@@ -61,7 +58,7 @@ public class LoginView implements Serializable {
 	public int getWinner() {
 		return winner;
 	}
-
+	
 	public void setWinner(int winner) {
 		this.winner = winner;
 	}
@@ -113,11 +110,11 @@ public class LoginView implements Serializable {
 	}
 
 	public String getUsername() {
-	return this.username;
+		return this.username;
     }
 
     public void setUsername(String value) {
-	this.username = value;
+    	this.username = value;
     }
 
     public String getPassword() {
@@ -128,20 +125,24 @@ public class LoginView implements Serializable {
 	this.password = value;
     }
 
-	public void logout(ActionEvent event)  {
-
-	    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		System.out.println("Logout pressed!");
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-		try {
-			context.redirect(context.getRequestContextPath() + "/faces/index.xhtml");
-		} catch (IOException e) {
-			e.printStackTrace();
+    public String login() {
+		if ((this.username != null) && (this.password != null)) {
+			currentPlayer = PlayerDataAccess.loginUser(this.username, this.password);
+			RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/adminuser.xhtml");
 		}
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Incorrect username or password!"));
+		return "/index";
+	}
+    
+	public void logout(ActionEvent event)  {
+	    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	    RedirectView.Redirect(this.currentPlayer, "/faces/index.xhtml", "/faces/index.xhtml");
+		System.out.println("Logout pressed!");
 	}
 	
 	public void showMenu(ActionEvent event)  {
-		System.out.println("Show menu");
+	   System.out.println("Show menu");
 	   if(this.click)
 	   {
 		   this.click=false;
@@ -152,82 +153,33 @@ public class LoginView implements Serializable {
 	   }
 	}
 	
-	public String login() throws IOException {
-		PlayerDataAccess pda = new PlayerDataAccess();
-		if ((this.username != null) && (this.password != null)) {
-			currentPlayer = new Player();
-			currentPlayer = pda.loginUser(this.username, this.password);
-			if (currentPlayer != null) {
-				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-				NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-				GameDataAccess gda=new GameDataAccess();
-				firstBean.setGames(gda.listGamesForPlayer(this.currentPlayer));
-				for(Game gg:firstBean.getGames())
-				{
-					System.out.println(gg.getDate());
-				}
-					if (currentPlayer.getType() == 1) {
-						firstBean.setGames(gda.listGamesForPlayer(this.currentPlayer));
-						ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-						
-						context.redirect(context.getRequestContextPath() + "/faces/resources/userview.xhtml");
-					} else {
-						ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-						context.redirect(context.getRequestContextPath() + "/faces/resources/adminuser.xhtml");
-					}
-			}
-		}
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Incorrect username or password!"));
-		return "/index";
+	public void redirectToHome(ActionEvent event)
+	{
+		RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/adminuser.xhtml");
 	}
 	
-	public void redirectToGames(ActionEvent actionEvent)
+	public void redirectToNextGames(ActionEvent actionEvent)
 	{
 		this.click=false;
-		System.out.println("Hello from redirect to games!");
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-		GameDataAccess gda=new GameDataAccess();
-		firstBean.setGames(gda.listNextGames());
-		
-		if(this.currentPlayer.getType()==1)
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/nextusergames.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		else
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/nextadmingames.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		NextGamesView firstBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
+		firstBean.setGames(GameDataAccess.listNextGames());	
+		RedirectView.Redirect(this.currentPlayer, "/faces/resources/nextusergames.xhtml", "/faces/resources/nextadmingames.xhtml");
 	}
 	
 	public void redirectToPersonalDates(ActionEvent actionEvent)
 	{
 		this.click=false;
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-		try {
-				if(this.currentPlayer.getGames()!=null)
-				{
-					this.playedGames=this.currentPlayer.GetTotalPlayedGames();
-				}
-				if(this.currentPlayer.getTeams()!=null)
-				{
-					this.winner=this.currentPlayer.GetGames(true);
-					this.looser=this.currentPlayer.GetGames(false);
-				}
-			context.redirect(context.getRequestContextPath() + "/faces/resources/viewpersonaldates.xhtml");
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(this.currentPlayer.getGames()!=null)
+		{
+			this.playedGames=this.currentPlayer.GetTotalPlayedGames();
 		}
+		if(this.currentPlayer.getTeams()!=null)
+		{
+			this.winner=this.currentPlayer.GetGames(true);
+			this.looser=this.currentPlayer.GetGames(false);
+		}
+		RedirectView.Redirect(this.currentPlayer,"/faces/resources/viewpersonaldates.xhtml","/faces/resources/viewpersonaldates.xhtml");
 	}
 	
 	public void redirectToChangePass(ActionEvent actionEvent)
@@ -235,126 +187,73 @@ public class LoginView implements Serializable {
 		this.click=false;
 		this.oldPass="";
 		this.newPass="";
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-		try {
-			context.redirect(context.getRequestContextPath() + "/faces/resources/changepassword.xhtml");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.confirmPass="";
+		RedirectView.Redirect(this.currentPlayer,"/faces/resources/changepassword.xhtml","/faces/resources/changepassword.xhtml");
 	}
 	
 	public void redirectToCharts(ActionEvent actionEvent)
 	{
 		this.click=false;
-		
 		System.out.println("Hello from redirect to charts!");
-		
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();	
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		ChartView firstBean = (ChartView) elContext.getELResolver().getValue(elContext, null, "chartView");
-
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
 		firstBean.addPlayerToChart(this.currentPlayer);
 		firstBean.createLineModels();
-		
-		if(this.currentPlayer.getType()==1)
-		{	
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/userchart.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		else
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/adminchart.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
+		RedirectView.Redirect(this.currentPlayer, "/faces/resources/userchart.xhtml", "/faces/resources/adminchart.xhtml");	
 	}
 	
 	public void redirectToPlayers(ActionEvent actionEvent)
 	{
 		this.click=false;
 		System.out.println("Hello from redirect to players!");
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();		
-		if(this.currentPlayer.getType()==1)
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/viewplayers.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		else
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/adminplayersview.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
+		RedirectView.Redirect(this.currentPlayer, "/faces/resources/viewplayers.xhtml", "/faces/resources/adminplayersview.xhtml");	
 	}
 	
-	public void redirectToHistory(ActionEvent actionEvent)
-	{
+	 public void redirectToHistory(ActionEvent actionEvent)
+	 {
 		this.click=false;
-		System.out.println("Hello from redirect to history!");
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-		GameDataAccess gda=new GameDataAccess();
-		firstBean.setGames(gda.listPreviousGames());
-		System.out.println(gda.listPreviousGames());
-		System.out.println("Done");
-		
-		if(this.currentPlayer.getType()==1)
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/historyuser.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		else
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/historyadmin.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	    ELContext context = FacesContext.getCurrentInstance().getELContext();
+		NextGamesView firstBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
+		firstBean.setGames(GameDataAccess.listPreviousGames());	
+		RedirectView.Redirect(this.currentPlayer, "/faces/resources/historyuser.xhtml", "/faces/resources/historyadmin.xhtml");
+	 }
 	
 	  public void changePassword() {
 		  this.click=false;
-		  System.out.println("Old pass"+this.oldPass);
-		  System.out.println("new pass"+this.newPass);
-		  System.out.println("Confimr new pass"+this.confirmPass);
 		  if(this.oldPass.compareTo(this.currentPlayer.getPassword())==0)
 		  {
-			  System.out.println("Old password is correct!");
 			  if(this.newPass.compareTo(this.confirmPass)==0)
 			  {
-				  PlayerDataAccess pda=new PlayerDataAccess();
-				  pda.changePasswordForPlayer(this.currentPlayer.getId(), this.newPass);
+				  PlayerDataAccess.updatePassword(this.currentPlayer.getId(),this.newPass);
+				  FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "Succesfully saved new password!"));
+			  }
+			  else
+			  {
+				  FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN, "Warn!", "New password does not match!"));  
 			  }
 		  }
 		  else
 		  {
-			  System.out.println("Old password does not match!");
+			  FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN, "Warn!", "Wrong old password!"));
 		  }
 	}
 	  
 	  public void changeAvailability() {
 		    this.click=false;
-	        String summary = this.currentPlayer.getAvailable() ? "Available" : "Unavailable";
-	        System.out.println("Change availability to "+this.currentPlayer.getAvailable());
-			PlayerDataAccess playerAccess=new PlayerDataAccess();
-			 playerAccess.changeAvailable(this.currentPlayer);
-	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
-	    }  
+			PlayerDataAccess.changeAvailable(this.currentPlayer);
+			if(this.currentPlayer.getAvailable())
+			{
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "You are now available!"));
+			}
+			else
+			{
+				FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "From now you are unavailable!"));		
+			}
+	  }  
+
 }

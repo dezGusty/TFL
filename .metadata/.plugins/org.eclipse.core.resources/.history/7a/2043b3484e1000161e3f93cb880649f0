@@ -1,0 +1,21 @@
+.ui-outputpane.ui-widget
+{
+	background-color: blue;
+}
+.ui-widget
+{
+	background-color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

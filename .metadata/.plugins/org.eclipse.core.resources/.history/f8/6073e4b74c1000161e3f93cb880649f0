@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+.ui-outputpane.ui-widget
+{
+	background-color: blue;
+}
+.ui-widget
+{
+	background-color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

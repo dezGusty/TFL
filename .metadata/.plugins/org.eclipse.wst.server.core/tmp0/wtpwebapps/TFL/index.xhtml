@@ -6,79 +6,35 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-    
-<h:head>
-<link rel="stylesheet" type="text/css" href="mycss.css"/>
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" type="text/css" href="style/indexCss.css" />
+<h:head>	
+	
 </h:head>
 
 <h:body>
-		
-		<div class="jumbotron">
-			<div class="container">
-				<div class="row" style="height:15%" >
-					<div class="col-xs-6 col-sm-9">
-						<h3>Thursday Fotball League</h3>
-					</div>					
-				</div>
-			</div>
-		</div>
-		
-		<div class="container">
-		<div class="row">
-		
-			<div class="col-xs-6 col-sm-12">
-				<h:form>
-					<ul class="list-group">
-						<li class="list-group-item">
-							<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
-						</li>
-						
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-xs-6 col-sm-4">
-									<h:outputText value="Username"/>
-								</div>
-								<div class="col-xs-6 col-sm-8">
-									<p:inputText  id="username" value="#{loginView.username}" required="true" ></p:inputText>
-								</div>
-							</div>
-						</li>
-						
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-xs-6 col-sm-4" >
-									<h:outputText value="Password"/>
-								</div>
-								<div class="col-xs-6 col-sm-8">
-									<p:password id="pass" value="#{loginView.password}" required="true" ></p:password>
-								</div>
-							</div>			
-						</li>
-						
-						<li class="list-group-item custom" style="align:center">
-							<h:commandButton value="Login" action="#{loginView.login}" style="align:center"  />	
-						</li>
-						
-						<li class="list-group-item custom">
-							<p:button id="singupButton" outcome="/resources/singup" value="Sing up"/>	
-						</li>
-						
-					</ul>
-				</h:form>
-		    </div>
-		    
-	</div>
+	<f:facet name="last">
+		<h:outputStylesheet  name="style/loginCss.css" />
+	</f:facet>
 	
-	</div>
+	<h:form>
+		<p:panel header="Thuesday football league" style="text-align:center;border:none">
+            <h:panelGrid columns="2" style="border:none">
+                <p:graphicImage value="images/sf.jpg"/>  
+                <p:panel style="border:none;text-align:center;padding-left: 40%;" header="Login">
+                	<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                	<h:panelGrid columns="2">						
+    					<h:outputText value="Username"/>
+    					<p:inputText  id="username" value="#{loginView.username}" required="true" ></p:inputText>
+    				
+    					<h:outputText value="Password"/>
+    					<p:password id="pass" value="#{loginView.password}" required="true" ></p:password>
+					</h:panelGrid>
+            		<p:commandButton value="Login" action="#{loginView.login}" style="width:40%;margin-top: 8%;" />
+            		<br></br>
+ 					<p:button id="singupButton" outcome="/resources/singup" value="Don't have an account? Sing up here!" style="margin-top: 40%;background:none;"/>
+                </p:panel>
+            </h:panelGrid>
+        </p:panel>
+	</h:form>
 </h:body>
 </html>

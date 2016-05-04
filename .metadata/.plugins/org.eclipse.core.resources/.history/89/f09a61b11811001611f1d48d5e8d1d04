@@ -1,0 +1,26 @@
+package views;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+@ApplicationScoped
+public class Images {
+
+    private ImageService service;
+
+    public StreamedContent getImage() throws IOException {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        if (context.getRenderResponse()) {
+            // So, we're rendering the view. Return a stub StreamedContent so that it will generate right URL.
+            return new DefaultStreamedContent();
+        }
+        else {
+            // So, browser is requesting the image. Get ID value from actual request param.
+            String id = context.getExternalContext().getRequestParameterMap().get("id");
+            Image image = service.find(Long.valueOf(id));
+            return new DefaultStreamedContent(new ByteArrayInputStream(image.getBytes()));
+        }
+    }
+}

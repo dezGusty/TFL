@@ -2,56 +2,63 @@ package dataAccessLayer;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import model.Game;
 import model.Player;
 import model.Team;
 
 public class TeamDataAccess {
-
-	public TeamDataAccess() {
-		if(!EntityManagerHelper.em.getTransaction().isActive())
-		  {
-			EntityManagerHelper.em.getTransaction().begin();
-		  }
-	}
 	
 	public  static List<Team> listTeams() {
-	    TypedQuery<Team> query =EntityManagerHelper.em.createQuery("SELECT t FROM Team t",Team.class);
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+	    TypedQuery<Team> query =em.createQuery("SELECT t FROM Team t",Team.class);
 		List<Team> result = new ArrayList<Team>();
 		result = query.getResultList();
 		for(Team p:result)
 		{
 			System.out.println(p.getName());
 		}
+		em.close();
 		return result;
 	}
 	
-	public Team updateTeam(Team teamToSave) {
+	public static Team updateTeam(Team teamToSave) {
 
-		Team t= EntityManagerHelper.em.find(Team.class, teamToSave.getId());
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		Team t= em.find(Team.class, teamToSave.getId());
 		t.setName(teamToSave.getName());
 		t.setPlayers(teamToSave.getPlayers());
 		
-		EntityManagerHelper.em.merge(teamToSave);
-		EntityManagerHelper.em.getTransaction().commit();
-		EntityManagerHelper.em.refresh(teamToSave);
+		em.merge(teamToSave);
+		em.getTransaction().commit();
+		em.refresh(teamToSave);
+		em.close();
 		return teamToSave;
 		
 	}
 	
-	public Team createNewTeam(Team team)
+	public static Team createNewTeam(Team team)
 	{
-		EntityManagerHelper.em.persist(team);
-		EntityManagerHelper.em.getTransaction().commit();
-		EntityManagerHelper.em.refresh(team);
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(team);
+		em.getTransaction().commit();
+		em.refresh(team);
+		em.close();
 		return team;
 	}
 	
-	public Team addNewPlayer(int playerId, int teamId) {
-		Player player = EntityManagerHelper.em.find(Player.class, playerId);
+	public static Team addNewPlayer(int playerId, int teamId) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		Player player = em.find(Player.class, playerId);
 		System.out.println(player.getId()+" "+player.getUsername());
-		Team team= EntityManagerHelper.em.find(Team.class, teamId);
+		Team team= em.find(Team.class, teamId);
 		System.out.println(team.getId()+" "+team.getName());
 //		if(team.inThisTeam(player.getId()))
 //		{
@@ -68,18 +75,6 @@ public class TeamDataAccess {
 	}
 	
 	public static void main(String[] args) {
-		TeamDataAccess tda=new TeamDataAccess();
-		Team t=new Team();
-		t.setName("name");
-		t.setScore(0);
-		t.setWinner(false);
-	
-		Player player = EntityManagerHelper.em.find(Player.class, 5);
-		t.addNewPlayer(player);
-		Player playertwo = EntityManagerHelper.em.find(Player.class, 16);
-		t.addNewPlayer(playertwo);
-		t=tda.createNewTeam(t);
-		System.out.println("Team id: "+t.getId());
 		
 	}
 }

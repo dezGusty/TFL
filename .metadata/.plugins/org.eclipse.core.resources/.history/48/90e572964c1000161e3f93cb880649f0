@@ -1,0 +1,18 @@
+@CHARSET "ISO-8859-1";
+ui-outputpanel ui-widget
+{
+	background-color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

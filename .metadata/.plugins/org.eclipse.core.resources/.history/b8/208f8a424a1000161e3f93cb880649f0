@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+.col-sm-4
+{
+	text-align:right;
+}
+
+.jumbotron
+{
+	min-height: 20px;
+	background: url('../images/fotball.png') no-repeat center center;	
+}
+.ui-grid.ui-grid-responsive.withMargins
+{
+	margin-left:10%;
+	margin-right:10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

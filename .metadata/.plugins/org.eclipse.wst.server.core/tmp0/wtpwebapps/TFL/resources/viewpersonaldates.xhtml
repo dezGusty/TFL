@@ -21,28 +21,30 @@
 	<h:form>
 		<div class="ui-grid ui-grid-responsive withMargins">
 			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+					<p:panel>
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+					</p:panel>
+				</div>
+			</div>
+			
+			<div class="ui-grid-row">
 				<div class="ui-grid-col-4">
 				</div>
 				
 				<div class="ui-grid-col-4">
 					<p:panelGrid styleClass="nobackground" columns="2">
 				       	<f:facet name="header" style="border:none">
-					     <p:graphicImage name="../images/ball.jpg" />
+					    	 <p:graphicImage value="#{loginView.currentPlayer.picture}" />
 				     	 </f:facet>
 
 					 	<h:outputText style="float:right" value="Name:" />
 						<h:outputText style="float:left" value="#{loginView.currentPlayer.username}" />
 
-						<h:outputText style="float:right" value="ID:" />
-						<h:outputText style="float:left" value="#{loginView.currentPlayer.id}" />
-
 						<h:outputText style="float:right" value="Rating:" />
 						<h:outputText style="float:left" value="#{loginView.currentPlayer.rating}" />
 
-						<h:outputText style="float:right" value="Available:" />
-						<h:outputText style="float:left" value="#{loginView.currentPlayer.available}" />
-
-						<h:outputText style="float:right" value="Total played games:" />
+						<h:outputText style="float:right" value="Played games:" />
 						<h:outputText style="float:left"  value="#{loginView.playedGames}" />
 
 						<h:outputText style="float:right" value="Winner:" />
@@ -52,9 +54,9 @@
 						<h:outputText style="float:left"  value="#{loginView.looser}" />
 						
 						<h:outputText style="float:right" value="Available: " />
-						<p:inputSwitch style="float:left" value="#{loginView.currentPlayer.available}">
-								<p:ajax listener="#{loginView.changeAvailability}" />
-						</p:inputSwitch>							
+						<p:inputSwitch value="#{loginView.currentPlayer.available}">
+           					 <p:ajax listener="#{loginView.changeAvailability}"  />
+        				</p:inputSwitch>					
 					</p:panelGrid>
 				</div>
 			

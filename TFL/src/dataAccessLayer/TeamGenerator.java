@@ -25,8 +25,6 @@ public class TeamGenerator {
 		return factorial(n)/(factorial(k)*factorial(n-k));
 	}
 	
-    
-	
 	public static List<List<Player>> resultList=new ArrayList<List<Player>>();
 	
 	public static List<Player> list=new ArrayList<Player>();
@@ -39,7 +37,6 @@ public class TeamGenerator {
 	public static void setResultList(List<List<Player>> resultList) {
 		TeamGenerator.resultList = resultList;
 	}
-
 
 	private static double totalValue=0;
 	
@@ -73,10 +70,8 @@ public class TeamGenerator {
         }
     }  
 
-    
 	public static TreeMap<Double,List<Player>> generateTeams()
-	{
-			
+	{		
 		Player[] array = new Player[list.size()];
 		list.toArray(array); 
 		
@@ -101,9 +96,7 @@ public class TeamGenerator {
 	        	//System.out.println("Strength "+idealValue);
 	        }
 		 return map;
-		
 	}
-
 
 	public static void printMap(Map<Double,List<Player>> map) {
 		
@@ -112,27 +105,5 @@ public class TeamGenerator {
 			System.out.println("Key : " + entry.getKey() 
                                       + " Value : " + entry.getValue());
 		}
-	}
-	
-	public static void main(String[] args) {
-		//fac un ob player data access
-		PlayerDataAccess pda=new PlayerDataAccess();
-		//List<Player> list=new ArrayList<Player>();
-		list=pda.listPlayers();
-		//transform lista in array
-		//Player[] array = new Player[list.size()];
-		//list.toArray(array); 
-		
-		//GetTotalValue(list);
-		//System.out.println("Total value" +totalValue);
-		//generez toate perechile posibile
-		//getCombinations(array, 3, 0,new Player[3]);
-
-		//generez echipele impreuna cu 
-		
-		TreeMap<Double,List<Player>> map = new TreeMap<Double, List<Player>>(
-				new MapComparator(totalValue));
-		 map=generateTeams();		 
-		 printMap(map);
 	}
 }

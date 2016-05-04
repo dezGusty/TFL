@@ -43,13 +43,9 @@ public class SingUpView {
     }
      
     public void save() {
-    	PlayerDataAccess pda=new PlayerDataAccess();
-    	pda.createUser(this.name, this.pass, 1, true, 0.0);
-    	
+    	PlayerDataAccess.createUser(this.name, this.pass, 1, true, 0.0);
     	System.out.println(this.name+" "+this.pass);
     	System.out.println("Data saved!");
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data Saved"));
     }
-
-	
 }

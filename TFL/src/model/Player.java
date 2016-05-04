@@ -2,12 +2,8 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import model.PlayerRating;
-
-import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * The persistent class for the player database table.
@@ -18,7 +14,6 @@ import java.util.List;
 public class Player implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
 	@Override
 	public String toString() {
 		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
@@ -79,12 +74,6 @@ public class Player implements Serializable {
 	//bi-directional many-to-many association to Team
 	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
 	private List<Team> teams;
-
-	public Player() {
-		this.teams=new ArrayList<Team>();
-		this.games=new ArrayList<Game>();
-		this.playerRatings=new ArrayList<PlayerRating>();
-	}
 
 	public Integer getId() {
 		return this.id;

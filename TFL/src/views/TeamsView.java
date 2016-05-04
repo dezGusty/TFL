@@ -35,7 +35,7 @@ public class TeamsView implements Serializable {
 
 	@ManagedProperty("#{playerDataAccess}")
 	private PlayerDataAccess service;
-
+	public int indexOfMap=0;
 	private boolean existTeams;
 
 	private boolean showNextPrevious;
@@ -127,16 +127,7 @@ public class TeamsView implements Serializable {
 		 {
 		 System.out.println(p.getUsername());
 		 }
-
-		// FacesMessage msg = new FacesMessage();
-		// msg.setSeverity(FacesMessage.SEVERITY_INFO);
-		// msg.setSummary("Items Transferred");
-		// msg.setDetail(builder.toString());
-		//
-		// FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
-	
-	 public int indexOfMap=0;
 
 	 public void getNextTeam(ActionEvent actionEvent) {
 			System.out.println("Next Team");
@@ -294,9 +285,6 @@ public class TeamsView implements Serializable {
 	public void saveTeams() {
 		
 		System.out.println("Hello from save teams!");
-		
-		//System.out.println("first team to save:"+this.teamOne.getName());
-		
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
      	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
      	
@@ -321,17 +309,14 @@ public class TeamsView implements Serializable {
      		}
      		else
      		{
-     			TeamDataAccess tda=new TeamDataAccess();
-     			game.setTeam1(tda.createNewTeam(this.teamOne));
+     			game.setTeam1(TeamDataAccess.createNewTeam(this.teamOne));
      			System.out.println("First team: "+this.teamOne.getName());
          		for(Player p:this.teamOne.getPlayers())
          		{
          			System.out.println(p.getUsername());
          		}
-         		
-         		
-         		tda=new TeamDataAccess();
-     			game.setTeam2(tda.createNewTeam(this.teamTwo));
+
+     			game.setTeam2(TeamDataAccess.createNewTeam(this.teamTwo));
          		System.out.println("Second team: "+this.teamTwo.getName());
          		for(Player p:this.teamTwo.getPlayers())
          		{
@@ -342,34 +327,8 @@ public class TeamsView implements Serializable {
          		gda.updateGame(game); 		
      		}
      	}
-     	
-     	System.out.println("Done!");
-//		 for(Player p: this.teamOne.getPlayers())
-//	 	{
-//			 System.out.println(p.getUsername());
-//	 	}
+}
 		
-//		 System.out.println("second team to save:"+this.teamTwo.getName());
-//		 for(Player p: this.teamTwo.getPlayers())
-//		 {
-//				 System.out.println(p.getUsername());
-//		 }
-//		 
-//		 TeamDataAccess tda=new TeamDataAccess();
-//		 this.teamOne=tda.createNewTeam(this.teamOne);
-//		 this.teamTwo=new TeamDataAccess().createNewTeam(this.teamTwo);
-//		 
-//		 System.out.println("Saved teams:"+this.teamOne.getId()+" "+this.teamTwo.getId());
-//		 
-//     	firstBean.getSelectedGame().setTeam1(this.teamOne);
-//     	firstBean.getSelectedGame().setTeam2(this.teamTwo);
-//     	
-//     	GameDataAccess gda=new GameDataAccess();
-//     	firstBean.setSelectedGame(gda.updateGame(firstBean.getSelectedGame()));
-     	
-     	}
-		
-	
 	public void backToHistory() {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");

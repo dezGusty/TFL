@@ -23,6 +23,14 @@
 		<div class="ui-grid ui-grid-responsive withMargins">
 			<div class="ui-grid-row">
 				<div class="ui-grid-col-12">
+					<p:panel>
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+					</p:panel>
+				</div>
+			</div>
+			
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
 					<p:dataTable id="gamesTable" value="#{nextGamesView.games}" var="game">
 					<f:facet name="header">Next games admin user</f:facet>
 					<p:column>

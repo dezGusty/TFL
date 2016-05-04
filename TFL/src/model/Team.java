@@ -25,7 +25,7 @@ public class Team implements Serializable {
 
 	private Boolean winner;
 
-	@ManyToMany 
+	@ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name="team_player", 
           joinColumns=@JoinColumn(name="id_team"),
           inverseJoinColumns=@JoinColumn(name="id_player"))

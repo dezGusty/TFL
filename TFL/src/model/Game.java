@@ -32,13 +32,12 @@ public class Game implements Serializable {
 	private Boolean archive;
 	
 	//bi-directional many-to-many association to Player
-	@ManyToMany 
+	@ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name="game_players", 
           joinColumns=@JoinColumn(name="game_id"),
           inverseJoinColumns=@JoinColumn(name="player_id"))
 	private List<Player> players;
-//
-//	
+
 //	//bi-directional many-to-one association to Team
 //	@OneToMany(mappedBy="gameBean", fetch=FetchType.EAGER)
 //	private List<Team> teams;

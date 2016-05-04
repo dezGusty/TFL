@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>	
+	
+</h:head>
+
+<h:body>
+	<f:facet name="last">
+		<h:outputStylesheet  name="style/loginCss.css" />
+	</f:facet>
+	
+	<h:form>
+		<p:panel header="Thuesday football league" style="text-align:center;border:none">
+            <h:panelGrid columns="2" style="width:100%;border:none">
+                <p:graphicImage value="images/sf.jpg"/>  
+                <p:panel style="border:none;" header="Login">
+                		<h:panelGrid columns="2">						
+    					<h:outputText value="Username"/>
+    					<p:inputText  id="username" value="#{loginView.username}" required="true" ></p:inputText>
+    				
+    					<h:outputText value="Password"/>
+    					<p:password id="pass" value="#{loginView.password}" required="true" ></p:password>
+    				
+					</h:panelGrid>
+            		<p:commandButton value="Login" action="#{loginView.login}" />
+ 					<p:button id="singupButton" outcome="/resources/singup" value="Sing up"/>
+                </p:panel>
+            </h:panelGrid>
+        </p:panel>
+	</h:form>
+</h:body>
+</html>

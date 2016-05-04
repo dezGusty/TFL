@@ -583,3 +583,165 @@ apr. 27, 2016 15:10:51.00 Handler.prototype.process@resource://gre/modules/Promi
 apr. 27, 2016 15:10:51.02 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
 apr. 27, 2016 15:10:51.02 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
 apr. 27, 2016 15:10:51.03 
+
+mai 02, 2016 09:56:27.25 NEW SESSION
+mai 02, 2016 09:56:27.52 1462172180772	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+mai 02, 2016 09:56:27.73 1462172181843	addons.xpi	ERROR	Failed to clean updated system add-ons directories.: Win error 2 during operation DirectoryIterator.prototype.next on file C:\Users\Paula\AppData\Roaming\Mozilla\Firefox\Profiles\trxt8o8c.default\features (The system cannot find the file specified.
+mai 02, 2016 09:56:27.86 
+mai 02, 2016 09:56:28.01 ) ((unknown module)) No traceback available
+mai 02, 2016 11:10:13.36 console.warn: Asynchronous operation was aborted as selection changed.
+mai 02, 2016 11:27:50.25 console.warn: Asynchronous operation was aborted as selection changed.
+mai 02, 2016 12:00:23.39 console.warn: Asynchronous operation was aborted as selection changed.
+mai 02, 2016 12:13:24.71 console.error: 
+mai 02, 2016 12:13:24.75   Error writing response to: children
+mai 02, 2016 12:13:24.76 *************************
+mai 02, 2016 12:13:24.77 A coding exception was thrown in a Promise resolution callback.
+mai 02, 2016 12:13:24.78 See https://developer.mozilla.org/Mozilla/JavaScript_code_modules/Promise.jsm/Promise
+mai 02, 2016 12:13:24.79 
+mai 02, 2016 12:13:24.80 Full message: TypeError: this.walker is null
+mai 02, 2016 12:13:24.81 Full stack: exports.NodeActor<.form@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:254:9
+mai 02, 2016 12:13:24.82 types.addActorType/type<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:294:44
+mai 02, 2016 12:13:24.83 types.addArrayType/<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:40
+mai 02, 2016 12:13:24.84 types.addArrayType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:24
+mai 02, 2016 12:13:24.85 types.addDictType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:233:23
+mai 02, 2016 12:13:24.87 RetVal<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:529:12
+mai 02, 2016 12:13:24.88 Response<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:682:1
+mai 02, 2016 12:13:24.89 Response<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:680:23
+mai 02, 2016 12:13:24.92 actorProto/</handler/sendReturn@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1023:24
+mai 02, 2016 12:13:24.94 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:13:24.95 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:13:24.97 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:13:24.99 
+mai 02, 2016 12:13:25.00 *************************
+mai 02, 2016 12:13:25.01 console.error: 
+mai 02, 2016 12:13:25.02   Message: TypeError: this.walker is null
+mai 02, 2016 12:13:25.04   Stack:
+mai 02, 2016 12:13:25.05     exports.NodeActor<.form@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:254:9
+mai 02, 2016 12:13:25.07 types.addActorType/type<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:294:44
+mai 02, 2016 12:13:25.11 types.addArrayType/<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:40
+mai 02, 2016 12:13:25.12 types.addArrayType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:24
+mai 02, 2016 12:13:25.13 types.addDictType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:233:23
+mai 02, 2016 12:13:25.16 RetVal<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:529:12
+mai 02, 2016 12:13:25.18 Response<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:682:1
+mai 02, 2016 12:13:25.19 Response<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:680:23
+mai 02, 2016 12:13:25.20 actorProto/</handler/sendReturn@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1023:24
+mai 02, 2016 12:13:25.21 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:13:25.24 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:13:25.32 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:13:25.33 
+mai 02, 2016 12:13:25.34 exports.NodeActor<.form@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:254:9
+mai 02, 2016 12:13:25.35 types.addActorType/type<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:294:44
+mai 02, 2016 12:13:25.36 types.addArrayType/<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:40
+mai 02, 2016 12:13:25.37 types.addArrayType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:199:24
+mai 02, 2016 12:13:25.38 types.addDictType/<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:233:23
+mai 02, 2016 12:13:25.39 RetVal<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:529:12
+mai 02, 2016 12:13:25.40 Response<.write/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:682:1
+mai 02, 2016 12:13:25.41 Response<.write@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:680:23
+mai 02, 2016 12:13:25.42 actorProto/</handler/sendReturn@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1023:24
+mai 02, 2016 12:13:25.43 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:13:25.46 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:13:25.47 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:13:25.49 console.error: 
+mai 02, 2016 12:13:25.50   Protocol error (unknownError): TypeError: this.walker is null
+mai 02, 2016 12:27:59.25 console.error: 
+mai 02, 2016 12:27:59.27   Message: [Exception... "Component is not available"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js :: imageToImageData< :: line 4236"  data: no]
+mai 02, 2016 12:27:59.28   Stack:
+mai 02, 2016 12:27:59.30     imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 12:27:59.31 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 12:27:59.32 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:27:59.34 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:27:59.35 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:27:59.36 
+mai 02, 2016 12:27:59.37 imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 12:27:59.39 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 12:27:59.40 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:27:59.41 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:27:59.42 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:28:33.44 console.error: 
+mai 02, 2016 12:28:33.45   Message: [Exception... "Component is not available"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js :: imageToImageData< :: line 4236"  data: no]
+mai 02, 2016 12:28:33.47   Stack:
+mai 02, 2016 12:28:33.48     imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 12:28:33.50 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 12:28:33.52 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:28:33.53 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:28:33.55 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:28:33.57 
+mai 02, 2016 12:28:33.58 imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 12:28:33.60 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 12:28:33.61 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:28:33.63 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:28:33.64 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:29:44.42 console.error: 
+mai 02, 2016 12:29:44.44   Message: [Exception... "Component is not available"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js :: imageToImageData< :: line 4236"  data: no]
+mai 02, 2016 12:29:44.45   Stack:
+mai 02, 2016 12:29:44.47     imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 12:29:44.48 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 12:29:44.49 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:29:44.51 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:29:44.52 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:29:44.53 
+mai 02, 2016 12:29:44.54 imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 12:29:44.56 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 12:29:44.57 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:29:44.58 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:29:44.59 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:30:18.26 console.error: 
+mai 02, 2016 12:30:18.28   Message: [Exception... "Component is not available"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js :: imageToImageData< :: line 4236"  data: no]
+mai 02, 2016 12:30:18.30   Stack:
+mai 02, 2016 12:30:18.31     imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 12:30:18.32 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 12:30:18.33 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:30:18.35 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:30:18.36 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 12:30:18.38 
+mai 02, 2016 12:30:18.39 imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 12:30:18.42 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 12:30:18.44 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 12:30:18.47 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 12:30:18.50 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 13:04:19.00 console.error: 
+mai 02, 2016 13:04:19.01   Image 'http://localhost:8080/TFL/faces/images/fotabll.png' failed to load.
+mai 02, 2016 13:04:19.68 console.error: 
+mai 02, 2016 13:04:19.70   Image 'http://localhost:8080/TFL/faces/images/fotabll.png' failed to load.
+mai 02, 2016 13:04:31.11 console.error: 
+mai 02, 2016 13:04:31.13   Image 'http://localhost:8080/images/fotabll.png' failed to load.
+mai 02, 2016 13:05:28.68 console.error: 
+mai 02, 2016 13:05:28.70   Image 'http://localhost:8080/images/history.jpg' failed to load.
+mai 02, 2016 13:23:20.18 console.error: 
+mai 02, 2016 13:23:20.25   Message: [Exception... "Component is not available"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js :: imageToImageData< :: line 4236"  data: no]
+mai 02, 2016 13:23:20.27   Stack:
+mai 02, 2016 13:23:20.28     imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 13:23:20.30 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 13:23:20.31 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 13:23:20.33 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 13:23:20.34 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 13:23:20.35 
+mai 02, 2016 13:23:20.36 imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4236:5
+mai 02, 2016 13:23:20.38 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 02, 2016 13:23:20.39 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 02, 2016 13:23:20.40 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 02, 2016 13:23:20.42 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:1
+mai 02, 2016 13:51:52.75 Handler function BrowserTabList.prototype.onCloseWindow's delayed body threw an exception: TypeError: this.threadActor is null
+mai 02, 2016 13:51:53.20 Stack: BTA_exit@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:971:7
+mai 02, 2016 13:51:53.22 BrowserTabActor.prototype.exit@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:1960:3
+mai 02, 2016 13:51:53.23 BrowserTabList.prototype._handleActorClose@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:441:3
+mai 02, 2016 13:51:53.25 BrowserTabList.prototype.onCloseWindow</<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:602:9
+mai 02, 2016 13:51:53.26 makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+mai 02, 2016 13:51:53.27 Line: 971, column: 7
+mai 02, 2016 13:51:53.28 console.error: 
+mai 02, 2016 13:51:53.30   Protocol error (noSuchActor): No such actor for ID: server1.conn2.animationsActor23
+mai 02, 2016 13:51:53.31 onPacket threw an exception: Error: Server did not specify an actor, dropping packet: {"error":"unknownError","message":"error occurred while processing 'detach: TypeError: this._progressListener is null\nStack: BTA_detach@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:1324:7\nBTA_onDetach@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webbrowser.js:1395:10\nDSC_onPacket@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/main.js:1643:15\nLocalDebuggerTransport.prototype.send/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/transport/transport.js:569:11\nmakeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14\nmakeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14\nLine: 1324, column: 7"}
+mai 02, 2016 13:51:53.32 Stack: DebuggerClient.prototype.onPacket@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/client/main.js:931:1
+mai 02, 2016 13:51:53.33 LocalDebuggerTransport.prototype.send/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/transport/transport.js:569:11
+mai 02, 2016 13:51:53.35 makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+mai 02, 2016 13:51:53.36 makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:87:14
+mai 02, 2016 13:51:53.37 Line: 931, column: 1
+
+mai 03, 2016 12:23:51.78 NEW SESSION
+mai 03, 2016 12:23:51.78 console.warn: Asynchronous operation was aborted as selection changed.
+mai 03, 2016 12:30:38.25 1462267838257	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+mai 03, 2016 12:30:39.19 1462267839188	addons.xpi	ERROR	Failed to clean updated system add-ons directories.: Win error 2 during operation DirectoryIterator.prototype.next on file C:\Users\Paula\AppData\Roaming\Mozilla\Firefox\Profiles\trxt8o8c.default\features (The system cannot find the file specified.
+mai 03, 2016 12:30:39.20 
+mai 03, 2016 12:30:39.22 ) ((unknown module)) No traceback available
+mai 03, 2016 13:13:12.92 console.error: 
+mai 03, 2016 13:13:13.08   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23
