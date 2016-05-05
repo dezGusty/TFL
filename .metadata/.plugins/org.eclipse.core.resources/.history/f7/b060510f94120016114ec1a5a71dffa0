@@ -1,0 +1,354 @@
+package views;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.PostConstruct;
+import javax.el.ELContext;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
+import dataAccessLayer.GameDataAccess;
+import dataAccessLayer.PlayerDataAccess;
+import dataAccessLayer.TeamDataAccess;
+import dataAccessLayer.TeamGenerator;
+import model.Game;
+import model.Player;
+import model.Team;
+
+@ManagedBean(name = "teamsView")
+@ApplicationScoped
+public class TeamsView implements Serializable {
+
+	/**
+	* 
+	*/
+	private static final long serialVersionUID = 1L;
+
+	@ManagedProperty("#{playerDataAccess}")
+	private PlayerDataAccess service;
+	public int indexOfMap=0;
+	private boolean existTeams;
+
+	private boolean showNextPrevious;
+	
+	public boolean isShowNextPrevious() {
+		return showNextPrevious;
+	}
+
+	public void setShowNextPrevious(boolean showNextPrevious) {
+		this.showNextPrevious = showNextPrevious;
+	}
+
+	public boolean isExistTeams() {
+		return this.existTeams;
+	}
+
+	public void setExistTeams(boolean existTeams) {
+		this.existTeams = existTeams;
+	}
+	
+	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
+
+	public List<Player> themesSource=new ArrayList<Player>();
+
+	public List<Player> themesTarget=new ArrayList<Player>();
+
+	private DualListModel<Player> players;
+
+	public String firstTeamName;
+
+	public String secondTeamName;
+
+	public String getFirstTeamName() {
+		return firstTeamName;
+	}
+
+	public void setFirstTeamName(String firstTeamName) {
+		this.firstTeamName = firstTeamName;
+	}
+
+	public String getSecondTeamName() {
+		return secondTeamName;
+	}
+
+	public void setSecondTeamName(String secondTeamName) {
+		this.secondTeamName = secondTeamName;
+	}
+
+	@PostConstruct
+	public void init() {
+		if(players==null)
+		{
+			players=new DualListModel<Player>();
+		}	
+	}
+
+	public PlayerDataAccess getService() {
+		return service;
+	}
+
+	public void setService(PlayerDataAccess service) {
+		this.service = service;
+	}
+
+	public DualListModel<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(DualListModel<Player> themes) {
+		this.players = themes;
+	}
+
+	public void onTransfer(TransferEvent event) {
+		
+		 System.out.println("Source:");
+		this.themesSource = this.players.getSource();
+		
+		 for(Player p: this.themesSource)
+		 {
+		 System.out.println(p.getUsername());
+		 }
+
+		System.out.println("Target:");
+		this.themesTarget = this.players.getTarget();
+
+		 for(Player p: this.themesTarget)
+		 {
+		 System.out.println(p.getUsername());
+		 }
+	}
+
+	 public void getNextTeam(ActionEvent actionEvent) {
+			System.out.println("Next Team");
+			System.out.println("Index of map:"+indexOfMap);
+			//System.out.println(TeamGenerator.map.size());
+			System.out.println("Inex to comapre: "+(TeamGenerator.map.size()-1));
+			if(indexOfMap==(TeamGenerator.map.size()-1))
+			{
+				indexOfMap=0;
+				System.out.println("new Index of map:"+indexOfMap);
+			}
+			else
+			{
+				indexOfMap=indexOfMap+1;
+				System.out.println("new Index of map:"+indexOfMap);
+			}
+			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[indexOfMap];
+			
+			List<Player> allPlayers=new ArrayList<Player>();
+			allPlayers.addAll(themesSource);
+			allPlayers.addAll(themesTarget);
+			
+			List<Player> firstList = TeamGenerator.map.get(key);
+			System.out.println("First  list:");
+			for(Player p:firstList)
+			{
+				System.out.println(p.getUsername());
+			}
+				
+			this.themesSource=firstList;
+					
+			List<Player> secondList = new ArrayList<Player>();
+			
+			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
+			boolean existsInList=false;
+			for(Player p:allPlayers)
+			{
+				existsInList=false;
+				for(Player pl:firstList)
+				{
+					if(p.getId()==pl.getId())
+					{
+						existsInList=true;
+						break;
+					}
+				}
+				if(!existsInList)
+				{
+					secondList.add(p);
+				}
+				
+			}
+			this.themesTarget=secondList;
+			
+			System.out.println("SecondList list:");
+			
+			for(Player p:secondList)
+			{
+				System.out.println(p.getUsername());
+			}
+			
+			players=new DualListModel<>(this.themesSource,this.themesTarget);
+	    }
+	 
+	 public void backToGames()
+	 {
+			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+			
+			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+			if(firstBean.getCurrentPlayer().getType()==1)
+			{
+				try {
+					context.redirect(context.getRequestContextPath() + "/faces/resources/nextusergames.xhtml");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else
+			{
+				try {
+					context.redirect(context.getRequestContextPath() + "/faces/resources/teamsadmin.xhtml");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+	 }
+	 
+	 public void getPreviousTeam(ActionEvent actionEvent) {
+			System.out.println("Previous Team");
+			System.out.println("Index of map:"+indexOfMap);
+			System.out.println("Inex to comapre: "+(TeamGenerator.map.size()-1));
+			if(indexOfMap==0)
+			{
+				indexOfMap=9;
+				System.out.println("new Index of map:"+indexOfMap);
+			}
+			else
+			{
+				indexOfMap=indexOfMap-1;
+				System.out.println("new Index of map:"+indexOfMap);
+			}
+			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[indexOfMap];
+			
+			List<Player> allPlayers=new ArrayList<Player>();
+			allPlayers.addAll(themesSource);
+			allPlayers.addAll(themesTarget);
+			
+			List<Player> firstList = TeamGenerator.map.get(key);
+			System.out.println("First  list:");
+			for(Player p:firstList)
+			{
+				System.out.println(p.getUsername());
+			}
+			
+			
+			this.themesSource=firstList;
+			
+			
+			List<Player> secondList = new ArrayList<Player>();
+			
+			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
+			boolean existsInList=false;
+			for(Player p:allPlayers)
+			{
+				existsInList=false;
+				for(Player pl:firstList)
+				{
+					if(p.getId()==pl.getId())
+					{
+						existsInList=true;
+						break;
+					}
+				}
+				if(!existsInList)
+				{
+					secondList.add(p);
+				}
+				
+			}
+			this.themesTarget=secondList;
+			
+			System.out.println("SecondList list:");
+			
+			for(Player p:secondList)
+			{
+				System.out.println(p.getUsername());
+			}
+			
+			players=new DualListModel<>(this.themesSource,this.themesTarget);
+	    }
+	 
+	public void saveTeams() {
+		
+		System.out.println("Hello from save teams!");
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+     	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+     	
+     	Game game=firstBean.getSelectedGame();
+
+     	if(game.getTeam1()!=null && game.getTeam2()!=null)
+     	{
+     		//game.setTeam1(this.teamOne);
+     		//game.setTeam2(this.teamTwo);
+     		GameDataAccess gda=new GameDataAccess();
+         	//firstBean.setSelectedGame(gda.updateGame(game));
+     	//}
+     	//else
+     	//{
+     		//System.out.println("Make the teams first!");
+//     		if(this.teamOne==null && this.teamTwo!=null)
+//     		{
+//     			System.out.println("First team or second is null");
+//     		}
+//     		else
+//     		{
+//     			game.setTeam1(TeamDataAccess.createNewTeam(this.teamOne));
+//     			System.out.println("First team: "+this.teamOne.getName());
+//         		for(Player p:this.teamOne.getPlayers())
+//         		{
+//         			System.out.println(p.getUsername());
+//         		}
+//
+//     			game.setTeam2(TeamDataAccess.createNewTeam(this.teamTwo));
+//         		System.out.println("Second team: "+this.teamTwo.getName());
+//         		for(Player p:this.teamTwo.getPlayers())
+//         		{
+//         			System.out.println(p.getUsername());
+//         		}
+//         		
+//         		GameDataAccess gda=new GameDataAccess();
+//         		gda.updateGame(game); 		
+//     		}
+     	//}
+}
+		
+	public void backToHistory() {
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+		LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+		
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		if(firstBean.getCurrentPlayer().getType()==1)
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/userview.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try {
+				context.redirect(context.getRequestContextPath() + "/faces/resources/adminuser.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

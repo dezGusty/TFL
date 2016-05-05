@@ -25,23 +25,22 @@ public class TeamDataAccess {
 		return result;
 	}
 	
-	public static Team updateTeam(Team teamToSave) {
+	public static Team UpdateTeam(Team teamToSave) {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
 		EntityManager em = emf.createEntityManager();
-		Team t= em.find(Team.class, teamToSave.getId());
+		em.getTransaction().begin();
+		Team t= em.find(Team.class, teamToSave.getId());	
 		t.setName(teamToSave.getName());
 		t.setPlayers(teamToSave.getPlayers());
-		
-		em.merge(teamToSave);
+		em.merge(t);
 		em.getTransaction().commit();
-		em.refresh(teamToSave);
+		//em.refresh(t);
 		em.close();
-		return teamToSave;
-		
+		return t;	
 	}
 	
-	public static Team createNewTeam(Team team)
+	public static Team CreateNewTeam(Team team)
 	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
 		EntityManager em = emf.createEntityManager();

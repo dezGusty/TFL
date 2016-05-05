@@ -23,10 +23,19 @@ public class NextGamesView implements Serializable{
 
 	 private static final long serialVersionUID = 1L;
 
-	 
 	    public static List<Game> games;
+	     
+	    private Game selectedGame;
 	    
-	    private Date gameDate;
+	    public Game getSelectedGame() {
+			return selectedGame;
+		}
+
+		public void setSelectedGame(Game selectedGame) {
+			this.selectedGame = selectedGame;
+		}
+
+		private Date gameDate;
 	    
 	    public Date getGameDate() {
 			return gameDate;
@@ -116,6 +125,7 @@ public class NextGamesView implements Serializable{
 		
 		public void teamsView(Game game)
 		{
+			this.selectedGame=GameDataAccess.GetGame(game.getId());
 			System.out.println("Method!");
 			Game selectedGame=GameDataAccess.GetGame(game.getId());
 			

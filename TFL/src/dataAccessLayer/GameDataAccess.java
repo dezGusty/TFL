@@ -133,20 +133,41 @@ public class GameDataAccess implements Serializable {
 		}
 		return null;
 	}
-	public Game updateGame(Game game)
+	
+	public static Game UpdateTeams(Game game)
 	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Game g=em.find(Game.class, game.getId());
-		g.setDifference(game.getDifference());
-		g.setTeam1(game.getTeam1());
-		g.setTeam2(game.getTeam2());
+		Game g=em.find(Game.class, game.getId());		
+ 		g.setTeam1(TeamDataAccess.UpdateTeam(game.getTeam1()));
+		g.setTeam2(TeamDataAccess.UpdateTeam(game.getTeam2()));
+		em.merge(g);
 		em.getTransaction().commit();
 		em.refresh(g);
 		em.close();
 		return g;
 	}
+	
+	public static Game AddTeams(int gameid, int firstTeamId,int secondTeamId)
+	{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Game g=em.find(Game.class, gameid);		
+		Team a=em.find(Team.class, firstTeamId);
+		Team b=em.find(Team.class, secondTeamId);
+		
+ 		g.setTeam1(a);
+		g.setTeam2(b);
+		
+		em.merge(g);
+		em.getTransaction().commit();
+		em.refresh(g);
+		em.close();
+		return g;
+	}
+	
 	
 	public static Team addTeamToGame(Team t,int  gId)
 	{

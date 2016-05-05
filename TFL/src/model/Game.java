@@ -71,12 +71,12 @@ public class Game implements Serializable {
 	}
 
 	//bi-directional many-to-one association to Team
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="firstteam")
 	private Team team1;
 
 		//bi-directional many-to-one association to Team
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="secondteam")
 	private Team team2;
 		

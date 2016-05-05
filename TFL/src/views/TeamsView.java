@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -280,48 +281,45 @@ public class TeamsView implements Serializable {
 			players=new DualListModel<>(this.themesSource,this.themesTarget);
 	    }
 	 
-	public void saveTeams() {
+public void saveTeams() {
 		
-		System.out.println("Hello from save teams!");
+	System.out.println("Hello from save teams!");
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
      	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
      	
-     	//Game game=firstBean.getSelectedGame();
+     	Game game=firstBean.getSelectedGame();
 
-     	//if(game.getTeam1()!=null && game.getTeam2()!=null)
-     	//{
-     		//game.setTeam1(this.teamOne);
-     		//game.setTeam2(this.teamTwo);
-     		GameDataAccess gda=new GameDataAccess();
-         	//firstBean.setSelectedGame(gda.updateGame(game));
-     	//}
-     	//else
-     	//{
-     		//System.out.println("Make the teams first!");
-//     		if(this.teamOne==null && this.teamTwo!=null)
-//     		{
-//     			System.out.println("First team or second is null");
-//     		}
-//     		else
-//     		{
-//     			game.setTeam1(TeamDataAccess.createNewTeam(this.teamOne));
-//     			System.out.println("First team: "+this.teamOne.getName());
-//         		for(Player p:this.teamOne.getPlayers())
-//         		{
-//         			System.out.println(p.getUsername());
-//         		}
-//
-//     			game.setTeam2(TeamDataAccess.createNewTeam(this.teamTwo));
-//         		System.out.println("Second team: "+this.teamTwo.getName());
-//         		for(Player p:this.teamTwo.getPlayers())
-//         		{
-//         			System.out.println(p.getUsername());
-//         		}
-//         		
-//         		GameDataAccess gda=new GameDataAccess();
-//         		gda.updateGame(game); 		
-//     		}
-     	//}
+     	if(game.getTeam1()!=null && game.getTeam2()!=null)
+     	{
+     		System.out.println("Game already has teams!");
+     		//game.getTeam1().setName(this.firstTeamName);
+     		game.getTeam1().setPlayers(this.themesSource);
+     		//game.getTeam2().setName(this.secondTeamName);
+     		game.getTeam2().setPlayers(this.themesTarget);
+         	firstBean.setSelectedGame(GameDataAccess.UpdateTeams(game));
+     	}
+     	else
+     	{
+     		System.out.println("Game has no teams yet! Add teams first!");
+     		Team firstTeam =new Team(this.firstTeamName,this.themesSource);
+     		firstTeam=TeamDataAccess.CreateNewTeam(firstTeam);
+     		
+     		System.out.println("FirstTeam: "+firstTeam.getName());
+     		for(Player p:firstTeam.getPlayers())
+     		{
+     			System.out.println(p.toString());
+     		}
+     		Team secondTeam=new Team(this.secondTeamName,this.themesTarget);
+     		secondTeam=TeamDataAccess.CreateNewTeam(secondTeam);
+     		
+     		System.out.println("SecondTeam: "+secondTeam.getName());
+     		for(Player p:secondTeam.getPlayers())
+     		{
+     			System.out.println(p.toString());
+     		}
+     		
+     		firstBean.setSelectedGame(GameDataAccess.AddTeams(game.getId(), firstTeam.getId(), secondTeam.getId()));	
+     		}
 }
 		
 	public void backToHistory() {

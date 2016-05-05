@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<f:facet name="last">
+		<h:outputStylesheet rel="stylesheet" name="../style/normalUserCss.css" />
+	</f:facet>
+	
+	 <ui:insert name="header">
+		<ui:include src="/resources/header.xhtml" />
+	</ui:insert>
+
+	<h:form>
+		<div class="ui-grid ui-grid-responsive withMargins">
+		
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+					<p:panel>
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+					</p:panel>
+				</div>
+			</div>
+			
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">			
+					<ui:insert name="header">
+						<ui:include src="/resources/viewteams.xhtml" />
+					</ui:insert>
+				</div>
+			</div>
+
+			<div class="ui-grid-row" style="padding-top:1%">
+			
+				<div class="ui-grid-col-4" style="text-align:center;">
+					<p:commandButton value="Previous" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}" ajax="false" />
+				</div>
+			
+				<div class="ui-grid-col-4" style="text-align:center;">
+					<p:commandButton value="Save teams" actionListener="#{teamsView.saveTeams}" ajax="false" />
+				</div>
+				
+				<div class="ui-grid-col-4" style="text-align:center;">
+					<p:commandButton value="Next" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}" ajax="false" />
+				</div>
+				
+			 </div>	
+			 
+			 <div class="ui-grid-row" style="padding-top:1%">
+			
+				   <p:outputLabel value="Multiple:" for="themes" />
+        			<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
+                        var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
+           				 <p:column style="width:10%">
+               				 <h:outputText styleClass="#{theme.username}" />
+           				 </p:column>
+
+        			</p:autoComplete>
+				
+			 </div>	
+						 
+		</div>
+	</h:form>
+</h:body>
+</html>
+	

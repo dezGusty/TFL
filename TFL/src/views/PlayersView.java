@@ -63,7 +63,7 @@ public class PlayersView implements Serializable{
 	public void init() {
 		System.out.println("Hello from players init");
 		this.players=new ArrayList<Player>();
-	    this.players=PlayerDataAccess.listPlayers();
+	    this.players=PlayerDataAccess.ListAllPlayers();
 	    for(Player p:this.players)
 	    {
 	    	System.out.println("Picture "+p.getPicture());

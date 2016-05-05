@@ -97,7 +97,7 @@ public class PlayerDataAccess implements Serializable{
         return play;
 	}
 	
-	  public static List<Player> listPlayers() {
+	  public static List<Player> ListAllPlayers() {
 		  EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
 			EntityManager em = emf.createEntityManager();
 			if(em.getTransaction().isActive())

@@ -38,6 +38,7 @@
 			</div>
 
 			<div class="ui-grid-row" style="padding-top:1%">
+			
 				<div class="ui-grid-col-4" style="text-align:center;">
 					<p:commandButton value="Previous" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}" ajax="false" />
 				</div>
@@ -49,7 +50,23 @@
 				<div class="ui-grid-col-4" style="text-align:center;">
 					<p:commandButton value="Next" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}" ajax="false" />
 				</div>
+				
 			 </div>	
+			 
+			 <div class="ui-grid-row" style="padding-top:1%">
+					<div class="ui-grid-col-8" style="text-align:center;">
+				   		<p:outputLabel value="Add players:" for="themes" />
+        				<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
+                       		 var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
+           				 	<p:column style="width:80%">
+               					 <h:outputText value="#{theme.username}"/>
+           				 	</p:column>
+           				 </p:autoComplete>
+					</div>
+					<div class="ui-grid-col-4" style="text-align:center;">
+					</div>
+			 </div>	
+						 
 		</div>
 	</h:form>
 </h:body>

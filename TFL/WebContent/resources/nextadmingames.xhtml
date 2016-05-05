@@ -21,6 +21,7 @@
 
 	<h:form>
 		<div class="ui-grid ui-grid-responsive withMargins">
+		
 			<div class="ui-grid-row">
 				<div class="ui-grid-col-12">
 					<p:panel>
@@ -40,12 +41,14 @@
 						<h:outputText value="#{game.dateToDisplay()}"></h:outputText>
 					</p:column>
 					<p:column headerText="Difference">#{game.difference}</p:column>
+					
 					<p:column>
 						<p:commandButton value="Play" style="width:100%;"
 							actionListener="#{nextGamesView.play(game)}"
 							disabled="#{game.gameStatus(loginView.currentPlayer)}"
 							ajax="true" />
 					</p:column>
+					
 					<p:column>
 						<p:commandButton  value="Cancel" update="gamesTable" style="width:100%;"
 							actionListener="#{nextGamesView.remove(game)}" ajax="false"  />

@@ -43,6 +43,12 @@ public class Team implements Serializable {
 		this.name=name;
 	}
 	
+	public Team(String name,List<Player> listOfPlayers)
+	{
+		this(name);
+		this.players=listOfPlayers;
+	}
+	
 	public Integer getId() {
 		return this.id;
 	}
