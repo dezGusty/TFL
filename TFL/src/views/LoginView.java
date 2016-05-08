@@ -199,7 +199,7 @@ public class LoginView implements Serializable {
 		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
 		firstBean.addPlayerToChart(this.currentPlayer);
 		firstBean.createLineModels();
-		RedirectView.Redirect(this.currentPlayer, "/faces/resources/userchart.xhtml", "/faces/resources/adminchart.xhtml");	
+		RedirectView.Redirect(this.currentPlayer, "/faces/resources/userchart.xhtml",  "/faces/resources/userchart.xhtml");	
 	}
 	
 	public void redirectToPlayers(ActionEvent actionEvent)

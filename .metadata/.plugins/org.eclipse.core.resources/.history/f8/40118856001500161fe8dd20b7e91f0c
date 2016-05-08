@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+.container-fluid > .navbar-header
+{
+	padding-top: 20px;
+}
+.navbar-nav
+{
+	padding-top: 10px;
+	float: none;
+	text-align: center;
+	font-size: 18px;
+}
+.withpadding
+{
+	padding-left: 20%;
+}
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only.nobackground
+{
+	background:none;
+	border:none;
+	width:100%;
+	padding-top: 8px;
+	color:white;
+}

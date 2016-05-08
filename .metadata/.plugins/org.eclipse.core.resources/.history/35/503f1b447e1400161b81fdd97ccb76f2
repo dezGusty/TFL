@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+.heightforthis
+{
+	height: 700px;
+}
+.bodystyle
+{
+	background-image: url('../images/background.jpg');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+.ui-widget-content
+{
+	
+}

@@ -1,0 +1,15 @@
+.allcontain{
+	max-width: 1366px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ui-widget-content
+{
+	border:none;
+}
+.container
+{
+	background-color: blue;
+	height:100px%;	
+}

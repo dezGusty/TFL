@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+.container-fluid > .navbar-header
+{
+	padding-top: 20px;
+}
+.navbar-nav
+{
+	padding-top: 10px;
+	float: none;
+	text-align: center;
+	padding-left: 20%;
+	font-size: 20px;
+}
+.nav
+{
+	padding:none;
+}

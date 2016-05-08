@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+.container
+{
+
+	width: 1345px;
+	height: 700px;
+}
+.bodystyle
+{
+	background-image: url('../images/background.jpg');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}

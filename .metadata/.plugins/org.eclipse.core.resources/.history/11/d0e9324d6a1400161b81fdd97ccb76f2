@@ -1,0 +1,9 @@
+.ui-widget-content
+{
+	border:none;
+}
+.container
+{
+	background-color: blue;
+	height:100px%;	
+}

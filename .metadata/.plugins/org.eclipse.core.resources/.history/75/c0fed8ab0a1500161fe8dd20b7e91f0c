@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+.greybackground
+{
+	background-image: url('../images/background.jpg');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
