@@ -19,7 +19,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </h:head>
-<h:body class="greybackground">
+<h:body class="greyback">
 	<f:facet name="last">
 		<h:outputStylesheet  name="../styles/headerCss.css" />
 		<h:outputStylesheet  name="../styles/userCss.css" />
@@ -29,35 +29,49 @@
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
 
-	<h:form>
-		<div class="row">
-			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
-		</div>
+	
+		
 		<ui:insert name="header">
 			<ui:include src="/resources/viewteams.xhtml" />
 		</ui:insert>
+		<h:form style="margin-top:100px">
 		
 		<div class="row">
-			 <div class="col-md-offset-5 col-sm-3 col-md-3">
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+		</div>
+		
+		<div class="row" style="padding-top: 3%;">
+			 <div class=" col-sm-12 col-md-12" style="text-align:center;">
 			 		<div class="btn-group">
-  						<p:commandButton value="Previous" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}" ajax="false" />
-  						<p:commandButton value="Save teams" actionListener="#{teamsView.saveTeams}" ajax="false" />
-  						<p:commandButton value="Next" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}" ajax="false" />
+			 			<h:commandLink  id="prev" title="Previous" style="height: 40px;margin-right:30px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}"  >
+   			 					<span class="glyphicon glyphicon-chevron-left"></span>  
+   			 			</h:commandLink>
+   			 			<p:tooltip  for="prev" value="Previous team" />
+
+  						<p:commandButton id="save" value="Save teams" style="height: 35px;" actionListener="#{teamsView.saveTeams}" ajax="false" />
+  						<p:tooltip id="toolTipFade" for="save" value="Save current teams" />
+  						
+  						<h:commandLink id="next" title="Previous" style="height: 40px;margin-left:30px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}"  >
+   			 					<span class="glyphicon glyphicon-chevron-right"></span>  
+   			 			</h:commandLink>
+   			 			<p:tooltip  for="next" value="Next team" />
 					</div>
 			 </div>
 		</div>
-		<div class="row">
+		<div class="row" style="padding-top: 3%;">
 			 <div class="col-md-offset-3 col-sm-6 col-md-6">
-			 	<p:outputLabel value="Add players:" for="themes" />
-        				<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
+			 	<p:outputLabel value="Add players:" for="themes"/>
+        		<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
                        		 var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
-           				 	<p:column style="width:80%">
-               					 <h:outputText value="#{theme.username}"/>
-           				 	</p:column>
+           			<p:column style="width:80%">
+               			<h:outputText value="#{theme.username}"/>
+           			</p:column>
            		</p:autoComplete>
+           		<p:commandButton id="add" value="Add" style="height: 35px;" actionListener="#{autoCompleteView.addPlayers}" ajax="false" />
+           		<p:tooltip for="add" value="Add players to team" />
 			 </div>
 		</div>
-	</h:form>
+		</h:form>
 </h:body>
 </html>
 	

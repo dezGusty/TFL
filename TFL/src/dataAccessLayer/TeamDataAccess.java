@@ -22,6 +22,7 @@ public class TeamDataAccess {
 			System.out.println(p.getName());
 		}
 		em.close();
+		emf.close();
 		return result;
 	}
 	
@@ -30,13 +31,14 @@ public class TeamDataAccess {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Team t= em.find(Team.class, teamToSave.getId());	
+		Team t= em.find(Team.class, teamToSave.getId());			
 		t.setName(teamToSave.getName());
 		t.setPlayers(teamToSave.getPlayers());
 		em.merge(t);
 		em.getTransaction().commit();
 		//em.refresh(t);
 		em.close();
+		emf.close();
 		return t;	
 	}
 	
@@ -49,6 +51,7 @@ public class TeamDataAccess {
 		em.getTransaction().commit();
 		em.refresh(team);
 		em.close();
+		emf.close();
 		return team;
 	}
 	
@@ -70,6 +73,8 @@ public class TeamDataAccess {
 //			EntityManagerHelper.em.merge(team);
 //			EntityManagerHelper.em.getTransaction().commit();
 //		}
+		em.close();
+		emf.close();
 		return team;
 	}
 	

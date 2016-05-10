@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+		<title>Thuesday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</h:head>
+<h:body class="greybackground">
+	<f:facet name="last">
+		<h:outputStylesheet  name="../styles/headerCss.css" />
+		<h:outputStylesheet  name="../styles/userCss.css" />
+	</f:facet>
+	
+	 <ui:insert name="header">
+		<ui:include src="/resources/header.xhtml" />
+	</ui:insert>
+
+	
+		<div class="row">
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+		</div>
+		<ui:insert name="header">
+			<ui:include src="/resources/viewteams.xhtml" />
+		</ui:insert>
+		<h:form>
+		<div class="row" style="padding-top: 3%;">
+			 <div class=" col-sm-12 col-md-12" style="text-align:center;">
+			 		<div class="btn-group">
+			 			<h:commandLink title="Previous" style="height: 40px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}"  >
+   			 					<span class="glyphicon glyphicon-chevron-left"></span>  
+   			 			</h:commandLink>
+
+  						<p:commandButton value="Save teams" style="height: 35px;" actionListener="#{teamsView.saveTeams}" ajax="false" />
+  						
+  						<h:commandLink title="Previous" style="height: 40px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}"  >
+   			 					<span class="glyphicon glyphicon-chevron-left"></span>  
+   			 			</h:commandLink>
+   			 			
+  						<p:commandButton value="Next" style="height: 35px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}" ajax="false" />
+					</div>
+			 </div>
+		</div>
+		<div class="row" style="padding-top: 3%;">
+			 <div class="col-md-offset-3 col-sm-6 col-md-6">
+			 	<p:outputLabel value="Add players:" for="themes" />
+        				<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
+                       		 var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
+           				 	<p:column style="width:80%">
+               					 <h:outputText value="#{theme.username}"/>
+           				 	</p:column>
+           		</p:autoComplete>
+			 </div>
+		</div>
+		</h:form>
+</h:body>
+</html>
+	

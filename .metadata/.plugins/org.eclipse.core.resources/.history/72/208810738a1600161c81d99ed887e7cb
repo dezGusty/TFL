@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+.greyback
+{
+	background-image: url('../images/back.png');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	min-height: 100%;
+}
+.rowwithnomargins
+{
+	margin-left:0px;
+	margin-right:0px;
+}
+.maxheightforimage
+{
+max-height: 350px;
+}
+html
+{
+	min-height: 100%;
+}
+.maxheight
+{
+	max-height: 250px;
+	min-width: 100%;
+}
+.labelrightalign
+{
+	width: 50%;
+	text-align: right;
+	font-size:20px;
+}
+.ui-picklist.ui-picklist-responsive .ui-picklist-list-wrapper
+{
+	width: 45%;
+}
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>	
+	<title>Thuesday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" type="text/css" href="styles/indexCss.css"/>
+</h:head>
+
+<h:body class="bodystyle">	
+
+	<f:facet name="last">
+		<h:outputStylesheet  name="styles/indexCss.css" />
+	</f:facet>
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 col-sm-6" >
+					<h1>Thuesday Football League</h1>
+				</div>
+			</div>
+  		</div>
+	
+	<div class="container">
+  		<div class="row">
+ 			
+    		<div class="col-xs-6 col-sm-6" style="padding-top:15%;">
+    			<h:form>
+    			<p:panel header="Welcome!" style=" text-align: center;">
+    				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                	<h:panelGrid columns="2">						
+    					<h:outputText value="Username"/>
+    					<p:inputText  id="username" value="#{loginView.username}" required="true" ></p:inputText>
+    				
+    					<h:outputText value="Password"/>
+    					<p:password id="pass" value="#{loginView.password}" required="true" ></p:password>
+					</h:panelGrid>
+            		<p:commandButton value="Login" action="#{loginView.login}"/>    				
+    			</p:panel>
+    			</h:form>
+    		</div>
+    		
+    		<div class="col-xs-6 col-sm-6"></div>
+  		</div>
+  		
+  		<div class="row" style="text-align: center;padding-top: 15%;">
+  			<div class="col-xs-6 col-sm-6">
+  			<p:button id="singupButton" outcome="/resources/singup" value="Don't have an account? Sing up here!"/>
+  			</div>
+  			<div class="col-xs-6 col-sm-6"></div>
+  		</div>
+  		
+  	</div>
+</h:body>
+</html>

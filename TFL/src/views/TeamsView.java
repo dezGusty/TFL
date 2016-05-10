@@ -1,6 +1,5 @@
 package views;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,17 +7,13 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import org.primefaces.event.TransferEvent;
 import org.primefaces.model.DualListModel;
 import dataAccessLayer.GameDataAccess;
-import dataAccessLayer.PlayerDataAccess;
 import dataAccessLayer.TeamDataAccess;
 import dataAccessLayer.TeamGenerator;
 import model.Game;
@@ -34,8 +29,6 @@ public class TeamsView implements Serializable {
 	*/
 	private static final long serialVersionUID = 1L;
 
-	@ManagedProperty("#{playerDataAccess}")
-	private PlayerDataAccess service;
 	public int indexOfMap=0;
 	private boolean existTeams;
 
@@ -91,14 +84,6 @@ public class TeamsView implements Serializable {
 		{
 			players=new DualListModel<Player>();
 		}	
-	}
-
-	public PlayerDataAccess getService() {
-		return service;
-	}
-
-	public void setService(PlayerDataAccess service) {
-		this.service = service;
 	}
 
 	public DualListModel<Player> getPlayers() {
@@ -190,33 +175,7 @@ public class TeamsView implements Serializable {
 			
 			players=new DualListModel<>(this.themesSource,this.themesTarget);
 	    }
-	 
-	 public void backToGames()
-	 {
-			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
-			
-			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-			if(firstBean.getCurrentPlayer().getType()==1)
-			{
-				try {
-					context.redirect(context.getRequestContextPath() + "/faces/resources/nextusergames.xhtml");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			else
-			{
-				try {
-					context.redirect(context.getRequestContextPath() + "/faces/resources/teamsadmin.xhtml");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-	 }
-	 
+	 	 
 	 public void getPreviousTeam(ActionEvent actionEvent) {
 			System.out.println("Previous Team");
 			System.out.println("Index of map:"+indexOfMap);
@@ -280,10 +239,10 @@ public class TeamsView implements Serializable {
 			
 			players=new DualListModel<>(this.themesSource,this.themesTarget);
 	    }
-	 
-public void saveTeams() {
-		
-	System.out.println("Hello from save teams!");
+
+	 public void saveTeams() {
+		   
+		System.out.println("Hello from save teams!");
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
      	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
      	
@@ -291,10 +250,10 @@ public void saveTeams() {
 
      	if(game.getTeam1()!=null && game.getTeam2()!=null)
      	{
-     		System.out.println("Game already has teams!");
-     		//game.getTeam1().setName(this.firstTeamName);
+     		System.out.println("Game already has teams!Update teams!");
+     		game.getTeam1().setName(this.firstTeamName);
      		game.getTeam1().setPlayers(this.themesSource);
-     		//game.getTeam2().setName(this.secondTeamName);
+     		game.getTeam2().setName(this.secondTeamName);
      		game.getTeam2().setPlayers(this.themesTarget);
          	firstBean.setSelectedGame(GameDataAccess.UpdateTeams(game));
      	}
@@ -320,32 +279,5 @@ public void saveTeams() {
      		
      		firstBean.setSelectedGame(GameDataAccess.AddTeams(game.getId(), firstTeam.getId(), secondTeam.getId()));	
      		}
-}
-		
-	public void backToHistory() {
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
-		
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-		if(firstBean.getCurrentPlayer().getType()==1)
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/userview.xhtml");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		else
-		{
-			try {
-				context.redirect(context.getRequestContextPath() + "/faces/resources/adminuser.xhtml");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-	}
-
+	 }
 }

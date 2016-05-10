@@ -13622,3 +13622,64 @@ mai 08, 2016 22:00:19.79 SessionSaverInternal._saveStateAsync@resource://app/mod
 mai 08, 2016 22:00:19.80 SessionSaverInternal.runDelayed/this._timeoutID<@resource://app/modules/sessionstore/SessionSaver.jsm:145:40
 mai 08, 2016 22:00:19.80 setTimeout_timer@resource://gre/modules/Timer.jsm:30:5
 mai 08, 2016 22:00:19.81 
+
+mai 09, 2016 10:19:08.53 NEW SESSION
+mai 09, 2016 10:19:08.53 console.error: mobileview: 
+mai 09, 2016 10:19:08.64   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 09, 2016 10:19:08.64   Stack:
+mai 09, 2016 10:19:08.65     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 09, 2016 10:19:08.65 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 09, 2016 10:19:08.66 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 09, 2016 10:19:08.66 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 09, 2016 10:19:08.67 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 09, 2016 10:19:08.67 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 09, 2016 10:19:08.68 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 09, 2016 10:19:08.70 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+mai 09, 2016 10:19:08.71 
+mai 09, 2016 10:19:08.71 console.error: mobileview: 
+mai 09, 2016 10:19:09.00   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 09, 2016 10:19:09.01   Stack:
+mai 09, 2016 10:19:09.01     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 09, 2016 10:19:09.01 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 09, 2016 10:19:09.02 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 09, 2016 10:19:09.02 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 09, 2016 10:19:09.03 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 09, 2016 10:19:09.03 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 09, 2016 10:19:09.04 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 09, 2016 10:19:09.04 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:1
+mai 09, 2016 10:19:09.04 
+mai 09, 2016 10:33:19.04 1462779199057	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+mai 09, 2016 10:33:19.54 1462779199556	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+mai 09, 2016 10:35:33.31 [Child 5292] WARNING: pipe error: 109: file c:/builds/moz2_slave/rel-m-rel-w32_bld-000000000000/build/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 09, 2016 10:40:05.45 [Child 7132] WARNING: pipe error: 109: file c:/builds/moz2_slave/rel-m-rel-w32_bld-000000000000/build/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+mai 10, 2016 09:22:14.83 NEW SESSION
+mai 10, 2016 09:22:14.83 console.error: mobileview: 
+mai 10, 2016 09:22:15.09   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 10, 2016 09:22:15.10   Stack:
+mai 10, 2016 09:22:15.10     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 10, 2016 09:22:15.11 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 10, 2016 09:22:15.11 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 10, 2016 09:22:15.11 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 10, 2016 09:22:15.13 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 10, 2016 09:22:15.13 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 10, 2016 09:22:15.14 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 10, 2016 09:22:15.14 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 10, 2016 09:22:15.15 
+mai 10, 2016 09:22:15.16 console.error: mobileview: 
+mai 10, 2016 09:22:15.16   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 10, 2016 09:22:15.18   Stack:
+mai 10, 2016 09:22:15.19     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 10, 2016 09:22:15.19 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 10, 2016 09:22:15.20 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 10, 2016 09:22:15.20 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 10, 2016 09:22:15.21 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 10, 2016 09:22:15.21 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 10, 2016 09:22:15.22 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 10, 2016 09:22:15.22 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 10, 2016 09:22:15.22 
+mai 10, 2016 09:53:48.44 [Child 6852] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 10, 2016 09:57:47.77 [Child 6948] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 10, 2016 10:12:33.60 console.error: 
+mai 10, 2016 10:12:33.77   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23
+mai 10, 2016 10:21:33.31 [Child 7372] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333

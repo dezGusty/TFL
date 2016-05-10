@@ -36,6 +36,7 @@ public class PlayerDataAccess implements Serializable{
 			em.persist(emp);
 			em.getTransaction().commit();
 			em.close();
+			emf.close();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			return false;
@@ -60,6 +61,7 @@ public class PlayerDataAccess implements Serializable{
 			System.out.println("Username or password incorrect!");
 		}
 		em.close();
+		emf.close();
 		return play;
 	}
 
@@ -76,6 +78,7 @@ public class PlayerDataAccess implements Serializable{
 				em.getTransaction().commit();
 				//em.refresh(player);
 				em.close();
+				emf.close();
 				return play;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -94,6 +97,7 @@ public class PlayerDataAccess implements Serializable{
 		em.getTransaction().commit();
 		em.refresh(play);
 		em.close();
+		emf.close();
         return play;
 	}
 	
@@ -112,6 +116,7 @@ public class PlayerDataAccess implements Serializable{
 				System.out.println(p.getUsername());
 			}
 			em.close();
+			emf.close();
 			return result;
 	}
 
@@ -126,6 +131,7 @@ public class PlayerDataAccess implements Serializable{
 				System.out.println("Player found and removed");
 				em.getTransaction().commit();
 				em.close();
+				emf.close();
 				return true;
 			}
 			else

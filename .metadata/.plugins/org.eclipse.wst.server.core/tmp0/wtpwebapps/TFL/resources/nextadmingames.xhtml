@@ -21,7 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="../styles/userCss.css"/>
 </h:head>
 
-<h:body class="greybackground">
+<h:body class="greyback">
 	<f:facet name="last">
 		<h:outputStylesheet  name="../styles/headerCss.css" />
 	</f:facet>
@@ -30,7 +30,7 @@
 		<ui:include src="/resources/header.xhtml" />
 	</ui:insert>
 
-	<h:form>
+	<h:form style="margin-top:100px">
 		<div class="row">
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 		</div>
@@ -50,7 +50,7 @@
 						<p:commandButton value="Play" 
 							actionListener="#{nextGamesView.play(game)}"
 							disabled="#{game.gameStatus(loginView.currentPlayer)}"
-							ajax="true" />
+							ajax="false" update="gamesTable" />
 					</p:column>
 					
 					<p:column style="text-align:center">

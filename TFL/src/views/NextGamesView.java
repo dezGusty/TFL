@@ -1,7 +1,7 @@
 package views;
+
 import model.Game;
 import model.Player;
-import model.Team;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,9 +10,11 @@ import java.util.List;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.DualListModel;
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.TeamGenerator;
@@ -45,9 +47,6 @@ public class NextGamesView implements Serializable{
 			this.gameDate = gameDate;
 		}
 
-		@ManagedProperty("#{gameDataAccess}")
-	    public GameDataAccess gamesData;
-
 	    public List<Game> getGames() {
 	        return games;
 	    }
@@ -55,69 +54,37 @@ public class NextGamesView implements Serializable{
 	    public void setGames(List<Game> game) {
 	        games=game;
 	    }
-	 
-		public GameDataAccess getGamesData() {
-			return gamesData;
-		}
-
-		public void setGamesData(GameDataAccess gamesData) {
-			this.gamesData = gamesData;
-		}
-		
+	 		
 		public void play(Game game) {
 			System.out.println("PlayGame!");
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "INFO!", GameDataAccess.playGame(game.getId(), firstBean.getCurrentPlayer().getId())));
+			if(game.gameStatus(firstBean.getCurrentPlayer()))
+			{
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "You are already playing on "+game.dateToDisplay()));
+			}
+			else
+			{
+				firstBean.setCurrentPlayer(GameDataAccess.PlayGame(game.getId(), firstBean.getCurrentPlayer().getId()));
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!","You are now playing on "+game.dateToDisplay()));
+				NextGamesView.games=GameDataAccess.listNextGames();
+			}		
 			System.out.println("Done");
 		}
 		
-		public void addResult(Game game) {
-		
-			System.out.println("show");
-			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-			TeamsView firstBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
-			
-			
-			System.out.println("Winners:");
-			Team winnersTeam=new Team();
-			for(Player p:firstBean.themesSource)
-			{
-				System.out.println(p.getUsername());
-				//winnersTeam.getPlayers().addAll(firstBean.themesSource);
-			}
-			winnersTeam.getPlayers().addAll(firstBean.themesSource);
-			
-			Team loserTeam=new Team();
-			System.out.println("Losers:");
-			
-			for(Player p:firstBean.themesTarget)
-			{	
-				System.out.println(p.getUsername());
-			}
-			loserTeam.getPlayers().addAll(firstBean.themesTarget);
-			
-			//game.addTeam(winnersTeam);
-			//game.addTeam(loserTeam);
-			
-			System.out.println("Game: "+game.dateToDisplay()+" difference "+game.getDifference());
-			//GameDataAccess.setDifference(this.selectedGame.getId(),this.selectedGame.getDifference(),winnersTeam,loserTeam);
-		}
-			
 		public void newGame()
 		{
-			System.out.println("New game");
-			GameDataAccess gda=new GameDataAccess();
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			System.out.println(	format.format(gameDate));
-		    gda.addNewGame(format.format(gameDate));
+			GameDataAccess.addNewGame(format.format(gameDate));
 		    this.setGames(GameDataAccess.listNextGames());
-			System.out.println("Done!");
+		    FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "New game on "+format.format(gameDate)));
 		}
 		 
 		public void remove(Game game) {
-			System.out.println("Remove game "+game.getId());
 			game.setArchive(true);
 			GameDataAccess.addToArchive(game.getId());
 			games.remove(game);
@@ -133,6 +100,7 @@ public class NextGamesView implements Serializable{
 			LoginView firstBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 			TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
 			firstBean.setClick(false);
+			teamsBean.setShowNextPrevious(false);
 			
 			if(selectedGame.getTeam1()!=null && selectedGame.getTeam2()!=null)
 			{
@@ -239,5 +207,23 @@ public class NextGamesView implements Serializable{
 			list.add(secondList);
 
 			return list;
-		}		
+		}	
+		
+		public void onCellEdit(CellEditEvent event) {
+	        Object oldValue = event.getOldValue();
+	        Object newValue = event.getNewValue();
+	        GameDataAccess.SetDiff(Integer.parseInt(event.getRowKey()), Integer.parseInt(newValue.toString()));
+	        if(newValue != null && !newValue.equals(oldValue)) {
+	        FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Update difference from " + oldValue + " to " + newValue+"!"));
+	        }
+	    }
+		
+		public void onRowSelect(SelectEvent event) {
+          this.selectedGame=(Game) event.getObject();
+	    }
+	 
+	    public void onRowUnselect(UnselectEvent event) {
+
+	    }
 }

@@ -20,7 +20,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="../styles/userCss.css"/>
 </h:head>
-<h:body class="greybackground">
+<h:body class="greyback">
 	<f:facet name="last">
 		<h:outputStylesheet  name="../styles/headerCss.css" />
 	</f:facet>
@@ -31,54 +31,44 @@
 	
 	
 	<h:form>
+		<div class="row">
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+		</div>
+		
 		<div class="row rowwithnomargins">
- 			 <div class="col-sm-6 col-md-4">
+ 			 <div class="col-sm-4 col-md-4">
     			<div class="thumbnail">
-    			  <img src="../images/nextgames.png"  class="maxheight" alt="..."/>
+    			  <img src="../images/nextgames.png"  class="maxheight" alt="Image"/>
      				 <div class="caption">
         				<h3>Next games</h3>
-       					 <p>...</p>
-        				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+       					 <p>Description...</p>
+        				<p><p:commandButton styleClass="nobackground" value="View" actionListener="#{loginView.redirectToNextGames}" ajax="false" /></p>
       				</div>
     			</div>
   			</div>
   			
-  			<div class="col-sm-6 col-md-4">
+  			<div class="col-sm-4 col-md-4">
     			<div class="thumbnail">
-    			  <img src="../images/players.png"  class="maxheight" alt="..."/>
+    			  <img src="../images/players.png"  class="maxheight" alt="Image"/>
      				 <div class="caption">
         				<h3>Players</h3>
-       					 <p>...</p>
-        				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+       					 <p>Description...</p>
+        				<p><p:commandButton styleClass="nobackground" value="View" actionListener="#{loginView.redirectToPlayers}" ajax="false" /></p>
       				</div>
     			</div>
   			</div>
   			
-  			<div class="col-sm-6 col-md-4">
+  			<div class="col-sm-4 col-md-4">
     			<div class="thumbnail">
-    			  <img src="../images/history.jpeg" alt="..." class="maxheight"/>
+    			  <img src="../images/history.jpeg" alt="Image" class="maxheight"/>
      				 <div class="caption">
         				<h3>Games history</h3>
-       					 <p>...</p>
-        				<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+       					 <p>Description...</p>
+        				<p><p:commandButton styleClass="nobackground" value="View" actionListener="#{loginView.redirectToHistory}" ajax="false" /></p>
       				</div>
     			</div>
   			</div>
 		</div>
-	</h:form>
-		
-	<h:form id="dialogForm">
-			<p:dialog header="New game" widgetVar="newGameDlg" modal="true">
-   				  <p:outputPanel id="gameDetail" style="text-align:center;">
-   				  		<p:panel columns="2">
-   				  			  <p:outputLabel for="popup" value="Date:" />
-      						  <p:calendar id="popup" value="#{nextGamesView.gameDate}" />
-      						  
-      						  <p:commandButton  value="Add" actionListener="#{nextGamesView.newGame}" ajax="true" />
-   				  		</p:panel>
-   				  </p:outputPanel>
-			</p:dialog>   
-	</h:form>
-		
+	</h:form>		
 </h:body>
 </html>

@@ -4,12 +4,9 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
 import model.Player;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 
 /**
  * The persistent class for the games database table.
