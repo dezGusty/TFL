@@ -31,6 +31,25 @@ public class TeamsView implements Serializable {
 
 	public int indexOfMap=0;
 	private boolean existTeams;
+	
+	private Team firstTeam;
+	private Team secondTeam;
+	
+	public Team getFirstTeam() {
+		return firstTeam;
+	}
+
+	public void setFirstTeam(Team firstTeam) {
+		this.firstTeam = firstTeam;
+	}
+
+	public Team getSecondTeam() {
+		return secondTeam;
+	}
+
+	public void setSecondTeam(Team secondTeam) {
+		this.secondTeam = secondTeam;
+	}
 
 	private boolean showNextPrevious;
 	
@@ -52,31 +71,7 @@ public class TeamsView implements Serializable {
 	
 	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
 
-	public List<Player> themesSource=new ArrayList<Player>();
-
-	public List<Player> themesTarget=new ArrayList<Player>();
-
 	private DualListModel<Player> players;
-
-	public String firstTeamName;
-
-	public String secondTeamName;
-
-	public String getFirstTeamName() {
-		return firstTeamName;
-	}
-
-	public void setFirstTeamName(String firstTeamName) {
-		this.firstTeamName = firstTeamName;
-	}
-
-	public String getSecondTeamName() {
-		return secondTeamName;
-	}
-
-	public void setSecondTeamName(String secondTeamName) {
-		this.secondTeamName = secondTeamName;
-	}
 
 	@PostConstruct
 	public void init() {
@@ -84,6 +79,8 @@ public class TeamsView implements Serializable {
 		{
 			players=new DualListModel<Player>();
 		}	
+		this.firstTeam=new Team("Team name");
+		this.secondTeam=new Team("Team name");
 	}
 
 	public DualListModel<Player> getPlayers() {
@@ -97,17 +94,17 @@ public class TeamsView implements Serializable {
 	public void onTransfer(TransferEvent event) {
 		
 		 System.out.println("Source:");
-		this.themesSource = this.players.getSource();
+		this.firstTeam.setPlayers( this.players.getSource());
 		
-		 for(Player p: this.themesSource)
+		 for(Player p: this.firstTeam.getPlayers())
 		 {
 		 System.out.println(p.getUsername());
 		 }
 
 		System.out.println("Target:");
-		this.themesTarget = this.players.getTarget();
+		this.secondTeam.setPlayers( this.players.getTarget());
 
-		 for(Player p: this.themesTarget)
+		 for(Player p: this.secondTeam.getPlayers())
 		 {
 		 System.out.println(p.getUsername());
 		 }
@@ -116,7 +113,6 @@ public class TeamsView implements Serializable {
 	 public void getNextTeam(ActionEvent actionEvent) {
 			System.out.println("Next Team");
 			System.out.println("Index of map:"+indexOfMap);
-			//System.out.println(TeamGenerator.map.size());
 			System.out.println("Inex to comapre: "+(TeamGenerator.map.size()-1));
 			if(indexOfMap==(TeamGenerator.map.size()-1))
 			{
@@ -131,8 +127,8 @@ public class TeamsView implements Serializable {
 			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[indexOfMap];
 			
 			List<Player> allPlayers=new ArrayList<Player>();
-			allPlayers.addAll(themesSource);
-			allPlayers.addAll(themesTarget);
+			allPlayers.addAll(this.firstTeam.getPlayers());
+			allPlayers.addAll(this.secondTeam.getPlayers());
 			
 			List<Player> firstList = TeamGenerator.map.get(key);
 			System.out.println("First  list:");
@@ -141,7 +137,7 @@ public class TeamsView implements Serializable {
 				System.out.println(p.getUsername());
 			}
 				
-			this.themesSource=firstList;
+			this.firstTeam.setPlayers(firstList);
 					
 			List<Player> secondList = new ArrayList<Player>();
 			
@@ -164,7 +160,7 @@ public class TeamsView implements Serializable {
 				}
 				
 			}
-			this.themesTarget=secondList;
+			this.secondTeam.setPlayers(secondList);
 			
 			System.out.println("SecondList list:");
 			
@@ -173,7 +169,7 @@ public class TeamsView implements Serializable {
 				System.out.println(p.getUsername());
 			}
 			
-			players=new DualListModel<>(this.themesSource,this.themesTarget);
+			players=new DualListModel<>(this.firstTeam.getPlayers(),this.secondTeam.getPlayers());
 	    }
 	 	 
 	 public void getPreviousTeam(ActionEvent actionEvent) {
@@ -193,8 +189,8 @@ public class TeamsView implements Serializable {
 			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[indexOfMap];
 			
 			List<Player> allPlayers=new ArrayList<Player>();
-			allPlayers.addAll(themesSource);
-			allPlayers.addAll(themesTarget);
+			allPlayers.addAll(this.firstTeam.getPlayers());
+			allPlayers.addAll(this.secondTeam.getPlayers());
 			
 			List<Player> firstList = TeamGenerator.map.get(key);
 			System.out.println("First  list:");
@@ -204,7 +200,7 @@ public class TeamsView implements Serializable {
 			}
 			
 			
-			this.themesSource=firstList;
+			this.firstTeam.setPlayers(firstList);
 			
 			
 			List<Player> secondList = new ArrayList<Player>();
@@ -228,7 +224,7 @@ public class TeamsView implements Serializable {
 				}
 				
 			}
-			this.themesTarget=secondList;
+			this.secondTeam.setPlayers(secondList);
 			
 			System.out.println("SecondList list:");
 			
@@ -237,7 +233,7 @@ public class TeamsView implements Serializable {
 				System.out.println(p.getUsername());
 			}
 			
-			players=new DualListModel<>(this.themesSource,this.themesTarget);
+			players=new DualListModel<>(this.firstTeam.getPlayers(),this.secondTeam.getPlayers());
 	    }
 
 	 public void saveTeams() {
@@ -251,24 +247,19 @@ public class TeamsView implements Serializable {
      	if(game.getTeam1()!=null && game.getTeam2()!=null)
      	{
      		System.out.println("Game already has teams!Update teams!");
-     		game.getTeam1().setName(this.firstTeamName);
-     		game.getTeam1().setPlayers(this.themesSource);
-     		game.getTeam2().setName(this.secondTeamName);
-     		game.getTeam2().setPlayers(this.themesTarget);
+     		game.setTeam1(this.firstTeam);
+     		game.setTeam2(this.secondTeam);
          	firstBean.setSelectedGame(GameDataAccess.UpdateTeams(game));
      	}
      	else
      	{
      		System.out.println("Game has no teams yet! Add teams first!");
-     		Team firstTeam =new Team(this.firstTeamName,this.themesSource);
      		firstTeam=TeamDataAccess.CreateNewTeam(firstTeam);
-     		
      		System.out.println("FirstTeam: "+firstTeam.getName());
      		for(Player p:firstTeam.getPlayers())
      		{
      			System.out.println(p.toString());
      		}
-     		Team secondTeam=new Team(this.secondTeamName,this.themesTarget);
      		secondTeam=TeamDataAccess.CreateNewTeam(secondTeam);
      		
      		System.out.println("SecondTeam: "+secondTeam.getName());

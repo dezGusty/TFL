@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+
+.bodystyle
+{
+	background-image: url('../images/background.jpg');
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+td
+{
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	font-size: 22px;
+}
+.noBack
+{
+	font-size:30px;
+}

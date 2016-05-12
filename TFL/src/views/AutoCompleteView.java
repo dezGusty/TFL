@@ -12,6 +12,7 @@ import org.primefaces.model.DualListModel;
 
 import dataAccessLayer.PlayerDataAccess;
 import dataAccessLayer.TeamGenerator;
+import helpers.PlayerHelper;
 import model.Player;
 	 
 	@ManagedBean
@@ -22,7 +23,6 @@ import model.Player;
 	    
 	    @PostConstruct
 		public void init() {
-			System.out.println("Hello from players init");
 			this.selectedPlayers=new ArrayList<Player>();
 			allPlayers=PlayerDataAccess.ListAllPlayers();
 		}
@@ -34,13 +34,9 @@ import model.Player;
 	        {
 	        	if(p.getUsername().toLowerCase().startsWith(query))
 	        	{
-	        		filteredPlayers.add(p);
+	        		filteredPlayers.add(p);	
 	        	}
 	        }	     
-	        for(Player p:filteredPlayers)
-	        {
-	        	System.out.println(p.toString());
-	        }
 	        return  filteredPlayers;
 	    }
 	     
@@ -61,21 +57,25 @@ import model.Player;
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			TeamsView firstBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
 			List<Player> allPlayers=new ArrayList<Player>();
-			allPlayers.addAll(firstBean.themesSource);
-			allPlayers.addAll(firstBean.themesTarget);
-			allPlayers.addAll(this.selectedPlayers);
-			for(Player p:allPlayers)
+			allPlayers.addAll(firstBean.getFirstTeam().getPlayers());
+			allPlayers.addAll(firstBean.getSecondTeam().getPlayers());
+
+			for(Player play:this.selectedPlayers)
 			{
-				System.out.println(p.toString());
+				if(PlayerHelper.ExistsInList(play, allPlayers)==false)
+				{
+					allPlayers.add(play);
+				}
 			}
+			this.selectedPlayers=new ArrayList<Player>();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "New players added to this game!"));
 			if(allPlayers.size()<=3)
 			{
-				firstBean.themesSource=allPlayers;
+				firstBean.getFirstTeam().setPlayers(allPlayers);
 			}
 			else
 			{
-				System.out.println("There are more then 3 player subscribers!Subscribed players:");
-
 				firstBean.setShowNextPrevious(true);
 				List<List<Player>> listed=generateTeams(allPlayers);
 				for(List<Player> l:listed)
@@ -86,10 +86,10 @@ import model.Player;
 						System.out.println(p.toString());
 					}
 				}
-				firstBean.themesSource=listed.get(0);
-				firstBean.themesTarget=listed.get(1);
+				firstBean.getFirstTeam().setPlayers(listed.get(0));
+				firstBean.getSecondTeam().setPlayers(listed.get(1));
 			}
-			firstBean.setPlayers( new DualListModel<>(firstBean.themesSource, firstBean.themesTarget));
+			firstBean.setPlayers( new DualListModel<>(firstBean.getFirstTeam().getPlayers(), firstBean.getSecondTeam().getPlayers()));
 			this.selectedPlayers=new ArrayList<Player>();
 		}
 		
@@ -111,26 +111,13 @@ import model.Player;
 			}
 			
 			List<Player> secondList = new ArrayList<Player>();
-			
-			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
-			boolean existsInList=false;
+
 			for(Player p:players)
 			{
-				existsInList=false;
-				
-				for(Player pl:firstList)
-				{
-					if(p.getId()==pl.getId())
-					{
-						existsInList=true;
-						break;
-					}
-				}
-				if(!existsInList)
+				if(PlayerHelper.ExistsInList(p, firstList)==false)
 				{
 					secondList.add(p);
 				}
-				
 			}
 			System.out.println("Second list:");
 			for(Player p:secondList)
@@ -138,7 +125,6 @@ import model.Player;
 				System.out.println(p.getUsername());
 			}
 			list.add(secondList);
-
 			return list;
 		}
 }

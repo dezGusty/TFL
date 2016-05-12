@@ -1,0 +1,145 @@
+package views;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.el.ELContext;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.DualListModel;
+
+import dataAccessLayer.PlayerDataAccess;
+import dataAccessLayer.TeamGenerator;
+import model.Player;
+	 
+	@ManagedBean
+	public class AutoCompleteView {
+	    
+	    public List<Player> selectedPlayers;
+	    private List<Player> allPlayers;
+	    
+	    @PostConstruct
+		public void init() {
+			System.out.println("Hello from players init");
+			this.selectedPlayers=new ArrayList<Player>();
+			allPlayers=PlayerDataAccess.ListAllPlayers();
+		}
+	    
+	    public List<Player> completeTheme(String query) {
+	        List<Player> filteredPlayers = new ArrayList<Player>();
+	         
+	        for(Player p:allPlayers)
+	        {
+	        	if(p.getUsername().toLowerCase().startsWith(query))
+	        	{
+	        		filteredPlayers.add(p);
+	        	}
+	        }	     
+	        for(Player p:filteredPlayers)
+	        {
+	        	System.out.println(p.toString());
+	        }
+	        return  filteredPlayers;
+	    }
+	     
+	    public List<Player> getSelectedPlayers() {
+			return selectedPlayers;
+		}
+
+		public void setSelectedPlayers(List<Player> selectedPlayers) {
+			this.selectedPlayers = selectedPlayers;
+		}
+
+		public void onItemSelect(SelectEvent event) {
+	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item Selected", event.getObject().toString()));
+	    }
+		
+		public void addPlayers()
+		{
+			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+			TeamsView firstBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
+			List<Player> allPlayers=new ArrayList<Player>();
+			allPlayers.addAll(firstBean.getFirstTeam().getPlayers());
+			allPlayers.addAll(firstBean.getSecondTeam().getPlayers());
+			allPlayers.addAll(this.selectedPlayers);
+			for(Player p:allPlayers)
+			{
+				System.out.println(p.toString());
+			}
+			if(allPlayers.size()<=3)
+			{
+				firstBean.getFirstTeam().setPlayers(allPlayers);
+				//firstBean.themesSource=allPlayers;
+			}
+			else
+			{
+				System.out.println("There are more then 3 player subscribers!Subscribed players:");
+
+				firstBean.setShowNextPrevious(true);
+				List<List<Player>> listed=generateTeams(allPlayers);
+				for(List<Player> l:listed)
+				{
+					System.out.println("Team");
+					for(Player p:l)
+					{
+						System.out.println(p.toString());
+					}
+				}
+				firstBean.themesSource=listed.get(0);
+				firstBean.themesTarget=listed.get(1);
+			}
+			firstBean.setPlayers( new DualListModel<>(firstBean.themesSource, firstBean.themesTarget));
+			this.selectedPlayers=new ArrayList<Player>();
+		}
+		
+		public List<List<Player>> generateTeams(List<Player> players)
+		{	
+			List<List<Player>> list=new ArrayList<List<Player>>();
+			TeamGenerator.list=players;
+			TeamGenerator.generateTeams();
+			TeamGenerator.printMap(TeamGenerator.map);
+			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[0];
+			
+			List<Player> firstList = TeamGenerator.map.get(key);
+			list.add(firstList);
+			
+			System.out.println("First team:");
+			for(Player p:firstList)
+			{
+				System.out.println(p.getUsername());
+			}
+			
+			List<Player> secondList = new ArrayList<Player>();
+			
+			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
+			boolean existsInList=false;
+			for(Player p:players)
+			{
+				existsInList=false;
+				
+				for(Player pl:firstList)
+				{
+					if(p.getId()==pl.getId())
+					{
+						existsInList=true;
+						break;
+					}
+				}
+				if(!existsInList)
+				{
+					secondList.add(p);
+				}
+				
+			}
+			System.out.println("Second list:");
+			for(Player p:secondList)
+			{
+				System.out.println(p.getUsername());
+			}
+			list.add(secondList);
+
+			return list;
+		}
+}

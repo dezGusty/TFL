@@ -11,10 +11,9 @@ import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
-
+import helpers.PlayerHelper;
 import model.Player;
 import model.PlayerRating;
-
 
 @ManagedBean(name = "chartView")
 @SessionScoped
@@ -51,20 +50,14 @@ public class ChartView implements Serializable {
 
     private LineChartModel lineModel;
     
-    public void addPlayerToChart(Player player)
+    public boolean addPlayerToChart(Player player)
     {
-    	boolean exists=false;
-    	for(Player p:this.players)
-    	{
-    		if(p.getId()==player.getId())
-    		{
-    			exists=true;
-    		}
-    	}
-    	if(exists==false)
+    	if(PlayerHelper.ExistsInList(player, players)==false)
     	{
     		this.players.add(player);
+    		return true;
     	}
+    	return false;
     }
     
     public void createLineModels() {      

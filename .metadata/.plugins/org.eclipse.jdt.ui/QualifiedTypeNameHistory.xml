@@ -5,4 +5,10 @@
 <fullyQualifiedTypeName name="org.primefaces.event.SelectEvent"/>
 <fullyQualifiedTypeName name="org.primefaces.event.UnselectEvent"/>
 <fullyQualifiedTypeName name="javax.faces.event.ActionEvent"/>
+<fullyQualifiedTypeName name="model.Team"/>
+<fullyQualifiedTypeName name="model.Player"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="helpers.PlayerHelper"/>
+<fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

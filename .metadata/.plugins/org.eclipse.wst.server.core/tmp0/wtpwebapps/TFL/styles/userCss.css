@@ -35,4 +35,8 @@ html
 {
 	width: 45%;
 }
+.col-sm-3.col-md-3.centeralign
+{
+	text-align:center;
+}
 

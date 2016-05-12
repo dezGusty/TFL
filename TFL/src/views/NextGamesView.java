@@ -2,6 +2,8 @@ package views;
 
 import model.Game;
 import model.Player;
+import model.Team;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -79,7 +81,6 @@ public class NextGamesView implements Serializable{
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			System.out.println(	format.format(gameDate));
 			GameDataAccess.addNewGame(format.format(gameDate));
-		    this.setGames(GameDataAccess.listNextGames());
 		    FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "New game on "+format.format(gameDate)));
 		}
@@ -88,6 +89,8 @@ public class NextGamesView implements Serializable{
 			game.setArchive(true);
 			GameDataAccess.addToArchive(game.getId());
 			games.remove(game);
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Game successfully canceled! "));
 		}
 		
 		public void teamsView(Game game)
@@ -99,39 +102,36 @@ public class NextGamesView implements Serializable{
 			ELContext context = FacesContext.getCurrentInstance().getELContext();
 			LoginView firstBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 			TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
-			firstBean.setClick(false);
 			teamsBean.setShowNextPrevious(false);
 			
 			if(selectedGame.getTeam1()!=null && selectedGame.getTeam2()!=null)
 			{
 				System.out.println("Game has teams");
-				teamsBean.themesSource=selectedGame.getTeam1().getPlayers();
-				teamsBean.setFirstTeamName(selectedGame.getTeam1().getName());
-				teamsBean.themesTarget=selectedGame.getTeam2().getPlayers();
-				teamsBean.setSecondTeamName(selectedGame.getTeam2().getName());
+				teamsBean.setFirstTeam(selectedGame.getTeam1());
+				System.out.println("FirstTeamscore" +selectedGame.getTeam1().getScore());
+				
+				teamsBean.setSecondTeam(selectedGame.getTeam2());
+				System.out.println("SecondTeamscore" +selectedGame.getTeam2().getScore());
+				teamsBean.setSecondTeam(selectedGame.getTeam2());
 			}
 			else
 			{
 				System.out.println("Game has no teams yet!");
-				teamsBean.setFirstTeamName("First team");
-				teamsBean.setSecondTeamName("Second team");
 				if(selectedGame.getPlayers().isEmpty())
 				{
 					System.out.println("There are no player subscribers");
-					teamsBean.themesSource.removeAll(teamsBean.themesSource);
-					teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
+					teamsBean.setFirstTeam(new Team("Team name"));
+					teamsBean.setSecondTeam(new Team("team name"));
 				}
 				else
 				{
 					System.out.println("There are player subscribers");
 					List <Player> newList=new ArrayList<Player>();
-					newList.addAll(selectedGame.getPlayers());
-					teamsBean.themesSource=newList;
-					
+					newList.addAll(selectedGame.getPlayers());					
 					if(selectedGame.getPlayers().size()<=3)
 					{
-						teamsBean.themesSource=newList;
-						teamsBean.themesTarget.removeAll(teamsBean.themesTarget);
+						teamsBean.setFirstTeam(new Team("Team name",newList));
+						teamsBean.setSecondTeam(new Team("Team name"));
 					}
 					else
 					{
@@ -151,12 +151,12 @@ public class NextGamesView implements Serializable{
 								System.out.println(p.toString());
 							}
 						}
-						teamsBean.themesSource=listed.get(0);
-						teamsBean.themesTarget=listed.get(1);
+						teamsBean.setFirstTeam(new Team("Team name",listed.get(0)));
+						teamsBean.setSecondTeam(new Team("Team name",listed.get(1)));
 					}
 				}	
 			}	
-			teamsBean.setPlayers( new DualListModel<>(teamsBean.themesSource, teamsBean.themesTarget));
+			teamsBean.setPlayers( new DualListModel<>(teamsBean.getFirstTeam().getPlayers(), teamsBean.getSecondTeam().getPlayers()));
 			RedirectView.Redirect(firstBean.getCurrentPlayer(),  "/faces/resources/teamsuser.xhtml", "/faces/resources/teamsadmin.xhtml");
 		}
 

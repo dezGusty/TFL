@@ -1,0 +1,277 @@
+package views;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.PostConstruct;
+import javax.el.ELContext;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
+import dataAccessLayer.GameDataAccess;
+import dataAccessLayer.TeamDataAccess;
+import dataAccessLayer.TeamGenerator;
+import model.Game;
+import model.Player;
+import model.Team;
+
+@ManagedBean(name = "teamsView")
+@ApplicationScoped
+public class TeamsView implements Serializable {
+
+	/**
+	* 
+	*/
+	private static final long serialVersionUID = 1L;
+
+	public int indexOfMap=0;
+	private boolean existTeams;
+	
+	private Team firstTeam;
+	private Team secondTeam;
+	
+	public Team getFirstTeam() {
+		return firstTeam;
+	}
+
+	public void setFirstTeam(Team firstTeam) {
+		this.firstTeam = firstTeam;
+	}
+
+	public Team getSecondTeam() {
+		return secondTeam;
+	}
+
+	public void setSecondTeam(Team secondTeam) {
+		this.secondTeam = secondTeam;
+	}
+
+	private boolean showNextPrevious;
+	
+	public boolean isShowNextPrevious() {
+		return showNextPrevious;
+	}
+
+	public void setShowNextPrevious(boolean showNextPrevious) {
+		this.showNextPrevious = showNextPrevious;
+	}
+
+	public boolean isExistTeams() {
+		return this.existTeams;
+	}
+
+	public void setExistTeams(boolean existTeams) {
+		this.existTeams = existTeams;
+	}
+	
+	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
+
+	private DualListModel<Player> players;
+
+	@PostConstruct
+	public void init() {
+		if(players==null)
+		{
+			players=new DualListModel<Player>();
+		}	
+	}
+
+	public DualListModel<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(DualListModel<Player> themes) {
+		this.players = themes;
+	}
+
+	public void onTransfer(TransferEvent event) {
+		
+		 System.out.println("Source:");
+		this.firstTeam.setPlayers( this.players.getSource());
+		
+		 for(Player p: this.firstTeam.getPlayers())
+		 {
+		 System.out.println(p.getUsername());
+		 }
+
+		System.out.println("Target:");
+		this.secondTeam.setPlayers( this.players.getTarget());
+
+		 for(Player p: this.secondTeam.getPlayers())
+		 {
+		 System.out.println(p.getUsername());
+		 }
+	}
+
+	 public void getNextTeam(ActionEvent actionEvent) {
+			System.out.println("Next Team");
+			System.out.println("Index of map:"+indexOfMap);
+			System.out.println("Inex to comapre: "+(TeamGenerator.map.size()-1));
+			if(indexOfMap==(TeamGenerator.map.size()-1))
+			{
+				indexOfMap=0;
+				System.out.println("new Index of map:"+indexOfMap);
+			}
+			else
+			{
+				indexOfMap=indexOfMap+1;
+				System.out.println("new Index of map:"+indexOfMap);
+			}
+			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[indexOfMap];
+			
+			List<Player> allPlayers=new ArrayList<Player>();
+			allPlayers.addAll(this.firstTeam.getPlayers());
+			allPlayers.addAll(this.secondTeam.getPlayers());
+			
+			List<Player> firstList = TeamGenerator.map.get(key);
+			System.out.println("First  list:");
+			for(Player p:firstList)
+			{
+				System.out.println(p.getUsername());
+			}
+				
+			this.firstTeam.setPlayers(firstList);
+					
+			List<Player> secondList = new ArrayList<Player>();
+			
+			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
+			boolean existsInList=false;
+			for(Player p:allPlayers)
+			{
+				existsInList=false;
+				for(Player pl:firstList)
+				{
+					if(p.getId()==pl.getId())
+					{
+						existsInList=true;
+						break;
+					}
+				}
+				if(!existsInList)
+				{
+					secondList.add(p);
+				}
+				
+			}
+			this.secondTeam.setPlayers(secondList);
+			
+			System.out.println("SecondList list:");
+			
+			for(Player p:secondList)
+			{
+				System.out.println(p.getUsername());
+			}
+			
+			players=new DualListModel<>(this.firstTeam.getPlayers(),this.secondTeam.getPlayers());
+	    }
+	 	 
+	 public void getPreviousTeam(ActionEvent actionEvent) {
+			System.out.println("Previous Team");
+			System.out.println("Index of map:"+indexOfMap);
+			System.out.println("Inex to comapre: "+(TeamGenerator.map.size()-1));
+			if(indexOfMap==0)
+			{
+				indexOfMap=9;
+				System.out.println("new Index of map:"+indexOfMap);
+			}
+			else
+			{
+				indexOfMap=indexOfMap-1;
+				System.out.println("new Index of map:"+indexOfMap);
+			}
+			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[indexOfMap];
+			
+			List<Player> allPlayers=new ArrayList<Player>();
+			allPlayers.addAll(this.firstTeam.getPlayers());
+			allPlayers.addAll(this.secondTeam.getPlayers());
+			
+			List<Player> firstList = TeamGenerator.map.get(key);
+			System.out.println("First  list:");
+			for(Player p:firstList)
+			{
+				System.out.println(p.getUsername());
+			}
+			
+			
+			this.themesSource=firstList;
+			
+			
+			List<Player> secondList = new ArrayList<Player>();
+			
+			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
+			boolean existsInList=false;
+			for(Player p:allPlayers)
+			{
+				existsInList=false;
+				for(Player pl:firstList)
+				{
+					if(p.getId()==pl.getId())
+					{
+						existsInList=true;
+						break;
+					}
+				}
+				if(!existsInList)
+				{
+					secondList.add(p);
+				}
+				
+			}
+			this.themesTarget=secondList;
+			
+			System.out.println("SecondList list:");
+			
+			for(Player p:secondList)
+			{
+				System.out.println(p.getUsername());
+			}
+			
+			players=new DualListModel<>(this.themesSource,this.themesTarget);
+	    }
+
+	 public void saveTeams() {
+		   
+		System.out.println("Hello from save teams!");
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+     	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+     	
+     	Game game=firstBean.getSelectedGame();
+
+     	if(game.getTeam1()!=null && game.getTeam2()!=null)
+     	{
+     		System.out.println("Game already has teams!Update teams!");
+     		//game.getTeam1().setName(this.firstTeamName);
+     		game.getTeam1().setPlayers(this.themesSource);
+     		//game.getTeam2().setName(this.secondTeamName);
+     		game.getTeam2().setPlayers(this.themesTarget);
+         	firstBean.setSelectedGame(GameDataAccess.UpdateTeams(game));
+     	}
+     	else
+     	{
+     		System.out.println("Game has no teams yet! Add teams first!");
+     		//Team firstTeam =new Team(this.firstTeamName,this.themesSource);
+     		firstTeam=TeamDataAccess.CreateNewTeam(firstTeam);
+     		
+     		System.out.println("FirstTeam: "+firstTeam.getName());
+     		for(Player p:firstTeam.getPlayers())
+     		{
+     			System.out.println(p.toString());
+     		}
+     		//Team secondTeam=new Team(this.secondTeamName,this.themesTarget);
+     		secondTeam=TeamDataAccess.CreateNewTeam(secondTeam);
+     		
+     		System.out.println("SecondTeam: "+secondTeam.getName());
+     		for(Player p:secondTeam.getPlayers())
+     		{
+     			System.out.println(p.toString());
+     		}
+     		
+     		firstBean.setSelectedGame(GameDataAccess.AddTeams(game.getId(), firstTeam.getId(), secondTeam.getId()));	
+     		}
+	 }
+}

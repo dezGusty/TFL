@@ -25,7 +25,7 @@
 	
 	<ui:composition>
 	<h:form>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top" style="border:none">
 		<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
   			<div class="container-fluid">
   			  <div class="navbar-header">
@@ -56,7 +56,7 @@
         				<span class="caret"></span></a>
         				<ul class="dropdown-menu">
          				 	<li><p:commandButton styleClass="nobackground" value="View players" actionListener="#{loginView.redirectToPlayers}" ajax="false" /></li>
-          					 <li><p:commandButton styleClass="nobackground" value="Add new player" actionListener="#{loginView.redirectToHistory}" ajax="false" /></li>
+          					<li><p:commandButton styleClass="nobackground"  onclick="PF('addPlayerDialog').show();" value="Add new player" /></li>
         				</ul>
      			    </li>
      			    
@@ -64,8 +64,8 @@
         				<a class="dropdown-toggle" data-toggle="dropdown" style="color:white">Charts
         				<span class="caret"></span></a>
         				<ul class="dropdown-menu">
-         				 	<li><p:commandButton styleClass="nobackground" value="My chart" actionListener="#{loginView.redirectToCharts}" ajax="false" /></li>
-          					 <li><p:commandButton styleClass="nobackground" value="Create chart" actionListener="#{loginView.redirectToCharts}" ajax="false" /></li>
+         				 	<li><p:commandButton styleClass="nobackground" value="My chart" actionListener="#{loginView.redirectToMyChart}" ajax="false" /></li>
+          					 <li><p:commandButton styleClass="nobackground" value="View chart" actionListener="#{loginView.redirectToCharts}" ajax="false" /></li>
         				</ul>
      			    </li>
    			 </ul>
@@ -100,18 +100,50 @@
 		</nav>
 		</h:form>
 
-		<p:dialog header="Modal Dialog" widgetVar="dlg2"  height="300" width="300" showEffect="clip" hideEffect="clip">
+		<p:dialog header="New game" widgetVar="dlg2"  height="400" width="500" showEffect="clip" hideEffect="clip">
 			<h:form id="dialogForm">
 				 <p:outputPanel id="gameDetail" style="text-align:center;">
-   				 	<p:panel columns="2">
+   				 	<p:panel columns="2" style="border:none">
    				  		<p:outputLabel for="datetime" value="Datetime:" />
    				  		<p:calendar id="datetime" value="#{nextGamesView.gameDate}" pattern="yyyy-MM-dd HH:mm:ss" />
-    					<p:commandButton styleClass="nobackground"  value="Add" actionListener="#{nextGamesView.newGame}" ajax="true" onclick="dlg2.close()" />
+    					<p:commandButton value="Add" actionListener="#{nextGamesView.newGame}" ajax="true" />
    				  	</p:panel>
    				 </p:outputPanel>
    			</h:form>
    		</p:dialog>
 		
+		<p:dialog header="New player" widgetVar="addPlayerDialog" width="500" showEffect="clip" hideEffect="clip">
+			<h:form id="dialog">
+				<div class="row">
+					<p:messages id="messages"/>
+				</div>
+				<div class="row" style="padding-top: 3%;">
+					<div class="col-sm-5 col-md-5" style="text-align:right">
+						<p:outputLabel  value="Username"></p:outputLabel>
+					</div>
+					<div class="col-sm-7 col-md-7">
+						<p:inputText id="name" value="#{singUpView.name}" required="true" >
+							<f:validateLength minimum="2"></f:validateLength>
+						</p:inputText>
+					</div>
+				</div>
+				<div class="row" style="padding-top: 2%;">
+					<div class="col-sm-5 col-md-5" style="text-align:right">
+						<p:outputLabel  value="Password"></p:outputLabel>
+					</div>
+					<div class="col-sm-7 col-md-7">
+						<p:password id="pass" value="#{singUpView.pass}">
+				 			<f:validateLength minimum="2"></f:validateLength>
+				 		</p:password>
+					</div>
+				</div>
+				
+				<div class="row" style="text-align:center;padding-top: 3%;">
+					<p:commandButton value="Add" actionListener="#{singUpView.newPlayer}" ajax="true" style="width:30%"/>
+				</div>
+   			</h:form>
+   		</p:dialog>
+   		
 	</ui:composition>
 </h:body>
 </html>

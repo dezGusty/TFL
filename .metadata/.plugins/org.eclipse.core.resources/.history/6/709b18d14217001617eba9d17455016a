@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+.bodystyle
+{
+	background-image: url('../images/background.jpg');
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.ui-widget-content
+{
+	background: none;
+}
+
+td
+{
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+.ui-panel .ui-panel-titlebar
+{
+	height: 50px;
+}
+
+table
+{
+	width:100%
+}

@@ -13683,3 +13683,118 @@ mai 10, 2016 09:57:47.77 [Child 6948] WARNING: pipe error: 109: file c:/builds/m
 mai 10, 2016 10:12:33.60 console.error: 
 mai 10, 2016 10:12:33.77   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23
 mai 10, 2016 10:21:33.31 [Child 7372] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+mai 11, 2016 09:19:29.94 NEW SESSION
+mai 11, 2016 09:19:29.95 console.error: mobileview: 
+mai 11, 2016 09:19:30.40   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 11, 2016 09:19:30.40   Stack:
+mai 11, 2016 09:19:30.41     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 11, 2016 09:19:30.41 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 11, 2016 09:19:30.42 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 11, 2016 09:19:30.43 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 11, 2016 09:19:30.43 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 11, 2016 09:19:30.43 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 11, 2016 09:19:30.44 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 11, 2016 09:19:30.44 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 11, 2016 09:19:30.45 
+mai 11, 2016 09:19:30.45 console.error: mobileview: 
+mai 11, 2016 09:19:30.45   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 11, 2016 09:19:30.46   Stack:
+mai 11, 2016 09:19:30.46     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 11, 2016 09:19:30.46 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 11, 2016 09:19:30.47 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 11, 2016 09:19:30.47 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 11, 2016 09:19:30.48 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 11, 2016 09:19:30.48 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 11, 2016 09:19:30.48 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 11, 2016 09:19:30.49 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 11, 2016 09:19:30.49 
+mai 11, 2016 09:24:29.15 console.warn: Asynchronous operation was aborted as selection changed.
+mai 11, 2016 09:27:14.80 console.error: 
+mai 11, 2016 09:27:14.86   Message: Error: Connection closed, pending request to server1.conn0.domstylerule50, type setRuleText failed
+mai 11, 2016 09:27:14.87 
+mai 11, 2016 09:27:14.88 Request stack:
+mai 11, 2016 09:27:14.88 Front<.request@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1178:7
+mai 11, 2016 09:27:14.89 frontProto/</proto[name]@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1338:14
+mai 11, 2016 09:27:14.89 .setRuleText<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1837:12
+mai 11, 2016 09:27:14.89 RuleRewriter.prototype.apply/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/shared/css-parsing-utils.js:950:14
+mai 11, 2016 09:27:14.90 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 11, 2016 09:27:14.90 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 11, 2016 09:27:14.90 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:11
+mai 11, 2016 09:27:14.91 
+mai 11, 2016 09:27:14.91   Stack:
+mai 11, 2016 09:27:14.93     Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1125:23
+mai 11, 2016 09:27:14.93 .destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1663:5
+mai 11, 2016 09:27:14.96 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+mai 11, 2016 09:27:14.97 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+mai 11, 2016 09:27:14.97 .destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/styles.js:1033:5
+mai 11, 2016 09:27:14.97 Pool<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:820:9
+mai 11, 2016 09:27:14.98 Front<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/protocol.js:1127:5
+mai 11, 2016 09:27:14.99 exports.InspectorFront<.destroy@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:3967:5
+mai 11, 2016 09:27:15.00 Toolbox.prototype.destroyInspector/this._destroyingInspector<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/client/framework/toolbox.js:1844:13
+mai 11, 2016 09:27:15.00 TaskImpl_run@resource://gre/modules/Task.jsm:315:40
+mai 11, 2016 09:27:15.00 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:933:23
+mai 11, 2016 09:27:15.01 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:812:7
+mai 11, 2016 09:27:15.01 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:746:11
+mai 11, 2016 09:27:15.04 
+mai 11, 2016 09:29:10.73 console.warn: Asynchronous operation was aborted as selection changed.
+mai 11, 2016 09:36:11.94 console.error: 
+mai 11, 2016 09:36:11.95   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+mai 11, 2016 09:36:11.95   Stack:
+mai 11, 2016 09:36:11.96     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:418:23
+mai 11, 2016 09:36:11.96 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+mai 11, 2016 09:36:11.97 
+mai 11, 2016 09:36:11.99 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:418:23
+mai 11, 2016 09:36:11.99 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+mai 11, 2016 09:36:12.01 console.error: 
+mai 11, 2016 09:36:12.04   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+mai 11, 2016 09:37:33.52 console.error: 
+mai 11, 2016 09:37:33.52   Protocol error (noSuchActor): No such actor for ID: server1.conn1.animationsActor23
+mai 11, 2016 09:42:56.13 console.error: mobileview: 
+mai 11, 2016 09:42:56.14   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 11, 2016 09:42:56.14   Stack:
+mai 11, 2016 09:42:56.15     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 11, 2016 09:42:56.15 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 11, 2016 09:42:56.15 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 11, 2016 09:42:56.16 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 11, 2016 09:42:56.16 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 11, 2016 09:42:56.17 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 11, 2016 09:42:56.17 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 11, 2016 09:42:56.17 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 11, 2016 09:42:56.18 
+mai 11, 2016 09:42:56.18 console.error: mobileview: 
+mai 11, 2016 09:42:56.18   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 11, 2016 09:42:56.19   Stack:
+mai 11, 2016 09:42:56.19     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 11, 2016 09:42:56.20 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 11, 2016 09:42:56.20 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 11, 2016 09:42:56.20 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 11, 2016 09:42:56.21 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 11, 2016 09:42:56.21 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 11, 2016 09:42:56.22 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 11, 2016 09:42:56.22 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 11, 2016 09:42:56.23 
+mai 11, 2016 09:48:33.53 console.warn: Asynchronous operation was aborted as selection changed.
+mai 11, 2016 09:55:30.77 console.error: 
+mai 11, 2016 09:55:30.78   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+mai 11, 2016 09:55:30.78   Stack:
+mai 11, 2016 09:55:30.79     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:418:23
+mai 11, 2016 09:55:30.79 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+mai 11, 2016 09:55:30.79 
+mai 11, 2016 09:55:30.80 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:418:23
+mai 11, 2016 09:55:30.80 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+mai 11, 2016 09:55:30.81 console.error: 
+mai 11, 2016 09:55:30.81   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+mai 11, 2016 10:01:59.55 console.error: 
+mai 11, 2016 10:01:59.56   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+mai 11, 2016 10:01:59.57   Stack:
+mai 11, 2016 10:01:59.57     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:418:23
+mai 11, 2016 10:01:59.58 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+mai 11, 2016 10:01:59.58 
+mai 11, 2016 10:01:59.60 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:418:23
+mai 11, 2016 10:01:59.61 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+mai 11, 2016 10:01:59.61 console.error: 
+mai 11, 2016 10:01:59.61   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+mai 11, 2016 10:03:28.71 console.error: 
+mai 11, 2016 10:03:28.75   markup view destroyed
+mai 11, 2016 10:03:28.75 console.warn: Could not fully update after markup mutations, the markup-view was destroyed while waiting for children.

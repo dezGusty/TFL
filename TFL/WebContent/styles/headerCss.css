@@ -34,3 +34,9 @@
 	float: right;
 	padding-top: 20px;
 }
+
+.ui-inputswitch .ui-inputswitch-on
+{
+	height: 30px;
+	padding-top:0px;
+}

@@ -41,12 +41,14 @@ public class Team implements Serializable {
 	{
 		this();
 		this.name=name;
+		this.score=0.0;
 	}
 	
 	public Team(String name,List<Player> listOfPlayers)
 	{
 		this(name);
 		this.players=listOfPlayers;
+		setNewScore();
 	}
 	
 	public Integer getId() {
@@ -87,6 +89,7 @@ public class Team implements Serializable {
 
 	public void setPlayers(List<Player> players) {
 		this.players = players;
+		setNewScore();
 	}
 	
 	public void addNewPlayer(Player p)
@@ -96,6 +99,15 @@ public class Team implements Serializable {
 			this.players=new ArrayList<Player>();
 		}
 		this.players.add(p);
+	}
+	
+	private void setNewScore()
+	{
+		this.score=0.0;
+		for(Player player:this.players)
+		{
+			this.score+=player.getRating();
+		}
 	}
 
 }

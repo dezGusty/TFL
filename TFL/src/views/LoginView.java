@@ -1,6 +1,8 @@
 package views;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
@@ -19,21 +21,10 @@ public class LoginView implements Serializable {
      * 
      */
     private static final long serialVersionUID = 1L;
-    private String username;
-    private String password;
     private int playedGames;
     private int winner;
     private int looser;
     private boolean value;
-    private boolean click;
-
-	public boolean isClick() {
-		return click;
-	}
-
-	public void setClick(boolean click) {
-		this.click = click;
-	}
 
 	public boolean getValue() {
         return value;
@@ -109,48 +100,23 @@ public class LoginView implements Serializable {
 		this.currentPlayer = currentPlayer;
 	}
 
-	public String getUsername() {
-		return this.username;
-    }
-
-    public void setUsername(String value) {
-    	this.username = value;
-    }
-
-    public String getPassword() {
-	return password;
-    }
-
-    public void setPassword(String value) {
-	this.password = value;
-    }
-
     public String login() {
-		if ((this.username != null) && (this.password != null)) {
-			currentPlayer = PlayerDataAccess.loginUser(this.username, this.password);
-			RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/adminuser.xhtml");
+		if ((this.currentPlayer.getUsername() != null) && (this.currentPlayer.getPassword()!= null)) {
+			currentPlayer = PlayerDataAccess.loginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
+			if(this.currentPlayer!=null)
+			{
+				RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/adminuser.xhtml");
+			}
 		}
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Incorrect username or password!"));
 		return "/index";
 	}
-    
+
 	public void logout(ActionEvent event)  {
 	    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	    RedirectView.Redirect(this.currentPlayer, "/faces/index.xhtml", "/faces/index.xhtml");
 		System.out.println("Logout pressed!");
-	}
-	
-	public void showMenu(ActionEvent event)  {
-	   System.out.println("Show menu");
-	   if(this.click)
-	   {
-		   this.click=false;
-	   }
-	   else
-	   {
-		   this.click=true;
-	   }
 	}
 	
 	public void redirectToHome(ActionEvent event)
@@ -160,7 +126,6 @@ public class LoginView implements Serializable {
 	
 	public void redirectToNextGames(ActionEvent actionEvent)
 	{
-		this.click=false;
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		NextGamesView firstBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
 		firstBean.setGames(GameDataAccess.listNextGames());	
@@ -169,7 +134,6 @@ public class LoginView implements Serializable {
 	
 	public void redirectToPersonalDates(ActionEvent actionEvent)
 	{
-		this.click=false;
 		if(this.currentPlayer.getGames()!=null)
 		{
 			this.playedGames=this.currentPlayer.GetTotalPlayedGames();
@@ -184,7 +148,6 @@ public class LoginView implements Serializable {
 	
 	public void redirectToChangePass(ActionEvent actionEvent)
 	{
-		this.click=false;
 		this.oldPass="";
 		this.newPass="";
 		this.confirmPass="";
@@ -193,25 +156,32 @@ public class LoginView implements Serializable {
 	
 	public void redirectToCharts(ActionEvent actionEvent)
 	{
-		this.click=false;
 		System.out.println("Hello from redirect to charts!");
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
-		firstBean.addPlayerToChart(this.currentPlayer);
+		firstBean.createLineModels();
+		RedirectView.Redirect(this.currentPlayer, "/faces/resources/userchart.xhtml",  "/faces/resources/userchart.xhtml");	
+	}
+	
+	public void redirectToMyChart(ActionEvent actionEvent)
+	{
+		System.out.println("Hello from redirect to my chart!");
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
+		firstBean.players=new ArrayList<Player>();
+		firstBean.players.add(this.currentPlayer);
 		firstBean.createLineModels();
 		RedirectView.Redirect(this.currentPlayer, "/faces/resources/userchart.xhtml",  "/faces/resources/userchart.xhtml");	
 	}
 	
 	public void redirectToPlayers(ActionEvent actionEvent)
 	{
-		this.click=false;
 		System.out.println("Hello from redirect to players!");
 		RedirectView.Redirect(this.currentPlayer, "/faces/resources/viewplayers.xhtml", "/faces/resources/adminplayersview.xhtml");	
 	}
 	
 	 public void redirectToHistory(ActionEvent actionEvent)
 	 {
-		this.click=false;
 	    ELContext context = FacesContext.getCurrentInstance().getELContext();
 		NextGamesView firstBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
 		firstBean.setGames(GameDataAccess.listPreviousGames());	
@@ -219,7 +189,6 @@ public class LoginView implements Serializable {
 	 }
 	
 	  public void changePassword() {
-		  this.click=false;
 		  if(this.oldPass.compareTo(this.currentPlayer.getPassword())==0)
 		  {
 			  if(this.newPass.compareTo(this.confirmPass)==0)
@@ -242,7 +211,6 @@ public class LoginView implements Serializable {
 	}
 	  
 	  public void changeAvailability() {
-		    this.click=false;
 			PlayerDataAccess.changeAvailable(this.currentPlayer);
 			if(this.currentPlayer.getAvailable())
 			{
@@ -255,5 +223,4 @@ public class LoginView implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "From now you are unavailable!"));		
 			}
 	  }  
-
 }

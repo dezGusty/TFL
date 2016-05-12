@@ -3,6 +3,7 @@ package views;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import dataAccessLayer.PlayerDataAccess;
 
@@ -43,9 +44,14 @@ public class SingUpView {
     }
      
     public void save() {
-    	PlayerDataAccess.createUser(this.name, this.pass, 1, true, 0.0);
-    	System.out.println(this.name+" "+this.pass);
-    	System.out.println("Data saved!");
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data Saved"));
+    	PlayerDataAccess.createUser(this.name, this.pass);
+    	FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Account created successfully!"));
     }
+    
+    public void newPlayer(ActionEvent event)  {
+	    PlayerDataAccess.createUser(this.name, this.pass);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "New player added!"));
+	}
 }

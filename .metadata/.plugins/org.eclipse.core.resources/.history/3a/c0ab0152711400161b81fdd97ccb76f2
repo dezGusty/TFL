@@ -1,7 +1,0 @@
-@CHARSET "UTF-8";
-.allcontainer
-{
-	background-image: url('../images/background.jpg');
-	background-repeat:no-repeat;
-	background-size:100% 100%;
-}

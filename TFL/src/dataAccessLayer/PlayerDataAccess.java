@@ -19,29 +19,21 @@ public class PlayerDataAccess implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static boolean createUser(String username, String password, int type, boolean available, double rating) {
+	public static Player createUser(String username, String password) {
+		Player emp = new Player(username,password);
 		try {
 			EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
 			EntityManager em = emf.createEntityManager();
-			if(!em.getTransaction().isActive())
-			{
-				em.getTransaction().begin();
-			}
-			Player emp = new Player();
-			emp.setType(type);
-			emp.setUsername(username);
-			emp.setPassword(password);
-			emp.setRating(rating);
-			emp.setAvailable(available);
+			em.getTransaction().begin();
 			em.persist(emp);
 			em.getTransaction().commit();
+			em.refresh(emp);
 			em.close();
 			emf.close();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-			return false;
 		}
-		return true;
+		return emp;
 	}
 
 	public static Player loginUser(String username, String password) {	
@@ -128,7 +120,6 @@ public class PlayerDataAccess implements Serializable{
 			if(player!=null)
 			{			
 				player.setArchive(true);
-				System.out.println("Player found and removed");
 				em.getTransaction().commit();
 				em.close();
 				emf.close();
@@ -137,10 +128,12 @@ public class PlayerDataAccess implements Serializable{
 			else
 			{
 				System.out.println("Player not found");
+				return false;
 			}
-			return false;
 		}
 	  
 	  public static void main(String[] args) {
+		  Player p=createUser("mircea","parola");
+		  System.out.println(p.getId());
 	}
 }

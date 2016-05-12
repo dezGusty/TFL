@@ -168,14 +168,6 @@ public class GameDataAccess implements Serializable {
 	{		
  		TeamDataAccess.UpdateTeam(game.getTeam1());
 		TeamDataAccess.UpdateTeam(game.getTeam2());
-		
-//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TFL");
-//		EntityManager em = emf.createEntityManager();
-//		em.getTransaction().begin();
-//		em.merge(g);
-//		em.getTransaction().commit();
-//		em.refresh(g);
-//		em.close();
 		return game;
 	}
 	

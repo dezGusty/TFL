@@ -49,10 +49,9 @@
 							actionListener="#{playersView.remove(player)}" ajax="false" />
 					</p:column>
 					<p:column style="text-align:center">
-						<p:commandButton value="View chart" update="gamesTable" style="background-color: transparent;border:none;"
-							actionListener="#{playersView.redirectToChart(player)}" ajax="false" />
+						<p:commandButton value="Add to chart" update="gamesTable" style="background-color: transparent;border:none;"
+							actionListener="#{playersView.addPlayerToChart(player)}" ajax="false" />
 					</p:column>
-
 			</p:dataTable>	
 			 </div>
 		</div>

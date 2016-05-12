@@ -18,6 +18,21 @@ public class Player implements Serializable {
 	public String toString() {
 		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
 	}
+	public Player()
+	{
+		
+	}
+	
+	public Player(String username, String password)
+	{
+		this.archive=false;
+		this.available=true;
+		this.password=password;
+		this.picture="../images/ball.jpg";
+		this.rating=0.0;
+		this.type=1;
+		this.username=username;			
+	}
 	
 	public double getMinRating()
 	{
@@ -205,5 +220,6 @@ public class Player implements Serializable {
 		}
 		return 0;
 	}
+	
 
 }

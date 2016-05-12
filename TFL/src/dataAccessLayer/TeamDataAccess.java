@@ -33,10 +33,10 @@ public class TeamDataAccess {
 		em.getTransaction().begin();
 		Team t= em.find(Team.class, teamToSave.getId());			
 		t.setName(teamToSave.getName());
+		t.setScore(teamToSave.getScore());
 		t.setPlayers(teamToSave.getPlayers());
 		em.merge(t);
 		em.getTransaction().commit();
-		//em.refresh(t);
 		em.close();
 		emf.close();
 		return t;	
@@ -62,17 +62,6 @@ public class TeamDataAccess {
 		System.out.println(player.getId()+" "+player.getUsername());
 		Team team= em.find(Team.class, teamId);
 		System.out.println(team.getId()+" "+team.getName());
-//		if(team.inThisTeam(player.getId()))
-//		{
-//			TeamPlayer tp=new TeamPlayer();
-//			tp.setPlayer(player);
-//			tp.setTeam(team);
-//			
-//			team.addTeamPlayer(tp);
-//			EntityManagerHelper.em.persist(tp);
-//			EntityManagerHelper.em.merge(team);
-//			EntityManagerHelper.em.getTransaction().commit();
-//		}
 		em.close();
 		emf.close();
 		return team;
