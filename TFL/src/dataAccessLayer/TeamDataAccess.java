@@ -35,6 +35,8 @@ public class TeamDataAccess {
 		t.setName(teamToSave.getName());
 		t.setScore(teamToSave.getScore());
 		t.setPlayers(teamToSave.getPlayers());
+		System.out.println("Team to save is winner: "+teamToSave.getWinner());
+		t.setWinner(teamToSave.getWinner());
 		em.merge(t);
 		em.getTransaction().commit();
 		em.close();
@@ -65,9 +67,5 @@ public class TeamDataAccess {
 		em.close();
 		emf.close();
 		return team;
-	}
-	
-	public static void main(String[] args) {
-		
 	}
 }

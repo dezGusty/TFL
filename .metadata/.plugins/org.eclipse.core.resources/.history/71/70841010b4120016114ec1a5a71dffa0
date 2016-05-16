@@ -1,9 +1,0 @@
-package views;
-
-public class ThemeSwitcher {
-
-	public static void main(String[] args) {
-		Theme t=new Theme(0, "Afterdark", "afterdark")
-	}
-	themes.add(new Theme(0, "Afterdark", "afterdark"));
-}

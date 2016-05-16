@@ -9,10 +9,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DualListModel;
-
 import dataAccessLayer.PlayerDataAccess;
-import dataAccessLayer.TeamGenerator;
 import helpers.PlayerHelper;
+import helpers.TeamGenerator;
 import model.Player;
 	 
 	@ManagedBean

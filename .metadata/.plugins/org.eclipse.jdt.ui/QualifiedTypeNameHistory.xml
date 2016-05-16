@@ -8,7 +8,8 @@
 <fullyQualifiedTypeName name="model.Team"/>
 <fullyQualifiedTypeName name="model.Player"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="helpers.PlayerHelper"/>
 <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="helpers.TeamGenerator"/>
+<fullyQualifiedTypeName name="helpers.PlayerHelper"/>
 </qualifiedTypeNameHistroy>

@@ -3,7 +3,6 @@ package views;
 import model.Game;
 import model.Player;
 import model.Team;
-
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.DualListModel;
 import dataAccessLayer.GameDataAccess;
-import dataAccessLayer.TeamGenerator;
+import helpers.TeamGenerator;
 
 @ManagedBean(name = "nextGamesView")
 @SessionScoped

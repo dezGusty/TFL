@@ -39,4 +39,13 @@ html
 {
 	text-align:center;
 }
+.ui-widget-content
+{
+	background:none;
+}
+.ui-widget-content.ui-datatable-odd
+{
+		background:none;
+}
+
 

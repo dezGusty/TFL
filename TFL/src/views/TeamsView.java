@@ -15,7 +15,8 @@ import org.primefaces.event.TransferEvent;
 import org.primefaces.model.DualListModel;
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.TeamDataAccess;
-import dataAccessLayer.TeamGenerator;
+import helpers.PlayerHelper;
+import helpers.TeamGenerator;
 import model.Game;
 import model.Player;
 import model.Team;
@@ -140,25 +141,13 @@ public class TeamsView implements Serializable {
 			this.firstTeam.setPlayers(firstList);
 					
 			List<Player> secondList = new ArrayList<Player>();
-			
-			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
-			boolean existsInList=false;
+
 			for(Player p:allPlayers)
 			{
-				existsInList=false;
-				for(Player pl:firstList)
-				{
-					if(p.getId()==pl.getId())
-					{
-						existsInList=true;
-						break;
-					}
-				}
-				if(!existsInList)
+				if(PlayerHelper.ExistsInList(p, firstList)==false)
 				{
 					secondList.add(p);
-				}
-				
+				}	
 			}
 			this.secondTeam.setPlayers(secondList);
 			
@@ -204,25 +193,13 @@ public class TeamsView implements Serializable {
 			
 			
 			List<Player> secondList = new ArrayList<Player>();
-			
-			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
-			boolean existsInList=false;
+
 			for(Player p:allPlayers)
 			{
-				existsInList=false;
-				for(Player pl:firstList)
-				{
-					if(p.getId()==pl.getId())
-					{
-						existsInList=true;
-						break;
-					}
-				}
-				if(!existsInList)
+				if(PlayerHelper.ExistsInList(p, firstList)==false)
 				{
 					secondList.add(p);
-				}
-				
+				}				
 			}
 			this.secondTeam.setPlayers(secondList);
 			
@@ -236,6 +213,12 @@ public class TeamsView implements Serializable {
 			players=new DualListModel<>(this.firstTeam.getPlayers(),this.secondTeam.getPlayers());
 	    }
 
+	 public void addMessage()
+	 {
+		 System.out.println("Add message!");
+		 System.out.println("Team is:"+this.secondTeam.getWinner());
+	 }
+	 
 	 public void saveTeams() {
 		   
 		System.out.println("Hello from save teams!");

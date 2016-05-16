@@ -13798,3 +13798,42 @@ mai 11, 2016 10:01:59.61   Protocol error (unknownError): Error: Failed to fetch
 mai 11, 2016 10:03:28.71 console.error: 
 mai 11, 2016 10:03:28.75   markup view destroyed
 mai 11, 2016 10:03:28.75 console.warn: Could not fully update after markup mutations, the markup-view was destroyed while waiting for children.
+
+mai 16, 2016 09:15:36.55 NEW SESSION
+mai 16, 2016 09:15:36.55 console.error: mobileview: 
+mai 16, 2016 09:15:37.03   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 16, 2016 09:15:37.03   Stack:
+mai 16, 2016 09:15:37.04     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 16, 2016 09:15:37.04 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 16, 2016 09:15:37.04 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 16, 2016 09:15:37.04 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 16, 2016 09:15:37.06 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 16, 2016 09:15:37.06 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 16, 2016 09:15:37.07 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 16, 2016 09:15:37.07 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 16, 2016 09:15:37.09 
+mai 16, 2016 09:15:37.09 console.error: mobileview: 
+mai 16, 2016 09:15:37.10   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 16, 2016 09:15:37.10   Stack:
+mai 16, 2016 09:15:37.10     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 16, 2016 09:15:37.12 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 16, 2016 09:15:37.12 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 16, 2016 09:15:37.14 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 16, 2016 09:15:37.14 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 16, 2016 09:15:37.14 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 16, 2016 09:15:37.15 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 16, 2016 09:15:37.15 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 16, 2016 09:15:37.17 
+mai 16, 2016 09:29:30.61 1463380170621	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+mai 16, 2016 09:29:31.08 1463380171084	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+mai 16, 2016 09:29:31.36 1463380171365	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+mai 16, 2016 09:29:31.57 1463380171568	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+mai 16, 2016 10:52:09.30 [Child 6572] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 16, 2016 10:52:09.42 [Child 6572] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 16, 2016 11:00:26.88 [Child 4176] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 16, 2016 11:00:26.89 [Child 4176] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 16, 2016 11:04:03.33 [Child 6200] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 16, 2016 11:04:03.42 [Child 6200] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 16, 2016 11:15:17.00 console.warn: Asynchronous operation was aborted as selection changed.
+mai 16, 2016 11:21:01.61 console.error: 
+mai 16, 2016 11:21:01.61   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23

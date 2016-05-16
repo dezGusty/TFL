@@ -1,6 +1,0 @@
-package views;
-
-public class ThemeSwitcher {
-
-	themes.add(new Theme(0, "Afterdark", "afterdark"));
-}
