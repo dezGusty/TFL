@@ -1,5 +1,0 @@
-@CHARSET "ISO-8859-1";
-.ui-panel.ui-widget.ui-widget-content.ui-corner-all.noBack
-{
-	border: none;
-}

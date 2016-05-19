@@ -13837,3 +13837,84 @@ mai 16, 2016 11:04:03.42 [Child 6200] WARNING: pipe error: 109: file c:/builds/m
 mai 16, 2016 11:15:17.00 console.warn: Asynchronous operation was aborted as selection changed.
 mai 16, 2016 11:21:01.61 console.error: 
 mai 16, 2016 11:21:01.61   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23
+
+mai 18, 2016 09:38:59.26 NEW SESSION
+mai 18, 2016 09:38:59.26 console.error: mobileview: 
+mai 18, 2016 09:38:59.77   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 18, 2016 09:38:59.77   Stack:
+mai 18, 2016 09:38:59.77     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 18, 2016 09:38:59.79 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 18, 2016 09:38:59.79 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 18, 2016 09:38:59.79 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 18, 2016 09:38:59.79 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 18, 2016 09:38:59.80 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 18, 2016 09:38:59.80 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 18, 2016 09:38:59.80 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 18, 2016 09:38:59.80 
+mai 18, 2016 09:38:59.80 console.error: mobileview: 
+mai 18, 2016 09:38:59.82   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 18, 2016 09:38:59.82   Stack:
+mai 18, 2016 09:38:59.82     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 18, 2016 09:38:59.82 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 18, 2016 09:38:59.84 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 18, 2016 09:38:59.84 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 18, 2016 09:38:59.84 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 18, 2016 09:38:59.84 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 18, 2016 09:38:59.84 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 18, 2016 09:38:59.85 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 18, 2016 09:38:59.85 
+mai 18, 2016 09:46:17.53 console.warn: Asynchronous operation was aborted as selection changed.
+mai 18, 2016 09:48:12.05 [Child 5052] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 18, 2016 09:52:44.17 [Child 1644] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+mai 18, 2016 09:53:10.24 1463554390259	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+mai 18, 2016 09:53:10.89 1463554390913	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+mai 18, 2016 09:53:11.12 1463554391143	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+mai 18, 2016 09:53:11.15 1463554391174	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+mai 18, 2016 10:13:55.48 console.warn: Asynchronous operation was aborted as selection changed.
+mai 18, 2016 11:17:03.83 console.warn: Asynchronous operation was aborted as selection changed.
+mai 18, 2016 11:57:31.11 console.warn: Asynchronous operation was aborted as selection changed.
+mai 18, 2016 12:04:04.70 console.error: 
+mai 18, 2016 12:04:04.70   navigated; resolution of _defaultNode aborted
+mai 18, 2016 12:57:27.66 console.error: 
+mai 18, 2016 12:57:27.67   Message: Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+mai 18, 2016 12:57:27.69   Stack:
+mai 18, 2016 12:57:27.70     mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:418:23
+mai 18, 2016 12:57:27.70 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+mai 18, 2016 12:57:27.70 
+mai 18, 2016 12:57:27.71 mainThreadFetch/onResponse@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/DevToolsUtils.js:418:23
+mai 18, 2016 12:57:27.71 NetUtil_asyncFetch/<.onStopRequest@resource://gre/modules/NetUtil.jsm:128:17
+mai 18, 2016 12:57:27.77 console.error: 
+mai 18, 2016 12:57:27.77   Protocol error (unknownError): Error: Failed to fetch https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.map. Code 2152398850.
+mai 18, 2016 13:31:09.73 console.warn: Asynchronous operation was aborted as selection changed.
+mai 18, 2016 13:37:59.74 console.error: 
+mai 18, 2016 13:37:59.80   Protocol error (noSuchActor): No such actor for ID: server1.conn4.animationsActor23
+
+mai 19, 2016 10:22:59.42 NEW SESSION
+mai 19, 2016 10:22:59.42 console.error: mobileview: 
+mai 19, 2016 10:22:59.60   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 19, 2016 10:22:59.61   Stack:
+mai 19, 2016 10:22:59.61     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 19, 2016 10:22:59.62 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 19, 2016 10:22:59.62 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 19, 2016 10:22:59.62 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 19, 2016 10:22:59.63 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 19, 2016 10:22:59.63 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 19, 2016 10:22:59.64 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 19, 2016 10:22:59.64 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 19, 2016 10:22:59.64 
+mai 19, 2016 10:22:59.65 console.error: mobileview: 
+mai 19, 2016 10:22:59.65   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+mai 19, 2016 10:22:59.66   Stack:
+mai 19, 2016 10:22:59.66     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 19, 2016 10:22:59.66 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+mai 19, 2016 10:22:59.67 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+mai 19, 2016 10:22:59.67 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+mai 19, 2016 10:22:59.67 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+mai 19, 2016 10:22:59.68 Handler.prototype.process@resource://gre/modules/Promise-backend.js:933:23
+mai 19, 2016 10:22:59.68 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:812:7
+mai 19, 2016 10:22:59.68 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:746:11
+mai 19, 2016 10:22:59.69 
+mai 19, 2016 10:37:10.69 1463643430712	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+mai 19, 2016 10:37:11.11 1463643431128	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+mai 19, 2016 10:37:11.13 1463643431146	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+mai 19, 2016 10:37:11.16 1463643431181	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property

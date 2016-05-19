@@ -1,0 +1,12 @@
+@CHARSET "ISO-8859-1";
+.background
+{
+	background-image: url('../images/c.png');
+	background-repeat:no-repeat;
+	background-size:cover;
+	min-height:92vh;
+}
+.centeralign
+{
+	text-align:center;
+}

@@ -105,7 +105,7 @@ public class LoginView implements Serializable {
 			currentPlayer = PlayerDataAccess.loginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
 			if(this.currentPlayer!=null)
 			{
-				RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/adminuser.xhtml");
+				RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/userview.xhtml");
 			}
 		}
 		FacesContext.getCurrentInstance().addMessage(null,
@@ -121,7 +121,7 @@ public class LoginView implements Serializable {
 	
 	public void redirectToHome(ActionEvent event)
 	{
-		RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/adminuser.xhtml");
+		RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/userview.xhtml");
 	}
 	
 	public void redirectToNextGames(ActionEvent actionEvent)

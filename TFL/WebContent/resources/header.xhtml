@@ -8,96 +8,94 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+   <title>Thuesday Fotball League</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	
-	<link rel="stylesheet" type="text/css" href="../styles/headerCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/customCss.css"/>
 </h:head>
 
 <h:body>
 	
 	<ui:composition>
-	<h:form>
-	<nav class="navbar navbar-default navbar-fixed-top" style="border:none">
-		<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
-  			<div class="container-fluid">
-  			  <div class="navbar-header">
-    			  <a class="navbar-brand">
-								<h:commandLink  actionListener="#{loginView.redirectToHome}">
-									<p:graphicImage id="home" style="height:40px" name="../images/ball.png" />
-									<p:tooltip id="toolTipFade" for="home" value="Home" />
-								</h:commandLink>
-								<p:outputLabel style="font-size: 1.4em;color:white" value="Welcome, #{loginView.currentPlayer.username} !" ></p:outputLabel>
-				   </a>
-    		  </div>
-    		  
-    		  <div class="withpadding" >
-   			  <ul class="nav navbar-nav">
-   				
-      				<li class="dropdown">
-        				<a class="dropdown-toggle" data-toggle="dropdown" style="color:white">Games
-        				<span class="caret"></span></a>
-        				<ul class="dropdown-menu">
-         				 	<li><p:commandButton styleClass="nobackground" value="Next games" actionListener="#{loginView.redirectToNextGames}" ajax="false" /></li>
-          					 <li><p:commandButton styleClass="nobackground" value="Games history" actionListener="#{loginView.redirectToHistory}" ajax="false" /></li>
-          					 <li><p:commandButton styleClass="nobackground"  onclick="PF('dlg2').show();" value="New game" /></li>
-        				</ul>
-     			    </li>
+		<h:form>
+				<nav class="navbar navbar-default" style="margin-bottom:0px">
+					<div class="container-fluid">
+						<div class="row">
+						
+							<div class="col-xs-12 col-md-3" style="padding-top: 10px;">
+								<a class="navbar-brand">
+									<h:commandLink  actionListener="#{loginView.redirectToHome}">
+										<p:graphicImage id="home" style="height:40px" name="../images/ball.png" />
+										<p:tooltip id="toolTipFade" for="home" value="Home" />
+									</h:commandLink>
+									<p:outputLabel style="font-size: 1.4em;" value="Welcome, #{loginView.currentPlayer.username} !" ></p:outputLabel>
+				   				</a>
+							</div>
+							
+							<div class="col-xs-9 col-md-7" style="font-size: 21px;padding-top: 2px;">
+								<ul class="nav navbar-nav">
+   									<li class="dropdown">
+        								<a class="dropdown-toggle" data-toggle="dropdown">Games
+        									<span class="caret"></span></a>
+        									<ul class="dropdown-menu">
+         				 						<li><p:commandButton style="width: 100%;height: 35px;" value="Next games" actionListener="#{loginView.redirectToNextGames}" ajax="false" /></li>
+          					 					<li><p:commandButton style="width: 100%;height: 35px;" value="Games history" actionListener="#{loginView.redirectToHistory}" ajax="false" /></li>
+          					 					<li><p:commandButton style="width: 100%;height: 35px;" onclick="PF('dlg2').show();" value="New game" /></li>
+        									</ul>
+     			    				</li>
 		 			
-		 			<li class="dropdown">
-        				<a class="dropdown-toggle" data-toggle="dropdown" style="color:white">Players
-        				<span class="caret"></span></a>
-        				<ul class="dropdown-menu">
-         				 	<li><p:commandButton styleClass="nobackground" value="View players" actionListener="#{loginView.redirectToPlayers}" ajax="false" /></li>
-          					<li><p:commandButton styleClass="nobackground"  onclick="PF('addPlayerDialog').show();" value="Add new player" /></li>
-        				</ul>
-     			    </li>
+		 							<li class="dropdown">
+        								<a class="dropdown-toggle" data-toggle="dropdown">Players
+        									<span class="caret"></span>
+        								</a>
+        								<ul class="dropdown-menu">
+         				 					<li><p:commandButton style="width: 100%;height: 35px;" value="View players" actionListener="#{loginView.redirectToPlayers}" ajax="false" /></li>
+          									<li><p:commandButton style="width: 100%;height: 35px;"  onclick="PF('addPlayerDialog').show();" value="Add new player" /></li>
+        								</ul>
+     			    				</li>
      			    
-     			    <li class="dropdown">
-        				<a class="dropdown-toggle" data-toggle="dropdown" style="color:white">Charts
-        				<span class="caret"></span></a>
-        				<ul class="dropdown-menu">
-         				 	<li><p:commandButton styleClass="nobackground" value="My chart" actionListener="#{loginView.redirectToMyChart}" ajax="false" /></li>
-          					 <li><p:commandButton styleClass="nobackground" value="View chart" actionListener="#{loginView.redirectToCharts}" ajax="false" /></li>
-        				</ul>
-     			    </li>
-   			 </ul>
-   			 </div>
-   			 <div class="rightfloat">
-   			 	<div class="btn-group">
-   			 		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  					  <span class="glyphicon glyphicon-th-large"></span>
-  					</button>
-  					<ul class="dropdown-menu dropdown-menu-right">
-    					<li>
-    						<h:commandLink title="Personal Information" actionListener="#{loginView.redirectToPersonalDates}"  >
-   			 					<p>Personal information</p>    
-   			 				</h:commandLink>
-   			 			</li>
-    					<li>
-    						<h:commandLink title="Change password" actionListener="#{loginView.redirectToChangePass}"  >
-   			 					<p>Change password</p>    
-   			 				</h:commandLink>
-						</li>
-    					<li role="separator" class="divider"></li>
-    					<li>
-    						<h:commandLink title="Logout" actionListener="#{loginView.logout}"  >
-   			 					<p>Logout</p>    
-   			 				</h:commandLink>
-						</li>
-  					</ul>
-   			    </div>
-   			   </div>
-   			 </div>
-			</nav>
-		</nav>
+     			    				<li class="dropdown">
+        								<a class="dropdown-toggle" data-toggle="dropdown">Charts
+        									<span class="caret"></span>
+        								</a>
+        								<ul class="dropdown-menu">
+         				 					<li><p:commandButton style="width: 100%;height: 35px;" value="My chart" actionListener="#{loginView.redirectToMyChart}" ajax="false" /></li>
+          									 <li><p:commandButton style="width: 100%;height: 35px;" value="View chart" actionListener="#{loginView.redirectToCharts}" ajax="false" /></li>
+        								</ul>
+     			   					 </li>
+   			 					</ul>
+							</div>
+							
+							<div class="col-xs-3 col-md-2" style="padding-top: 15px; text-align: right; padding-right: 25px;">
+								<div class="btn-group">
+   			 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  					  					<span class="glyphicon glyphicon-th-large"></span>
+  									</button>
+  									<ul class="dropdown-menu dropdown-menu-right">
+    									<li>
+    										<h:commandLink title="Personal Information" actionListener="#{loginView.redirectToPersonalDates}"  >
+   			 									<p>Personal information</p>    
+   			 								</h:commandLink>
+   			 							</li>
+    									<li>
+    										<h:commandLink title="Change password" actionListener="#{loginView.redirectToChangePass}"  >
+   			 									<p>Change password</p>    
+   			 								</h:commandLink>
+										</li>
+    									<li role="separator" class="divider"></li>
+    									<li>
+    										<h:commandLink title="Logout" actionListener="#{loginView.logout}"  >
+   			 									<p>Logout</p>    
+   			 								</h:commandLink>
+										</li>
+  									</ul>
+   			    				</div>
+							</div>
+							
+						</div>
+					</div>
+				</nav>
 		</h:form>
 
 		<p:dialog header="New game" widgetVar="dlg2"  height="400" width="500" showEffect="clip" hideEffect="clip">

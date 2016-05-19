@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>	
+	<title>Thuesday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="styles/indexCss.css"/>
+</h:head>
+
+<h:body>	
+
+	<f:facet name="last">
+		<h:outputStylesheet name="styles/indexCss.css" />
+	</f:facet>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px">
+				<div class="container">
+					<h1>Thuesday Football League</h1>
+  				</div>
+			</nav>
+		</div>
+		
+		<div class="row background">
+			<div class="col-xs-12 col-md-6 centeralign">
+				<h:form>
+					<p:panel header="Login">
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+						<div class="row">
+							<div class="col-xs-6 col-md-6">
+								<h:outputText value="Username" />
+							</div>
+							<div class="col-xs-6 col-md-6">
+								<p:inputText  id="username" value="#{loginView.currentPlayer.username}" required="true" ></p:inputText>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-xs-6 col-md-6">
+								<h:outputText value="Password" />
+							</div>
+							<div class="col-xs-6 col-md-6">
+								<p:password id="pass" value="#{loginView.currentPlayer.password}" required="true"></p:password>
+							</div>
+						</div>
+	
+						<div class="row">
+							<div class="col-xs-6 col-md-6">
+							</div>
+						</div>
+						
+						<h:panelGrid columns="1" >		
+							<p:commandButton value="Login" action="#{loginView.login}"/>  
+						</h:panelGrid>	
+					</p:panel>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</h:body>
+</html>

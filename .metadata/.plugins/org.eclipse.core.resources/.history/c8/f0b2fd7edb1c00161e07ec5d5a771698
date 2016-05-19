@@ -1,0 +1,8 @@
+@CHARSET "ISO-8859-1";
+.withBackground
+{
+	background-image: url('../images/d.jpg');
+	background-repeat:no-repeat;
+	background-size:cover;
+	min-height:92vh;
+}

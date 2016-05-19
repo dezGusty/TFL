@@ -1,0 +1,18 @@
+@CHARSET "ISO-8859-1";
+.withBackground
+{
+	background-image: url('../images/d.jpg');
+	background-repeat:no-repeat;
+	background-size:cover;
+	min-height:92vh;
+}
+.navbar-nav > li > .dropdown-menu
+{
+	border:none;
+}
+.labelrightalign
+{
+	width: 50%;
+	text-align: right;
+	font-size:20px;
+}

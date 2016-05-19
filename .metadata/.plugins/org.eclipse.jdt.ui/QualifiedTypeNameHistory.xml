@@ -12,4 +12,6 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="helpers.TeamGenerator"/>
 <fullyQualifiedTypeName name="helpers.PlayerHelper"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="helpers.DatabaseConnection"/>
 </qualifiedTypeNameHistroy>
