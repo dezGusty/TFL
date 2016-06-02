@@ -20,7 +20,11 @@ public class Player implements Serializable {
 	}
 	public Player()
 	{
-		
+		this.archive=false;
+		this.available=true;
+		this.picture="../images/ball.jpg";
+		this.rating=0.0;
+		this.type=1;
 	}
 	
 	public Player(String username, String password)

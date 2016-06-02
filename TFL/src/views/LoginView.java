@@ -89,7 +89,7 @@ public class LoginView implements Serializable {
     
     @PostConstruct
     public void init() {
-    	currentPlayer=new Player();
+    	this.currentPlayer=new Player();
     }
     
     public Player getCurrentPlayer() {

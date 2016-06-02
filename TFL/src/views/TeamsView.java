@@ -187,10 +187,8 @@ public class TeamsView implements Serializable {
 			{
 				System.out.println(p.getUsername());
 			}
-			
-			
+				
 			this.firstTeam.setPlayers(firstList);
-			
 			
 			List<Player> secondList = new ArrayList<Player>();
 

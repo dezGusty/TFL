@@ -1,7 +1,0 @@
-@CHARSET "ISO-8859-1";
-.background
-{
-	background-image: url('../images/b.jpg');
-	background-repeat:no-repeat;
-	background-size:cover;
-}
