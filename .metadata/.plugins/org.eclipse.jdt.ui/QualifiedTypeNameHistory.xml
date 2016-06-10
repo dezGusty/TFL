@@ -6,7 +6,6 @@
 <fullyQualifiedTypeName name="org.primefaces.event.UnselectEvent"/>
 <fullyQualifiedTypeName name="javax.faces.event.ActionEvent"/>
 <fullyQualifiedTypeName name="model.Team"/>
-<fullyQualifiedTypeName name="model.Player"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="helpers.TeamGenerator"/>
@@ -22,4 +21,7 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
+<fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
+<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
+<fullyQualifiedTypeName name="model.Player"/>
 </qualifiedTypeNameHistroy>

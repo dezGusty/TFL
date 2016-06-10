@@ -68,6 +68,22 @@ public class PlayerDataAccess implements Serializable{
 		return null;
 	}
 
+	public static Player updateProfilePicture(int playerId, String newPicture) {
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Player play =em.find(Player.class, playerId);
+		try {
+			    play.setPicture(newPicture);
+			   System.out.println(play.getPicture());
+				em.getTransaction().commit();
+				em.close();
+				return play;
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return null;
+	}
+	
 	public static Player changeAvailable(Player player)
 	{	
 		EntityManager em = DatabaseConnection.GetConnection();

@@ -23,8 +23,8 @@
 	
 	<div class="container-fluid">
 		<div class="row">
-			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px">
-				<div class="container">
+			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;color:white">
+				<div class="container" >
 					<h1>Thuesday Football League</h1>
   				</div>
 			</nav>
@@ -33,14 +33,14 @@
 		<div class="row background">
 			<div class="col-xs-12 col-md-6 centeralign">
 				<h:form>
-					<p:panel header="Login">
+					<p:panel header="Login" style="width:70%;margin-left:10%">
 						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 						<div class="row biggerFont">
 							<div class="col-xs-5 col-md-5" style="text-align:right">
 								<h:outputText value="Username" />
 							</div>
 							<div class="col-xs-7 col-md-7" style="text-align:left">
-								<p:inputText  id="username" value="#{loginView.currentPlayer.username}" required="true" ></p:inputText>
+								<p:inputText  id="username" value="#{loginView.currentPlayer.username}" required="true" style="width:100%" ></p:inputText>
 							</div>
 						</div>
 						
@@ -49,13 +49,13 @@
 								<h:outputText value="Password" />
 							</div>
 							<div class="col-xs-7 col-md-7" style="text-align:left">
-								<p:password id="pass" value="#{loginView.currentPlayer.password}" required="true"></p:password>
+								<p:password id="pass" value="#{loginView.currentPlayer.password}" required="true" style="width:100%"></p:password>
 							</div>
 						</div>
 	
 						<div class="row biggerFont">
 							<div class="col-xs-12 col-md-12">
-								<p:commandButton value="Login" action="#{loginView.login}"/>  
+								<p:commandButton value="Login" actionListener="#{loginView.login}"/>  
 							</div>
 						</div>
 					</p:panel>

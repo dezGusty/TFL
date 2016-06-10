@@ -10,9 +10,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.print.DocFlavor.URL;
 
 import org.primefaces.model.UploadedFile;
+
+import dataAccessLayer.PlayerDataAccess;
  
 @ManagedBean
 @SessionScoped
@@ -33,12 +34,15 @@ public class FileUploadManagedBean {
 	            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
 	            try {
 					System.out.println(file.getInputstream());
-					copyFile(file.getFileName(), file.getInputstream());
+					
 					ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 					LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
 					System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath());
 					
-					firstBean.getCurrentPlayer().setPicture("D:\\Code\\TFL\\TFL\\WebContent\\images\\"+file.getFileName());
+					String newName=firstBean.getCurrentPlayer().getId()+"profilePicture.png";
+					
+					copyFile(newName, file.getInputstream());
+					PlayerDataAccess.updateProfilePicture(firstBean.getCurrentPlayer().getId(), "../images/"+newName);
 					System.out.println(firstBean.getCurrentPlayer().getPicture());
 					
 				} catch (IOException e) {
@@ -52,30 +56,6 @@ public class FileUploadManagedBean {
 	           try {
 	        	    String destination="D:\\Code\\TFL\\TFL\\WebContent\\images\\";
 
-	                OutputStream out = new FileOutputStream(new File(destination + fileName));
-	              
-	                int read = 0;
-	                byte[] bytes = new byte[1024];
-	              
-	                while ((read = in.read(bytes)) != -1) {
-	                    out.write(bytes, 0, read);
-	                    System.out.println(bytes);
-	                }
-	              
-	                in.close();
-	                out.flush();
-	                out.close();
-	              
-	                System.out.println("New file created!");
-	                } catch (IOException e) {
-	                System.out.println(e.getMessage());
-	                }
-	    }
-	    
-	    public void saveFileToDatabase(String fileName, InputStream in) {
-	           try {
-	        	    String destination="D:\\tmp\\";
-	        	   
 	                OutputStream out = new FileOutputStream(new File(destination + fileName));
 	              
 	                int read = 0;

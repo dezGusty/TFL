@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import org.primefaces.event.TransferEvent;
@@ -22,7 +22,7 @@ import model.Player;
 import model.Team;
 
 @ManagedBean(name = "teamsView")
-@ApplicationScoped
+@SessionScoped
 public class TeamsView implements Serializable {
 
 	/**

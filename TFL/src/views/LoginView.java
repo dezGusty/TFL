@@ -100,17 +100,14 @@ public class LoginView implements Serializable {
 		this.currentPlayer = currentPlayer;
 	}
 
-    public String login() {
-		if ((this.currentPlayer.getUsername() != null) && (this.currentPlayer.getPassword()!= null)) {
-			currentPlayer = PlayerDataAccess.loginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
-			if(this.currentPlayer!=null)
-			{
-				RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/userview.xhtml");
-			}
+    public void login(ActionEvent event) {
+		currentPlayer = PlayerDataAccess.loginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
+		if(this.currentPlayer!=null)
+		{
+			RedirectView.Redirect(this.currentPlayer, "/faces/resources/userview.xhtml", "/faces/resources/userview.xhtml");
 		}
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Incorrect username or password!"));
-		return "/index";
 	}
 
 	public void logout(ActionEvent event)  {

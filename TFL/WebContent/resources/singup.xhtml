@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="../styles/indexCss.css"/>
 </h:head>
 
-<h:body class="bodystyle">	
+<h:body>	
 
 	<f:facet name="last">
 		<h:outputStylesheet name="styles/indexCss.css" />
@@ -23,7 +23,7 @@
 	
 	<div class="container-fluid">
 		<div class="row">
-			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px">
+			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px; background:#284d00;color:white">
 				<div class="container">
 					<h1>Thuesday Football League</h1>
   				</div>
@@ -43,7 +43,7 @@
 							<p:outputLabel  value="Username"></p:outputLabel>
 						</div>
 						<div class="col-xs-7 col-md-7" style="text-align:left">
-							<p:inputText id="name" value="#{singUpView.name}" required="true" >
+							<p:inputText id="name" value="#{singUpView.name}" required="true" style="width:100%">
 								<f:validateLength minimum="2"></f:validateLength>
 							</p:inputText>
 						</div>
@@ -54,7 +54,7 @@
 							<p:outputLabel  value="Password"></p:outputLabel>
 						</div>
 						<div class="col-xs-7 col-md-7" style="text-align:left">
-							<p:password id="pass" value="#{singUpView.pass}" >
+							<p:password id="pass" value="#{singUpView.pass}" style="width:100%" >
 				 				<f:validateLength minimum="2"></f:validateLength>
 				 			</p:password>
 						</div>
@@ -65,7 +65,7 @@
 							<p:outputLabel  value="Confirm password"></p:outputLabel>
 						</div>
 						<div class="col-xs-7 col-md-7" style="text-align:left">
-							<p:password id="cpass" value="#{singUpView.cpass}" >
+							<p:password id="cpass" value="#{singUpView.cpass}" style="width:100%">
 				 				<f:validateLength minimum="2"></f:validateLength>
 				 			</p:password>
 						</div>

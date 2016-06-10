@@ -3,8 +3,6 @@
 {
 	background-image: url('../images/c.png');
 	background-repeat:no-repeat;
-	background-size:cover;
-	min-height:92vh;
 }
 .centeralign
 {
@@ -16,4 +14,8 @@
 {
 	padding-top: 20px;
 	font-size: 20px;
+}
+.ui-panel
+{
+	width: 70%;
 }
