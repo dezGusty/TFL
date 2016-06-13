@@ -68,13 +68,13 @@ public class PlayerDataAccess implements Serializable{
 		return null;
 	}
 
-	public static Player updateProfilePicture(int playerId, String newPicture) {
+	public static Player updateProfilePicture(int playerId, byte[] newPicture) {
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
 		Player play =em.find(Player.class, playerId);
 		try {
-			    play.setPicture(newPicture);
-			   System.out.println(play.getPicture());
+			    play.setImage(newPicture);
+			    System.out.println(play.getImage());
 				em.getTransaction().commit();
 				em.close();
 				return play;
@@ -129,9 +129,4 @@ public class PlayerDataAccess implements Serializable{
 				return false;
 			}
 		}
-	  
-	  public static void main(String[] args) {
-		  Player p=createUser("mircea","parola");
-		  System.out.println(p.getId());
-	}
 }

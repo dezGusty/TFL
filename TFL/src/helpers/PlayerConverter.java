@@ -30,10 +30,6 @@ public class PlayerConverter implements Converter {
 			{
 				newPlayer.setType(Integer.parseInt(splitedValues[5]));
 			}
-			if(splitedValues[6]!=null)
-			{
-				newPlayer.setPicture(splitedValues[6]);
-			}
 		}
 		catch(Exception ex)
 		{

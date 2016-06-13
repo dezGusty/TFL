@@ -14296,3 +14296,16 @@ iun. 10, 2016 14:34:04.85 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre
 iun. 10, 2016 14:34:04.86 
 iun. 10, 2016 14:35:29.42 console.warn: Asynchronous operation was aborted as selection changed.
 iun. 10, 2016 14:36:58.73 console.warn: Asynchronous operation was aborted as selection changed.
+
+iun. 13, 2016 17:42:28.30 NEW SESSION
+iun. 13, 2016 17:42:28.30 1465828948299	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 13, 2016 17:42:28.50 1465828948503	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 13, 2016 17:42:28.71 1465828948715	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+iun. 13, 2016 17:42:30.47 1465828950479	addons.xpi	ERROR	Attempted to load bootstrap scope from missing directory C:\Users\luchi\AppData\Roaming\Mozilla\Firefox\Profiles\bbrwliqm.default\extensions\firefox-hotfix@mozilla.org.xpi
+iun. 13, 2016 17:42:30.48 1465828950479	addons.xpi	WARN	Add-on firefox-hotfix@mozilla.org is missing bootstrap method shutdown
+iun. 13, 2016 17:42:30.49 1465828950486	addons.manager	WARN	Exception calling callback: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.isDirectory]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: getURIForResourceInFile :: line 1461"  data: no] Stack trace: getURIForResourceInFile()@resource://gre/modules/addons/XPIProvider.jsm:1461 < this.XPIProvider.callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4686 < this.XPIProvider.uninstallAddon()@resource://gre/modules/addons/XPIProvider.jsm:4964 < AddonWrapper.prototype.uninstall()@resource://gre/modules/addons/XPIProvider.jsm:7198 < uninstallHotfix/<()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Users/luchi/AppData/Roaming/Mozilla/Firefox/Profiles/bbrwliqm.default/extensions/firefox-hotfix@mozilla.org.xpi!/bootstrap.js:78 < safeCall()@resource://gre/modules/AddonManager.jsm:179 < makeSafe/<()@resource://gre/modules/AddonManager.jsm:195 < Handler.prototype.process()@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:937 < this.PromiseWalker.walkerLoop()@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:816 < this.PromiseWalker.scheduleWalkerLoop/<()@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:750
+iun. 13, 2016 17:45:04.18 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 13, 2016 18:41:46.57 1465832506574	addons.xpi	WARN	Add-on firefox-hotfix@mozilla.org is missing bootstrap method shutdown
+
+iun. 13, 2016 18:57:47.54 NEW SESSION
+iun. 13, 2016 18:57:47.54 1465833467547	addons.xpi	WARN	Bootstrap state is invalid (missing add-ons: C:\Users\luchi\AppData\Roaming\Mozilla\Firefox\Profiles\bbrwliqm.default\extensions\firefox-hotfix@mozilla.org.xpi)

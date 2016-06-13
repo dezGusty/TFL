@@ -1,0 +1,28 @@
+@CHARSET "ISO-8859-1";
+.background
+{
+	background-image: url('../images/c.png');
+	background: url('../images/c.png') no-repeat center center fixed; 
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.centeralign
+{
+	text-align:center;
+	padding-top: 10%;
+	padding-left: 5%;
+}
+.biggerFont
+{
+	padding-top: 20px;
+	font-size: 20px;
+}
+.ui-panel
+{
+	width: 70%;
+}

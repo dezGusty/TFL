@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Thuesday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/customCss.css"/>
+</h:head>
+
+<h:body>
+	
+	<div class="container-fluid">		
+		<div class="row">
+			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;color:white">
+				<div class="container">
+					<div class="row">
+						<h1>Thuesday Football League</h1>
+					</div>
+  				</div>
+  				
+  				<div class="row">
+					<ui:insert name="header">
+						<ui:include src="/resources/header.xhtml" />
+					</ui:insert>
+				</div>
+			</nav>
+		</div>
+	</div>
+	
+	<div class="container-fluid withBackground">
+		<h:form enctype="multipart/form-data">
+		<div class="row">
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+		</div>
+		
+		<div class="row" style="text-align:center;padding-left:40%;font-size: 23px;">
+				<div class="col-sm-4 col-md-4">
+			 <table id="personalinfo" class="table" style="width:100%">
+			 	 <tbody>
+      				<tr>
+        				<td colspan="2"><p:graphicImage value="#{loginView.currentPlayer.image}" style="width:350px; " /></td>
+      				</tr>
+      				<tr>
+        				<td><p:fileUpload value="#{fileUploadManagedBean.file}" mode="simple" skinSimple="true"/></td>
+                		<td><p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadManagedBean.upload}" update="personalinfo" /></td>
+      				</tr>
+     				 <tr>
+        				<td><h:outputText style="float:right" value="Name:" /></td>
+        				<td><h:outputText style="float:left" value="#{loginView.currentPlayer.username}" /></td>
+      				</tr>
+      				<tr>
+        				<td><h:outputText style="float:right" value="Rating:" /></td>
+						<td><h:outputText style="float:left" value="#{loginView.currentPlayer.rating}" /></td>
+      				</tr>
+      				<tr>
+        				<td><h:outputText style="float:right" value="Played games:" /></td>
+						<td><h:outputText style="float:left"  value="#{loginView.playedGames}" /></td>
+      				</tr>
+      				<tr>
+        				<td><h:outputText style="float:right" value="Winner:" /></td>
+						<td><h:outputText style="float:left"  value="#{loginView.winner}" /></td>
+      				</tr>
+      				<tr>
+        				<td><h:outputText style="float:right" value="Loser:" /></td>
+						<td><h:outputText style="float:left"  value="#{loginView.looser}" /></td>
+      				</tr>
+      				<tr>
+        				<td><h:outputText style="float:right" value="Available: " /></td>
+						<td><p:inputSwitch value="#{loginView.currentPlayer.available}" styleClass="heightForSwitch" style="height:30px">
+           					 <p:ajax listener="#{loginView.changeAvailability}"  />
+        					</p:inputSwitch>	
+        				</td>
+      				</tr>
+    			</tbody>
+			 </table>
+			 </div>
+		</div>
+		</h:form>
+	</div>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+</h:body>
+</html>

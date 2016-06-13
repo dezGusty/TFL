@@ -7,16 +7,18 @@ import java.io.OutputStream;
 
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import dataAccessLayer.PlayerDataAccess;
  
 @ManagedBean
-@SessionScoped
+@ApplicationScoped
 public class FileUploadManagedBean {
 	 private UploadedFile file;
 	 
@@ -42,8 +44,11 @@ public class FileUploadManagedBean {
 					String newName=firstBean.getCurrentPlayer().getId()+"profilePicture.png";
 					
 					copyFile(newName, file.getInputstream());
-					PlayerDataAccess.updateProfilePicture(firstBean.getCurrentPlayer().getId(), "../images/"+newName);
-					System.out.println(firstBean.getCurrentPlayer().getPicture());
+					byte[] bytes = new byte[1024];
+					file.getInputstream().read(bytes);
+					firstBean.getCurrentPlayer().setImage(bytes);
+					PlayerDataAccess.updateProfilePicture(firstBean.getCurrentPlayer().getId(),bytes);
+					System.out.println("Current player image"+firstBean.getCurrentPlayer().getImage());
 					
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -54,7 +59,7 @@ public class FileUploadManagedBean {
 
 	    public void copyFile(String fileName, InputStream in) {
 	           try {
-	        	    String destination="D:\\Code\\TFL\\TFL\\WebContent\\images\\";
+	        	    String destination="C://Users//luchi//Desktop//TFL//TFL//WebContent//images//";
 
 	                OutputStream out = new FileOutputStream(new File(destination + fileName));
 	              
@@ -65,7 +70,7 @@ public class FileUploadManagedBean {
 	                    out.write(bytes, 0, read);
 	                    System.out.println(bytes);
 	                }
-	              
+	               
 	                in.close();
 	                out.flush();
 	                out.close();
@@ -74,5 +79,10 @@ public class FileUploadManagedBean {
 	                } catch (IOException e) {
 	                System.out.println(e.getMessage());
 	                }
+	    }
+	    
+	    public void incarcaImagine(FileUploadEvent event)
+	    {
+	    	System.out.println("Incarca imagine");
 	    }
 }

@@ -19,9 +19,9 @@
 	
 	<div class="container-fluid">		
 		<div class="row">
-			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px">
-				<div class="container">
-					<div class="row">
+			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
+				<div class="container" >
+					<div class="row" style="color:white">
 						<h1>Thuesday Football League</h1>
 					</div>
   				</div>
@@ -46,10 +46,12 @@
 			 <table id="personalinfo" class="table" style="width:100%">
 			 	 <tbody>
       				<tr>
-        				<td colspan="2"><p:graphicImage url="#{loginView.currentPlayer.picture}" style="width:350px; " /></td>
+        				<td colspan="2">
+        				<p:graphicImage id="grimg"  value="#{loginView.currentPlayer.image}" >
+        				</p:graphicImage></td>
       				</tr>
       				<tr>
-        				<td><p:fileUpload value="#{fileUploadManagedBean.file}" mode="simple" skinSimple="true"/></td>
+        				<td><p:fileUpload value="#{fileUploadManagedBean.file}" mode="simple" skinSimple="true" fileUploadListener="fileUploadManagedBean.incarcaImagine"/></td>
                 		<td><p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadManagedBean.upload}" update="personalinfo" /></td>
       				</tr>
      				 <tr>

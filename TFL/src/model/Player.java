@@ -1,7 +1,17 @@
 package model;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
+
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
+import javax.imageio.ImageIO;
 import javax.persistence.*;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+
 import model.PlayerRating;
 import java.util.List;
 
@@ -16,13 +26,12 @@ public class Player implements Serializable {
 
 	@Override
 	public String toString() {
-		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
+		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##";
 	}
 	public Player()
 	{
 		this.archive=false;
 		this.available=true;
-		this.picture="../images/ball.jpg";
 		this.rating=0.0;
 		this.type=1;
 	}
@@ -32,7 +41,6 @@ public class Player implements Serializable {
 		this.archive=false;
 		this.available=true;
 		this.password=password;
-		this.picture="../images/ball.jpg";
 		this.rating=0.0;
 		this.type=1;
 		this.username=username;			
@@ -72,7 +80,7 @@ public class Player implements Serializable {
 
 	private String password;
 
-	private String picture;
+	private byte[] image;
 
 	private double rating;
 
@@ -117,12 +125,18 @@ public class Player implements Serializable {
 		this.password = password;
 	}
 
-	public String getPicture() {
-		return this.picture;
+	public StreamedContent getImage() {
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+			return new DefaultStreamedContent();
+		} else {
+			return new DefaultStreamedContent(new ByteArrayInputStream(this.image));
+		}
 	}
 
-	public void setPicture(String picture) {
-		this.picture = picture;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	public double getRating() {
