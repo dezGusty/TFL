@@ -15,9 +15,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.DualListModel;
 import dataAccessLayer.GameDataAccess;
+import helpers.RedirectView;
 import helpers.TeamGenerator;
 
 @ManagedBean(name = "nextGamesView")
@@ -156,7 +156,7 @@ public class NextGamesView implements Serializable{
 				}	
 			}	
 			teamsBean.setPlayers( new DualListModel<>(teamsBean.getFirstTeam().getPlayers(), teamsBean.getSecondTeam().getPlayers()));
-			RedirectView.Redirect(firstBean.getCurrentPlayer(),  "/faces/resources/teamsuser.xhtml", "/faces/resources/teamsadmin.xhtml");
+			RedirectView.Redirect(firstBean.getCurrentPlayer(),  "/resources/teamsuser.xhtml", "/resources/teamsadmin.xhtml");
 		}
 
 		public List<List<Player>> generateTeams(List<Player> players)
@@ -220,9 +220,5 @@ public class NextGamesView implements Serializable{
 		
 		public void onRowSelect(SelectEvent event) {
           this.selectedGame=(Game) event.getObject();
-	    }
-	 
-	    public void onRowUnselect(UnselectEvent event) {
-
 	    }
 }

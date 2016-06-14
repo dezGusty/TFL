@@ -2,8 +2,6 @@ package views;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -12,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
+import helpers.RedirectView;
 import model.Player;
 
 @ManagedBean(name = "loginView")
@@ -21,11 +20,12 @@ public class LoginView implements Serializable {
      * 
      */
     private static final long serialVersionUID = 1L;
-    private int playedGames;
-    private int winner;
-    private int looser;
+    private String oldPass;
+	private String newPass;
+	private String confirmPass;
     private boolean value;
-
+    private Player currentPlayer=new Player();
+    
 	public boolean getValue() {
         return value;
     }
@@ -33,65 +33,31 @@ public class LoginView implements Serializable {
     public void setValue(boolean value) {
         this.value = value;
     }
-    
-    public int getPlayedGames() {
-		if(this.currentPlayer.getGames()!=null)
-		{
-			playedGames= this.currentPlayer.getGames().size();
-		}
-		return playedGames;
-	}
-
-	public void setPlayedGames(int playedGames) {
-		this.playedGames = playedGames;
-	}
-
-	public int getWinner() {
-		return winner;
-	}
-	
-	public void setWinner(int winner) {
-		this.winner = winner;
-	}
-
-	public int getLooser() {
-		return looser;
-	}
-
-	public void setLooser(int looser) {
-		this.looser = looser;
-	}
-	
-	private String oldPass;
-	private String newPass;
-	private String confirmPass;
-	
+    	
 	public String getOldPass() {
 		return oldPass;
 	}
+	
 	public void setOldPass(String oldPass) {
 		this.oldPass = oldPass;
 	}
+	
 	public String getNewPass() {
 		return newPass;
 	}
+	
 	public void setNewPass(String newPass) {
 		this.newPass = newPass;
 	}
+	
 	public String getConfirmPass() {
 		return confirmPass;
 	}
+	
 	public void setConfirmPass(String confirmPass) {
 		this.confirmPass = confirmPass;
 	}
-
-	private Player currentPlayer;
-    
-    @PostConstruct
-    public void init() {
-    	this.currentPlayer=new Player();
-    }
-    
+ 
     public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
@@ -100,25 +66,29 @@ public class LoginView implements Serializable {
 		this.currentPlayer = currentPlayer;
 	}
 
-    public void login(ActionEvent event) {
-		currentPlayer = PlayerDataAccess.loginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
-		if(this.currentPlayer!=null)
+    public void login() {
+		int canLogin=PlayerDataAccess.loginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
+		if(canLogin!=0)
 		{
-			RedirectView.Redirect(this.currentPlayer, "/resources/userview.xhtml", "/resources/userview.xhtml");
+			this.currentPlayer=PlayerDataAccess.getPlayerWithID(canLogin);
+			RedirectView.Redirect("/resources/userview.xhtml");
 		}
-		FacesContext.getCurrentInstance().addMessage(null,
+		else
+		{
+			FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Incorrect username or password!"));
+			
+		}	
 	}
 
 	public void logout(ActionEvent event)  {
 	    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-	    RedirectView.Redirect(this.currentPlayer, "/index.xhtml", "/index.xhtml");
-		System.out.println("Logout pressed!");
+	    RedirectView.Redirect("/index.xhtml");
 	}
 	
 	public void redirectToHome(ActionEvent event)
 	{
-		RedirectView.Redirect(this.currentPlayer, "/resources/userview.xhtml", "/resources/userview.xhtml");
+		RedirectView.Redirect("/resources/userview.xhtml");
 	}
 	
 	public void redirectToNextGames(ActionEvent actionEvent)
@@ -129,18 +99,10 @@ public class LoginView implements Serializable {
 		RedirectView.Redirect(this.currentPlayer, "/resources/nextusergames.xhtml", "/resources/nextadmingames.xhtml");
 	}
 	
-	public void redirectToPersonalDates(ActionEvent actionEvent)
+	public void redirectToPersonalInfo(ActionEvent actionEvent)
 	{
-		if(this.currentPlayer.getGames()!=null)
-		{
-			this.playedGames=this.currentPlayer.GetTotalPlayedGames();
-		}
-		if(this.currentPlayer.getTeams()!=null)
-		{
-			this.winner=this.currentPlayer.GetGames(true);
-			this.looser=this.currentPlayer.GetGames(false);
-		}
-		RedirectView.Redirect(this.currentPlayer,"/resources/viewpersonaldates.xhtml","/resources/viewpersonaldates.xhtml");
+		new PersonalInformationView(this.currentPlayer);
+		RedirectView.Redirect("/resources/viewpersonalinfo.xhtml");
 	}
 	
 	public void redirectToChangePass(ActionEvent actionEvent)
@@ -148,27 +110,25 @@ public class LoginView implements Serializable {
 		this.oldPass="";
 		this.newPass="";
 		this.confirmPass="";
-		RedirectView.Redirect(this.currentPlayer,"/resources/changepassword.xhtml","/resources/changepassword.xhtml");
+		RedirectView.Redirect("/resources/changepassword.xhtml");
 	}
 	
 	public void redirectToCharts(ActionEvent actionEvent)
 	{
-		System.out.println("Hello from redirect to charts!");
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
 		firstBean.createLineModels();
-		RedirectView.Redirect(this.currentPlayer, "/resources/userchart.xhtml",  "/resources/userchart.xhtml");	
+		RedirectView.Redirect("/resources/userchart.xhtml");	
 	}
 	
 	public void redirectToMyChart(ActionEvent actionEvent)
 	{
-		System.out.println("Hello from redirect to my chart!");
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
 		firstBean.players=new ArrayList<Player>();
 		firstBean.players.add(this.currentPlayer);
 		firstBean.createLineModels();
-		RedirectView.Redirect(this.currentPlayer, "/resources/userchart.xhtml",  "/resources/userchart.xhtml");	
+		RedirectView.Redirect("/resources/userchart.xhtml");	
 	}
 	
 	public void redirectToPlayers(ActionEvent actionEvent)

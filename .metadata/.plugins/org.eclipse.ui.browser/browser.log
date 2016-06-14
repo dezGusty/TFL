@@ -14309,3 +14309,21 @@ iun. 13, 2016 18:41:46.57 1465832506574	addons.xpi	WARN	Add-on firefox-hotfix@mo
 
 iun. 13, 2016 18:57:47.54 NEW SESSION
 iun. 13, 2016 18:57:47.54 1465833467547	addons.xpi	WARN	Bootstrap state is invalid (missing add-ons: C:\Users\luchi\AppData\Roaming\Mozilla\Firefox\Profiles\bbrwliqm.default\extensions\firefox-hotfix@mozilla.org.xpi)
+
+iun. 14, 2016 17:12:31.88 NEW SESSION
+iun. 14, 2016 17:12:31.88 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 14, 2016 17:44:13.21 1465915453217	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 14, 2016 17:44:13.42 1465915453428	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 14, 2016 17:44:13.65 1465915453655	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+
+iun. 14, 2016 18:26:29.39 NEW SESSION
+iun. 14, 2016 18:26:29.39 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 14, 2016 19:29:45.57 [Child 1120] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 14, 2016 19:29:45.59 [Child 1120] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 14, 2016 19:31:19.18 console.warn: Asynchronous operation was aborted as selection changed.
+
+iun. 14, 2016 20:09:26.56 NEW SESSION
+iun. 14, 2016 20:09:26.56 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 14, 2016 20:14:01.62 console.error: 
+iun. 14, 2016 20:14:01.62   markup view destroyed
+iun. 14, 2016 20:14:01.63 console.warn: Could not fully update after markup mutations, the markup-view was destroyed while waiting for children.

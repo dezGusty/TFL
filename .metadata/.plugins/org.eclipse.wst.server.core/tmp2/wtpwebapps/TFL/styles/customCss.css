@@ -12,3 +12,8 @@
 {
 	border:none;
 }
+.ui-inputswitch.ui-inputswitch-off
+{
+	height:100%;
+	padding-top: 0px;
+}

@@ -6,13 +6,13 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  min-height:90vh;
 }
 
 .centeralign
 {
 	text-align:center;
 	padding-top: 10%;
-	padding-left: 5%;
 }
 .biggerFont
 {

@@ -12,19 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
-	<link rel="stylesheet" type="text/css" href="../styles/customCss.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
 </h:head>
 
-<h:body>
-	
+<h:body>	
 	<ui:composition>
-		<div class="container">
-			<h:form style="margin-top:100px">
+			<h:form style="margin-top:90px">
 				<div class="row">
-					<div class=" col-md-offset-1 col-sm-offset-0 col-sm-12 col-md-12" style="text-align:center">	
+					<div class="col-sm-12 col-md-12" style="text-align:center">	
 			 		<p:pickList id="pick" value="#{teamsView.players}"  var="theme" effect="bounce" itemValue="#{theme}"
 									itemLabel="#{theme.username}"  showCheckbox="true" responsive="true"
-									filterMatchMode="contains" converter="playerConverter">
+									filterMatchMode="contains" converter="playerConverter" style="width:70%">
 
 					<f:facet name="sourceCaption" >
 					
@@ -65,7 +63,6 @@
 					</div>
 				</div>
 			</h:form>
-		</div>
 	</ui:composition>
 </h:body>
 </html>

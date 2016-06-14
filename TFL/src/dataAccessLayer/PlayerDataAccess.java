@@ -34,22 +34,34 @@ public class PlayerDataAccess implements Serializable{
 		return emp;
 	}
 
-	public static Player loginUser(String username, String password) {	
+	public static int loginUser(String username, String password) {	
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
-		TypedQuery<Player> querynew = em.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
-		querynew.setParameter("name", username);
-		querynew.setParameter("pass", password);
-		Player play = new Player();
+		TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
+		query.setParameter("name", username);
+		query.setParameter("pass", password);
+		int result=0;
 		try {
-			play = querynew.getSingleResult();
+			Player player=query.getSingleResult();
+			if(player!=null)
+			{
+				result=player.getId();
+			}
 		} catch (Exception ex) {
-			System.out.println("Username or password incorrect!"+ex.getMessage());
+			System.out.println(ex.getMessage());
 		}
 		em.close();
-		return play;
+		return result;
 	}
 
+	public static Player getPlayerWithID(int playerId) {	
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Player player =em.find(Player.class, playerId);
+		em.close();
+		return player;
+	}
+	
 	public static Player updatePassword(int playerId, String password) {
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();

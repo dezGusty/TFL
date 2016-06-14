@@ -30,7 +30,8 @@
 			</nav>
 		</div>
 		
-		<div class="row background">
+		<div class="row background" style="min-height: 90vh">
+			<div class="row">
 			<div class="col-xs-12 col-md-6 centeralign">
 				<h:form>
 					<p:panel header="Login" style="width:70%;margin-left:10%">
@@ -61,16 +62,19 @@
 					</p:panel>
 				</h:form>
 			</div>
+			</div>
 			
-			<div class="row biggerFont" style="text-align: center;padding-top: 10%;padding-right: 10%;">
-  				<div class="col-xs-6 col-sm-6 centeralign">
-  					<p:button id="singupButton" outcome="/resources/singup" value="Don't have an account? Sing up here!"/>
-  				</div>
-  			</div>
-  			
+			<div class="row"></div>
+			<div class="col-xs-12 col-md-6 centeralign">
+				<h:form>
+					<div class="row biggerFont">
+  							<p:button id="singupButton" outcome="/resources/singup" value="Don't have an account? Sing up here!"/>
+  					</div>
+				</h:form>
+			</div>
+			</div>
+		
 		</div>
-	</div>
-
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </h:body>
 </html>

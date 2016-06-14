@@ -19,7 +19,7 @@
 	
 	<ui:composition>
 		<h:form>
-				<nav class="navbar navbar-default" style="margin-bottom:0px">
+				<div class="navbar navbar-default" style="margin-bottom:0px">
 					<div class="container-fluid">
 						<div class="row">
 						
@@ -74,7 +74,7 @@
   									</button>
   									<ul class="dropdown-menu dropdown-menu-right">
     									<li>
-    										<h:commandLink title="Personal Information" actionListener="#{loginView.redirectToPersonalDates}"  >
+    										<h:commandLink title="Personal Information" actionListener="#{loginView.redirectToPersonalInfo}"  >
    			 									<p>Personal information</p>    
    			 								</h:commandLink>
    			 							</li>
@@ -95,7 +95,7 @@
 							
 						</div>
 					</div>
-				</nav>
+				</div>
 		</h:form>
 
 		<p:dialog header="New game" widgetVar="dlg2"  height="400" width="500" showEffect="clip" hideEffect="clip">

@@ -52,6 +52,6 @@ public class SingUpView {
     public void newPlayer(ActionEvent event)  {
 	    PlayerDataAccess.createUser(this.name, this.pass);
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "New player added!"));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Player "+this.name+" successfullt added!"));
 	}
 }

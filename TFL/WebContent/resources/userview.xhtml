@@ -12,14 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
-	<link rel="stylesheet" type="text/css" href="../styles/customCss.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
 </h:head>
 
 <h:body>
 	
 	<div class="container-fluid">		
 		<div class="row">
-			<nav class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
+			<div class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
 				<div class="container">
 					<div class="row" style="color:white">
 						<h1>Thuesday Football League</h1>
@@ -31,11 +31,11 @@
 						<ui:include src="/resources/header.xhtml" />
 					</ui:insert>
 				</div>
-			</nav>
+			</div>
 		</div>
 	</div>
 	
-	<div class="container-fluid withBackground">
+	<div class="container-fluid withBackground" style="padding-top: 30px;min-height:90vh">
 		<h:form>
 		<div class="row">
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
@@ -45,7 +45,7 @@
 			<div class="row" style="padding-top: 40px;">
 				<div class="col-sm-12 col-md-4">
     				<div class="thumbnail">
-    			  		<img src="../images/nextgames.png"  class="maxheight" alt="Image"/>
+    			  		<img src="../images/nextgames.png"  class="maxheight" alt="Image" style="height:250px"/>
      				 	<div class="caption">
         					<h3>Next games</h3>
         					<p><p:commandButton styleClass="nobackground" value="View" actionListener="#{loginView.redirectToNextGames}" ajax="false" /></p>
@@ -56,7 +56,7 @@
 			
 			<div class="col-sm-12 col-md-4">
     			<div class="thumbnail">
-    			  <img src="../images/players.png"  class="maxheight" alt="Image"/>
+    			  <img src="../images/players.png"  class="maxheight" alt="Image" style="height:250px"/>
      				 <div class="caption">
         				<h3>Players</h3>
         				<p><p:commandButton styleClass="nobackground" value="View" actionListener="#{loginView.redirectToPlayers}" ajax="false" /></p>
@@ -66,7 +66,7 @@
   			
   			<div class="col-sm-12 col-md-4">
     			<div class="thumbnail">
-    			  <img src="../images/history.jpeg" alt="Image" class="maxheight"/>
+    			  <img src="../images/history.jpeg" alt="Image" class="maxheight" style="height:250px"/>
      				 <div class="caption">
         				<h3>Games history</h3>
         				<p><p:commandButton styleClass="nobackground" value="View" actionListener="#{loginView.redirectToHistory}" ajax="false" /></p>

@@ -21,7 +21,6 @@
 <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
 <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 <fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
-<fullyQualifiedTypeName name="model.Player"/>
 <fullyQualifiedTypeName name="org.primefaces.event.FileUploadEvent"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ApplicationScoped"/>
 <fullyQualifiedTypeName name="org.primefaces.model.StreamedContent"/>
@@ -31,4 +30,7 @@
 <fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
+<fullyQualifiedTypeName name="helpers.RedirectView"/>
+<fullyQualifiedTypeName name="model.Player"/>
+<fullyQualifiedTypeName name="views.PersonalInformationView"/>
 </qualifiedTypeNameHistroy>

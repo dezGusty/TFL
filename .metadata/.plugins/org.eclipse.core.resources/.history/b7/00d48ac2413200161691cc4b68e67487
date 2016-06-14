@@ -1,0 +1,44 @@
+package views;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean(name = "personalInfo")
+@SessionScoped
+public class PersonalInformationView {
+	public  int playedGames;
+    private int winner;
+    private int looser;
+    
+    public PersonalInformationView(Player player)
+    {
+    	if(player!=null)
+    	{
+    		
+    	}
+    }
+    
+    public int getPlayedGames() {
+		return playedGames;
+	}
+
+	public void setPlayedGames(int playedGames) {
+		this.playedGames = playedGames;
+	}
+
+	public int getWinner() {
+		return winner;
+	}
+	
+	public void setWinner(int winner) {
+		this.winner = winner;
+	}
+
+	public int getLooser() {
+		return looser;
+	}
+
+	public void setLooser(int looser) {
+		this.looser = looser;
+	}
+}

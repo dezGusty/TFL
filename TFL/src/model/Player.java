@@ -1,17 +1,12 @@
 package model;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
-
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
-import javax.imageio.ImageIO;
 import javax.persistence.*;
-
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-
 import model.PlayerRating;
 import java.util.List;
 
@@ -34,6 +29,7 @@ public class Player implements Serializable {
 		this.available=true;
 		this.rating=0.0;
 		this.type=1;
+		this.picture="../images/noimage.png";
 	}
 	
 	public Player(String username, String password)
@@ -43,7 +39,8 @@ public class Player implements Serializable {
 		this.password=password;
 		this.rating=0.0;
 		this.type=1;
-		this.username=username;			
+		this.username=username;		
+		this.picture="../images/noimage.png";
 	}
 	
 	public double getMinRating()
@@ -90,6 +87,15 @@ public class Player implements Serializable {
 
 	private Boolean archive;
 	
+	private String picture;
+	
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
 	private List<Game> games;
 
@@ -238,6 +244,4 @@ public class Player implements Serializable {
 		}
 		return 0;
 	}
-	
-
 }
