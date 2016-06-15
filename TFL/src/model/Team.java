@@ -35,6 +35,7 @@ public class Team implements Serializable {
 		this.score=0.0;
 		this.players=new ArrayList<Player>();
 		this.winner=false;
+		this.name="Team name";
 	}
 	
 	public Team(String name)

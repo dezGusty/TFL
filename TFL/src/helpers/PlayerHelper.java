@@ -1,6 +1,10 @@
 package helpers;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
 import model.Player;
 
 public class PlayerHelper {
@@ -14,5 +18,23 @@ public class PlayerHelper {
 			}
 		}
 		return false;
+	}
+	
+	public static List<Player> GetSublist(Set<Player> list, int from, int to)
+	{
+		Iterator<Player> it=list.iterator();
+		List<Player> result=new ArrayList<Player>();
+
+		for(int i=0;i<from;i++)
+		{
+			it.next();
+		}
+		
+		for(int j=from;j<to;j++)
+		{
+			result.add(it.next());
+		}
+		
+		return (List<Player>)result;
 	}
 }

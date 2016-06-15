@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
 	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
 </h:head>
+
 <h:body>
+	<h:outputStylesheet name="../styles/custCss.css" />
 	<div class="container-fluid">		
 		<div class="row">
 			<div class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
@@ -36,14 +38,46 @@
 	<div class="container-fluid withBackground" style="min-height:90vh">
 		<h:form>
 			<div class="container">
+			
 				<div class="row">
 					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 				</div>
-			<div class="row" style="padding-top:7%">
-					<ui:insert name="header">
-						<ui:include src="/resources/viewteams.xhtml" />
-					</ui:insert>
-			</div>
+				
+				<div class="row" style="padding-top:7%">
+					 <div class=" col-sm-12 col-md-8" style="text-align:center;">
+						<ui:insert name="header">
+							<ui:include src="/resources/viewteams.xhtml" />
+						</ui:insert>
+					</div>
+					
+					<div class=" col-sm-12 col-md-4" style="text-align:center;">
+						<div class="row">
+							
+							<div class=" col-sm-12 col-md-12">
+							
+								<p:dataList value="#{teamsView.playersWaiting}" var="player" itemType="player">
+        							<f:facet name="header">
+           								 Waiting..
+       								 </f:facet>
+        							<!-- command button pentru adaugarea in lista -->
+       								 <h:outputText value="#{player.username}, #{player.rating}" style="display:inline-block"/>
+   								 </p:dataList>
+							</div>
+							<div class=" col-sm-12 col-md-12">
+								<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
+                       							 var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
+           							<p:column style="width:80%">
+               							<h:outputText value="#{theme.username}"/>
+           							</p:column>
+           						</p:autoComplete>
+							</div>
+							<div class=" col-sm-12 col-md-12">
+								<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayers}" ajax="false" />
+							</div>
+							<p:tooltip for="add" value="Add players to team" />
+						</div>
+					</div>
+				</div>
 			
 			<div class="row" style="padding-top: 3%;">
 			 <div class=" col-sm-12 col-md-12" style="text-align:center;">
@@ -61,20 +95,6 @@
    			 			</h:commandLink>
    			 			<p:tooltip  for="next" value="Next team" />
 					</div>
-			 </div>
-		</div>
-		
-		<div class="row" style="padding-top: 3%;">
-			 <div class=" col-sm-12 col-md-12" style="text-align:center;">
-			 	<p:outputLabel value="Add players:" for="themes"/>
-        		<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
-                       		 var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
-           			<p:column style="width:80%">
-               			<h:outputText value="#{theme.username}"/>
-           			</p:column>
-           		</p:autoComplete>
-           		<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayers}" ajax="false" />
-           		<p:tooltip for="add" value="Add players to team" />
 			 </div>
 		</div>
 		

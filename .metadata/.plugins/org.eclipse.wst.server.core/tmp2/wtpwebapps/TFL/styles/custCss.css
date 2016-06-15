@@ -27,3 +27,7 @@
 {
 	height:250px;
 }
+.ui-picklist.ui-picklist-responsive .ui-picklist-list-wrapper
+{
+	width:45%;
+}

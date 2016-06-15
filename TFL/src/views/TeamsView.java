@@ -32,10 +32,27 @@ public class TeamsView implements Serializable {
 
 	public int indexOfMap=0;
 	private boolean existTeams;
-	
 	private Team firstTeam;
 	private Team secondTeam;
+	private List<Player> playersWaiting;
+	private Player selectedPlayer;
 	
+	public Player getSelectedPlayer() {
+		return selectedPlayer;
+	}
+
+	public void setSelectedPlayer(Player selectedPlayer) {
+		this.selectedPlayer = selectedPlayer;
+	}
+
+	public List<Player> getPlayersWaiting() {
+		return playersWaiting;
+	}
+
+	public void setPlayersWaiting(List<Player> playersWaiting) {
+		this.playersWaiting = playersWaiting;
+	}
+
 	public Team getFirstTeam() {
 		return firstTeam;
 	}
@@ -82,6 +99,8 @@ public class TeamsView implements Serializable {
 		}	
 		this.firstTeam=new Team("Team name");
 		this.secondTeam=new Team("Team name");
+		this.playersWaiting=new ArrayList<Player>();
+		this.selectedPlayer=new Player();
 	}
 
 	public DualListModel<Player> getPlayers() {
@@ -211,11 +230,9 @@ public class TeamsView implements Serializable {
 			players=new DualListModel<>(this.firstTeam.getPlayers(),this.secondTeam.getPlayers());
 	    }
 
-	 public void addMessage()
-	 {
-		 System.out.println("Add message!");
-		 System.out.println("Team is:"+this.secondTeam.getWinner());
-	 }
+	 public void addMessage(ActionEvent actionEvent) {
+	       System.out.println("Welcome to Primefaces!!");
+	    }
 	 
 	 public void saveTeams() {
 		   

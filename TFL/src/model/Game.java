@@ -40,7 +40,8 @@ public class Game implements Serializable {
 		this.date=null;
 		this.difference=0;
 		this.players=new HashSet<Player>();
-		//this.teams=new ArrayList<Team>();
+		this.team1=new Team();
+		this.team2=new Team();
 	}
 
 	public Integer getId() {

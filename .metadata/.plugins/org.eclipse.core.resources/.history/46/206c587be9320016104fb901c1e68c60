@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Thuesday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
+</h:head>
+
+<h:body>
+	<h:outputStylesheet name="../styles/custCss.css" />
+	<div class="container-fluid">		
+		<div class="row">
+			<div class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
+				<div class="container">
+					<div class="row" style="color:white">
+						<h1>Thuesday Football League</h1>
+					</div>
+  				</div>
+  				
+  				<div class="row">
+					<ui:insert name="header">
+						<ui:include src="/resources/header.xhtml" />
+					</ui:insert>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid withBackground" style="min-height:90vh">
+		<h:form>
+			<div class="container">
+			
+				<div class="row">
+					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+				</div>
+				
+				<div class="row" style="padding-top:7%">
+					 <div class=" col-sm-12 col-md-8" style="text-align:center;">
+						<ui:insert name="header">
+							<ui:include src="/resources/viewteams.xhtml" />
+						</ui:insert>
+					</div>
+					
+					<div class=" col-sm-12 col-md-4" style="text-align:center;">
+						<div class="row">
+							
+							<div class=" col-sm-12 col-md-12">
+							
+								<p:dataList value="#{teamsView.playersWaiting}" var="player" itemType="player">
+        							<f:facet name="header">
+           								 Waiting..
+       								 </f:facet>
+        							<p:commandLink  title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+            							<f:setPropertyActionListener value="#{player}" target="#{teamsView.selectedPlayer}" />
+           								 <h:outputText value="#{player.username}, #{player.rating}" />
+        							</p:commandLink>
+       								 <h:outputText value="#{player.username}, #{player.rating}" style="display:inline-block"/>
+   								 </p:dataList>
+							</div>
+							<div class=" col-sm-12 col-md-12">
+								<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
+                       							 var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
+           							<p:column style="width:80%">
+               							<h:outputText value="#{theme.username}"/>
+           							</p:column>
+           						</p:autoComplete>
+							</div>
+							<div class=" col-sm-12 col-md-12">
+								<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayers}" ajax="false" />
+							</div>
+							<p:tooltip for="add" value="Add players to team" />
+						</div>
+					</div>
+				</div>
+			
+			<div class="row" style="padding-top: 3%;">
+			 <div class=" col-sm-12 col-md-12" style="text-align:center;">
+			 		<div class="btn-group">
+			 			<h:commandLink  id="prev" title="Previous" style="height: 40px;margin-right:30px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}"  >
+   			 					<span class="glyphicon glyphicon-chevron-left"></span>  
+   			 			</h:commandLink>
+   			 			<p:tooltip  for="prev" value="Previous team" />
+
+  						<p:commandButton id="save" value="Save teams" style="height: 35px;" actionListener="#{teamsView.saveTeams}" ajax="false" />
+  						<p:tooltip id="toolTipFade" for="save" value="Save current teams" />
+  						
+  						<h:commandLink id="next" title="Previous" style="height: 40px;margin-left:30px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}"  >
+   			 					<span class="glyphicon glyphicon-chevron-right"></span>  
+   			 			</h:commandLink>
+   			 			<p:tooltip  for="next" value="Next team" />
+					</div>
+			 </div>
+		</div>
+		
+			</div>
+		</h:form>
+	</div>
+	
+	<script src="../bootstrap/js/bootstrap.min.js"></script>	
+</h:body>
+</html>
+	

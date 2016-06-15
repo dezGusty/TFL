@@ -7,9 +7,7 @@
 <fullyQualifiedTypeName name="javax.faces.event.ActionEvent"/>
 <fullyQualifiedTypeName name="model.Team"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="helpers.TeamGenerator"/>
-<fullyQualifiedTypeName name="helpers.PlayerHelper"/>
 <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
 <fullyQualifiedTypeName name="helpers.DatabaseConnection"/>
 <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
@@ -33,4 +31,9 @@
 <fullyQualifiedTypeName name="helpers.RedirectView"/>
 <fullyQualifiedTypeName name="model.Player"/>
 <fullyQualifiedTypeName name="views.PersonalInformationView"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="helpers.PlayerHelper"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
 </qualifiedTypeNameHistroy>

@@ -44,10 +44,7 @@
 		<div class="row">
 			<div class=" col-sm-12 col-md-12">
 			 	<p:dataTable id="gameTable" value="#{nextGamesView.games}" var="game" editable="true" editMode="cell" selection="#{nextGamesView.selectedGame}" selectionMode="single" rowKey="#{game.id}">
-			 	
 			 	 <p:ajax event="cellEdit" listener="#{nextGamesView.onCellEdit}" update="gameTable" />
-			 	 <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update="gameTable" />
-        		<p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update="gameTable" />
 				 <f:facet name="header">Games history</f:facet>
 				
 				<p:column  style="text-align:center">
