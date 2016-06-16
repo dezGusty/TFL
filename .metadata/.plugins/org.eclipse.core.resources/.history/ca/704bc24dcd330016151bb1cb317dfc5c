@@ -1,0 +1,61 @@
+package views;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.el.ELContext;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import dataAccessLayer.GameDataAccess;
+import model.Player;
+
+@ManagedBean(name = "waitingPlayers")
+@SessionScoped
+public class WaitingPlayers {
+	
+	private List<Player> players;
+	private Player selectedPlayer;
+	
+	public List<Player> getPlayers() {
+		return players;
+	}
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+	public Player getSelectedPlayer() {
+		return selectedPlayer;
+	}
+	public void setSelectedPlayer(Player selectedPlayer) {
+		this.selectedPlayer = selectedPlayer;
+	}
+	
+	@PostConstruct
+	public void init() {
+		if(this.players==null)
+		{
+			this.players=new ArrayList<Player>();
+		}
+		this.selectedPlayer=new Player();
+	}
+	
+	public void addPlayer(Player player)
+	{
+		System.out.println("Add player from waiting players");
+		System.out.println("player id"+player.getId());
+	
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		NextGamesView nextGamesBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
+		if(nextGamesBean.getSelectedGame().hasTeams())
+		{
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN,null,"You can not add more players! The teams are already setted!"));
+		}
+		else
+		{
+			GameDataAccess.PlayGame(nextGamesBean.getSelectedGame().getId(), player.getId());
+		}
+	}
+}

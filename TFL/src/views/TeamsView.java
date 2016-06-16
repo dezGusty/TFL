@@ -34,24 +34,9 @@ public class TeamsView implements Serializable {
 	private boolean existTeams;
 	private Team firstTeam;
 	private Team secondTeam;
-	private List<Player> playersWaiting;
-	private Player selectedPlayer;
-	
-	public Player getSelectedPlayer() {
-		return selectedPlayer;
-	}
-
-	public void setSelectedPlayer(Player selectedPlayer) {
-		this.selectedPlayer = selectedPlayer;
-	}
-
-	public List<Player> getPlayersWaiting() {
-		return playersWaiting;
-	}
-
-	public void setPlayersWaiting(List<Player> playersWaiting) {
-		this.playersWaiting = playersWaiting;
-	}
+	private boolean showNextPrevious;
+	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
+	private DualListModel<Player> players;
 
 	public Team getFirstTeam() {
 		return firstTeam;
@@ -69,8 +54,6 @@ public class TeamsView implements Serializable {
 		this.secondTeam = secondTeam;
 	}
 
-	private boolean showNextPrevious;
-	
 	public boolean isShowNextPrevious() {
 		return showNextPrevious;
 	}
@@ -87,10 +70,6 @@ public class TeamsView implements Serializable {
 		this.existTeams = existTeams;
 	}
 	
-	public Map<String, List<List<Player>>> map = new HashMap<String, List<List<Player>>>();
-
-	private DualListModel<Player> players;
-
 	@PostConstruct
 	public void init() {
 		if(players==null)
@@ -99,8 +78,6 @@ public class TeamsView implements Serializable {
 		}	
 		this.firstTeam=new Team("Team name");
 		this.secondTeam=new Team("Team name");
-		this.playersWaiting=new ArrayList<Player>();
-		this.selectedPlayer=new Player();
 	}
 
 	public DualListModel<Player> getPlayers() {

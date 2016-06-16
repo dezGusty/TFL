@@ -36,6 +36,21 @@ public class Game implements Serializable {
     inverseJoinColumns={@JoinColumn(name="player_id")})
 	private Set<Player> players;
 
+	//bi-directional many-to-many association to Player
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="players_waiting", 
+    joinColumns={@JoinColumn(name="game_id")}, 
+    inverseJoinColumns={@JoinColumn(name="player_id")})
+	private Set<Player> playersWaiting;
+		
+	public Set<Player> getPlayersWaiting() {
+		return playersWaiting;
+	}
+
+	public void setPlayersWaiting(Set<Player> playersWaiting) {
+		this.playersWaiting = playersWaiting;
+	}
+
 	public Game() {
 		this.date=null;
 		this.difference=0;
@@ -110,7 +125,6 @@ public class Game implements Serializable {
 		this.archive = archive;
 	}
 
-	//verifica daca jucatorul joaca deja la joc
 	public boolean gameStatus(Player player)
 	{
 		if(this.players!=null)
@@ -126,6 +140,13 @@ public class Game implements Serializable {
 				}
 			}
 		}
+		return false;
+	}
+	
+	public boolean hasTeams()
+	{
+		if(this.team1!=null && this.team2!=null)
+			return true;
 		return false;
 	}
 	

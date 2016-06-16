@@ -30,6 +30,7 @@ public class PlayerConverter implements Converter {
 			{
 				newPlayer.setType(Integer.parseInt(splitedValues[5]));
 			}
+			newPlayer.setPicture(splitedValues[6]);
 		}
 		catch(Exception ex)
 		{
@@ -41,7 +42,6 @@ public class PlayerConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object value) {
-
 		return value.toString();
 	}
 

@@ -21,8 +21,9 @@ public class Player implements Serializable {
 
 	@Override
 	public String toString() {
-		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##";
+		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
 	}
+	
 	public Player()
 	{
 		this.archive=false;
@@ -98,7 +99,7 @@ public class Player implements Serializable {
 
 	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
 	private List<Game> games;
-
+	
 	//bi-directional many-to-one association to PlayerRating
 	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private List<PlayerRating> playerRatings;

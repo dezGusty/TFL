@@ -17,7 +17,6 @@ import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DualListModel;
 import dataAccessLayer.GameDataAccess;
-import helpers.PlayerHelper;
 import helpers.RedirectView;
 import helpers.TeamGenerator;
 
@@ -25,13 +24,10 @@ import helpers.TeamGenerator;
 @SessionScoped
 public class NextGamesView implements Serializable{
 
-	    private static final long serialVersionUID = 1L;
-	    private static int MAXNROFPLAYERS=3;
-	    
-	    public static List<Game> games;
-	     
-	    private Game selectedGame;
-	    
+	    private static final long serialVersionUID = 1L;	
+	    private final int MAXNUMBEROFPLAYERS=10;
+	    public static List<Game> games;    
+	    private Game selectedGame;    
 	    private Date gameDate;
 	    
 	    public Game getSelectedGame() {
@@ -68,9 +64,18 @@ public class NextGamesView implements Serializable{
 			}
 			else
 			{
-				firstBean.setCurrentPlayer(GameDataAccess.PlayGame(game.getId(), firstBean.getCurrentPlayer().getId()));
-				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!","You are now playing on "+game.dateToDisplay()));
+				if(game.getPlayers().size()>=MAXNUMBEROFPLAYERS)
+				{
+					GameDataAccess.AddWaitingPlayer(game.getId(), firstBean.getCurrentPlayer().getId());
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!","There are already "+MAXNUMBEROFPLAYERS+" players!"+game.dateToDisplay()));
+				}
+				else
+				{
+					firstBean.setCurrentPlayer(GameDataAccess.PlayGame(game.getId(), firstBean.getCurrentPlayer().getId()));
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!","You are now playing on "+game.dateToDisplay()));
+				}	
 				NextGamesView.games=GameDataAccess.listNextGames();
 			}		
 		}
@@ -95,49 +100,40 @@ public class NextGamesView implements Serializable{
 		public void teamsView(Game game)
 		{
 			Game selectGame=GameDataAccess.GetGame(game.getId());
-			
+			this.selectedGame=selectGame;
 			ELContext context = FacesContext.getCurrentInstance().getELContext();
-			LoginView firstBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
+			LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 			TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
+			WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
 			teamsBean.setShowNextPrevious(false);
-			teamsBean.setFirstTeam(selectGame.getTeam1());
-			teamsBean.setSecondTeam(selectGame.getTeam2());
+			
+			if(selectGame.getPlayersWaiting()!=null)
+			{
+				waitToPlay.setPlayers(new ArrayList<Player>());
+				waitToPlay.getPlayers().addAll(selectGame.getPlayersWaiting());
+			}
 			
 			if(selectGame.getTeam1()!=null && selectGame.getTeam2()!=null)
 			{
 				System.out.println("Game has teams");
+				teamsBean.setFirstTeam(selectGame.getTeam1());
+				teamsBean.setSecondTeam(selectGame.getTeam2());
 			}
 			else
 			{
-				System.out.println("Game has no teams yet!");
-				if(selectedGame.getPlayers().isEmpty())
+				if(selectGame.getPlayers()!=null)
 				{
-					System.out.println("There are no player subscribers");
-				}
-				else
-				{
-					System.out.println("There are player subscribers");
 					List <Player> newList=new ArrayList<Player>();
-					newList.addAll(selectedGame.getPlayers());		
+					newList.addAll(selectGame.getPlayers());	
 					
-					if(selectedGame.getPlayers().size()<=3)
+					if(selectGame.getPlayers().size()<=3)
 					{
 						teamsBean.setFirstTeam(new Team("Team name",newList));
 						teamsBean.setSecondTeam(new Team("Team name"));
 					}
 					else
-					{
-						
-						System.out.println("There are more then 3 player subscribers!Subscribed players:");
-						if(selectedGame.getPlayers().size()>MAXNROFPLAYERS)
-						{
-							System.out.println("cativa jucatori trebuie pusi in asteptare");
-							List<Player> auxiliar=PlayerHelper.GetSublist(selectGame.getPlayers(),0, MAXNROFPLAYERS);
-							newList.addAll(auxiliar);
-							teamsBean.setPlayersWaiting(PlayerHelper.GetSublist(selectGame.getPlayers(), MAXNROFPLAYERS, selectGame.getPlayers().size()));
-						}
-						
-						for(Player p:selectedGame.getPlayers())
+					{				
+						for(Player p:selectGame.getPlayers())
 						{
 							System.out.println(p.toString());
 						}
@@ -153,11 +149,12 @@ public class NextGamesView implements Serializable{
 						}
 						teamsBean.setFirstTeam(new Team("Team name",listed.get(0)));
 						teamsBean.setSecondTeam(new Team("Team name",listed.get(1)));
-					}
-				}	
-			}	
+						}
+				}
+			}
+			System.out.println("Players waiting"+selectGame.getPlayersWaiting()==null);
 			teamsBean.setPlayers( new DualListModel<>(teamsBean.getFirstTeam().getPlayers(), teamsBean.getSecondTeam().getPlayers()));
-			RedirectView.Redirect(firstBean.getCurrentPlayer(),  "/resources/teamsuser.xhtml", "/resources/teamsadmin.xhtml");
+			RedirectView.Redirect(loginBean.getCurrentPlayer(),  "/resources/teamsuser.xhtml", "/resources/teamsadmin.xhtml");
 		}
 
 		public List<List<Player>> generateTeams(List<Player> players)

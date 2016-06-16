@@ -14384,3 +14384,11 @@ iun. 15, 2016 12:00:49.30 1465981249280	addons.update-checker	WARN	Update manife
 iun. 15, 2016 12:05:18.25 console.warn: Asynchronous operation was aborted as selection changed.
 iun. 15, 2016 15:01:21.76 hashcompleter: cancelling request to https://safebrowsing.google.com/safebrowsing/gethash?client=navclient-auto-ffox&appver=47.0&pver=2.2
 iun. 15, 2016 15:01:21.85 hashcompleter: notifying failure
+
+iun. 16, 2016 15:00:56.90 NEW SESSION
+iun. 16, 2016 15:00:56.90 1466078456902	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 16, 2016 15:00:57.10 1466078457107	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 16, 2016 15:00:57.52 1466078457527	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+
+iun. 16, 2016 18:08:14.79 NEW SESSION
+iun. 16, 2016 18:08:14.79 console.warn: Asynchronous operation was aborted as selection changed.

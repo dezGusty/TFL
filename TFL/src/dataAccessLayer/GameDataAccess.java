@@ -48,19 +48,6 @@ public class GameDataAccess implements Serializable {
 		return result;
 	}
 
-	public List<Game> listGames() {
-		EntityManager em = DatabaseConnection.GetConnection();
-		TypedQuery<Game> query =em.createQuery("SELECT g FROM Game g", Game.class);
-		List<Game> result = new ArrayList<Game>();
-		result = query.getResultList();
-
-		for (Game g : result) {
-			System.out.println("ID" + g.getId() + " Date:" + g.getDate() + " Difference" + g.getDifference());
-		}
-		em.close();
-		return result;
-	}
-
 	public static List<Game> listNextGames() {
 		EntityManager em = DatabaseConnection.GetConnection();
 		TypedQuery<Game> query =em.createQuery("SELECT g FROM Game g where g.date > current_date and g.archive = false", Game.class);
@@ -174,6 +161,39 @@ public class GameDataAccess implements Serializable {
 		return g;
 	}
 	
+	public static Game AddWaitingPlayer(int gameid, int playerId)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		
+		Game game=em.find(Game.class, gameid);		
+		Player player=em.find(Player.class, playerId);
+
+		game.getPlayersWaiting().add(player);
+	 	em.merge(game);
+		em.getTransaction().commit();
+		em.refresh(game);
+		em.close();
+		return game;
+	}
+	
+	public static Game AddWaitingPlayerToGame(int gameid, int playerId)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		
+		Game game=em.find(Game.class, gameid);		
+		Player player=em.find(Player.class, playerId);
+		
+		game.getPlayers().add(player);
+		game.getPlayersWaiting().remove(player);
+	 	em.merge(game);
+		em.getTransaction().commit();
+		em.refresh(game);
+		em.close();
+		return game;
+	}
+	
 	public static Team addTeamToGame(Team t,int  gId)
 	{
 		EntityManager em = DatabaseConnection.GetConnection();
@@ -252,5 +272,11 @@ public class GameDataAccess implements Serializable {
 			System.out.println(ex.getMessage());
 		}
 		return null;	
+	}
+	
+	public static void main(String[] args) {
+		Game g=AddWaitingPlayer(4,8);
+		System.out.println(g.getPlayersWaiting().size());
+		
 	}
 }

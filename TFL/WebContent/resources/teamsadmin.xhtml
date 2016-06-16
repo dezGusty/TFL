@@ -51,56 +51,65 @@
 					</div>
 					
 					<div class=" col-sm-12 col-md-4" style="text-align:center;">
+					
 						<div class="row">
 							
-							<div class=" col-sm-12 col-md-12">
+							<div class=" col-sm-10 col-md-10">
 							
-								<p:dataList value="#{teamsView.playersWaiting}" var="player" itemType="player">
+								<p:dataList id="datalist" value="#{waitingPlayers.players}" var="player" itemType="player" >
         							<f:facet name="header">
            								 Waiting..
        								 </f:facet>
-        							<!-- command button pentru adaugarea in lista -->
        								 <h:outputText value="#{player.username}, #{player.rating}" style="display:inline-block"/>
+   								 	 <p:commandButton id="add" value="Add" update="datalist" actionListener="#{waitingPlayers.addPlayer(player)}" ajax="false" >
+   								 	 	<f:setPropertyActionListener value="#{player}" target="#{waitingPlayers.selectedPlayer}" />
+   								 	 </p:commandButton>
    								 </p:dataList>
 							</div>
-							<div class=" col-sm-12 col-md-12">
-								<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
-                       							 var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
-           							<p:column style="width:80%">
-               							<h:outputText value="#{theme.username}"/>
-           							</p:column>
-           						</p:autoComplete>
-							</div>
-							<div class=" col-sm-12 col-md-12">
-								<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayers}" ajax="false" />
-							</div>
-							<p:tooltip for="add" value="Add players to team" />
+							
+							<div class=" col-sm-2 col-md-2">
+								<div class="btn-group">
+   			 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  					  					<span class="glyphicon glyphicon-th-large"></span>
+  									</button>
+  									<ul class="dropdown-menu dropdown-menu-right">
+    									<li>
+    										<p:commandButton title="Add players"  onclick="PF('addPlayers').show();" value="Add more players" />
+   			 							</li>
+    									<li>
+    										<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeams}" ajax="false" />
+										</li>
+										<li>
+    										<p:commandButton  id="prev" value="Previous team" style="height: 35px;width:100%" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}"/>
+										</li>
+										<li>
+    										<p:commandButton id="next" value="Next team" style="height: 35px;width:100%" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}"/>
+										</li>
+  									</ul>
+   			    				</div>
+							</div>					
 						</div>
 					</div>
 				</div>
-			
-			<div class="row" style="padding-top: 3%;">
-			 <div class=" col-sm-12 col-md-12" style="text-align:center;">
-			 		<div class="btn-group">
-			 			<h:commandLink  id="prev" title="Previous" style="height: 40px;margin-right:30px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}"  >
-   			 					<span class="glyphicon glyphicon-chevron-left"></span>  
-   			 			</h:commandLink>
-   			 			<p:tooltip  for="prev" value="Previous team" />
-
-  						<p:commandButton id="save" value="Save teams" style="height: 35px;" actionListener="#{teamsView.saveTeams}" ajax="false" />
-  						<p:tooltip id="toolTipFade" for="save" value="Save current teams" />
-  						
-  						<h:commandLink id="next" title="Previous" style="height: 40px;margin-left:30px;" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getNextTeam}"  >
-   			 					<span class="glyphicon glyphicon-chevron-right"></span>  
-   			 			</h:commandLink>
-   			 			<p:tooltip  for="next" value="Next team" />
-					</div>
-			 </div>
-		</div>
-		
 			</div>
 		</h:form>
 	</div>
+	
+	<p:dialog header="Add players" widgetVar="addPlayers"  height="200" width="500" showEffect="clip" hideEffect="clip">
+			<h:form id="addPlayerDialog">
+			<div class=" col-sm-12 col-md-12">
+				<p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedPlayers}" completeMethod="#{autoCompleteView.completeTheme}"
+                       							 var="theme" itemLabel="#{theme.username}" itemValue="#{theme}" converter="playerConverter" forceSelection="true">
+           			<p:column style="width:80%">
+               			<h:outputText value="#{theme.username}"/>
+           			</p:column>
+           		</p:autoComplete>
+			</div>
+			<div class=" col-sm-12 col-md-12">
+				<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayers}" ajax="false" />
+			</div>
+   			</h:form>
+   	</p:dialog>
 	
 	<script src="../bootstrap/js/bootstrap.min.js"></script>	
 </h:body>
