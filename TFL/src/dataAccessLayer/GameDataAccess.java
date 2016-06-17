@@ -262,8 +262,11 @@ public class GameDataAccess implements Serializable {
 			g.setDate(datee);
 			g.setDifference(0);
 			g.setArchive(false);
+			g.setTeam1(null);
+			g.setTeam2(null);
 			em.persist(g);
 			em.getTransaction().commit();
+			em.refresh(g);
 			em.close();
 			return g;
 		}

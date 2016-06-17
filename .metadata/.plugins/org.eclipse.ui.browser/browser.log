@@ -14392,3 +14392,57 @@ iun. 16, 2016 15:00:57.52 1466078457527	addons.update-checker	WARN	Update manife
 
 iun. 16, 2016 18:08:14.79 NEW SESSION
 iun. 16, 2016 18:08:14.79 console.warn: Asynchronous operation was aborted as selection changed.
+
+iun. 17, 2016 10:12:43.38 NEW SESSION
+iun. 17, 2016 10:12:43.38 console.error: mobileview: 
+iun. 17, 2016 10:12:43.51   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 17, 2016 10:12:43.52   Stack:
+iun. 17, 2016 10:12:43.52     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 17, 2016 10:12:43.52 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 17, 2016 10:12:43.77 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 17, 2016 10:12:43.78 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 17, 2016 10:12:43.78 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 17, 2016 10:12:43.79 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 17, 2016 10:12:43.80 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 17, 2016 10:12:43.81 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 17, 2016 10:12:43.81 
+iun. 17, 2016 10:12:43.82 console.error: mobileview: 
+iun. 17, 2016 10:12:43.82   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 17, 2016 10:12:43.83   Stack:
+iun. 17, 2016 10:12:43.84     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 17, 2016 10:12:43.84 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 17, 2016 10:12:43.85 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 17, 2016 10:12:43.85 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 17, 2016 10:12:43.86 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 17, 2016 10:12:43.86 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 17, 2016 10:12:43.87 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 17, 2016 10:12:43.87 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 17, 2016 10:12:43.88 
+iun. 17, 2016 10:22:13.63 console.error: mobileview: 
+iun. 17, 2016 10:22:13.70   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 17, 2016 10:22:13.71   Stack:
+iun. 17, 2016 10:22:13.71     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 17, 2016 10:22:13.71 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 17, 2016 10:22:13.72 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 17, 2016 10:22:13.74 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 17, 2016 10:22:13.74 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 17, 2016 10:22:13.74 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 17, 2016 10:22:13.75 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 17, 2016 10:22:13.75 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 17, 2016 10:22:13.77 
+iun. 17, 2016 10:22:13.79 console.error: mobileview: 
+iun. 17, 2016 10:22:13.80   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 17, 2016 10:22:13.81   Stack:
+iun. 17, 2016 10:22:13.81     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 17, 2016 10:22:13.81 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 17, 2016 10:22:13.81 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 17, 2016 10:22:13.83 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 17, 2016 10:22:13.85 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 17, 2016 10:22:13.86 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 17, 2016 10:22:13.86 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 17, 2016 10:22:13.89 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 17, 2016 10:22:13.89 
+iun. 17, 2016 10:24:22.65 1466148262669	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+iun. 17, 2016 10:24:23.20 1466148263223	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+iun. 17, 2016 10:24:23.22 1466148263243	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 17, 2016 10:24:23.43 1466148263454	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
