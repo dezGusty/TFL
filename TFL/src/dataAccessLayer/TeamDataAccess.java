@@ -24,19 +24,80 @@ public class TeamDataAccess {
 		return result;
 	}
 	
+	public static Team FindTeam(int teamId)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Team game=em.find(Team.class, teamId);
+		em.close();
+		return game;
+	}
+	
 	public static Team UpdateTeam(Team teamToSave) {
 
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
+		
 		Team t= em.find(Team.class, teamToSave.getId());			
 		t.setName(teamToSave.getName());
 		t.setScore(teamToSave.getScore());
 		t.setPlayers(teamToSave.getPlayers());
-		System.out.println("Team to save is winner: "+teamToSave.getWinner());
 		t.setWinner(teamToSave.getWinner());
+		
+		em.getTransaction().commit();
+		em.refresh(t);
+		em.close();
+		return t;	
+	}
+	
+	public static Team removeTeam(int teamId)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Team team=em.find(Team.class,teamId);	
+		
+		if(team !=null)
+		{
+			team.getPlayers().clear();
+		}
+		em.getTransaction().commit();
+		em.refresh(team);
+		em.close();
+		return team;
+	}
+	
+	public static Team RemovePlayerFromTeam(int teamID,int playerID)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Team team=em.find(Team.class,teamID);
+		Player player=em.find(Player.class, playerID);
+		
+		if(team !=null && player!=null)
+		{
+			team.getPlayers().remove(player);
+		}
+		em.getTransaction().commit();
+		em.refresh(team);
+		em.close();
+		return team;
+	}
+	
+	
+	public static Team AddNewPlayer(int teamID, int playerID) {
+
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		
+		Team t= em.find(Team.class, teamID);			
+		Player p=em.find(Player.class,playerID);
+		 
+		t.addNewPlayer(p);
 		em.merge(t);
 		em.getTransaction().commit();
+		em.refresh(t);
 		em.close();
+		
 		return t;	
 	}
 	
@@ -51,14 +112,13 @@ public class TeamDataAccess {
 		return team;
 	}
 	
-	public static Team addNewPlayer(int playerId, int teamId) {
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
-		Player player = em.find(Player.class, playerId);
-		System.out.println(player.getId()+" "+player.getUsername());
-		Team team= em.find(Team.class, teamId);
-		System.out.println(team.getId()+" "+team.getName());
-		em.close();
-		return team;
+	public static void main(String[] args) {
+		
+		
+		//List<Player> list=PlayerDataAccess.ListAllPlayers();
+		Team te=FindTeam(30);
+		System.out.println(te.getPlayers());
+		Team t=RemovePlayerFromTeam(30,7);
+		System.out.println(t.getName()+t.getPlayers());
 	}
 }

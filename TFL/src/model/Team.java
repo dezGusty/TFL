@@ -3,7 +3,9 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -29,11 +31,11 @@ public class Team implements Serializable {
     @JoinTable(name="team_player", 
           joinColumns=@JoinColumn(name="id_team"),
           inverseJoinColumns=@JoinColumn(name="id_player"))
-	private List<Player> players;
+	private Set<Player> players;
 
 	public Team() {
 		this.score=0.0;
-		this.players=new ArrayList<Player>();
+		this.players=new HashSet<Player>();
 		this.winner=false;
 		this.name="Team name";
 	}
@@ -42,10 +44,9 @@ public class Team implements Serializable {
 	{
 		this();
 		this.name=name;
-		this.score=0.0;
 	}
 	
-	public Team(String name,List<Player> listOfPlayers)
+	public Team(String name,Set<Player> listOfPlayers)
 	{
 		this(name);
 		this.players=listOfPlayers;
@@ -84,22 +85,30 @@ public class Team implements Serializable {
 		this.winner = winner;
 	}
 	
-	public List<Player> getPlayers() {
+	public Set<Player> getPlayers() {
 		return this.players;
 	}
 
-	public void setPlayers(List<Player> players) {
-		this.players = players;
+	public List<Player> getListPlayers() {
+		return new ArrayList<Player>(this.players);
+	}
+	
+	public void setPlayers(Set<Player> set) {
+		this.players.addAll(set);
 		setNewScore();
 	}
+
 	
 	public void addNewPlayer(Player p)
 	{
 		if(this.players==null)
 		{
-			this.players=new ArrayList<Player>();
+			this.players=new HashSet<Player>();
 		}
-		this.players.add(p);
+		if(this.containsPlayer(p)==false)
+		{
+			this.players.add(p);
+		}	
 	}
 	
 	private void setNewScore()
@@ -110,5 +119,20 @@ public class Team implements Serializable {
 			this.score+=player.getRating();
 		}
 	}
-
+	
+	public boolean containsPlayer(Player player)
+	{
+		if(this.players!=null)
+		{
+			for(Player p:this.players)
+			{
+				if(p.getId()==player.getId())
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 }

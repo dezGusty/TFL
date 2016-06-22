@@ -1,7 +1,6 @@
 package dataAccessLayer;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import helpers.DatabaseConnection;
 import model.Game;
 import model.Player;
@@ -32,6 +30,25 @@ public class GameDataAccess implements Serializable {
 		Game game=em.find(Game.class, gameId);
 		em.close();
 		return game;
+	}
+	
+	public static Game UpdateGame(Game gameToUpdate)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Game g=em.find(Game.class, gameToUpdate.getId());		
+
+		if(g!=null)
+		{
+			g.setTeam1(gameToUpdate.getTeam1());
+			g.setTeam2(gameToUpdate.getTeam2());
+		}
+		
+		em.merge(g);
+		//em.getTransaction().commit();
+		//em.refresh(g);
+		em.close();
+		return g;
 	}
 	
 	public static List<Game> listPreviousGames() {
@@ -61,7 +78,7 @@ public class GameDataAccess implements Serializable {
 		return result;
 	}
 	
-	public static Game addToArchive(int gameId)
+	public static Game AddToArchive(int gameId)
 	{
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
@@ -76,7 +93,7 @@ public class GameDataAccess implements Serializable {
 		return gameToArchive;
 	}
 	
-	public static Game SetDiff(int gameId, int difference)
+	public static Game SetDifference(int gameId, int difference)
 	{
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
@@ -143,6 +160,42 @@ public class GameDataAccess implements Serializable {
 		return game;
 	}
 	
+	public static Game removePlayer(int gameID,int playerID)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Game game=em.find(Game.class,gameID);	
+		Player player=em.find(Player.class,playerID);
+		
+		if(game!=null && player!=null)
+		{
+			game.getPlayers().remove(player);
+		}
+		
+		em.getTransaction().commit();
+		em.refresh(game);
+		em.close();
+		return game;
+	}
+	
+	public static Game removeWaitingPlayer(int gameID,int playerID)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Game game=em.find(Game.class,gameID);	
+		Player player=em.find(Player.class,playerID);
+		
+		if(game!=null && player!=null)
+		{
+			game.getPlayersWaiting().remove(player);
+		}
+		
+		em.getTransaction().commit();
+		em.refresh(game);
+		em.close();
+		return game;
+	}
+	
 	public static Game AddTeams(int gameid, int firstTeamId,int secondTeamId)
 	{
 		EntityManager em = DatabaseConnection.GetConnection();
@@ -199,7 +252,6 @@ public class GameDataAccess implements Serializable {
 		EntityManager em = DatabaseConnection.GetConnection();
 		Game g=em.find(Game.class, gId);
 		Team team=em.find(Team.class, t.getId());
-		//g.addTeam(team);
 		em.persist(g);
 		em.getTransaction().commit();
 		em.refresh(g);
@@ -250,25 +302,18 @@ public class GameDataAccess implements Serializable {
 		return play;
 	}
 
-	public static Game addNewGame(String date)
+	//adauga un nou joc in baza de date
+	public static Game AddNewGame(Game game)
 	{
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
 		try
 		{
-			Game g=new Game();
-			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
-			Date datee = dt.parse(date); 
-			g.setDate(datee);
-			g.setDifference(0);
-			g.setArchive(false);
-			g.setTeam1(null);
-			g.setTeam2(null);
-			em.persist(g);
+			em.persist(game);
 			em.getTransaction().commit();
-			em.refresh(g);
+			em.refresh(game);
 			em.close();
-			return g;
+			return game;
 		}
 		catch(Exception ex)
 		{
@@ -278,8 +323,10 @@ public class GameDataAccess implements Serializable {
 	}
 	
 	public static void main(String[] args) {
-		Game g=AddWaitingPlayer(4,8);
-		System.out.println(g.getPlayersWaiting().size());
+		Game game=GetGame(39);
+		System.out.println(game.getPlayersWaiting());
+		Game g=removeWaitingPlayer(39, 10);
+		System.out.println(g.getPlayersWaiting());
 		
 	}
 }

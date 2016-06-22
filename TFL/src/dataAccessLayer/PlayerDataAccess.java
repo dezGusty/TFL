@@ -7,7 +7,6 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import helpers.DatabaseConnection;
 import model.Player;
 
@@ -19,6 +18,15 @@ public class PlayerDataAccess implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public static Player FindPlayer(int playerid)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Player player=em.find(Player.class, playerid);
+		em.close();
+		return player;
+	}
+	
 	public static Player createUser(String username, String password) {
 		Player emp = new Player(username,password);
 		try {
@@ -124,7 +132,7 @@ public class PlayerDataAccess implements Serializable{
 			return result;
 	}
 
-	  public static boolean removePlayer(int playerId) {
+	  public static boolean RemovePlayer(int playerId) {
 		    EntityManager em = DatabaseConnection.GetConnection();
 			em.getTransaction().begin();
 			Player player=em.find(Player.class, playerId);

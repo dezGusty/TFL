@@ -86,14 +86,14 @@ public class TeamGenerator {
 		 for(List<Player> list:resultList)
 	        {
 			 	idealValue=0;
-	        //	System.out.println("combination:");
+	        	System.out.println("combination:");
 	        	for(Player p:list)
 	        	{
 	        		idealValue+=p.getRating();
-	        		//System.out.println(p.getUsername());
+	        		System.out.println(p.getUsername());
 	        	}
 	        	map.put(idealValue, list);
-	        	//System.out.println("Strength "+idealValue);
+	        	System.out.println("Strength "+idealValue);
 	        }
 		 return map;
 	}

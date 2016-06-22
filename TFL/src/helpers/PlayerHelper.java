@@ -8,9 +8,9 @@ import java.util.Set;
 import model.Player;
 
 public class PlayerHelper {
-	public static boolean ExistsInList(Player player,List<Player> listOfPlayers)
+	public static boolean ExistsInList(Player player,List<Player> firstList)
 	{
-		for(Player play:listOfPlayers)
+		for(Player play:firstList)
 		{
 			if(play.getId()==player.getId())
 			{
@@ -36,5 +36,16 @@ public class PlayerHelper {
 		}
 		
 		return (List<Player>)result;
+	}
+
+	public static boolean ExistsInList(Player play, Set<Player> allPlayers) {
+		for(Player play1:allPlayers)
+		{
+			if(play1.getId()==play1.getId())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }

@@ -57,9 +57,16 @@
 				</p:column>
 				<p:column style="text-align:center" headerText="Rating">#{player.rating}</p:column>
 					<p:column style="text-align:center">
-						<p:commandButton value="Remove from players" update="table" style="background-color: transparent;border:none;"
-							actionListener="#{playersView.remove(player)}" ajax="false" />
+						<p:commandButton value="Remove from players" style="background-color: transparent;border:none;" actionListener="#{playersView.remove(player)}" update="table">
+        					<p:confirm header="Remove player #{player.username}" message="Are you sure?" icon="ui-icon-alert"/>
+   						 </p:commandButton>
+ 
+    					<p:confirmDialog global="true">
+        					<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+        					<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+   					 	</p:confirmDialog>
 					</p:column>
+					
 					<p:column style="text-align:center">
 						<p:commandButton value="Add to chart" update="gamesTable" style="background-color: transparent;border:none;"
 							actionListener="#{playersView.addPlayerToChart(player)}" ajax="false" />

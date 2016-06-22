@@ -8,7 +8,6 @@ import javax.faces.convert.FacesConverter;
 import model.Player;
 
 @FacesConverter("playerConverter")
-
 public class PlayerConverter implements Converter {
 
 	@Override

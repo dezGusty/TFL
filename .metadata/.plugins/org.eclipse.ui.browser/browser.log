@@ -14446,3 +14446,19 @@ iun. 17, 2016 10:24:22.65 1466148262669	addons.update-checker	WARN	Update manife
 iun. 17, 2016 10:24:23.20 1466148263223	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
 iun. 17, 2016 10:24:23.22 1466148263243	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
 iun. 17, 2016 10:24:23.43 1466148263454	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+
+iun. 20, 2016 11:14:12.99 NEW SESSION
+iun. 20, 2016 11:14:12.99 1466410452993	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 20, 2016 11:14:13.20 1466410453203	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 20, 2016 11:14:13.40 1466410453409	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+
+iun. 20, 2016 22:42:57.11 NEW SESSION
+iun. 20, 2016 22:42:57.11 [Child 6316] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 20, 2016 22:42:57.14 [Child 6316] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iun. 21, 2016 10:12:50.36 NEW SESSION
+iun. 21, 2016 10:12:50.36 [Child 8836] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 21, 2016 10:12:50.39 [Child 8836] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 21, 2016 11:14:12.97 1466496852970	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 21, 2016 11:14:13.18 1466496853180	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 21, 2016 11:14:13.50 1466496853502	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property

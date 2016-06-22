@@ -104,10 +104,6 @@ public class Player implements Serializable {
 	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private List<PlayerRating> playerRatings;
 
-	//bi-directional many-to-many association to Team
-	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
-	private List<Team> teams;
-
 	public Integer getId() {
 		return this.id;
 	}
@@ -207,35 +203,6 @@ public class Player implements Serializable {
 
 		return playerRating;
 	}
-
-	public List<Team> getTeams() {
-		return this.teams;
-	}
-
-	public void setTeams(List<Team> teams) {
-		this.teams = teams;
-	}
-	
-	public int GetGames(boolean winned)
-	{
-		int count=0;
-
-		if(this.getTeams()==null)
-			System.out.println("No teams");
-		else
-		{
-			for(Team t:this.getTeams())
-			{
-				if(t.getWinner()==true)
-				{
-					count++;
-				}
-				System.out.println(t.getWinner());
-			}
-		}
-		System.out.println("winned games: "+count);
-		return count;
-	}
 	
 	public int GetTotalPlayedGames()
 	{
@@ -245,4 +212,11 @@ public class Player implements Serializable {
 		}
 		return 0;
 	}
+	
+	public boolean disableButtons()
+	{
+		if(this.type==1)
+			return true;
+		return false;
+	}	
 }

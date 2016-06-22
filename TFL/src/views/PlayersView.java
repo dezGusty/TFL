@@ -39,7 +39,7 @@ public class PlayersView implements Serializable{
 	}
 	
 	public void remove(Player player) {
-		if(PlayerDataAccess.removePlayer(player.getId())==true)
+		if(PlayerDataAccess.RemovePlayer(player.getId())==true)
 		{
 			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Player "+player.getUsername()+" successfully removed!"));
 			players.remove(player);
@@ -53,23 +53,13 @@ public class PlayersView implements Serializable{
 	public void  addPlayerToChart(Player player)
 	{
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		ChartView firstBean = (ChartView) elContext.getELResolver().getValue(elContext, null, "chartView");	
-		if(firstBean.addPlayerToChart(player))
-		{
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Player "+player.getUsername()+" added to chart!"));
-		}
-		else
-		{
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN, "WARN!", "Player "+player.getUsername()+" already in chart!"));
-		}
-
+		ChartView chartView = (ChartView) elContext.getELResolver().getValue(elContext, null, "chartView");	
+		chartView.addPlayerToChart(player);
 		System.out.println("Players from ChartView");
-		for(Player p:firstBean.getPlayers())
+		for(Player p:chartView.getPlayers())
 		{
 			System.out.println(p.toString());
 		}
-		//firstBean.createLineModels();
-		//RedirectView.Redirect(login.getCurrentPlayer(),"/faces/resources/userchart.xhtml","/faces/resources/userchart.xhtml");
 	}
 	
 	@PostConstruct

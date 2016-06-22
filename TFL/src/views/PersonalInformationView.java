@@ -27,11 +27,11 @@ public class PersonalInformationView {
     		{
     			this.playedGames=player.GetTotalPlayedGames();
     		}
-    		if(player.getTeams()!=null)
-    		{
-    			this.winner=player.GetGames(true);
-    			this.looser=player.GetGames(false);
-    		}
+//    		if(player.getTeams()!=null)
+//    		{
+//    			this.winner=player.GetGames(true);
+//    			this.looser=player.GetGames(false);
+//    		}
     	}
     }
     

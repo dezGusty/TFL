@@ -77,7 +77,7 @@
     										<p:commandButton title="Add players"  onclick="PF('addPlayers').show();" value="Add more players" />
    			 							</li>
     									<li>
-    										<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeams}" ajax="false" />
+    										<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeams}" />
 										</li>
 										<li>
     										<p:commandButton  id="prev" value="Previous team" style="height: 35px;width:100%" disabled="#{!teamsView.showNextPrevious}" actionListener="#{teamsView.getPreviousTeam}"/>

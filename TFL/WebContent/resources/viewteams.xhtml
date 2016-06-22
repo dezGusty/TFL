@@ -26,11 +26,11 @@
 					<f:facet name="sourceCaption">
 						<h:panelGrid columns="4" >
             				<p:inplace editor="true">
-            					<p:inputText value="#{teamsView.firstTeam.name}" required="true" label="text"/>
+            					<p:inputText value="#{teamsView.game.team1.name}" required="true" label="text"/>
        						 </p:inplace>
-            				<h:outputText value="#{teamsView.firstTeam.score}"/>
+            				<h:outputText value="#{teamsView.game.team1.score}"/>
             				<h:outputText value="Winner:"/>
-            				<p:selectBooleanCheckbox value="#{teamsView.firstTeam.winner}" />
+            				<p:selectBooleanCheckbox value="#{teamsView.game.team1.winner}" />
        					 </h:panelGrid>
 					</f:facet>
 					
@@ -38,11 +38,11 @@
 					<f:facet name="targetCaption">
 					<h:panelGrid columns="4">
 						<p:inplace editor="true">
-            				<p:inputText value="#{teamsView.secondTeam.name}" required="true" label="text"/>
+            				<p:inputText value="#{teamsView.game.team2.name}" required="true" label="text"/>
        					 </p:inplace>
-       					 <h:outputText value="#{teamsView.secondTeam.score}"/>
+       					 <h:outputText value="#{teamsView.game.team2.score}"/>
        					 <h:outputText value="Winner:"/>
-       					 <p:selectBooleanCheckbox value="#{teamsView.secondTeam.winner}" >
+       					 <p:selectBooleanCheckbox value="#{teamsView.game.team2.winner}" >
            					 <p:ajax listener="#{teamsView.addMessage}" />
        					 </p:selectBooleanCheckbox>
        				</h:panelGrid>

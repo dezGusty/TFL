@@ -54,15 +54,20 @@
 					<p:column style="text-align:center;" headerText="Difference">#{game.difference}</p:column>
 					
 					<p:column style="text-align:center;">
-						<p:commandButton value="Play" 
+						<p:commandButton value="#{game.playUnplay(loginView.currentPlayer)}" 
 							actionListener="#{nextGamesView.play(game)}"
-							disabled="#{game.gameStatus(loginView.currentPlayer)}"
 							ajax="false" update="gamesTable" />
 					</p:column>
 					
-					<p:column style="text-align:center;">
-						<p:commandButton  value="Cancel" update="gamesTable" 
-							actionListener="#{nextGamesView.remove(game)}" ajax="false"  />
+					<p:column style="text-align:center;">	
+						<p:commandButton value="Cancel" actionListener="#{nextGamesView.remove(game)}" >
+        					<p:confirm header="Remove game #{game.dateToDisplay()}" message="Are you sure?" icon="ui-icon-alert"/>
+   						 </p:commandButton>
+ 
+    					<p:confirmDialog global="true">
+        					<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+        					<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+   					 	</p:confirmDialog>
 					</p:column>
 
 					<p:column style="text-align:center;">

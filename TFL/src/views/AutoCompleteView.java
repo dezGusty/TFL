@@ -1,7 +1,9 @@
 package views;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
@@ -18,8 +20,16 @@ import model.Player;
 	public class AutoCompleteView {
 	    
 	    public List<Player> selectedPlayers;
-	    private List<Player> allPlayers;
-	    
+	      
+	    public List<Player> getSelectedPlayers() {
+			return selectedPlayers;
+		}
+
+		public void setSelectedPlayers(List<Player> selectedPlayers) {
+			this.selectedPlayers = selectedPlayers;
+		}
+		
+		private List<Player> allPlayers;
 	    @PostConstruct
 		public void init() {
 			this.selectedPlayers=new ArrayList<Player>();
@@ -38,16 +48,8 @@ import model.Player;
 	        }	     
 	        return  filteredPlayers;
 	    }
-	     
-	    public List<Player> getSelectedPlayers() {
-			return selectedPlayers;
-		}
 
-		public void setSelectedPlayers(List<Player> selectedPlayers) {
-			this.selectedPlayers = selectedPlayers;
-		}
-
-		public void onItemSelect(SelectEvent event) {
+	    public void onItemSelect(SelectEvent event) {
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item Selected", event.getObject().toString()));
 	    }
 		
@@ -55,9 +57,9 @@ import model.Player;
 		{
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			TeamsView firstBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
-			List<Player> allPlayers=new ArrayList<Player>();
-			allPlayers.addAll(firstBean.getFirstTeam().getPlayers());
-			allPlayers.addAll(firstBean.getSecondTeam().getPlayers());
+			Set<Player> allPlayers=new HashSet<Player>();
+			allPlayers.addAll(firstBean.getGame().getTeam1().getPlayers());
+			allPlayers.addAll(firstBean.getGame().getTeam2().getPlayers());
 
 			for(Player play:this.selectedPlayers)
 			{
@@ -71,7 +73,7 @@ import model.Player;
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "New players added to this game!"));
 			if(allPlayers.size()<=3)
 			{
-				firstBean.getFirstTeam().setPlayers(allPlayers);
+				firstBean.getGame().getTeam1().setPlayers(allPlayers);
 			}
 			else
 			{
@@ -85,17 +87,17 @@ import model.Player;
 						System.out.println(p.toString());
 					}
 				}
-				firstBean.getFirstTeam().setPlayers(listed.get(0));
-				firstBean.getSecondTeam().setPlayers(listed.get(1));
+				//firstBean.getFirstTeam().setPlayers(listed.get(0));
+				//firstBean.getSecondTeam().setPlayers(listed.get(1));
 			}
-			firstBean.setPlayers( new DualListModel<>(firstBean.getFirstTeam().getPlayers(), firstBean.getSecondTeam().getPlayers()));
+			firstBean.setPlayers( new DualListModel<>(new ArrayList<Player>(firstBean.getGame().getTeam1().getPlayers()), new ArrayList<Player>(firstBean.getGame().getTeam2().getPlayers())));
 			this.selectedPlayers=new ArrayList<Player>();
 		}
 		
-		public List<List<Player>> generateTeams(List<Player> players)
+		public List<List<Player>> generateTeams(Set<Player> players)
 		{	
 			List<List<Player>> list=new ArrayList<List<Player>>();
-			TeamGenerator.list=players;
+			TeamGenerator.list=new ArrayList<Player>(players);
 			TeamGenerator.generateTeams();
 			TeamGenerator.printMap(TeamGenerator.map);
 			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[0];

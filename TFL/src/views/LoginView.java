@@ -1,7 +1,7 @@
 package views;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -24,7 +24,7 @@ public class LoginView implements Serializable {
 	private String newPass;
 	private String confirmPass;
     private boolean value;
-    private Player currentPlayer=new Player();
+    public Player currentPlayer;
     
 	public boolean getValue() {
         return value;
@@ -66,6 +66,11 @@ public class LoginView implements Serializable {
 		this.currentPlayer = currentPlayer;
 	}
 
+	@PostConstruct
+	public void init() {
+		this.currentPlayer=new Player();
+	}
+	
     public void login() {
 		int canLogin=PlayerDataAccess.loginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
 		if(canLogin!=0)
@@ -115,9 +120,6 @@ public class LoginView implements Serializable {
 	
 	public void redirectToCharts(ActionEvent actionEvent)
 	{
-		ELContext context = FacesContext.getCurrentInstance().getELContext();
-		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
-		firstBean.createLineModels();
 		RedirectView.Redirect("/resources/userchart.xhtml");	
 	}
 	
@@ -125,9 +127,7 @@ public class LoginView implements Serializable {
 	{
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
-		firstBean.players=new ArrayList<Player>();
-		firstBean.players.add(this.currentPlayer);
-		firstBean.createLineModels();
+		firstBean.addPlayerToChart(this.currentPlayer);
 		RedirectView.Redirect("/resources/userchart.xhtml");	
 	}
 	

@@ -1,11 +1,13 @@
 package model;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
 import model.Player;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -54,11 +56,26 @@ public class Game implements Serializable {
 	public Game() {
 		this.date=null;
 		this.difference=0;
+		this.archive=false;
 		this.players=new HashSet<Player>();
+		this.playersWaiting=new HashSet<Player>();
 		this.team1=new Team();
 		this.team2=new Team();
 	}
 
+	public Game(String date, Team firstTeam, Team secondTeam)
+	{
+		this();
+		this.team1=firstTeam;
+		this.team2=secondTeam;
+		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+		try {
+			this.date=dt.parse(date);
+		} catch (ParseException e) {
+			System.out.println(e.getMessage());
+		} 
+	}
+	
 	public Integer getId() {
 		return this.id;
 	}
@@ -125,7 +142,12 @@ public class Game implements Serializable {
 		this.archive = archive;
 	}
 
-	public boolean gameStatus(Player player)
+	public void addPlayer(Player player)
+	{
+		this.players.add(player);
+	}
+	
+	public boolean playingThisGame(Player player)
 	{
 		if(this.players!=null)
 		{
@@ -143,11 +165,43 @@ public class Game implements Serializable {
 		return false;
 	}
 	
+	public String playUnplay(Player player)
+	{
+		if(this.players!=null)
+		{
+			for(Player gamePlayer:this.players)
+			{
+				
+				int a=gamePlayer.getId();
+				int b=player.getId();
+				if(a==b)
+				{
+					return "Call off";
+				}
+			}
+		}
+		return "Play";
+	}
+	
 	public boolean hasTeams()
 	{
 		if(this.team1!=null && this.team2!=null)
 			return true;
 		return false;
+	}
+	
+	public Player getFirstPlayerWaiting()
+	{
+		Player result=new Player();
+		if(this.playersWaiting!=null)
+		{
+			if(this.playersWaiting.size()!=0)
+			{
+				Iterator<Player> it=this.playersWaiting.iterator();
+				result=it.next();
+			}
+		}
+		return result;
 	}
 	
 	public String dateToDisplay()

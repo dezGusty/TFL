@@ -41,7 +41,7 @@
         									<ul class="dropdown-menu">
          				 						<li><p:commandButton style="width: 100%;height: 35px;" value="Next games" actionListener="#{loginView.redirectToNextGames}" ajax="false" /></li>
           					 					<li><p:commandButton style="width: 100%;height: 35px;" value="Games history" actionListener="#{loginView.redirectToHistory}" ajax="false" /></li>
-          					 					<li><p:commandButton style="width: 100%;height: 35px;" onclick="PF('dlg2').show();" value="New game" /></li>
+          					 					<li><p:commandButton style="width: 100%;height: 35px;" onclick="PF('dlg2').show();" value="New game"  disabled="#{loginView.currentPlayer.disableButtons()}"/></li>
         									</ul>
      			    				</li>
 		 			
@@ -51,7 +51,7 @@
         								</a>
         								<ul class="dropdown-menu">
          				 					<li><p:commandButton style="width: 100%;height: 35px;" value="View players" actionListener="#{loginView.redirectToPlayers}" ajax="false" /></li>
-          									<li><p:commandButton style="width: 100%;height: 35px;"  onclick="PF('addPlayerDialog').show();" value="Add new player" /></li>
+          									<li><p:commandButton style="width: 100%;height: 35px;"  onclick="PF('addPlayerDialog').show();" value="Add new player"  disabled="#{loginView.currentPlayer.disableButtons()}"/></li>
         								</ul>
      			    				</li>
      			    
@@ -61,7 +61,7 @@
         								</a>
         								<ul class="dropdown-menu">
          				 					<li><p:commandButton style="width: 100%;height: 35px;" value="My chart" actionListener="#{loginView.redirectToMyChart}" ajax="false" /></li>
-          									 <li><p:commandButton style="width: 100%;height: 35px;" value="View chart" actionListener="#{loginView.redirectToCharts}" ajax="false" /></li>
+          									 <li><p:commandButton style="width: 100%;height: 35px;" value="View charts" actionListener="#{loginView.redirectToCharts}" ajax="false" disabled="#{loginView.currentPlayer.disableButtons()}" /></li>
         								</ul>
      			   					 </li>
    			 					</ul>
