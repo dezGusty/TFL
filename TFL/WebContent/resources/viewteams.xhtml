@@ -29,8 +29,10 @@
             					<p:inputText value="#{teamsView.game.team1.name}" required="true" label="text"/>
        						 </p:inplace>
             				<h:outputText value="#{teamsView.game.team1.score}"/>
-            				<h:outputText value="Winner:"/>
-            				<p:selectBooleanCheckbox value="#{teamsView.game.team1.winner}" />
+            				<h:outputText value="Goals:"/>
+            				<p:inplace id="inp1">
+           						 <p:inputText value="#{teamsView.game.team2.winner}"  />
+        					</p:inplace>
        					 </h:panelGrid>
 					</f:facet>
 					
@@ -41,10 +43,10 @@
             				<p:inputText value="#{teamsView.game.team2.name}" required="true" label="text"/>
        					 </p:inplace>
        					 <h:outputText value="#{teamsView.game.team2.score}"/>
-       					 <h:outputText value="Winner:"/>
-       					 <p:selectBooleanCheckbox value="#{teamsView.game.team2.winner}" >
-           					 <p:ajax listener="#{teamsView.addMessage}" />
-       					 </p:selectBooleanCheckbox>
+       					 <h:outputText value="Goals:"/>
+       					 <p:inplace id="inp2">
+           					 <p:inputText value="#{teamsView.game.team2.winner}"  />
+        				</p:inplace>
        				</h:panelGrid>
 					</f:facet>
 

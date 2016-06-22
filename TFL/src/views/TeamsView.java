@@ -98,13 +98,17 @@ public class TeamsView implements Serializable {
 		System.out.println("Hello from save teams!");
 		System.out.println("first team winner: "+this.game.getTeam1().getWinner());
 		System.out.println("second team winner: "+this.game.getTeam2().getWinner());
+		
+		this.game.setTeam1(TeamDataAccess.SaveTeamName(this.game.getTeam1().getId(), this.game.getTeam1().getName()));
+		this.game.setTeam2(TeamDataAccess.SaveTeamName(this.game.getTeam2().getId(), this.game.getTeam2().getName()));
+		
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
      	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
      	
      	Game game=firstBean.getSelectedGame();
      	System.out.println("save teams for game: "+game.getId());
-     	TeamDataAccess.removeTeam(game.getTeam1().getId());
-		TeamDataAccess.removeTeam(game.getTeam2().getId());
+     	TeamDataAccess.RemoveAllPlayers(game.getTeam1().getId());
+		TeamDataAccess.RemoveAllPlayers(game.getTeam2().getId());
 		for(Player play: this.players.getSource())
 		{
 			System.out.println(play.getUsername());

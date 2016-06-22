@@ -94,6 +94,7 @@ public class Team implements Serializable {
 	}
 	
 	public void setPlayers(Set<Player> set) {
+		this.players.clear();
 		this.players.addAll(set);
 		setNewScore();
 	}
@@ -108,6 +109,7 @@ public class Team implements Serializable {
 		if(this.containsPlayer(p)==false)
 		{
 			this.players.add(p);
+			this.score+=p.getRating();
 		}	
 	}
 	

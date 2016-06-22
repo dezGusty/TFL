@@ -144,7 +144,10 @@ public class Game implements Serializable {
 
 	public void addPlayer(Player player)
 	{
-		this.players.add(player);
+		if(this.playingThisGame(player)==false)
+		{
+			this.players.add(player);
+		}
 	}
 	
 	public boolean playingThisGame(Player player)

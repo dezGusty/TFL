@@ -9,6 +9,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import org.primefaces.event.RateEvent;
+
 import dataAccessLayer.PlayerDataAccess;
 import model.Player;
 
@@ -17,6 +20,16 @@ import model.Player;
 public class PlayersView implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+
+	private int rating;
+	
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 
 	public List<Player> players;
 
@@ -62,9 +75,22 @@ public class PlayersView implements Serializable{
 		}
 	}
 	
+	public void onrate(RateEvent rateEvent) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        System.out.println("On rate event");
+    }
+     
+    public void oncancel() {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cancel Event", "Rate Reset");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        System.out.println("On cancel event");
+    }
+	
 	@PostConstruct
 	public void init() {
 		this.players=new ArrayList<Player>();
 	    this.players=PlayerDataAccess.ListAllPlayers();
+	    this.rating=4.2;
 	}
 }

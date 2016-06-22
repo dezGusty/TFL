@@ -9,6 +9,7 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import model.PlayerRating;
 import java.util.List;
+import java.util.Set;
 
 /**
  * The persistent class for the player database table.
@@ -98,7 +99,7 @@ public class Player implements Serializable {
 	}
 
 	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
-	private List<Game> games;
+	private Set<Game> games;
 	
 	//bi-directional many-to-one association to PlayerRating
 	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
@@ -174,11 +175,11 @@ public class Player implements Serializable {
 		this.archive = archive;
 	}
 	
-	public List<Game> getGames() {
+	public Set<Game> getGames() {
 		return this.games;
 	}
 
-	public void setGames(List<Game> games) {
+	public void setGames(Set<Game> games) {
 		this.games = games;
 	}
 

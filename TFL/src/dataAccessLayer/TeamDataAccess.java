@@ -50,7 +50,7 @@ public class TeamDataAccess {
 		return t;	
 	}
 	
-	public static Team removeTeam(int teamId)
+	public static Team RemoveAllPlayers(int teamId)
 	{
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
@@ -59,6 +59,7 @@ public class TeamDataAccess {
 		if(team !=null)
 		{
 			team.getPlayers().clear();
+			team.setScore(0);
 		}
 		em.getTransaction().commit();
 		em.refresh(team);
@@ -76,6 +77,23 @@ public class TeamDataAccess {
 		if(team !=null && player!=null)
 		{
 			team.getPlayers().remove(player);
+			team.setScore(team.getScore()-player.getRating());
+		}
+		em.getTransaction().commit();
+		em.refresh(team);
+		em.close();
+		return team;
+	}
+	
+	public static Team SaveTeamName(int teamID,String name)
+	{
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Team team=em.find(Team.class,teamID);		
+		
+		if(team !=null)
+		{
+			team.setName(name);
 		}
 		em.getTransaction().commit();
 		em.refresh(team);

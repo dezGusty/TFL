@@ -289,7 +289,7 @@ public class GameDataAccess implements Serializable {
 		
 		try
 		{
-			findGame.getPlayers().add(play);
+			findGame.addPlayer(play);
 			em.getTransaction().commit();
 			em.refresh(findGame);
 			em.refresh(play);
