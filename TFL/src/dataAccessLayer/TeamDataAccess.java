@@ -38,16 +38,17 @@ public class TeamDataAccess {
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
 		
-		Team t= em.find(Team.class, teamToSave.getId());			
-		t.setName(teamToSave.getName());
-		t.setScore(teamToSave.getScore());
-		t.setPlayers(teamToSave.getPlayers());
-		t.setWinner(teamToSave.getWinner());
+		Team team= em.find(Team.class, teamToSave.getId());			
+		team.setName(teamToSave.getName());
+		team.setScore(teamToSave.getScore());
+		team.setWinner(teamToSave.getWinner());
+		team.setGoals(teamToSave.getGoals());
 		
+		em.merge(team);
 		em.getTransaction().commit();
-		em.refresh(t);
+		em.refresh(team);
 		em.close();
-		return t;	
+		return team;	
 	}
 	
 	public static Team RemoveAllPlayers(int teamId)

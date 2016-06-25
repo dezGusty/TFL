@@ -100,17 +100,12 @@ public class GameDataAccess implements Serializable {
 		Game game=em.find(Game.class, gameId);
 		if(game!=null)
 		{
-			try
-			{
-				game.setDifference(difference);
-				em.getTransaction().commit();
-				em.refresh(game);
-			}
-			catch(Exception ex)
-			{
-				System.out.println(ex.getMessage());
-			}
+			game.setDifference(difference);
+			em.merge(game);
+			em.getTransaction().commit();
+			em.refresh(game);
 		}	
+		
 		em.close();
 		return game;
 	}
@@ -302,7 +297,6 @@ public class GameDataAccess implements Serializable {
 		return play;
 	}
 
-	//adauga un nou joc in baza de date
 	public static Game AddNewGame(Game game)
 	{
 		EntityManager em = DatabaseConnection.GetConnection();

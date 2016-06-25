@@ -9,9 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
-import org.primefaces.event.RateEvent;
-
 import dataAccessLayer.PlayerDataAccess;
 import model.Player;
 
@@ -20,16 +17,6 @@ import model.Player;
 public class PlayersView implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
-	private int rating;
-	
-	public int getRating() {
-		return rating;
-	}
-
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
 
 	public List<Player> players;
 
@@ -55,6 +42,7 @@ public class PlayersView implements Serializable{
 		if(PlayerDataAccess.RemovePlayer(player.getId())==true)
 		{
 			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Player "+player.getUsername()+" successfully removed!"));
+			PlayerDataAccess.RemovePlayer(player.getId());
 			players.remove(player);
 		}
 		else
@@ -75,10 +63,14 @@ public class PlayersView implements Serializable{
 		}
 	}
 	
-	public void onrate(RateEvent rateEvent) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
+	public void onrate(Player player) {
+		System.out.println(player.getId());
+		System.out.println(player.getStars());
+		player.setRating(player.getStars().doubleValue());
+		System.out.println("Rating"+player.getRating());
+		PlayerDataAccess.updateRating(player.getId(), player.getRating());
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Player " + player.getUsername()+" rated to "+player.getStars()+" stars!");
         FacesContext.getCurrentInstance().addMessage(null, message);
-        System.out.println("On rate event");
     }
      
     public void oncancel() {
@@ -90,7 +82,6 @@ public class PlayersView implements Serializable{
 	@PostConstruct
 	public void init() {
 		this.players=new ArrayList<Player>();
-	    this.players=PlayerDataAccess.ListAllPlayers();
-	    this.rating=4.2;
-	}
+	    this.players=PlayerDataAccess.ListActivePlayers();
+	}	
 }

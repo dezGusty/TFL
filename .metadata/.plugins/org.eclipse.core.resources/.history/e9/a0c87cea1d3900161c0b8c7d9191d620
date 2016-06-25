@@ -1,0 +1,64 @@
+package dataAccessLayer;
+
+import java.io.Serializable;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.persistence.EntityManager;
+import helpers.DatabaseConnection;
+import model.Player;
+import model.PlayerRating;
+
+@ManagedBean(name = "playerRatingAccess")
+@ApplicationScoped
+public class PlayerRatingAccess implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	 public static PlayerRating RegisterNewRating(PlayerRating playerRating)
+	 {
+			try {
+				EntityManager em = DatabaseConnection.GetConnection();
+				em.getTransaction().begin();
+				em.persist(playerRating);
+				em.getTransaction().commit();
+				em.refresh(playerRating);
+				em.close();
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+			}
+			return playerRating;
+	 }
+		  
+	 public static Player DeleteRating(int playerId,int ratingId)
+	  {
+		 EntityManager em = DatabaseConnection.GetConnection();
+		 em.getTransaction().begin();
+		 
+		 Player player=em.find(Player.class, playerId);
+		 PlayerRating playerRating=em.find(PlayerRating.class, ratingId);
+		 if(playerRating !=null)
+		 {
+			em.remove(playerRating);
+		 }
+		 em.getTransaction().commit();
+		 em.close();
+	       return play;
+	  }
+	 
+	  public static void main(String[] args) {
+		  
+//		  Player player=PlayerDataAccess.FindPlayer(4);	  
+//		  System.out.println(player.getPlayerRatings().size());
+//		  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//			System.out.println(	format.format(new Date()));
+//			PlayerRating pl=new PlayerRating(new Date(),player);
+//			pl=RegisterNewRating(pl);
+//		  System.out.println(pl.toString());
+//		 player=PlayerDataAccess.FindPlayer(4);	  
+//		 System.out.println(player.getPlayerRatings().size());
+	}
+
+}

@@ -56,10 +56,12 @@
 					<h:outputText value="#{player.username}"></h:outputText>
 				</p:column>
 				<p:column style="text-align:center" headerText="Rating">
-				 <p:rating value="#{playersView.rating}">
-            		<p:ajax event="rate" listener="#{playersView.onrate}"  />
+				 <p:rating  stars="10"  value="#{player.stars}"> 
+            		<p:ajax event="rate" listener="#{playersView.onrate(player)}" update="table" >
+            		</p:ajax>
             		<p:ajax event="cancel" listener="#{playersView.oncancel}" />
        			 </p:rating>
+       			 <h:outputText value="#{player.rating}"></h:outputText>
 				</p:column>
 					<p:column style="text-align:center">
 						<p:commandButton value="Remove from players" style="background-color: transparent;border:none;" actionListener="#{playersView.remove(player)}" update="table">

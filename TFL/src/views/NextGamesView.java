@@ -13,7 +13,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DualListModel;
 import dataAccessLayer.GameDataAccess;
@@ -27,7 +26,7 @@ import helpers.TeamGenerator;
 public class NextGamesView implements Serializable{
 
 	    private static final long serialVersionUID = 1L;	
-	    private final int MAXNUMBEROFPLAYERS=4;
+	    public final int MAXNUMBEROFPLAYERS=4;
 	    public static List<Game> games;    
 	    private Game selectedGame;    
 	    private Date gameDate;
@@ -147,7 +146,6 @@ public class NextGamesView implements Serializable{
 			Game selectGame=GameDataAccess.GetGame(game.getId());
 			this.selectedGame=selectGame;
 			ELContext context = FacesContext.getCurrentInstance().getELContext();
-			LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 			TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
 			WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
 			teamsBean.setShowNextPrevious(false);
@@ -161,60 +159,29 @@ public class NextGamesView implements Serializable{
 				waitToPlay.getPlayers().addAll(selectGame.getPlayersWaiting());
 			}
 			teamsBean.setPlayers( new DualListModel<>(new ArrayList<Player>(selectGame.getTeam1().getPlayers()), new ArrayList<Player>(selectGame.getTeam2().getPlayers())));
-			RedirectView.Redirect(loginBean.getCurrentPlayer(),  "/resources/teamsuser.xhtml", "/resources/teamsadmin.xhtml");
+			RedirectView.Redirect("/resources/teams.xhtml");
 		}
-
-		public List<List<Player>> generateTeams(List<Player> players)
-		{	
-			List<List<Player>> list=new ArrayList<List<Player>>();
-			
-			TeamGenerator.list=players;
-			TeamGenerator.generateTeams();
-			TeamGenerator.printMap(TeamGenerator.map);
-			Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[0];
-			
-			List<Player> firstList = TeamGenerator.map.get(key);
-			list.add(firstList);
-			
-			System.out.println("First team:");
-			for(Player p:firstList)
-			{
-				System.out.println(p.getUsername());
-			}
-			
-			List<Player> secondList = new ArrayList<Player>();
-			
-			
-			//poate fi scoasa intr-o alta metoda in care dintr-o lista de jucatori elimin alta lista de jucatori
-			boolean existsInList=false;
-			for(Player p:players)
-			{
-				existsInList=false;
-				
-				for(Player pl:firstList)
-				{
-					if(p.getId()==pl.getId())
-					{
-						existsInList=true;
-						break;
-					}
-				}
-				if(!existsInList)
-				{
-					secondList.add(p);
-				}
-				
-			}
-			System.out.println("Second list:");
-			for(Player p:secondList)
-			{
-				System.out.println(p.getUsername());
-			}
-			list.add(secondList);
-
-			return list;
-		}	
 		
+		public void addTeamsResults(Game game)
+		{
+			Game selectGame=GameDataAccess.GetGame(game.getId());
+			this.selectedGame=selectGame;
+			ELContext context = FacesContext.getCurrentInstance().getELContext();
+			TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
+			WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
+			teamsBean.setShowNextPrevious(false);
+			if(selectGame!=null)
+			{
+				teamsBean.setGame(selectGame);
+			}
+			if(selectGame.getPlayersWaiting()!=null)
+			{
+				waitToPlay.setPlayers(new ArrayList<Player>());
+				waitToPlay.getPlayers().addAll(selectGame.getPlayersWaiting());
+			}
+			teamsBean.setPlayers( new DualListModel<>(new ArrayList<Player>(selectGame.getTeam1().getPlayers()), new ArrayList<Player>(selectGame.getTeam2().getPlayers())));
+			RedirectView.Redirect("/resources/historyteams.xhtml");
+		}
 		
 		public Game generateTeams(int gameId)
 		{	
@@ -240,11 +207,8 @@ public class NextGamesView implements Serializable{
 				System.out.println("There are more than 4 players");
 				TeamDataAccess.RemoveAllPlayers(game.getTeam1().getId());
 				TeamDataAccess.RemoveAllPlayers(game.getTeam2().getId());
-				TeamGenerator.list=new ArrayList<Player>(game.getPlayers());
-				TeamGenerator.generateTeams();
-				TeamGenerator.printMap(TeamGenerator.map);
-				Object key = TeamGenerator.map.keySet().toArray(new Object[TeamGenerator.map.size()])[0];
-				List<Player> firstList = TeamGenerator.map.get(key);
+				TeamGenerator tg=new TeamGenerator(new ArrayList<Player>(game.getPlayers()));
+				List<Player> firstList = tg.GetBestTeam();
 				System.out.println("First team: ");
 				for(Player play:firstList)
 				{
@@ -269,17 +233,7 @@ public class NextGamesView implements Serializable{
 			System.out.println(game.getTeam1().getPlayers().size());
 			return game;
 		}
-		
-		public void onCellEdit(CellEditEvent event) {
-	        Object oldValue = event.getOldValue();
-	        Object newValue = event.getNewValue();
-	        GameDataAccess.SetDifference(Integer.parseInt(event.getRowKey()), Integer.parseInt(newValue.toString()));
-	        if(newValue != null && !newValue.equals(oldValue)) {
-	        FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Update difference from " + oldValue + " to " + newValue+"!"));
-	        }
-	    }
-		
+	
 		public void onRowSelect(SelectEvent event) {
           this.selectedGame=(Game) event.getObject();
 	    }

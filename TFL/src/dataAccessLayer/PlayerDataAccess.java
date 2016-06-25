@@ -8,7 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import helpers.DatabaseConnection;
+import model.Game;
 import model.Player;
+import model.PlayerRating;
 
 @ManagedBean(name = "playerDataAccess")
 @ApplicationScoped
@@ -27,8 +29,9 @@ public class PlayerDataAccess implements Serializable{
 		return player;
 	}
 	
-	public static Player createUser(String username, String password) {
-		Player emp = new Player(username,password);
+	public static Player CreateNewUser(String username, String password,Double rating) {
+		Player emp = new Player(username,password,rating);
+		emp.setStars(rating.intValue());
 		try {
 			EntityManager em = DatabaseConnection.GetConnection();
 			em.getTransaction().begin();
@@ -117,7 +120,24 @@ public class PlayerDataAccess implements Serializable{
         return play;
 	}
 	
-	  public static List<Player> ListAllPlayers() {
+	public static Player updateRating(int playerId, Double rating)
+	{	
+		EntityManager em = DatabaseConnection.GetConnection();
+		em.getTransaction().begin();
+		Player play =em.find(Player.class,playerId);
+		if(play!=null)
+		{
+			play.setRating(rating);
+			play.setStars(play.getRating().intValue());
+		}
+		em.merge(play);
+		em.getTransaction().commit();
+		em.refresh(play);
+		em.close();
+        return play;
+	}
+
+	public static List<Player> ListAllPlayers() {
 
 		  EntityManager em = DatabaseConnection.GetConnection();
 			em.getTransaction().begin();
@@ -149,4 +169,149 @@ public class PlayerDataAccess implements Serializable{
 				return false;
 			}
 		}
+	  
+	  public static boolean DeleteRatingsBeforeGame(int playerId,int gameId) {
+		    EntityManager em = DatabaseConnection.GetConnection();
+			em.getTransaction().begin();
+			Player player=em.find(Player.class, playerId);
+			Game game=em.find(Game.class, gameId);
+			
+			if(player!=null && game!=null)
+			{		
+				System.out.println("Player games:");
+				for(Game g:player.getGames())
+				{
+					System.out.println(g.toString());
+				}
+				System.out.println("Player ratings:");
+				for(PlayerRating pl:player.getPlayerRatings())
+				{
+					System.out.println(pl.toString());
+				}			
+				if(player.hasRatingForGame(game))
+				{
+					System.out.println("There is already rating for this game!");
+					for(PlayerRating pl:player.getPlayerRatings())
+					{
+						if((pl.getDate().after(game.getDate())) || (pl.getDate().compareTo(game.getDate())==0) )
+						{
+							PlayerRatingAccess.DeleteRating(pl.getId());
+						}
+					}
+					return true; //daca s-au sters rating-uri si pentru alte jocuri
+				}
+				else
+				{
+					System.out.println("There is no rating for this game!");
+				}
+			}
+			em.getTransaction().commit();
+			em.close();
+			return false; //daca nu are ratinguri de sters
+		}
+	  
+	  public static Player UpdateLastValidRating(int playerId)
+	  {
+		  EntityManager em = DatabaseConnection.GetConnection();
+			em.getTransaction().begin();
+			Player player=em.find(Player.class, playerId);
+			if(player!=null)
+			{
+				player.setRating(player.getLastRating());
+				player.setStars(player.getRating().intValue());
+				System.out.println("last rating is: "+player.getRating());
+				em.merge(player);
+				em.getTransaction().commit();
+				em.refresh(player);
+			}
+			em.close();
+			return player;
+	  }
+	  
+	  public static Player NewRatingForGame(int playerId,int gameId)
+	  {
+		  EntityManager em = DatabaseConnection.GetConnection();
+			em.getTransaction().begin();
+			Player player=em.find(Player.class, playerId);
+			Game game=em.find(Game.class, gameId);
+			if(player!=null && game!=null)
+			{
+				System.out.println("Current player rating: "+player.getRating());
+				System.out.println("Game difference: "+game.getDifference());
+				if(game.getTeam1().containsPlayer(player))
+				{
+					if(game.getTeam1().getWinner())
+					{
+						player.setRating(player.getRating()+(game.getDifference()*0.01));
+					}
+					else
+					{
+						player.setRating(player.getRating()-(game.getDifference()*0.01));
+					}
+				}
+				else
+				{
+					if(game.getTeam2().containsPlayer(player))
+					{
+						if(game.getTeam2().getWinner())
+						{
+							player.setRating(player.getRating()+(game.getDifference()*0.01));
+						}
+						else
+						{
+							player.setRating(player.getRating()-(game.getDifference()*0.01));
+						}
+					}
+				}
+				em.merge(player);
+				em.getTransaction().commit();
+				em.refresh(player);
+			}
+			em.close();
+			return player;
+	  }
+	  	  
+	  public static List<Player> ListActivePlayers() {	
+			EntityManager em = DatabaseConnection.GetConnection();
+			em.getTransaction().begin();
+			TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p WHERE p.archive = false", Player.class);
+			List<Player> result = new ArrayList<Player>();
+			result = query.getResultList();
+			em.close();
+			return result;
+		}
+	  
+	  public static void main(String[] args) {
+		  Player p=FindPlayer(4);
+		  Game ga=GameDataAccess.GetGame(47);
+//		 GameDataAccess.PlayGame(ga.getId(), p.getId());
+//		  TeamDataAccess.AddNewPlayer(ga.getTeam2().getId(), p.getId());
+		  if(DeleteRatingsBeforeGame(4, 47))
+		  {
+			  p=UpdateLastValidRating(4);
+			  System.out.println("Ratings deleted successfully");
+			  System.out.println("last rating is: "+p.getRating());
+			  p=NewRatingForGame(4, 47);
+			  PlayerRating newRating=new PlayerRating(ga.getDate(),p,p.getRating());
+			  for(Game game:p.getGames())
+			  {
+				  PlayerRatingAccess.RegisterNewRating(newRating);
+				  if(game.getDate().after(ga.getDate()))
+				  {
+					  p=NewRatingForGame(p.getId(), game.getId());
+					  PlayerRating newwRating=new PlayerRating(ga.getDate(),p,p.getRating());
+					  PlayerRatingAccess.RegisterNewRating(newwRating);
+				  }
+			  }
+		  }
+		  else
+		  {
+			  System.out.println("No ratings were deleted");
+			  p=NewRatingForGame(4, 47);
+			  PlayerRating newRating=new PlayerRating(ga.getDate(),p,p.getRating());
+			  PlayerRatingAccess.RegisterNewRating(newRating);
+		  }
+		  
+		  System.out.println("new rating: "+p.getRating());
+	   }
 }

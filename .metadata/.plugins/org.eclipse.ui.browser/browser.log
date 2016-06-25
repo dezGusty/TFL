@@ -14517,3 +14517,26 @@ iun. 22, 2016 13:49:33.43
 iun. 22, 2016 14:10:11.31 
 iun. 22, 2016 14:10:11.40 ###!!! [Parent][MessageChannel] Error: (msgtype=0xDA000D,name=PServiceWorkerManager::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
 iun. 22, 2016 14:10:11.41 
+
+iun. 22, 2016 18:54:46.40 NEW SESSION
+iun. 22, 2016 18:54:46.40 1466610886402	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 22, 2016 18:54:46.60 1466610886609	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 22, 2016 18:54:46.80 1466610886807	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+iun. 22, 2016 19:04:36.28 [Child 4580] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 22, 2016 19:04:36.28 [Child 4580] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iun. 23, 2016 09:13:26.92 NEW SESSION
+iun. 23, 2016 09:13:26.92 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 23, 2016 10:00:59.19 console.warn: Asynchronous operation was aborted as selection changed.
+
+iun. 23, 2016 13:33:45.30 NEW SESSION
+iun. 23, 2016 13:33:45.30 [Child 5268] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 23, 2016 13:33:45.33 [Child 5268] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 23, 2016 13:39:09.45 console.warn: Asynchronous operation was aborted as selection changed.
+
+iun. 23, 2016 18:53:36.28 NEW SESSION
+iun. 23, 2016 18:53:36.28 [Child 6160] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 23, 2016 18:53:36.28 [Child 6160] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 23, 2016 18:56:46.51 1466697406513	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 23, 2016 18:56:46.72 1466697406724	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 23, 2016 18:56:46.98 1466697406986	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property

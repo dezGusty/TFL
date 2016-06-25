@@ -106,7 +106,6 @@ public class LoginView implements Serializable {
 	
 	public void redirectToPersonalInfo(ActionEvent actionEvent)
 	{
-		new PersonalInformationView(this.currentPlayer);
 		RedirectView.Redirect("/resources/viewpersonalinfo.xhtml");
 	}
 	
@@ -134,7 +133,11 @@ public class LoginView implements Serializable {
 	public void redirectToPlayers(ActionEvent actionEvent)
 	{
 		System.out.println("Hello from redirect to players!");
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		PlayersView playersView= (PlayersView) context.getELResolver().getValue(context, null, "playersView");
+		playersView.setPlayers(PlayerDataAccess.ListActivePlayers());
 		RedirectView.Redirect(this.currentPlayer, "/resources/viewplayers.xhtml", "/resources/adminplayersview.xhtml");	
+	
 	}
 	
 	 public void redirectToHistory(ActionEvent actionEvent)
@@ -142,7 +145,7 @@ public class LoginView implements Serializable {
 	    ELContext context = FacesContext.getCurrentInstance().getELContext();
 		NextGamesView firstBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
 		firstBean.setGames(GameDataAccess.listPreviousGames());	
-		RedirectView.Redirect(this.currentPlayer, "/resources/historyuser.xhtml", "/resources/historyadmin.xhtml");
+		RedirectView.Redirect("/resources/gameshistory.xhtml");
 	 }
 	
 	  public void changePassword() {

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Thuesday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
+</h:head>
+
+<h:body>
+	<h:outputStylesheet name="../styles/custCss.css" />
+	<div class="container-fluid">		
+		<div class="row">
+			<div class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
+				<div class="container">
+					<div class="row" style="color:white">
+						<h1>Thuesday Football League</h1>
+					</div>
+  				</div>
+  				
+  				<div class="row">
+					<ui:insert name="header">
+						<ui:include src="/resources/header.xhtml" />
+					</ui:insert>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid withBackground" style="min-height:90vh">
+		<h:form>
+			<div class="container">
+			
+				<div class="row">
+					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+				</div>
+				
+				<div class="row" style="padding-top:7%">
+					 <div class=" col-sm-12 col-md-8" style="text-align:center;">
+						<ui:insert name="header">
+							<ui:include src="/resources/viewteams.xhtml" />
+						</ui:insert>
+					</div>
+					
+					<div class=" col-sm-12 col-md-4" style="text-align:center;">
+					
+						<div class="row">
+							
+							<div class=" col-sm-10 col-md-10">
+							
+								<p:dataList id="datalist" value="#{waitingPlayers.players}" var="player" itemType="player" >
+        							<f:facet name="header">
+           								 Waiting..
+       								 </f:facet>
+       								 <h:outputText value="#{player.username}, #{player.rating}" style="display:inline-block"/>
+   								 	 <p:commandButton id="add" value="Add" update="datalist" actionListener="#{waitingPlayers.addPlayer(player)}" ajax="false" >
+   								 	 	<f:setPropertyActionListener value="#{player}" target="#{waitingPlayers.selectedPlayer}" />
+   								 	 </p:commandButton>
+   								 </p:dataList>
+							</div>
+							
+							<div class=" col-sm-2 col-md-2">
+								<div class="btn-group">
+   			 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  					  					<span class="glyphicon glyphicon-cog"></span>
+  									</button>
+  									<ul class="dropdown-menu dropdown-menu-right">
+    									<li>
+    										<p:commandButton title="Add players"  onclick="PF('addPlayers').show();" value="Add more players" />
+   			 							</li>
+    									<li>
+    										<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeams}" />
+										</li>
+  									</ul>
+   			    				</div>
+							</div>					
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</div>
+	
+	<p:dialog header="Add players" widgetVar="addPlayers"  height="200" width="300" showEffect="clip" hideEffect="clip">
+			<h:form id="addPlayerDialog">
+			<div class=" col-sm-12 col-md-12" style="text-align:center">
+				<h:outputText value="Select player to add" />
+			</div>
+			<div class=" col-sm-12 col-md-12" style="text-align:center">
+           		<p:autoComplete id="dd" dropdown="true" var="theme" itemValue="#{theme}" itemLabel="#{theme.username}" value="#{autoCompleteView.selectedPlayer}" completeMethod="#{autoCompleteView.completeTheme}" converter="playerConverter" >
+           			<p:column style="width:10%">
+                		<p:graphicImage id="home" style="height:40px" value="#{theme.picture}" />
+           			 </p:column>
+           			<p:column style="width:80%">
+               			<h:outputText value="#{theme.username}"/>
+           			</p:column>
+ 					<p:column>
+                		<h:outputText value="#{theme.rating}" />
+            		</p:column>
+           		</p:autoComplete>     		
+			</div>
+			<div class=" col-sm-12 col-md-12" style="text-align:center">
+				<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayers}" ajax="false" />
+			</div>
+   			</h:form>
+   	</p:dialog>
+	
+	<script src="../bootstrap/js/bootstrap.min.js"></script>	
+</h:body>
+</html>
+	

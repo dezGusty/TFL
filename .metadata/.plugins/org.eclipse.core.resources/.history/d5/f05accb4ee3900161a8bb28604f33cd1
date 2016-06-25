@@ -1,0 +1,28 @@
+@CHARSET "ISO-8859-1";
+.withBackground
+{
+  background: url('../images/d.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+.navbar-nav > li > .dropdown-menu
+{
+	border:none;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+	font-color:black;
+}
+
+.maxheight
+{
+	height:250px;
+}
+.ui-picklist.ui-picklist-responsive .ui-picklist-list-wrapper
+{
+	width:45%;
+}

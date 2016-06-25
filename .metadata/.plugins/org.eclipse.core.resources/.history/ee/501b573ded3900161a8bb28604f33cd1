@@ -1,0 +1,49 @@
+package views;
+
+import javax.annotation.PostConstruct;
+import javax.el.ELContext;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+@ManagedBean(name = "personalInfo")
+@SessionScoped
+public class PersonalInformationView {
+	public  int playedGames;
+    private int winner;
+    private int looser;
+    
+
+    @PostConstruct
+	public void init() {
+    	ELContext context = FacesContext.getCurrentInstance().getELContext();
+		LoginView firstBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
+		this.setPlayedGames(firstBean.currentPlayer.GetTotalPlayedGames());
+		this.winner=0;
+		this.looser=0;
+	}
+    
+    public int getPlayedGames() {
+		return playedGames;
+	}
+
+	public void setPlayedGames(int playedGames) {
+		this.playedGames = playedGames;
+	}
+
+	public int getWinner() {
+		return winner;
+	}
+	
+	public void setWinner(int winner) {
+		this.winner = winner;
+	}
+
+	public int getLooser() {
+		return looser;
+	}
+
+	public void setLooser(int looser) {
+		this.looser = looser;
+	}
+}

@@ -29,8 +29,20 @@ public class PlayerRating implements Serializable {
 	private Player player;
 
 	public PlayerRating() {
+		this.rating=0.0;
+		this.player=new Player();
 	}
-
+	
+	public PlayerRating(Date date, Player player,double rating)
+	{
+		if(player!=null)
+		{
+			this.player=player;
+		}
+		this.date=date;
+		this.rating=rating;
+	}
+	
 	public Integer getId() {
 		return this.id;
 	}
@@ -62,4 +74,10 @@ public class PlayerRating implements Serializable {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
+
+	@Override
+	public String toString() {
+		return "PlayerRating: playerId=" + this.player.getId() + " date=" + date + " rating=" + rating;
+	}
+
 }

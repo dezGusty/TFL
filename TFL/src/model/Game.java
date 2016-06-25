@@ -18,6 +18,11 @@ import java.util.Set;
 @Table(name="game")
 @NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
 public class Game implements Serializable {
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", date=" + date + ", difference=" + difference + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id

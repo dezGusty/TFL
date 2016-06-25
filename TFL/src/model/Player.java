@@ -34,15 +34,12 @@ public class Player implements Serializable {
 		this.picture="../images/noimage.png";
 	}
 	
-	public Player(String username, String password)
+	public Player(String username, String password,Double rating)
 	{
-		this.archive=false;
-		this.available=true;
-		this.password=password;
-		this.rating=0.0;
-		this.type=1;
+		this();
 		this.username=username;		
-		this.picture="../images/noimage.png";
+		this.password=password;
+		this.setRating(rating);
 	}
 	
 	public double getMinRating()
@@ -81,7 +78,7 @@ public class Player implements Serializable {
 
 	private byte[] image;
 
-	private double rating;
+	private Double rating;
 
 	private Integer type;
 
@@ -91,6 +88,16 @@ public class Player implements Serializable {
 	
 	private String picture;
 	
+	private Integer stars;
+	
+	public Integer getStars() {
+		return stars;
+	}
+
+	public void setStars(Integer stars) {
+		this.stars = stars;
+	}
+
 	public String getPicture() {
 		return picture;
 	}
@@ -141,13 +148,14 @@ public class Player implements Serializable {
 
 	public void setImage(byte[] image) {
 		this.image = image;
+		
 	}
 
-	public double getRating() {
+	public Double getRating() {
 		return this.rating;
 	}
 
-	public void setRating(double rating) {
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
 
@@ -199,9 +207,10 @@ public class Player implements Serializable {
 	}
 
 	public PlayerRating removePlayerRating(PlayerRating playerRating) {
-		getPlayerRatings().remove(playerRating);
-		playerRating.setPlayer(null);
-
+		if(this.playerRatings.contains(playerRating))
+		{
+			this.playerRatings.remove(playerRating);
+		}
 		return playerRating;
 	}
 	
@@ -220,4 +229,89 @@ public class Player implements Serializable {
 			return true;
 		return false;
 	}	
+	
+	public boolean hasRatingForGame(Game game)
+	{
+		for(PlayerRating playerRating:this.playerRatings)
+		{
+			if(playerRating.getDate().compareTo(game.getDate())==0)			
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public double getLastRating()
+	{
+		PlayerRating result=null;
+		if(this.playerRatings!=null && this.playerRatings.size()!=0)
+		{
+			result=this.playerRatings.get(0);
+			System.out.println(result.getDate()+" "+result.getRating());
+			for(PlayerRating playerRating:this.playerRatings)
+			{
+				System.out.println(playerRating.getDate()+" "+playerRating.getRating());
+				if((playerRating.getDate()).after(result.getDate()))			
+				{
+					result=playerRating;
+				}
+			}
+		}	
+		return result.getRating();
+	}
+	
+	public int NumberOfWinnedGames()
+	{
+		int result=0;
+		if(this.games!=null)
+		{
+			for(Game game:this.games)
+			{
+				if(game.getTeam1().containsPlayer(this))
+				{
+					if(game.getTeam1().getWinner())
+					{
+						result++;
+					}
+				}
+				
+				if(game.getTeam2().containsPlayer(this))
+					{
+						if(game.getTeam2().getWinner())
+						{
+							result++;
+						}
+					}
+				}
+		}
+		return result;
+	}
+	
+	public int NumberOfLosedGames()
+	{
+		int result=0;
+		if(this.games!=null)
+		{
+			for(Game game:this.games)
+			{
+				if(game.getTeam1().containsPlayer(this))
+				{
+					if(game.getTeam1().getWinner()==false)
+					{
+						result++;
+					}
+				}
+				
+				if(game.getTeam2().containsPlayer(this))
+					{
+						if(game.getTeam2().getWinner()==false)
+						{
+							result++;
+						}
+					}
+				}
+		}
+		return result;
+	}
 }

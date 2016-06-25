@@ -1,9 +1,10 @@
 package views;
 
+import javax.annotation.PostConstruct;
+import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
-import model.Player;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "personalInfo")
 @SessionScoped
@@ -12,28 +13,15 @@ public class PersonalInformationView {
     private int winner;
     private int looser;
     
-    public PersonalInformationView()
-    {
-    	this.playedGames=0;
-    	this.winner=0;
-    	this.looser=0;
-    }
-    
-    public PersonalInformationView(Player player)
-    {
-    	if(player!=null)
-    	{
-    		if(player.getGames()!=null)
-    		{
-    			this.playedGames=player.GetTotalPlayedGames();
-    		}
-//    		if(player.getTeams()!=null)
-//    		{
-//    			this.winner=player.GetGames(true);
-//    			this.looser=player.GetGames(false);
-//    		}
-    	}
-    }
+
+    @PostConstruct
+	public void init() {
+    	ELContext context = FacesContext.getCurrentInstance().getELContext();
+		LoginView firstBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
+		this.setPlayedGames(firstBean.currentPlayer.GetTotalPlayedGames());
+		this.winner=firstBean.currentPlayer.NumberOfWinnedGames();
+		this.looser=firstBean.currentPlayer.NumberOfLosedGames();
+	}
     
     public int getPlayedGames() {
 		return playedGames;

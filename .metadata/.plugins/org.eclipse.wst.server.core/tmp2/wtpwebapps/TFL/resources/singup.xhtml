@@ -65,7 +65,7 @@
 							<p:outputLabel  value="Confirm password"></p:outputLabel>
 						</div>
 						<div class="col-xs-7 col-md-7" style="text-align:left">
-							<p:password id="cpass" value="#{singUpView.cpass}" style="width:100%">
+							<p:password id="cpass" value="#{singUpView.confirmation}" style="width:100%">
 				 				<f:validateLength minimum="2"></f:validateLength>
 				 			</p:password>
 						</div>
@@ -73,7 +73,7 @@
 					
 					<div class="row biggerFont">
 						<div class="col-xs-12 col-md-12">
-							<p:commandButton value="Create account" action="#{singUpView.save}"/>  
+							<p:commandButton value="Create account" action="#{singUpView.save}" update="panel"/>  
 						</div>
 					</div>
 				</p:panel>

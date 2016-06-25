@@ -12,11 +12,6 @@
 {
 	border:none;
 }
-.ui-inputswitch.ui-inputswitch-off
-{
-	height:100%;
-	padding-top: 0px;
-}
 
 .navbar-default .navbar-nav > li > a
 {
@@ -30,4 +25,9 @@
 .ui-picklist.ui-picklist-responsive .ui-picklist-list-wrapper
 {
 	width:45%;
+}
+.ui-inputswitch.ui-inputswitch-off
+{
+	height:100%;
+	padding-top: 0px;
 }

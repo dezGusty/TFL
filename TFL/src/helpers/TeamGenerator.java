@@ -10,39 +10,24 @@ import model.Player;
 
 public class TeamGenerator {
 
-	public static int factorial(int number)
+	private  double totalValue=0;
+	private TreeMap<Double,List<Player>> map;
+	private List<List<Player>> resultList;
+	private List<Player> list;
+	
+	public TeamGenerator(List<Player> inputList)
 	{
-		int result=1;
-		for(int i=1;i<=number;i++)
+		if(inputList!=null)
 		{
-			result*=i;
+			this.list=inputList;
 		}
-		return result;
-	}
-	
-	public static int Combination(int n,int k)
-	{
-		return factorial(n)/(factorial(k)*factorial(n-k));
-	}
-	
-	public static List<List<Player>> resultList=new ArrayList<List<Player>>();
-	
-	public static List<Player> list=new ArrayList<Player>();
-	
-	
-	public static List<List<Player>> getResultList() {
-		return resultList;
+		this.resultList=new ArrayList<List<Player>>();
+
+		this.generateTeams();
+		this.printMap();		
 	}
 
-	public static void setResultList(List<List<Player>> resultList) {
-		TeamGenerator.resultList = resultList;
-	}
-
-	private static double totalValue=0;
-	
-	public static TreeMap<Double,List<Player>> map;
-	
-	public static void GetTotalValue(List<Player> players)
+	private void GetTotalValue(List<Player> players)
 	{
 			 for(Player p:players)
 			 {
@@ -51,7 +36,7 @@ public class TeamGenerator {
 			 totalValue=totalValue/2; 
 	}
 	
-    public static void  getCombinations(Player[] arr, int len, int startPosition, Player[] result){
+    private void getCombinations(Player[] arr, int len, int startPosition, Player[] result){
     		  
         if (len == 0){	
         	resultList.add(Arrays.asList(result));
@@ -69,7 +54,7 @@ public class TeamGenerator {
         }
     }  
 
-	public static TreeMap<Double,List<Player>> generateTeams()
+	private TreeMap<Double,List<Player>> generateTeams()
 	{		
 		Player[] array = new Player[list.size()];
 		list.toArray(array); 
@@ -98,12 +83,26 @@ public class TeamGenerator {
 		 return map;
 	}
 
-	public static void printMap(Map<Double,List<Player>> map) {
-		
+	public  List<Player> GetBestTeam()
+	{
+		Object key = this.map.keySet().toArray(new Object[this.map.size()])[0];
+		return this.map.get(key);
+	}
+	
+	public void printMap() {
+		System.out.println("Valoare ideala a unei echipe: "+this.totalValue);
+		System.out.println("Echipele sortate crescator in functie de 'echilibrul' obtinut sunt:");
 		for (Map.Entry<Double, List<Player>> entry : map.entrySet()) {
 			
-			System.out.println("Key : " + entry.getKey() 
-                                      + " Value : " + entry.getValue());
+			System.out.print(" Echipa: ");
+			for(Player p:entry.getValue())
+			{
+				System.out.print(p.getUsername()+" ");		
+			}
+			
+			System.out.print(" Diff : " + Math.abs(entry.getKey()-totalValue));
+			System.out.print(" Suma rating-urilor : " +entry.getKey());			
+			System.out.println();
 		}
 	}
 }

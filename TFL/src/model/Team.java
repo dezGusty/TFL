@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 /**
  * The persistent class for the team database table.
  * 
@@ -26,6 +25,16 @@ public class Team implements Serializable {
 	private double score;
 
 	private Boolean winner;
+	
+	private Integer goals;
+
+	public Integer getGoals() {
+		return goals;
+	}
+
+	public void setGoals(Integer goals) {
+		this.goals = goals;
+	}
 
 	@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="team_player", 
@@ -34,6 +43,7 @@ public class Team implements Serializable {
 	private Set<Player> players;
 
 	public Team() {
+		this.goals=0;
 		this.score=0.0;
 		this.players=new HashSet<Player>();
 		this.winner=false;
@@ -136,5 +146,4 @@ public class Team implements Serializable {
 		}
 		return false;
 	}
-	
 }

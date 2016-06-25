@@ -135,6 +135,14 @@
 				 		</p:password>
 					</div>
 				</div>
+				<div class="row" style="padding-top: 2%;">
+					<div class="col-sm-5 col-md-5" style="text-align:right">
+						<p:outputLabel  value="Rating"></p:outputLabel>
+					</div>
+					<div class="col-sm-7 col-md-7">
+						<p:password id="rate" value="#{singUpView.initialRating}"/>
+					</div>
+				</div>
 				
 				<div class="row" style="text-align:center;padding-top: 3%;">
 					<p:commandButton value="Add" actionListener="#{singUpView.newPlayer}" ajax="true" style="width:30%"/>

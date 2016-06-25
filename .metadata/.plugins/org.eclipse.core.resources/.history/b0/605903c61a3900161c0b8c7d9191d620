@@ -1,0 +1,49 @@
+package dataAccessLayer;
+
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import helpers.DatabaseConnection;
+import model.Player;
+import model.PlayerRating;
+
+@ManagedBean(name = "playerRatingAccess")
+@ApplicationScoped
+public class PlayerRatingAccess implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	 public static PlayerRating RegisterNewRating(PlayerRating playerRating)
+	 {
+			try {
+				EntityManager em = DatabaseConnection.GetConnection();
+				em.getTransaction().begin();
+				em.persist(playerRating);
+				em.getTransaction().commit();
+				em.refresh(playerRating);
+				em.close();
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+			}
+			return playerRating;
+	 }
+		  
+	  public static void main(String[] args) {
+		  
+		  Player player=PlayerDataAccess.FindPlayer(4);
+		  PlayerRating pl=new PlayerRating("2016-03-14",player);
+		  //pl=RegisterNewRating(pl);
+		  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			System.out.println(	format.format(new Date));
+		  System.out.println(pl.toString());
+	}
+
+}
