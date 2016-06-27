@@ -1,6 +1,7 @@
 package dataAccessLayer;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
@@ -91,13 +92,14 @@ public class PlayerDataAccess implements Serializable{
 		return null;
 	}
 
-	public static Player updateProfilePicture(int playerId, byte[] newPicture) {
+	public static Player updateProfilePicture(int playerId, String newPicture) {
 		EntityManager em = DatabaseConnection.GetConnection();
 		em.getTransaction().begin();
 		Player play =em.find(Player.class, playerId);
 		try {
-			    play.setImage(newPicture);
+			    play.setPicture(newPicture);
 			    System.out.println(play.getImage());
+			    em.merge(play);
 				em.getTransaction().commit();
 				em.close();
 				return play;
@@ -279,39 +281,23 @@ public class PlayerDataAccess implements Serializable{
 			result = query.getResultList();
 			em.close();
 			return result;
-		}
+	 }
+	  
+	  
 	  
 	  public static void main(String[] args) {
-		  Player p=FindPlayer(4);
-		  Game ga=GameDataAccess.GetGame(47);
-//		 GameDataAccess.PlayGame(ga.getId(), p.getId());
-//		  TeamDataAccess.AddNewPlayer(ga.getTeam2().getId(), p.getId());
-		  if(DeleteRatingsBeforeGame(4, 47))
-		  {
-			  p=UpdateLastValidRating(4);
-			  System.out.println("Ratings deleted successfully");
-			  System.out.println("last rating is: "+p.getRating());
-			  p=NewRatingForGame(4, 47);
-			  PlayerRating newRating=new PlayerRating(ga.getDate(),p,p.getRating());
-			  for(Game game:p.getGames())
-			  {
-				  PlayerRatingAccess.RegisterNewRating(newRating);
-				  if(game.getDate().after(ga.getDate()))
-				  {
-					  p=NewRatingForGame(p.getId(), game.getId());
-					  PlayerRating newwRating=new PlayerRating(ga.getDate(),p,p.getRating());
-					  PlayerRatingAccess.RegisterNewRating(newwRating);
-				  }
-			  }
-		  }
-		  else
-		  {
-			  System.out.println("No ratings were deleted");
-			  p=NewRatingForGame(4, 47);
-			  PlayerRating newRating=new PlayerRating(ga.getDate(),p,p.getRating());
-			  PlayerRatingAccess.RegisterNewRating(newRating);
-		  }
-		  
-		  System.out.println("new rating: "+p.getRating());
-	   }
+		  Game g1=GameDataAccess.GetGame(47);
+		  Game g2=GameDataAccess.GetGame(52);
+		  long startDate = g1.getDate().getTime();
+		  long endDate =g2.getDate().getTime();
+
+		  long diffTime = Math.abs(startDate - endDate);
+		  long diffDays = diffTime / (1000 * 60 * 60 * 24);
+		  DateFormat dateFormat = DateFormat.getDateInstance();
+		  System.out.println("The difference between "+
+		    dateFormat.format(startDate)+" and "+
+		    dateFormat.format(endDate)+" is "+
+		    diffDays+" days.");
+		 
+	  }
 }

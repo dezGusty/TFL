@@ -109,7 +109,7 @@ public class NextGamesView implements Serializable{
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!","Done! You are not playing anymore on  "+game.dateToDisplay()));
 			}
 			
-			NextGamesView.games=GameDataAccess.listNextGames();
+			NextGamesView.games=GameDataAccess.ListNextGames();
 		}
 		
 		public void newGame()

@@ -1,0 +1,51 @@
+package views;
+
+import java.io.IOException;
+import javax.el.ELContext;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.model.UploadedFile;
+import dataAccessLayer.PlayerDataAccess;
+ 
+@ManagedBean
+@ApplicationScoped
+public class FileUploadManagedBean {
+	 
+	private UploadedFile file;
+	 
+	public UploadedFile getFile() {
+	    return file;
+	}
+	 
+	public void setFile(UploadedFile file) {
+	   this.file = file;
+	}
+	     
+	public void upload() {
+	    	System.out.println("upload");
+	    	
+	        if(file != null) {
+	            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+	            try {
+					System.out.println("Input stream:"+file.getInputstream());
+					
+					ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+					LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+					System.out.println("Player image before upload:"+firstBean.getCurrentPlayer().getImage());
+					
+					byte[] bytes = new byte[1024];
+					file.getInputstream().read(bytes);
+					firstBean.getCurrentPlayer().setImage(bytes);
+					firstBean.setCurrentPlayer(PlayerDataAccess.updateProfilePicture(firstBean.getCurrentPlayer().getId(),bytes));
+					System.out.println("Current player image"+firstBean.getCurrentPlayer().getImage());
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+	            FacesContext.getCurrentInstance().addMessage(null, message);
+	        }
+	    }
+
+}

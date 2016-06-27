@@ -1,5 +1,7 @@
 package views;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
@@ -8,7 +10,11 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "personalInfo")
 @SessionScoped
-public class PersonalInformationView {
+public class PersonalInformationView implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public  int playedGames;
     private int winner;
     private int looser;

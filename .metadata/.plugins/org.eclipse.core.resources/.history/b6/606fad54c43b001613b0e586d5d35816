@@ -1,0 +1,7 @@
+package views;
+
+@ManagedBean(name="images")
+@ApplicationScoped
+public class Images {
+
+}

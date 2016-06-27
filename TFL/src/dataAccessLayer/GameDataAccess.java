@@ -65,18 +65,21 @@ public class GameDataAccess implements Serializable {
 		return result;
 	}
 
-	public static List<Game> listNextGames() {
+	public static List<Game> ListNextGames() {
 		EntityManager em = DatabaseConnection.GetConnection();
 		TypedQuery<Game> query =em.createQuery("SELECT g FROM Game g where g.date > current_date and g.archive = false", Game.class);
 		List<Game> result = new ArrayList<Game>();
+		
 		result = query.getResultList();
-
+		
+		System.out.println("next games:");
 		for (Game g : result) {
 			System.out.println("ID" + g.getId() + " Date:" + g.getDate() + " Difference" + g.getDifference());
 		}
 		em.close();
 		return result;
 	}
+	
 	
 	public static Game AddToArchive(int gameId)
 	{

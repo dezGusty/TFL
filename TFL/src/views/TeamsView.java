@@ -100,57 +100,7 @@ public class TeamsView implements Serializable {
 	    }
 	 
 	 public void saveTeams() {
-		   
-		System.out.println("Hello from save teams!");
-		//System.out.println("first team winner: "+this.game.getTeam1().getWinner());
-		//System.out.println("second team winner: "+this.game.getTeam2().getWinner());
-//		FacesContext.getCurrentInstance().addMessage(null,
-//				new FacesMessage(FacesMessage.SEVERITY_INFO, null,"First team goals: "+this.game.getTeam1().getGoals()+ "Second team golas:"+this.game.getTeam2().getGoals()));
-//		int difference=Math.abs(this.game.getTeam1().getGoals()-this.game.getTeam2().getGoals());
-//		FacesContext.getCurrentInstance().addMessage(null,
-//				new FacesMessage(FacesMessage.SEVERITY_INFO, null,"difference: "+difference));
-//		if(this.game.getTeam1().getGoals()>this.game.getTeam2().getGoals()){
-//			FacesContext.getCurrentInstance().addMessage(null,
-//					new FacesMessage(FacesMessage.SEVERITY_INFO, null,"First team ratings will be updated!"));
-//			for(Player player:this.game.getTeam1().getPlayers())
-//			{
-//				Double rating=player.getRating();
-//				player.setRating(rating+(difference * 0.01));
-//				player.setStars(player.getRating().intValue());
-//				PlayerRating newRating=new PlayerRating(this.game.getDate(),player);
-//				newRating.setRating(player.getRating());
-//				PlayerRatingAccess.RegisterNewRating(newRating);
-//				PlayerDataAccess.updateRating(player.getId(), player.getRating());
-//				FacesContext.getCurrentInstance().addMessage(null,
-//						new FacesMessage(FacesMessage.SEVERITY_INFO, null,"Rating for player "+player.getUsername()+ " updated from "+rating+" to "+player.getRating()));
-//				
-//			}
-//		}
-//		else
-//			if(this.game.getTeam2().getGoals()>this.game.getTeam1().getGoals()){
-//				FacesContext.getCurrentInstance().addMessage(null,
-//						new FacesMessage(FacesMessage.SEVERITY_INFO, null,"second team ratings will be updated!"));
-//				for(Player player:this.game.getTeam2().getPlayers())
-//				{
-//					Double rating=player.getRating();
-//					player.setRating(rating+(difference * 0.01));
-//					player.setStars(player.getRating().intValue());
-//					PlayerRating newRating=new PlayerRating(this.game.getDate(),player);
-//					newRating.setRating(player.getRating());
-//					PlayerRatingAccess.RegisterNewRating(newRating);
-//					PlayerDataAccess.updateRating(player.getId(), player.getRating());
-//					FacesContext.getCurrentInstance().addMessage(null,
-//							new FacesMessage(FacesMessage.SEVERITY_INFO, null,"Rating for player "+player.getUsername()+ " updated from "+rating+" to "+player.getRating()));
-//					
-//				}
-//			}
-//			else
-//			{
-//				FacesContext.getCurrentInstance().addMessage(null,
-//						new FacesMessage(FacesMessage.SEVERITY_INFO, null,"There is a tie! No ratings to update"));
-//			}
-		
-			
+
 		this.game.setTeam1(TeamDataAccess.SaveTeamName(this.game.getTeam1().getId(), this.game.getTeam1().getName()));
 		this.game.setTeam2(TeamDataAccess.SaveTeamName(this.game.getTeam2().getId(), this.game.getTeam2().getName()));
 		

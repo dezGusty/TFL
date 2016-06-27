@@ -69,6 +69,9 @@ public class LoginView implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.currentPlayer=new Player();
+		this.oldPass="";
+		this.newPass="";
+		this.confirmPass="";
 	}
 	
     public void login() {
@@ -100,7 +103,7 @@ public class LoginView implements Serializable {
 	{
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		NextGamesView firstBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
-		firstBean.setGames(GameDataAccess.listNextGames());	
+		firstBean.setGames(GameDataAccess.ListNextGames());	
 		RedirectView.Redirect(this.currentPlayer, "/resources/nextusergames.xhtml", "/resources/nextadmingames.xhtml");
 	}
 	

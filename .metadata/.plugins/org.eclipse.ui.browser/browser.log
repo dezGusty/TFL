@@ -14540,3 +14540,43 @@ iun. 23, 2016 18:53:36.28 [Child 6160] WARNING: pipe error: 109: file c:/builds/
 iun. 23, 2016 18:56:46.51 1466697406513	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
 iun. 23, 2016 18:56:46.72 1466697406724	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
 iun. 23, 2016 18:56:46.98 1466697406986	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+
+iun. 25, 2016 11:17:48.23 NEW SESSION
+iun. 25, 2016 11:17:48.23 1466842668230	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 25, 2016 11:17:48.44 1466842668441	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 25, 2016 11:17:48.88 1466842668885	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+iun. 25, 2016 11:45:46.62 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 25, 2016 12:04:59.89 [Child 7452] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iun. 25, 2016 13:17:11.79 NEW SESSION
+iun. 25, 2016 13:17:11.79 console.warn: Asynchronous operation was aborted as selection changed.
+
+iun. 25, 2016 19:03:32.20 NEW SESSION
+iun. 25, 2016 19:03:32.20 [Child 5500] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 25, 2016 19:03:32.23 [Child 5500] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 25, 2016 19:54:56.82 [Child 9192] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iun. 26, 2016 20:17:10.10 NEW SESSION
+iun. 26, 2016 20:17:10.10 1466961430101	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 26, 2016 20:17:10.36 1466961430319	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 26, 2016 20:17:10.74 1466961430740	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+iun. 26, 2016 20:27:04.05 [Child 4900] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 26, 2016 20:27:04.06 [Child 4900] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 26, 2016 20:40:36.90 [Child 2720] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 26, 2016 20:40:36.91 [Child 2720] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iun. 27, 2016 13:12:28.79 NEW SESSION
+iun. 27, 2016 13:12:28.79 [Child 1972] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 27, 2016 13:12:28.82 
+iun. 27, 2016 13:12:28.82 ###!!! [Child][MessageChannel] Error: (msgtype=0x82000F,name=PHttpChannel::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+iun. 27, 2016 13:12:28.83 
+iun. 27, 2016 13:12:28.83 
+iun. 27, 2016 13:12:28.84 ###!!! [Child][MessageChannel] Error: (msgtype=0xA20027,name=PNecko::Msg_RemoveSchedulingContext) Channel closing: too late to send/recv, messages will be lost
+iun. 27, 2016 13:12:28.84 
+iun. 27, 2016 13:12:28.85 [Child 1972] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 27, 2016 13:12:28.85 
+iun. 27, 2016 13:12:28.86 ###!!! [Child][MessageChannel] Error: (msgtype=0x82000F,name=PHttpChannel::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+iun. 27, 2016 13:12:28.86 
+iun. 27, 2016 13:12:28.86 
+iun. 27, 2016 13:12:28.86 ###!!! [Child][MessageChannel] Error: (msgtype=0xA20027,name=PNecko::Msg_RemoveSchedulingContext) Channel closing: too late to send/recv, messages will be lost
+iun. 27, 2016 13:12:28.87 

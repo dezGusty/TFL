@@ -1,0 +1,58 @@
+package views;
+
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+import dataAccessLayer.PlayerDataAccess;
+import model.Game;
+import model.Player;
+
+@ManagedBean(name="images")
+@ApplicationScoped
+public class Images implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String image;
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	private StreamedContent listImage;
+	
+	public StreamedContent getListImage() throws FileNotFoundException {
+    	
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        String studentId = context.getExternalContext().getRequestParameterMap().get("studentId");
+        Player student = PlayerDataAccess.FindPlayer(Integer.parseInt(studentId));
+        listImage = new DefaultStreamedContent(new FileInputStream(this.image), "image/png");
+        return listImage;
+    }
+
+	public void setListImage(StreamedContent listImage) {
+		this.listImage = listImage;
+	}
+
+	@PostConstruct
+	public void init() {
+		this.listImage=null;
+		this.image="c:/temp/kk/addPlayer.png";
+	}
+}
