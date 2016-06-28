@@ -5,6 +5,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import helpers.DatabaseConnection;
+import helpers.EntitiesManager;
 import model.PlayerRating;
 
 @ManagedBean(name = "playerRatingAccess")
@@ -19,12 +20,11 @@ public class PlayerRatingAccess implements Serializable{
 	 public static PlayerRating RegisterNewRating(PlayerRating playerRating)
 	 {
 			try {
-				EntityManager em = DatabaseConnection.GetConnection();
-				em.getTransaction().begin();
-				em.persist(playerRating);
-				em.getTransaction().commit();
-				em.refresh(playerRating);
-				em.close();
+				//EntitiesManager.EM.getTransaction().begin();
+				EntitiesManager.EM.persist(playerRating);
+				EntitiesManager.EM.getTransaction().commit();
+				EntitiesManager.EM.refresh(playerRating);
+				//em.close();
 			} catch (Exception ex) {
 				System.out.println(ex.getMessage());
 			}
@@ -33,16 +33,16 @@ public class PlayerRatingAccess implements Serializable{
 		  
 	 public static void DeleteRating(int ratingId)
 	  {
-		 EntityManager em = DatabaseConnection.GetConnection();
-		 em.getTransaction().begin();
+		 
+		// EntitiesManager.EM.getTransaction().begin();
 
-		 PlayerRating playerRating=em.find(PlayerRating.class, ratingId);
+		 PlayerRating playerRating=EntitiesManager.EM.find(PlayerRating.class, ratingId);
 		 if(playerRating !=null)
 		 {
-			em.remove(playerRating);
+			 EntitiesManager.EM.remove(playerRating);
 		 }
-		 em.getTransaction().commit();
-		 em.close();
+		 EntitiesManager.EM.getTransaction().commit();
+		 //em.close();
 	  }
 	 
 	  public static void main(String[] args) {

@@ -50,7 +50,7 @@
   		</init-param>
   		<init-param>
     		<param-name>uploadDirectory</param-name>
-    		<param-value>C:\temp\kk</param-value>
+    		<param-value>img/</param-value>
   		</init-param>
 	</filter>
     

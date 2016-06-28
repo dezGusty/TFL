@@ -48,13 +48,12 @@
 			 			 <tbody>
       						<tr>
         						<td colspan="2">
-        							<p:graphicImage id="grimg"  value="#{fileDownloadView.file}" style="height:160px;width:100px;">
-        							</p:graphicImage>
+        							<h:graphicImage id="image" library="img" name="#{loginView.currentPlayer.picture}" alt="No image" width="250px"/>			
         						</td>
       						</tr>
       						<tr>
-        						<td><p:fileUpload value="#{fileUploadManagedBean.file}" mode="simple" skinSimple="true"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/></td>
-                				<td><p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadManagedBean.upload}" update="personalinfo" /></td>
+        						<td colspan="2"><p:fileUpload id="fileIdPhoto" update="image" fileUploadListener="#{fileUploadBean.uploadPhoto}" mode="advanced" dragDropSupport="false"
+               sizeLimit="10000000"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/></td>
       						</tr>
      				 		<tr>
         						<td><h:outputText style="float:right;font-size:22px" value="Name:" /></td>
@@ -88,19 +87,6 @@
 			 </div>
 		</div>
 	</div>
-
-            <h:outputLabel for="txtIdName" value="Enter Your Name:" />
-            <p:inputText id="txtIdName" required="true" value="#{fileUploadBean.name}"   label="Name" />
- 
-              <p:separator/>
-     
-            <h:outputLabel for="fileIdPhoto" value="Upload Your Photo:" />
- 
-            <p:fileUpload id="fileIdPhoto"  fileUploadListener="#{fileUploadBean.uploadPhoto}" mode="advanced" dragDropSupport="false"
-               sizeLimit="10000000"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  />
- 
-              <p:separator/>
-
 </h:form>  
 
 </div>

@@ -6,9 +6,6 @@ import javax.persistence.Persistence;
 
 public class DatabaseConnection {
 	private static EntityManagerFactory emf= Persistence.createEntityManagerFactory("TFL");
-	public static EntityManager GetConnection()
-	{
-		EntityManager em = emf.createEntityManager();
-		return em;
-	}
+	public static EntityManager EM=emf.createEntityManager();
+
 }

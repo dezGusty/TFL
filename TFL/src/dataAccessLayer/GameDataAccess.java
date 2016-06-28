@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import helpers.DatabaseConnection;
+import helpers.EntitiesManager;
 import model.Game;
 import model.Player;
 import model.Team;
@@ -22,21 +23,18 @@ public class GameDataAccess implements Serializable {
 	* 
 	*/
 	private static final long serialVersionUID = 1L;
-
+	
 	public static Game GetGame(int gameId)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
-		Game game=em.find(Game.class, gameId);
-		em.close();
+		//EntitiesManager.EM.getTransaction().begin();
+		Game game=EntitiesManager.EM.find(Game.class, gameId);
 		return game;
 	}
 	
 	public static Game UpdateGame(Game gameToUpdate)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
-		Game g=em.find(Game.class, gameToUpdate.getId());		
+		//EntitiesManager.EM.getTransaction().begin();
+		Game g=EntitiesManager.EM.find(Game.class, gameToUpdate.getId());		
 
 		if(g!=null)
 		{
@@ -44,30 +42,30 @@ public class GameDataAccess implements Serializable {
 			g.setTeam2(gameToUpdate.getTeam2());
 		}
 		
-		em.merge(g);
+		EntitiesManager.EM.merge(g);
 		//em.getTransaction().commit();
 		//em.refresh(g);
-		em.close();
+		//em.close();
 		return g;
 	}
 	
 	public static List<Game> listPreviousGames() {
 		System.out.println("List previous games!");
-		EntityManager em = DatabaseConnection.GetConnection();
-		TypedQuery<Game> query =em.createQuery("SELECT g FROM Game g where g.date <= current_date", Game.class);
+		//EntitiesManager.EM.getTransaction().begin();
+		TypedQuery<Game> query =EntitiesManager.EM.createQuery("SELECT g FROM Game g where g.date <= current_date", Game.class);
 		List<Game> result = new ArrayList<Game>();
 		result = query.getResultList();
 
 		for (Game g : result) {
 			System.out.println("ID" + g.getId() + " Date:" + g.getDate() + " Difference" + g.getDifference());
 		}
-		em.close();
+		//em.close();
 		return result;
 	}
 
 	public static List<Game> ListNextGames() {
-		EntityManager em = DatabaseConnection.GetConnection();
-		TypedQuery<Game> query =em.createQuery("SELECT g FROM Game g where g.date > current_date and g.archive = false", Game.class);
+		//EntitiesManager.EM.getTransaction().begin();
+		TypedQuery<Game> query =EntitiesManager.EM.createQuery("SELECT g FROM Game g where g.date > current_date and g.archive = false", Game.class);
 		List<Game> result = new ArrayList<Game>();
 		
 		result = query.getResultList();
@@ -76,46 +74,44 @@ public class GameDataAccess implements Serializable {
 		for (Game g : result) {
 			System.out.println("ID" + g.getId() + " Date:" + g.getDate() + " Difference" + g.getDifference());
 		}
-		em.close();
+		//em.close();
 		return result;
 	}
 	
 	
 	public static Game AddToArchive(int gameId)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
-		Game gameToArchive=em.find(Game.class,gameId);	
+		//EntitiesManager.EM.getTransaction().begin();
+		Game gameToArchive=EntitiesManager.EM.find(Game.class,gameId);	
 		if(gameToArchive !=null)
 		{
 			gameToArchive.setArchive(true);
-			em.getTransaction().commit();
-			em.refresh(gameToArchive);
+			EntitiesManager.EM.getTransaction().commit();
+			EntitiesManager.EM.refresh(gameToArchive);
 		}
-		em.close();
+		//em.close();
 		return gameToArchive;
 	}
 	
 	public static Game SetDifference(int gameId, int difference)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
-		Game game=em.find(Game.class, gameId);
+		//EntitiesManager.EM.getTransaction().begin();
+		Game game=EntitiesManager.EM.find(Game.class, gameId);
 		if(game!=null)
 		{
 			game.setDifference(difference);
-			em.merge(game);
-			em.getTransaction().commit();
-			em.refresh(game);
+			EntitiesManager.EM.merge(game);
+			EntitiesManager.EM.getTransaction().commit();
+			EntitiesManager.EM.refresh(game);
 		}	
 		
-		em.close();
+		//em.close();
 		return game;
 	}
 	
 	public static Game setDifference(int gameId, int difference,Team firstTeam, Team secondTeam) {
-		EntityManager em = DatabaseConnection.GetConnection();
-		Game g=em.find(Game.class, gameId);
+		//EntitiesManager.EM.getTransaction().begin();
+		Game g=EntitiesManager.EM.find(Game.class, gameId);
 		System.out.println("First team:");
 		for(Player p:firstTeam.getPlayers())
 		{
@@ -133,19 +129,19 @@ public class GameDataAccess implements Serializable {
 			g.setTeam1(firstTeam);
 			g.setTeam2(secondTeam);
 
-			em.persist(firstTeam);
-			em.persist(secondTeam);
-			em.getTransaction().commit();
+			EntitiesManager.EM.persist(firstTeam);
+			EntitiesManager.EM.persist(secondTeam);
+			EntitiesManager.EM.getTransaction().commit();
 			
-			em.refresh(firstTeam);
-			em.refresh(secondTeam);
+			EntitiesManager.EM.refresh(firstTeam);
+			EntitiesManager.EM.refresh(secondTeam);
 			System.out.println("First team refreshed id:"+firstTeam.getId());
 			System.out.println("Second team refreshed id:"+secondTeam.getId());
 			
-			em.persist(g);
-			em.getTransaction().commit();
-			em.refresh(g);
-			em.close();
+			EntitiesManager.EM.persist(g);
+			EntitiesManager.EM.getTransaction().commit();
+			EntitiesManager.EM.refresh(g);
+			//em.close();
 			return g;
 		}
 		return null;
@@ -160,106 +156,101 @@ public class GameDataAccess implements Serializable {
 	
 	public static Game removePlayer(int gameID,int playerID)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
-		Game game=em.find(Game.class,gameID);	
-		Player player=em.find(Player.class,playerID);
+		//EntitiesManager.EM.getTransaction().begin();
+		Game game=EntitiesManager.EM.find(Game.class,gameID);	
+		Player player=EntitiesManager.EM.find(Player.class,playerID);
 		
 		if(game!=null && player!=null)
 		{
 			game.getPlayers().remove(player);
 		}
 		
-		em.getTransaction().commit();
-		em.refresh(game);
-		em.close();
+		EntitiesManager.EM.getTransaction().commit();
+		EntitiesManager.EM.refresh(game);
+		//EntitiesManager.EM.close();
 		return game;
 	}
 	
 	public static Game removeWaitingPlayer(int gameID,int playerID)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
-		Game game=em.find(Game.class,gameID);	
-		Player player=em.find(Player.class,playerID);
+		//EntitiesManager.EM.getTransaction().begin();
+		Game game=EntitiesManager.EM.find(Game.class,gameID);	
+		Player player=EntitiesManager.EM.find(Player.class,playerID);
 		
 		if(game!=null && player!=null)
 		{
 			game.getPlayersWaiting().remove(player);
 		}
 		
-		em.getTransaction().commit();
-		em.refresh(game);
-		em.close();
+		EntitiesManager.EM.getTransaction().commit();
+		EntitiesManager.EM.refresh(game);
+		//em.close();
 		return game;
 	}
 	
 	public static Game AddTeams(int gameid, int firstTeamId,int secondTeamId)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
-		Game g=em.find(Game.class, gameid);		
-		Team a=em.find(Team.class, firstTeamId);
-		Team b=em.find(Team.class, secondTeamId);
+		//EntitiesManager.EM.getTransaction().begin();
+		Game g=EntitiesManager.EM.find(Game.class, gameid);		
+		Team a=EntitiesManager.EM.find(Team.class, firstTeamId);
+		Team b=EntitiesManager.EM.find(Team.class, secondTeamId);
 		
  		g.setTeam1(a);
 		g.setTeam2(b);
 		
-		em.merge(g);
-		em.getTransaction().commit();
-		em.refresh(g);
-		em.close();
+		EntitiesManager.EM.merge(g);
+		EntitiesManager.EM.getTransaction().commit();
+		EntitiesManager.EM.refresh(g);
+		//em.close();
 		return g;
 	}
 	
 	public static Game AddWaitingPlayer(int gameid, int playerId)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
+		//EntitiesManager.EM.getTransaction().begin();
 		
-		Game game=em.find(Game.class, gameid);		
-		Player player=em.find(Player.class, playerId);
+		Game game=EntitiesManager.EM.find(Game.class, gameid);		
+		Player player=EntitiesManager.EM.find(Player.class, playerId);
 
 		game.getPlayersWaiting().add(player);
-	 	em.merge(game);
-		em.getTransaction().commit();
-		em.refresh(game);
-		em.close();
+		EntitiesManager.EM.merge(game);
+		EntitiesManager.EM.getTransaction().commit();
+		EntitiesManager.EM.refresh(game);
+		//em.close();
 		return game;
 	}
 	
 	public static Game AddWaitingPlayerToGame(int gameid, int playerId)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
+		//EntitiesManager.EM.getTransaction().begin();
 		
-		Game game=em.find(Game.class, gameid);		
-		Player player=em.find(Player.class, playerId);
+		Game game=EntitiesManager.EM.find(Game.class, gameid);		
+		Player player=EntitiesManager.EM.find(Player.class, playerId);
 		
 		game.getPlayers().add(player);
 		game.getPlayersWaiting().remove(player);
-	 	em.merge(game);
-		em.getTransaction().commit();
-		em.refresh(game);
-		em.close();
+		EntitiesManager.EM.merge(game);
+		EntitiesManager.EM.getTransaction().commit();
+		EntitiesManager.EM.refresh(game);
+		//em.close();
 		return game;
 	}
 	
 	public static Team addTeamToGame(Team t,int  gId)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		Game g=em.find(Game.class, gId);
-		Team team=em.find(Team.class, t.getId());
-		em.persist(g);
-		em.getTransaction().commit();
-		em.refresh(g);
-		em.close();
+		//EntitiesManager.EM.getTransaction().begin();
+		Game g=EntitiesManager.EM.find(Game.class, gId);
+		Team team=EntitiesManager.EM.find(Team.class, t.getId());
+		EntitiesManager.EM.persist(g);
+		EntitiesManager.EM.getTransaction().commit();
+		EntitiesManager.EM.refresh(g);
+		//em.close();
 		return team;
 	}
 	
     public  static List<Game> listGamesForPlayer(Player player) {
-    	EntityManager em = DatabaseConnection.GetConnection();
-		Player p=em.find(Player.class, player.getId());
+    	//EntitiesManager.EM.getTransaction().begin();
+		Player p=EntitiesManager.EM.find(Player.class, player.getId());
 		List<Game> result = new ArrayList<Game>();
 		
 	    Date currentDate=new Date();
@@ -274,24 +265,23 @@ public class GameDataAccess implements Serializable {
 				}
 			}
 		}
-		em.close();
+		//EntitiesManager.EM.close();
 		return result;
 	}
 	
 	public static Player PlayGame(int gameId, int playerId) {		
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
+		//EntitiesManager.EM.getTransaction().begin();
 		
-		Player play =em.find(Player.class,playerId);
-		Game findGame=em.find(Game.class, gameId);	
+		Player play =EntitiesManager.EM.find(Player.class,playerId);
+		Game findGame=EntitiesManager.EM.find(Game.class, gameId);	
 		
 		try
 		{
 			findGame.addPlayer(play);
-			em.getTransaction().commit();
-			em.refresh(findGame);
-			em.refresh(play);
-			em.close();
+			EntitiesManager.EM.getTransaction().commit();
+			EntitiesManager.EM.refresh(findGame);
+			EntitiesManager.EM.refresh(play);
+			//em.close();
 		}
 		catch(Exception ex)
 		{
@@ -302,14 +292,13 @@ public class GameDataAccess implements Serializable {
 
 	public static Game AddNewGame(Game game)
 	{
-		EntityManager em = DatabaseConnection.GetConnection();
-		em.getTransaction().begin();
+		//EntitiesManager.EM.getTransaction().begin();
 		try
 		{
-			em.persist(game);
-			em.getTransaction().commit();
-			em.refresh(game);
-			em.close();
+			EntitiesManager.EM.persist(game);
+			EntitiesManager.EM.getTransaction().commit();
+			EntitiesManager.EM.refresh(game);
+			//em.close();
 			return game;
 		}
 		catch(Exception ex)

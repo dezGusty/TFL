@@ -14580,3 +14580,92 @@ iun. 27, 2016 13:12:28.86
 iun. 27, 2016 13:12:28.86 
 iun. 27, 2016 13:12:28.86 ###!!! [Child][MessageChannel] Error: (msgtype=0xA20027,name=PNecko::Msg_RemoveSchedulingContext) Channel closing: too late to send/recv, messages will be lost
 iun. 27, 2016 13:12:28.87 
+
+iun. 28, 2016 09:45:55.85 NEW SESSION
+iun. 28, 2016 09:45:55.85 console.error: mobileview: 
+iun. 28, 2016 09:45:55.91   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 28, 2016 09:45:55.91   Stack:
+iun. 28, 2016 09:45:55.92     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 09:45:55.92 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 28, 2016 09:45:55.93 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 09:45:55.93 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 28, 2016 09:45:55.93 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 28, 2016 09:45:55.94 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 28, 2016 09:45:55.94 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 28, 2016 09:45:55.94 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 28, 2016 09:45:55.95 
+iun. 28, 2016 09:45:55.95 console.error: mobileview: 
+iun. 28, 2016 09:45:55.95   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 28, 2016 09:45:55.96   Stack:
+iun. 28, 2016 09:45:55.96     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 09:45:55.97 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 28, 2016 09:45:55.97 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 09:45:55.98 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 28, 2016 09:45:55.99 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 28, 2016 09:45:55.99 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 28, 2016 09:45:56.00 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 28, 2016 09:45:56.00 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 28, 2016 09:45:56.00 
+iun. 28, 2016 09:46:35.75 console.error: mobileview: 
+iun. 28, 2016 09:46:35.76   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 28, 2016 09:46:35.83   Stack:
+iun. 28, 2016 09:46:35.84     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 09:46:35.85 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 28, 2016 09:46:35.86 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 09:46:35.87 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 28, 2016 09:46:35.91 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 28, 2016 09:46:35.91 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 28, 2016 09:46:35.95 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 28, 2016 09:46:35.96 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 28, 2016 09:46:35.96 
+iun. 28, 2016 09:46:35.97 console.error: mobileview: 
+iun. 28, 2016 09:46:35.97   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 28, 2016 09:46:35.98   Stack:
+iun. 28, 2016 09:46:35.98     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 09:46:36.01 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 28, 2016 09:46:36.01 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 09:46:36.01 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 28, 2016 09:46:36.02 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 28, 2016 09:46:36.02 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 28, 2016 09:46:36.03 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 28, 2016 09:46:36.03 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 28, 2016 09:46:36.04 
+iun. 28, 2016 10:03:24.95 console.error: mobileview: 
+iun. 28, 2016 10:03:25.10   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 28, 2016 10:03:25.10   Stack:
+iun. 28, 2016 10:03:25.11     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 10:03:25.11 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 28, 2016 10:03:25.12 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 10:03:25.12 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 28, 2016 10:03:25.13 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 28, 2016 10:03:25.13 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 28, 2016 10:03:25.14 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 28, 2016 10:03:25.15 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 28, 2016 10:03:25.15 
+iun. 28, 2016 10:03:25.16 console.error: mobileview: 
+iun. 28, 2016 10:03:25.16   Message: Module `sdk/widget` is not found at resource://gre/modules/commonjs/sdk/widget.js
+iun. 28, 2016 10:03:25.17   Stack:
+iun. 28, 2016 10:03:25.17     CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 10:03:25.18 @resource://jid0-ocxg7vaegnoudeeaivaxyaarjjq-at-jetpack/mobileview/lib/main.js:6:14
+iun. 28, 2016 10:03:25.18 CuddlefishLoader/options<.load@resource://gre/modules/commonjs/sdk/loader/cuddlefish.js:79:18
+iun. 28, 2016 10:03:25.19 run@resource://gre/modules/commonjs/sdk/addon/runner.js:147:19
+iun. 28, 2016 10:03:25.19 startup/</<@resource://gre/modules/commonjs/sdk/addon/runner.js:87:9
+iun. 28, 2016 10:03:25.20 Handler.prototype.process@resource://gre/modules/Promise-backend.js:937:23
+iun. 28, 2016 10:03:25.20 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise-backend.js:816:7
+iun. 28, 2016 10:03:25.21 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise-backend.js:750:11
+iun. 28, 2016 10:03:25.21 
+iun. 28, 2016 10:05:39.49 1467097539494	addons.update-checker	WARN	Update manifest for fiddlerhook@fiddler2.com did not contain an updates property
+iun. 28, 2016 10:05:39.85 1467097539851	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 28, 2016 10:05:40.28 1467097540284	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 28, 2016 10:05:40.30 1467097540304	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+iun. 28, 2016 13:02:18.34 console.error: 
+iun. 28, 2016 13:02:26.19   Message: Error: SessionFile is closed
+iun. 28, 2016 13:02:26.20   Stack:
+iun. 28, 2016 13:02:26.20     SessionFileInternal.write@resource://app/modules/sessionstore/SessionFile.jsm:315:29
+iun. 28, 2016 13:02:26.21 this.SessionFile.write@resource://app/modules/sessionstore/SessionFile.jsm:76:12
+iun. 28, 2016 13:02:26.22 SessionSaverInternal._writeState@resource://app/modules/sessionstore/SessionSaver.jsm:257:12
+iun. 28, 2016 13:02:26.23 SessionSaverInternal._saveState@resource://app/modules/sessionstore/SessionSaver.jsm:228:12
+iun. 28, 2016 13:02:26.24 SessionSaverInternal._saveStateAsync@resource://app/modules/sessionstore/SessionSaver.jsm:241:5
+iun. 28, 2016 13:02:26.24 SessionSaverInternal.runDelayed/this._timeoutID<@resource://app/modules/sessionstore/SessionSaver.jsm:147:40
+iun. 28, 2016 13:02:26.25 setTimeout_timer@resource://gre/modules/Timer.jsm:30:5
+iun. 28, 2016 13:02:26.25 

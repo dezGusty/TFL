@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import org.primefaces.event.TransferEvent;
 import org.primefaces.model.DualListModel;
-
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
 import dataAccessLayer.PlayerRatingAccess;
