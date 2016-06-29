@@ -132,9 +132,9 @@
 						<p:outputLabel  value="Password"></p:outputLabel>
 					</div>
 					<div class="col-sm-7 col-md-7">
-						<p:password id="pass" value="#{singUpView.pass}">
+						<p:inputText id="pass" value="#{singUpView.pass}">
 				 			<f:validateLength minimum="2"></f:validateLength>
-				 		</p:password>
+				 		</p:inputText>
 					</div>
 				</div>
 				<div class="row" style="padding-top: 2%;">
@@ -142,7 +142,7 @@
 						<p:outputLabel  value="Rating"></p:outputLabel>
 					</div>
 					<div class="col-sm-7 col-md-7">
-						<p:password id="rate" value="#{singUpView.initialRating}"/>
+						<p:inputText id="rate" value="#{singUpView.initialRating}"/>
 					</div>
 				</div>
 				
