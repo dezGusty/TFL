@@ -18,5 +18,4 @@ public class RatingComparator implements Comparator<Player> {
 		}
 		return 0;
 	}
-
 }

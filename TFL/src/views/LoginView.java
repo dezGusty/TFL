@@ -1,6 +1,8 @@
 package views;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
@@ -10,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
+import helpers.PasswordValidation;
 import helpers.RedirectView;
 import model.Player;
 
@@ -23,17 +26,8 @@ public class LoginView implements Serializable {
     private String oldPass;
 	private String newPass;
 	private String confirmPass;
-    private boolean value;
     public Player currentPlayer;
-    
-	public boolean getValue() {
-        return value;
-    }
- 
-    public void setValue(boolean value) {
-        this.value = value;
-    }
-    	
+ 	
 	public String getOldPass() {
 		return oldPass;
 	}
@@ -75,10 +69,10 @@ public class LoginView implements Serializable {
 	}
 	
     public void login() {
-		int canLogin=PlayerDataAccess.loginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
+		int canLogin=PlayerDataAccess.LoginUser(this.currentPlayer.getUsername(), this.currentPlayer.getPassword());
 		if(canLogin!=0)
 		{
-			this.currentPlayer=PlayerDataAccess.getPlayerWithID(canLogin);
+			this.currentPlayer=PlayerDataAccess.FindPlayer(canLogin);
 			RedirectView.Redirect("/resources/userview.xhtml");
 		}
 		else
@@ -102,8 +96,8 @@ public class LoginView implements Serializable {
 	public void redirectToNextGames(ActionEvent actionEvent)
 	{
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
-		NextGamesView firstBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
-		firstBean.setGames(GameDataAccess.ListNextGames());	
+		NextGamesView nextGames = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
+		nextGames.setGames(GameDataAccess.ListNextGames());	
 		RedirectView.Redirect(this.currentPlayer, "/resources/nextusergames.xhtml", "/resources/nextadmingames.xhtml");
 	}
 	
@@ -128,14 +122,14 @@ public class LoginView implements Serializable {
 	public void redirectToMyChart(ActionEvent actionEvent)
 	{
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
-		ChartView firstBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
-		firstBean.addPlayerToChart(this.currentPlayer);
+		ChartView chartBean = (ChartView) context.getELResolver().getValue(context, null, "chartView");
+		chartBean.setPlayers(new ArrayList<Player>());
+		chartBean.addPlayerToChart(this.currentPlayer);
 		RedirectView.Redirect("/resources/userchart.xhtml");	
 	}
 	
 	public void redirectToPlayers(ActionEvent actionEvent)
 	{
-		System.out.println("Hello from redirect to players!");
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		PlayersView playersView= (PlayersView) context.getELResolver().getValue(context, null, "playersView");
 		playersView.setPlayers(PlayerDataAccess.ListActivePlayers());
@@ -146,44 +140,47 @@ public class LoginView implements Serializable {
 	 public void redirectToHistory(ActionEvent actionEvent)
 	 {
 	    ELContext context = FacesContext.getCurrentInstance().getELContext();
-		NextGamesView firstBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
-		firstBean.setGames(GameDataAccess.listPreviousGames());	
+		NextGamesView nextGames = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
+		nextGames.setGames(GameDataAccess.ListPreviousGames());	
 		RedirectView.Redirect("/resources/gameshistory.xhtml");
 	 }
 	
 	  public void changePassword() {
 		  if(this.oldPass.compareTo(this.currentPlayer.getPassword())==0)
 		  {
-			  if(this.newPass.compareTo(this.confirmPass)==0)
+			  if(PasswordValidation.isValid(this.confirmPass))
 			  {
-				  PlayerDataAccess.updatePassword(this.currentPlayer.getId(),this.newPass);
-				  FacesContext.getCurrentInstance().addMessage(null,
-							new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "Succesfully saved new password!"));
-			  }
-			  else
-			  {
-				  FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_WARN, "Warn!", "New password does not match!"));  
+				  if(this.newPass.compareTo(this.confirmPass)==0)
+				  {
+					  this.currentPlayer=PlayerDataAccess.UpdatePassword(this.currentPlayer.getId(),this.newPass);
+					  FacesContext.getCurrentInstance().addMessage(null,
+								new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "Succesfully saved new password!"));
+				  }
+				  else
+				  {
+					  FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_WARN, "Warn!", "Password confirmation does not match!"));  
+				  }
 			  }
 		  }
 		  else
 		  {
 			  FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_WARN, "Warn!", "Wrong old password!"));
-		  }
+		  }  
 	}
 	  
-	  public void changeAvailability() {
-			PlayerDataAccess.changeAvailable(this.currentPlayer);
-			if(this.currentPlayer.getAvailable())
-			{
-				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "You are now available!"));
-			}
-			else
-			{
-				FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "From now you are unavailable!"));		
-			}
-	  }  
+	 public void changeAvailability() {
+		this.currentPlayer=PlayerDataAccess.ChangeAvailable(this.currentPlayer.getId(),this.currentPlayer.getAvailable());
+		if(this.currentPlayer.getAvailable())
+		{
+			FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "You are now available!"));
+		}
+		else
+		{
+			FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "From now you are unavailable!"));		
+		}
+	}  
 }

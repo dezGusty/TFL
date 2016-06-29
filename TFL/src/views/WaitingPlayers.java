@@ -1,5 +1,6 @@
 package views;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -14,8 +15,12 @@ import model.Player;
 
 @ManagedBean(name = "waitingPlayers")
 @SessionScoped
-public class WaitingPlayers {
+public class WaitingPlayers implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Player> players;
 	private Player selectedPlayer;
 	
@@ -42,10 +47,7 @@ public class WaitingPlayers {
 	}
 	
 	public void addPlayer(Player player)
-	{
-		System.out.println("Add player from waiting players");
-		System.out.println("player id"+player.getId());
-	
+	{	
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		NextGamesView nextGamesBean = (NextGamesView) context.getELResolver().getValue(context, null, "nextGamesView");
 		if(nextGamesBean.getSelectedGame().hasTeams())

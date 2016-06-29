@@ -3,12 +3,10 @@ package views;
 import java.io.Serializable;
 import java.util.HashSet;
 import javax.annotation.PostConstruct;
-import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import org.primefaces.event.TransferEvent;
 import org.primefaces.model.DualListModel;
 import dataAccessLayer.GameDataAccess;
@@ -27,11 +25,7 @@ public class TeamsView implements Serializable {
 	* 
 	*/
 	private static final long serialVersionUID = 1L;
-
-	public int indexOfMap=0;
-	private boolean existTeams;
 	private Game game;
-	private boolean showNextPrevious;
 	private DualListModel<Player> players;
 
 	public Game getGame() {
@@ -42,22 +36,6 @@ public class TeamsView implements Serializable {
 		this.game = game;
 	}
 
-	public boolean isShowNextPrevious() {
-		return showNextPrevious;
-	}
-
-	public void setShowNextPrevious(boolean showNextPrevious) {
-		this.showNextPrevious = showNextPrevious;
-	}
-
-	public boolean isExistTeams() {
-		return this.existTeams;
-	}
-
-	public void setExistTeams(boolean existTeams) {
-		this.existTeams = existTeams;
-	}
-	
 	@PostConstruct
 	public void init() {
 		if(players==null)
@@ -71,53 +49,28 @@ public class TeamsView implements Serializable {
 		return players;
 	}
 
-	public void setPlayers(DualListModel<Player> themes) {
-		this.players = themes;
+	public void setPlayers(DualListModel<Player> players) {
+		this.players = players;
 	}
 
 	public void onTransfer(TransferEvent event) {
-		
-		 System.out.println("Source:");
-		 this.game.getTeam1().setPlayers( new HashSet<Player>(this.players.getSource()));
-		
-		 for(Player p: this.players.getSource())
-		 {
-		 System.out.println(p.getUsername());
-		 }
-
-		System.out.println("Target:");
+		this.game.getTeam1().setPlayers( new HashSet<Player>(this.players.getSource()));
 		this.game.getTeam2().setPlayers( new HashSet<Player>(this.players.getTarget()));
-
-		 for(Player p: this.players.getTarget())
-		 {
-		 System.out.println(p.getUsername());
-		 }
 	}
-
-	 public void addMessage(ActionEvent actionEvent) {
-	       System.out.println("Welcome to Primefaces!!");
-	    }
-	 
+	
 	 public void saveTeams() {
 
 		this.game.setTeam1(TeamDataAccess.SaveTeamName(this.game.getTeam1().getId(), this.game.getTeam1().getName()));
 		this.game.setTeam2(TeamDataAccess.SaveTeamName(this.game.getTeam2().getId(), this.game.getTeam2().getName()));
-		
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-     	NextGamesView firstBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-     	
-     	Game game=firstBean.getSelectedGame();
-     	System.out.println("save teams for game: "+game.getId());
-     	TeamDataAccess.RemoveAllPlayers(game.getTeam1().getId());
-		TeamDataAccess.RemoveAllPlayers(game.getTeam2().getId());
+
+     	TeamDataAccess.RemoveAllPlayers(this.game.getTeam1().getId());
+		TeamDataAccess.RemoveAllPlayers(this.game.getTeam2().getId());
 		for(Player play: this.players.getSource())
 		{
-			System.out.println(play.getUsername());
 			game.setTeam1(TeamDataAccess.AddNewPlayer(game.getTeam1().getId(),play.getId()));
 		}
 		for(Player play: this.players.getTarget())
 		{
-			System.out.println(play.getUsername());
 			game.setTeam2(TeamDataAccess.AddNewPlayer(game.getTeam2().getId(),play.getId()));
 		}
 		FacesContext.getCurrentInstance().addMessage(null,
@@ -125,7 +78,6 @@ public class TeamsView implements Serializable {
 	 }
 	 
 	 public void saveTeamsResult() {
-		 System.out.println("save teams result");
 		 if(game.getTeam1().getGoals()>game.getTeam2().getGoals())
 		 {
 			 game.getTeam1().setWinner(true);
@@ -148,12 +100,10 @@ public class TeamsView implements Serializable {
 		 TeamDataAccess.RemoveAllPlayers(game.getTeam2().getId());
 		 for(Player play: this.players.getSource())
 		{
-			System.out.println(play.getUsername());
 			game.setTeam1(TeamDataAccess.AddNewPlayer(game.getTeam1().getId(),play.getId()));
 		}
 		for(Player play: this.players.getTarget())
 		{
-			System.out.println(play.getUsername());
 			game.setTeam2(TeamDataAccess.AddNewPlayer(game.getTeam2().getId(),play.getId()));
 		}
 		int difference=Math.abs(this.game.getTeam1().getGoals()-this.game.getTeam2().getGoals());
@@ -194,8 +144,7 @@ public class TeamsView implements Serializable {
 			  p=PlayerDataAccess.NewRatingForGame(playerId, gameId);
 			  PlayerRating newRating=new PlayerRating(ga.getDate(),p,p.getRating());
 			  PlayerRatingAccess.RegisterNewRating(newRating);
-		  }
-		  
+		  }	  
 		  System.out.println("new rating: "+p.getRating());
 		  return p;
 	 }

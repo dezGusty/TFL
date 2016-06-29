@@ -51,7 +51,6 @@
 						</f:facet>
 						<h:outputText value="#{game.dateToDisplay()}"></h:outputText>
 					</p:column>
-					<p:column style="text-align:center;" headerText="Difference">#{game.difference}</p:column>
 					
 					<p:column style="text-align:center;">
 						<p:commandButton value="#{game.playUnplay(loginView.currentPlayer)}" 
@@ -60,7 +59,7 @@
 					</p:column>
 					
 					<p:column style="text-align:center;">	
-						<p:commandButton value="Cancel" actionListener="#{nextGamesView.remove(game)}" >
+						<p:commandButton value="Cancel" actionListener="#{nextGamesView.remove(game)}" update="gamesTable">
         					<p:confirm header="Remove game #{game.dateToDisplay()}" message="Are you sure?" icon="ui-icon-alert"/>
    						 </p:commandButton>
  

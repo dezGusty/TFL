@@ -2,9 +2,7 @@ package dataAccessLayer;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import helpers.DatabaseConnection;
 import helpers.EntitiesManager;
 import model.Player;
 import model.Team;
@@ -12,7 +10,10 @@ import model.Team;
 public class TeamDataAccess {
 	
 	public  static List<Team> listTeams() {
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 	    TypedQuery<Team> query =EntitiesManager.EM.createQuery("SELECT t FROM Team t",Team.class);
 		List<Team> result = new ArrayList<Team>();
 		result = query.getResultList();
@@ -20,22 +21,21 @@ public class TeamDataAccess {
 		{
 			System.out.println(p.getName());
 		}
-		//em.close();
 		return result;
 	}
 	
 	public static Team FindTeam(int teamId)
 	{
-		//EntitiesManager.EM.getTransaction().begin();
 		Team game=EntitiesManager.EM.find(Team.class, teamId);
-		//EntitiesManager.EM.close();
 		return game;
 	}
 	
 	public static Team UpdateTeam(Team teamToSave) {
 
-		//EntitiesManager.EM.getTransaction().begin();
-		
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		Team team= EntitiesManager.EM.find(Team.class, teamToSave.getId());			
 		team.setName(teamToSave.getName());
 		team.setScore(teamToSave.getScore());
@@ -45,13 +45,15 @@ public class TeamDataAccess {
 		EntitiesManager.EM.merge(team);
 		EntitiesManager.EM.getTransaction().commit();
 		EntitiesManager.EM.refresh(team);
-		//em.close();
 		return team;	
 	}
 	
 	public static Team RemoveAllPlayers(int teamId)
 	{
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		};
 		Team team=EntitiesManager.EM.find(Team.class,teamId);	
 		
 		if(team !=null)
@@ -61,13 +63,15 @@ public class TeamDataAccess {
 		}
 		EntitiesManager.EM.getTransaction().commit();
 		EntitiesManager.EM.refresh(team);
-		//em.close();
 		return team;
 	}
 	
 	public static Team RemovePlayerFromTeam(int teamID,int playerID)
 	{
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		Team team=EntitiesManager.EM.find(Team.class,teamID);
 		Player player=EntitiesManager.EM.find(Player.class, playerID);
 		
@@ -78,13 +82,15 @@ public class TeamDataAccess {
 		}
 		EntitiesManager.EM.getTransaction().commit();
 		EntitiesManager.EM.refresh(team);
-		//em.close();
 		return team;
 	}
 	
 	public static Team SaveTeamName(int teamID,String name)
 	{
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		Team team=EntitiesManager.EM.find(Team.class,teamID);		
 		
 		if(team !=null)
@@ -93,44 +99,35 @@ public class TeamDataAccess {
 		}
 		EntitiesManager.EM.getTransaction().commit();
 		EntitiesManager.EM.refresh(team);
-		//em.close();
 		return team;
 	}
 	
 	
 	public static Team AddNewPlayer(int teamID, int playerID) {
 
-		//EntitiesManager.EM.getTransaction().begin();
-		
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		Team t= EntitiesManager.EM.find(Team.class, teamID);			
 		Player p=EntitiesManager.EM.find(Player.class,playerID);
 		 
 		t.addNewPlayer(p);
 		EntitiesManager.EM.merge(t);
 		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(t);
-		//em.close();
-		
+		EntitiesManager.EM.refresh(t);		
 		return t;	
 	}
 	
 	public static Team CreateNewTeam(Team team)
 	{
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		};
 		EntitiesManager.EM.persist(team);
 		EntitiesManager.EM.getTransaction().commit();
 		EntitiesManager.EM.refresh(team);
-		//em.close();
 		return team;
-	}
-	
-	public static void main(String[] args) {
-		
-		
-		//List<Player> list=PlayerDataAccess.ListAllPlayers();
-		Team te=FindTeam(30);
-		System.out.println(te.getPlayers());
-		Team t=RemovePlayerFromTeam(30,7);
-		System.out.println(t.getName()+t.getPlayers());
 	}
 }

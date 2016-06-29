@@ -1,5 +1,6 @@
 package views;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -23,7 +24,11 @@ import model.Player;
 
 @ManagedBean(name = "userView")
 @SessionScoped
-public class UserView {
+public class UserView implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Game nextGame;
 	private Game lastGame;
 	private Player lastAddedPlayer;
@@ -73,7 +78,6 @@ public class UserView {
 	{
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
-		System.out.println(loginBean.getCurrentPlayer().getUsername());
 		loginBean.setCurrentPlayer(PlayerDataAccess.FindPlayer(loginBean.getCurrentPlayer().getId()));
      	Game game=loginBean.getCurrentPlayer().NextPlayedGame();
 		if(game!=null)
@@ -124,7 +128,7 @@ public class UserView {
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
 		WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
-		teamsBean.setShowNextPrevious(false);
+		teamsBean.setGame(this.lastGame);
 		if(this.lastGame!=null)
 		{
 			teamsBean.setGame(this.lastGame);
@@ -165,10 +169,6 @@ public class UserView {
 				}
 			}
 		}
-		for(Player p:recentPlayers)
-		{
-			System.out.println(p.toString());
-		}
 		Player result=null;
 		if(recentPlayers.size()!=0)
 		{
@@ -203,21 +203,11 @@ public class UserView {
 	
 	public void redirectToPlayers(ActionEvent actionEvent)
 	{
-		System.out.println("Hello from redirect to players!");
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		PlayersView playersView= (PlayersView) context.getELResolver().getValue(context, null, "playersView");
 		LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 		playersView.setPlayers(TopPlayers(5));
 		RedirectView.Redirect(loginBean.getCurrentPlayer(), "/resources/viewplayers.xhtml", "/resources/adminplayersview.xhtml");	
-	
-	}
-	
-	public static void main(String[] args) {
-//		List<Player> list=TopPlayers(4);
-//		for(Player p:list)
-//		{
-//			System.out.println(p.toString());
-//		}
 	}
 	
 	private  long getDiffBetweenDates(Date date1,Date date2)
@@ -235,7 +225,6 @@ public class UserView {
 		List<Game> listOfGames=GameDataAccess.ListNextGames();
 		if(listOfGames!=null && listOfGames.size()!=0)
 		{
-			System.out.println("There are next games");
 			game=listOfGames.get(0);
 			for(Game item:listOfGames)
 			{
@@ -252,8 +241,8 @@ public class UserView {
 	{
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
+		teamsBean.setGame(this.nextGame);
 		WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
-		teamsBean.setShowNextPrevious(false);
 		if(this.nextGame!=null)
 		{
 			teamsBean.setGame(this.nextGame);

@@ -14669,3 +14669,58 @@ iun. 28, 2016 13:02:26.24 SessionSaverInternal._saveStateAsync@resource://app/mo
 iun. 28, 2016 13:02:26.24 SessionSaverInternal.runDelayed/this._timeoutID<@resource://app/modules/sessionstore/SessionSaver.jsm:147:40
 iun. 28, 2016 13:02:26.25 setTimeout_timer@resource://gre/modules/Timer.jsm:30:5
 iun. 28, 2016 13:02:26.25 
+
+iun. 28, 2016 20:43:47.31 NEW SESSION
+iun. 28, 2016 20:43:47.31 1467135827317	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iun. 28, 2016 20:43:47.51 1467135827513	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iun. 28, 2016 20:43:47.71 1467135827711	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+
+iun. 29, 2016 10:37:14.44 NEW SESSION
+iun. 29, 2016 10:37:14.44 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 29, 2016 10:37:17.87 console.error: 
+iun. 29, 2016 10:37:17.88   Image 'http://localhost:8080/TFL/images/c.png' failed to load.
+iun. 29, 2016 10:41:33.78 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 29, 2016 10:42:00.72 console.error: 
+iun. 29, 2016 10:42:00.72   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.png' failed to load.
+iun. 29, 2016 10:42:37.34 console.error: 
+iun. 29, 2016 10:42:37.34   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.png' failed to load.
+iun. 29, 2016 10:42:43.25 console.error: 
+iun. 29, 2016 10:42:43.27   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.png' failed to load.
+iun. 29, 2016 10:43:05.43 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 29, 2016 10:43:07.94 console.error: 
+iun. 29, 2016 10:43:07.95   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.png' failed to load.
+iun. 29, 2016 10:43:46.83 console.error: 
+iun. 29, 2016 10:43:46.83   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.png' failed to load.
+iun. 29, 2016 10:44:06.22 console.error: 
+iun. 29, 2016 10:44:06.23   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.png' failed to load.
+iun. 29, 2016 10:44:35.54 console.error: 
+iun. 29, 2016 10:44:35.54   Image 'http://localhost:8080/images/index.png' failed to load.
+iun. 29, 2016 10:44:36.06 console.error: 
+iun. 29, 2016 10:44:36.07   Image 'http://localhost:8080/images/index.png' failed to load.
+iun. 29, 2016 10:45:00.03 console.error: 
+iun. 29, 2016 10:45:00.04   Image 'http://localhost:8080/images/index.png' failed to load.
+iun. 29, 2016 10:45:01.70 console.error: 
+iun. 29, 2016 10:45:01.70   Image 'http://localhost:8080/images/index.png' failed to load.
+iun. 29, 2016 10:45:50.23 console.error: 
+iun. 29, 2016 10:45:50.24   Image 'http://localhost:8080/images/index.png' failed to load.
+iun. 29, 2016 10:46:36.51 [Child 8664] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 29, 2016 10:46:36.52 [Child 8664] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 29, 2016 10:51:41.48 [Child 7704] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 29, 2016 10:51:41.48 [Child 7704] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iun. 29, 2016 11:08:51.93 NEW SESSION
+iun. 29, 2016 11:08:51.93 console.warn: Asynchronous operation was aborted as selection changed.
+
+iun. 29, 2016 11:11:43.93 NEW SESSION
+iun. 29, 2016 11:11:43.93 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 29, 2016 11:11:57.67 console.error: 
+iun. 29, 2016 11:11:57.68   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.png' failed to load.
+iun. 29, 2016 11:13:03.70 console.error: 
+iun. 29, 2016 11:13:03.71   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.jpg' failed to load.
+iun. 29, 2016 11:13:04.11 console.error: 
+iun. 29, 2016 11:13:04.11   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.jpg' failed to load.
+iun. 29, 2016 11:13:59.19 console.error: 
+iun. 29, 2016 11:13:59.19   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.jpg' failed to load.
+iun. 29, 2016 11:37:23.81 [Child 6740] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 29, 2016 11:45:06.67 [Child 8076] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iun. 29, 2016 11:45:06.68 [Child 8076] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333

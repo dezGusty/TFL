@@ -3,8 +3,6 @@ package dataAccessLayer;
 import java.io.Serializable;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
-import helpers.DatabaseConnection;
 import helpers.EntitiesManager;
 import model.PlayerRating;
 
@@ -20,11 +18,13 @@ public class PlayerRatingAccess implements Serializable{
 	 public static PlayerRating RegisterNewRating(PlayerRating playerRating)
 	 {
 			try {
-				//EntitiesManager.EM.getTransaction().begin();
+				if(EntitiesManager.EM.getTransaction().isActive()==false)
+				{
+					EntitiesManager.EM.getTransaction().begin();
+				}
 				EntitiesManager.EM.persist(playerRating);
 				EntitiesManager.EM.getTransaction().commit();
 				EntitiesManager.EM.refresh(playerRating);
-				//em.close();
 			} catch (Exception ex) {
 				System.out.println(ex.getMessage());
 			}
@@ -34,19 +34,15 @@ public class PlayerRatingAccess implements Serializable{
 	 public static void DeleteRating(int ratingId)
 	  {
 		 
-		// EntitiesManager.EM.getTransaction().begin();
-
+		 if(EntitiesManager.EM.getTransaction().isActive()==false)
+			{
+				EntitiesManager.EM.getTransaction().begin();
+			}
 		 PlayerRating playerRating=EntitiesManager.EM.find(PlayerRating.class, ratingId);
 		 if(playerRating !=null)
 		 {
 			 EntitiesManager.EM.remove(playerRating);
 		 }
 		 EntitiesManager.EM.getTransaction().commit();
-		 //em.close();
-	  }
-	 
-	  public static void main(String[] args) {
-
-	}
-
+	  }	 
 }

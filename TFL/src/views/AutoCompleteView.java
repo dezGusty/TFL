@@ -53,12 +53,9 @@ import model.Player;
 
 		public void addPlayerToGame()
 		{
-			System.out.println("Selected player:" +this.selectedPlayer.toString());
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
-			System.out.println(teamsBean.getGame().getId());
 			NextGamesView nextGamesView=(NextGamesView)elContext.getELResolver().getValue(elContext, null, "nextGamesView");
-			System.out.println("Max number of players"+nextGamesView.MAXNUMBEROFPLAYERS);
 			if(teamsBean.getGame().getPlayers().size()>=nextGamesView.MAXNUMBEROFPLAYERS)
 			{
 				FacesContext.getCurrentInstance().addMessage(null,

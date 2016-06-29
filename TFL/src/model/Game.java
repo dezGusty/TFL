@@ -1,13 +1,17 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
+
+import dataAccessLayer.GameDataAccess;
 import model.Player;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,11 +22,7 @@ import java.util.Set;
 @Table(name="game")
 @NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
 public class Game implements Serializable {
-	@Override
-	public String toString() {
-		return "Game [id=" + id + ", date=" + date + ", difference=" + difference + "]";
-	}
-
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -36,6 +36,16 @@ public class Game implements Serializable {
 
 	private Boolean archive;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data;
+	
+	public Date getData() {
+		return this.data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 	//uni-directional many-to-many association to Player
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="game_player", 
@@ -50,13 +60,15 @@ public class Game implements Serializable {
     inverseJoinColumns={@JoinColumn(name="player_id")})
 	private Set<Player> playersWaiting;
 		
-	public Set<Player> getPlayersWaiting() {
-		return playersWaiting;
-	}
+	//bi-directional many-to-one association to Team
+	@OneToOne
+	@JoinColumn(name="firstteam")
+	private Team team1;
 
-	public void setPlayersWaiting(Set<Player> playersWaiting) {
-		this.playersWaiting = playersWaiting;
-	}
+	//bi-directional many-to-one association to Team
+	@OneToOne
+	@JoinColumn(name="secondteam")
+	private Team team2;
 
 	public Game() {
 		this.date=null;
@@ -105,15 +117,13 @@ public class Game implements Serializable {
 		this.difference = difference;
 	}
 
-	//bi-directional many-to-one association to Team
-	@OneToOne
-	@JoinColumn(name="firstteam")
-	private Team team1;
+	public Set<Player> getPlayersWaiting() {
+		return playersWaiting;
+	}
 
-		//bi-directional many-to-one association to Team
-	@OneToOne
-	@JoinColumn(name="secondteam")
-	private Team team2;
+	public void setPlayersWaiting(Set<Player> playersWaiting) {
+		this.playersWaiting = playersWaiting;
+	}
 		
 	public Set<Player> getPlayers() {
 		return this.players;
@@ -216,5 +226,40 @@ public class Game implements Serializable {
 	{
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(this.date);
+	}
+	
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", date=" + date + ", difference=" + difference + "]";
+	}
+	
+	public static void main(String[] args) {
+		List<Game> games=GameDataAccess.ListNextGames();
+		for(Game g:games)
+		{
+			System.out.println(g.getData());
+			//Date date = new java.sql.Date(g.getData().getTime()); 
+			//System.out.println(date);
+		}
+		Date date= new java.util.Date();
+		Game g=new Game();
+		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+		try {
+			date=dt.parse("2016-03-21");
+			g.setDate(date);
+		} catch (ParseException e) {
+			System.out.println(e.getMessage());
+		} 
+		
+		SimpleDateFormat dr2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
+		try {
+			date=dr2.parse("2016-03-21 18:00:00");
+			g.setDate(date);
+		} catch (ParseException e) {
+			System.out.println(e.getMessage());
+		} 		
+		//System.out.println(g.getData());
+		g=GameDataAccess.AddNewGame(g);
+		
 	}
 }

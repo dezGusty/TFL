@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--AgileJ Ltd. (http://www.agilej.com)--><ajsv>
+    <diagram creationDate="2016-Iun-28 15:35" licenseGrade="evaluation" licenseeName="anon" licenseeOrganization="unknown" populationMethod="manual" version="1.8.3.v20151019-2113">
+        <filterScript>
+
+// no filter script yet defined for this class diagram
+// use CTRL+SPACE for completion suggestions
+
+</filterScript>
+        <class className="helpers.TeamGenerator" project="TFL" xLocation="251" yLocation="250"/>
+        <class className="helpers.RedirectView" project="TFL" xLocation="281" yLocation="-6"/>
+        <class className="helpers.PlayerHelper" project="TFL" xLocation="889" yLocation="115"/>
+        <class className="helpers.PlayerConverter" project="TFL" xLocation="888" yLocation="-11"/>
+        <class className="helpers.MapComparator" project="TFL" xLocation="893" yLocation="269"/>
+        <class className="helpers.EntitiesManager" project="TFL" xLocation="273" yLocation="114"/>
+        <class className="helpers.RatingComparator" project="TFL" xLocation="932" yLocation="452"/>
+    </diagram>
+</ajsv>

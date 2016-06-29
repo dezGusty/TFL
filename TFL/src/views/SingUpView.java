@@ -10,6 +10,7 @@ import javax.faces.event.ActionEvent;
 
 import dataAccessLayer.PlayerDataAccess;
 import dataAccessLayer.PlayerRatingAccess;
+import helpers.PasswordValidation;
 import model.Player;
 import model.PlayerRating;
 
@@ -70,7 +71,7 @@ public class SingUpView {
     	}
     	else
     	{
-    		if(this.isValid(this.pass))
+    		if(PasswordValidation.isValid(this.pass))
     		{
     			Player player=PlayerDataAccess.CreateNewUser(this.name, this.pass, this.initialRating);
     			PlayerRating playerRating=new PlayerRating(new Date(),player,player.getRating());
@@ -91,21 +92,4 @@ public class SingUpView {
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Player "+this.name+" successfullt added!"));
 	}
-    
-    private boolean isValid(String password)
-    {
-    	if(password.contains("##"))
-		{
-			FacesContext.getCurrentInstance().addMessage(null,
-    				new FacesMessage(FacesMessage.SEVERITY_WARN, null, "Password can not contain '##' characters!"));
-			return false;
-		}
-    	if(password.length()>20)
-    	{
-    		FacesContext.getCurrentInstance().addMessage(null,
-    				new FacesMessage(FacesMessage.SEVERITY_WARN, null, "Passwords too long!"));
-			return false;
-    	}
-    	return true;
-    }
 }

@@ -35,7 +35,7 @@
 	</div>
 	
 	<div class="container-fluid withBackground">
-		<h:form enctype="multipart/form-data">
+		<h:form enctype="multipart/form-data" id="form">
 		<div class="container">
 
 			<div class="row">
@@ -52,7 +52,7 @@
         						</td>
       						</tr>
       						<tr>
-        						<td colspan="2"><p:fileUpload id="fileIdPhoto" update="image" fileUploadListener="#{fileUploadBean.uploadPhoto}" mode="advanced" dragDropSupport="false"
+        						<td colspan="2"><p:fileUpload id="fileIdPhoto" update="form" fileUploadListener="#{fileUploadBean.uploadPhoto}" mode="advanced" dragDropSupport="false"
                sizeLimit="10000000"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/></td>
       						</tr>
      				 		<tr>

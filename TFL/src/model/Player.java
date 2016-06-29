@@ -17,6 +17,34 @@ import java.util.Set;
 public class Player implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+
+	private Boolean available;
+
+	private String password;
+
+	private Double rating;
+
+	private Integer type;
+
+	private String username;
+
+	private Boolean archive;
+	
+	private String picture;
+	
+	private Integer stars;
+	
+	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
+	private Set<Game> games;
+	
+	//bi-directional many-to-one association to PlayerRating
+	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
+	private List<PlayerRating> playerRatings;
+
+	
 	@Override
 	public String toString() {
 		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
@@ -28,7 +56,7 @@ public class Player implements Serializable {
 		this.available=true;
 		this.rating=0.0;
 		this.type=1;
-		this.picture="../images/noimage.png";
+		this.picture="noimage.png";
 	}
 	
 	public Player(String username, String password,Double rating)
@@ -64,29 +92,7 @@ public class Player implements Serializable {
 		}
 		return max;
 	}
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
 
-	private Boolean available;
-
-	private String password;
-
-	private byte[] image;
-
-	private Double rating;
-
-	private Integer type;
-
-	private String username;
-
-	private Boolean archive;
-	
-	private String picture;
-	
-	private Integer stars;
-	
 	public Integer getStars() {
 		return stars;
 	}
@@ -101,13 +107,6 @@ public class Player implements Serializable {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-
-	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
-	private Set<Game> games;
-	
-	//bi-directional many-to-one association to PlayerRating
-	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
-	private List<PlayerRating> playerRatings;
 
 	public Integer getId() {
 		return this.id;
@@ -131,15 +130,6 @@ public class Player implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public byte[] getImage() {
-		return this.image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-		
 	}
 
 	public Double getRating() {
@@ -317,7 +307,7 @@ public class Player implements Serializable {
 		    		 if(aux.getDate().after(new Date()))
 		    		 {
 		    			 result=aux;
-		    			 System.out.println("result setted: "+result.dateToDisplay());
+		    			 System.out.println("Initial next played: "+result.dateToDisplay());
 		    		 }
 		     }
 		     while(itr.hasNext())
@@ -326,7 +316,7 @@ public class Player implements Serializable {
 		    	 if(aux.getDate().before(result.getDate()) && aux.getDate().after(new Date()))
 		    	 {
 		    		 result=aux;
-		    		 System.out.println(" new result setted: "+result.dateToDisplay());
+		    		 System.out.println("Next game: "+result.dateToDisplay());
 		    	 }
 		     }
 		}
@@ -344,7 +334,7 @@ public class Player implements Serializable {
 		    		 if(aux.getDate().before(new Date()))
 		    		 {
 		    			 result=aux;
-		    			 System.out.println("result setted: "+result.dateToDisplay());
+		    			 System.out.println("Initial last played game: "+result.dateToDisplay());
 		    		 }
 		     }
 		     while(itr.hasNext())
@@ -353,7 +343,7 @@ public class Player implements Serializable {
 		    	 if(aux.getDate().before(new Date()) && aux.getDate().after(result.getDate()))
 		    	 {
 		    		 result=aux;
-		    		 System.out.println(" new result setted: "+result.dateToDisplay());
+		    		 System.out.println("Last played game: "+result.dateToDisplay());
 		    	 }
 		     }
 		}

@@ -53,7 +53,6 @@ public class ChartView implements Serializable {
     {
     	if(player.getPlayerRatings().size()==0)
     	{
-    		System.out.println("Player has no ratings!");
     		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,null, "Player "+player.getUsername()+" has no ratings!"));
     		return;
     	}

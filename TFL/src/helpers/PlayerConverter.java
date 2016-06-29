@@ -12,7 +12,6 @@ public class PlayerConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String value) {
-		System.out.println("Get as object!");
 		String[] splitedValues=value.split("##");
 		Player newPlayer=new Player();
 		try
@@ -35,7 +34,6 @@ public class PlayerConverter implements Converter {
 		{
 			System.out.println(ex.getMessage());
 		}
-		System.out.println(newPlayer.toString());
 		return newPlayer;
 	}
 
@@ -43,5 +41,4 @@ public class PlayerConverter implements Converter {
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object value) {
 		return value.toString();
 	}
-
 }

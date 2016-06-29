@@ -41,6 +41,11 @@
 		<param-value>humanity</param-value>
 	</context-param>
     
+    <context-param>
+   		 <param-name>com.sun.faces.numberOfLogicalViews</param-name>
+    	<param-value>20</param-value>
+	</context-param>
+
     <filter>
   		<filter-name>PrimeFaces FileUpload Filter</filter-name>
   		<filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>

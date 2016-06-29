@@ -16,7 +16,6 @@
 </h:head>
 
 <h:body>
-	<h:outputStylesheet name="../styles/custCss.css" />
 	<div class="container-fluid">		
 		<div class="row">
 			<div class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
@@ -36,7 +35,7 @@
 	</div>
 	
 	<div class="container-fluid withBackground" style="min-height:90vh">
-		<h:form>
+		<h:form id="historyteams">
 			<div class="container">
 			
 				<div class="row">
@@ -108,7 +107,7 @@
   							</button>
   							<ul class="dropdown-menu dropdown-menu-right">
     							<li>
-    								<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeamsResult}" disabled="#{loginView.currentPlayer.disableButtons()}" />
+    								<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeamsResult}" disabled="#{loginView.currentPlayer.disableButtons()}" update="historyteams" />
 								</li>
   							</ul>				
 						</div>

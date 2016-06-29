@@ -122,10 +122,10 @@
   									</button>
   									<ul class="dropdown-menu dropdown-menu-right">
     									<li>
-    										<p:commandButton title="Add players"  onclick="PF('addPlayers').show();" value="Add more players"  disabled="#{loginView.currentPlayer.disableButtons()}" />
+    										<p:commandButton title="Add players"  onclick="PF('addPlayers').show();" value="Add more players"  disabled="#{loginView.currentPlayer.disableButtons()}" update="pick" />
    			 							</li>
     									<li>
-    										<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeams}" disabled="#{loginView.currentPlayer.disableButtons()}" />
+    										<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeams}" disabled="#{loginView.currentPlayer.disableButtons()}" update="pick"/>
 										</li>
   									</ul>
    			    				</div>
@@ -134,11 +134,7 @@
 					</div>
 				</div>
 			</div>
-		</h:form>
-	</div>
-	
-	<p:dialog header="Add players" widgetVar="addPlayers"  height="235" width="300" showEffect="clip" hideEffect="clip">
-			<h:form id="addPlayerDialog">
+			<p:dialog header="Add players" widgetVar="addPlayers"  height="235" width="300" showEffect="clip" hideEffect="clip">
 			<div class=" col-sm-12 col-md-12" style="text-align:center; padding-bottom:5%">
 				<h:outputText value="Select a player:" />
 			</div>
@@ -157,10 +153,11 @@
            		</p:autoComplete>     		
 			</div>
 			<div class=" col-sm-12 col-md-12" style="text-align:center;padding-bottom:5%">
-				<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayerToGame}" ajax="true" />
+				<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayerToGame}" ajax="true" update="pick" />
 			</div>
-   			</h:form>
    	</p:dialog>
+		</h:form>
+	</div>
 	
 	<script src="../bootstrap/js/bootstrap.min.js"></script>	
 </h:body>

@@ -56,18 +56,10 @@ public class PlayersView implements Serializable{
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		ChartView chartView = (ChartView) elContext.getELResolver().getValue(elContext, null, "chartView");	
 		chartView.addPlayerToChart(player);
-		System.out.println("Players from ChartView");
-		for(Player p:chartView.getPlayers())
-		{
-			System.out.println(p.toString());
-		}
 	}
 	
 	public void onrate(Player player) {
-		System.out.println(player.getId());
-		System.out.println(player.getStars());
 		player.setRating(player.getStars().doubleValue());
-		System.out.println("Rating"+player.getRating());
 		PlayerDataAccess.updateRating(player.getId(), player.getRating());
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Player " + player.getUsername()+" rated to "+player.getStars()+" stars!");
         FacesContext.getCurrentInstance().addMessage(null, message);
@@ -76,7 +68,6 @@ public class PlayersView implements Serializable{
     public void oncancel() {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cancel Event", "Rate Reset");
         FacesContext.getCurrentInstance().addMessage(null, message);
-        System.out.println("On cancel event");
     }
 	
 	@PostConstruct

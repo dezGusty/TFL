@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--AgileJ Ltd. (http://www.agilej.com)--><ajsv>
+    <diagram creationDate="2016-Iun-28 15:25" licenseGrade="evaluation" licenseeName="anon" licenseeOrganization="unknown" populationMethod="Wizard+PACKAGE" version="1.8.3.v20151019-2113">
+        <filterScript>
+
+// no filter script yet defined for this class diagram
+// use CTRL+SPACE for completion suggestions
+
+</filterScript>
+        <class className="dataAccessLayer.TeamDataAccess" project="TFL" xLocation="2083" yLocation="108"/>
+        <class className="dataAccessLayer.PlayerDataAccess" project="TFL" xLocation="603" yLocation="30"/>
+        <class className="dataAccessLayer.GameDataAccess" project="TFL" xLocation="1308" yLocation="45"/>
+        <class className="dataAccessLayer.PlayerRatingAccess" project="TFL" xLocation="30" yLocation="126"/>
+    </diagram>
+</ajsv>

@@ -1,14 +1,11 @@
 package dataAccessLayer;
 
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import helpers.DatabaseConnection;
 import helpers.EntitiesManager;
 import model.Game;
 import model.Player;
@@ -24,9 +21,11 @@ public class PlayerDataAccess implements Serializable{
 
 	public static Player FindPlayer(int playerid)
 	{
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		Player player=EntitiesManager.EM.find(Player.class, playerid);
-		//em.close();
 		return player;
 	}
 	
@@ -39,17 +38,19 @@ public class PlayerDataAccess implements Serializable{
 				EntitiesManager.EM.getTransaction().begin();
 			}
 			EntitiesManager.EM.persist(emp);
-			//EntitiesManager.EM.getTransaction().commit();
+			EntitiesManager.EM.getTransaction().commit();
 			EntitiesManager.EM.refresh(emp);
-			//em.close();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 		return emp;
 	}
 
-	public static int loginUser(String username, String password) {	
-		//EntitiesManager.EM.getTransaction().begin();
+	public static int LoginUser(String username, String password) {	
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		TypedQuery<Player> query = EntitiesManager.EM.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
 		query.setParameter("name", username);
 		query.setParameter("pass", password);
@@ -63,43 +64,36 @@ public class PlayerDataAccess implements Serializable{
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
-		//em.close();
 		return result;
 	}
-
-	public static Player getPlayerWithID(int playerId) {	
-		//EntitiesManager.EM.getTransaction().begin();
-		Player player =EntitiesManager.EM.find(Player.class, playerId);
-		//em.close();
-		return player;
-	}
 	
-	public static Player updatePassword(int playerId, String password) {
-		//EntitiesManager.EM.getTransaction().begin();
+	public static Player UpdatePassword(int playerId, String password) {
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		Player play =EntitiesManager.EM.find(Player.class, playerId);
 		try {
-			    play.setPassword(password);
-			   System.out.println(play.getPassword());
-				//em.persist(player);
+			   play.setPassword(password);
+			   EntitiesManager.EM.persist(play);
 			   EntitiesManager.EM.getTransaction().commit();
-				//em.refresh(player);
-				//em.close();
-				return play;
+			   EntitiesManager.EM.refresh(play);
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
-		return null;
+		return play;
 	}
 
 	public static Player updateProfilePicture(int playerId, String newPicture) {
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		Player play =EntitiesManager.EM.find(Player.class, playerId);
 		try {
 			    play.setPicture(newPicture);
-			    System.out.println(play.getImage());
 			    EntitiesManager.EM.merge(play);
 			    EntitiesManager.EM.getTransaction().commit();
-				//em.close();
 				return play;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -107,21 +101,26 @@ public class PlayerDataAccess implements Serializable{
 		return null;
 	}
 	
-	public static Player changeAvailable(Player player)
+	public static Player ChangeAvailable(int playerId, boolean available)
 	{	
-		//EntitiesManager.EM.getTransaction().begin();
-		Player play =EntitiesManager.EM.find(Player.class, player.getId());
-		play.setAvailable(player.getAvailable());
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
+		Player play =EntitiesManager.EM.find(Player.class, playerId);
+		play.setAvailable(available);
 		EntitiesManager.EM.persist(play);
 		EntitiesManager.EM.getTransaction().commit();
 		EntitiesManager.EM.refresh(play);
-//		/em.close();
         return play;
 	}
 	
 	public static Player updateRating(int playerId, Double rating)
 	{	
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		Player play =EntitiesManager.EM.find(Player.class,playerId);
 		if(play!=null)
 		{
@@ -131,13 +130,15 @@ public class PlayerDataAccess implements Serializable{
 		EntitiesManager.EM.merge(play);
 		EntitiesManager.EM.getTransaction().commit();
 		EntitiesManager.EM.refresh(play);
-		//em.close();
         return play;
 	}
 
 	public static List<Player> ListAllPlayers() {
 
-		//EntitiesManager.EM.getTransaction().begin();
+		if(EntitiesManager.EM.getTransaction().isActive()==false)
+		{
+			EntitiesManager.EM.getTransaction().begin();
+		}
 		    TypedQuery<Player> query =EntitiesManager.EM.createQuery("SELECT p FROM Player p",Player.class);
 			List<Player> result = new ArrayList<Player>();
 			result = query.getResultList();
@@ -145,18 +146,19 @@ public class PlayerDataAccess implements Serializable{
 			{
 				System.out.println(p.getUsername());
 			}
-			//em.close();
 			return result;
 	}
 
 	  public static boolean RemovePlayer(int playerId) {
-		 // EntitiesManager.EM.getTransaction().begin();
+		  if(EntitiesManager.EM.getTransaction().isActive()==false)
+			{
+				EntitiesManager.EM.getTransaction().begin();
+			}
 			Player player=EntitiesManager.EM.find(Player.class, playerId);
 			if(player!=null)
 			{			
 				player.setArchive(true);
 				EntitiesManager.EM.getTransaction().commit();
-				//EntitiesManager.EM.close();
 				return true;
 			}
 			else
@@ -167,7 +169,10 @@ public class PlayerDataAccess implements Serializable{
 		}
 	  
 	  public static boolean DeleteRatingsBeforeGame(int playerId,int gameId) {
-		  //EntitiesManager.EM.getTransaction().begin();
+		  if(EntitiesManager.EM.getTransaction().isActive()==false)
+			{
+				EntitiesManager.EM.getTransaction().begin();
+			}
 			Player player=EntitiesManager.EM.find(Player.class, playerId);
 			Game game=EntitiesManager.EM.find(Game.class, gameId);
 			
@@ -193,7 +198,7 @@ public class PlayerDataAccess implements Serializable{
 							PlayerRatingAccess.DeleteRating(pl.getId());
 						}
 					}
-					return true; //daca s-au sters rating-uri si pentru alte jocuri
+					return true; 
 				}
 				else
 				{
@@ -201,13 +206,15 @@ public class PlayerDataAccess implements Serializable{
 				}
 			}
 			EntitiesManager.EM.getTransaction().commit();
-			//em.close();
-			return false; //daca nu are ratinguri de sters
+			return false;
 		}
 	  
 	  public static Player UpdateLastValidRating(int playerId)
 	  {
-		  //EntitiesManager.EM.getTransaction().begin();
+		  if(EntitiesManager.EM.getTransaction().isActive()==false)
+			{
+				EntitiesManager.EM.getTransaction().begin();
+			}
 			Player player=EntitiesManager.EM.find(Player.class, playerId);
 			if(player!=null)
 			{
@@ -218,13 +225,15 @@ public class PlayerDataAccess implements Serializable{
 				EntitiesManager.EM.getTransaction().commit();
 				EntitiesManager.EM.refresh(player);
 			}
-			//em.close();
 			return player;
 	  }
 	  
 	  public static Player NewRatingForGame(int playerId,int gameId)
 	  {
-		  //.EM.getTransaction().begin();
+		  if(EntitiesManager.EM.getTransaction().isActive()==false)
+			{
+				EntitiesManager.EM.getTransaction().begin();
+			}
 			Player player=EntitiesManager.EM.find(Player.class, playerId);
 			Game game=EntitiesManager.EM.find(Game.class, gameId);
 			if(player!=null && game!=null)
@@ -260,34 +269,17 @@ public class PlayerDataAccess implements Serializable{
 				EntitiesManager.EM.getTransaction().commit();
 				EntitiesManager.EM.refresh(player);
 			}
-			//em.close();
 			return player;
 	  }
 	  	  
 	  public static List<Player> ListActivePlayers() {	
-		 // EntitiesManager.EM.getTransaction().begin();
-			TypedQuery<Player> query = EntitiesManager.EM.createQuery("SELECT p FROM Player p WHERE p.archive = false", Player.class);
-			List<Player> result = new ArrayList<Player>();
-			result = query.getResultList();
-			//EntitiesManager.EM.close();
-			return result;
-	 }
-	  
-	  
-	  
-	  public static void main(String[] args) {
-		  Game g1=GameDataAccess.GetGame(47);
-		  Game g2=GameDataAccess.GetGame(52);
-		  long startDate = g1.getDate().getTime();
-		  long endDate =g2.getDate().getTime();
-
-		  long diffTime = Math.abs(startDate - endDate);
-		  long diffDays = diffTime / (1000 * 60 * 60 * 24);
-		  DateFormat dateFormat = DateFormat.getDateInstance();
-		  System.out.println("The difference between "+
-		    dateFormat.format(startDate)+" and "+
-		    dateFormat.format(endDate)+" is "+
-		    diffDays+" days.");
-		 
+		  if(EntitiesManager.EM.getTransaction().isActive()==false)
+		  {
+			  EntitiesManager.EM.getTransaction().begin();
+		  }
+		  TypedQuery<Player> query = EntitiesManager.EM.createQuery("SELECT p FROM Player p WHERE p.archive = false", Player.class);
+		  List<Player> result = new ArrayList<Player>();
+		  result = query.getResultList();
+		  return result;
 	  }
 }

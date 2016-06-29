@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -27,7 +29,7 @@ public class NextGamesView implements Serializable{
 
 	    private static final long serialVersionUID = 1L;	
 	    public final int MAXNUMBEROFPLAYERS=4;
-	    public static List<Game> games;    
+	    public  List<Game> games;    
 	    private Game selectedGame;    
 	    private Date gameDate;
 	    
@@ -55,6 +57,13 @@ public class NextGamesView implements Serializable{
 	        games=game;
 	    }
 	 		
+	    @PostConstruct
+		public void init() {
+			this.games=new ArrayList<Game>();
+			this.gameDate=new Date();
+			this.selectedGame=new Game();
+		}
+	    
 		public void play(Game game) {
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
@@ -107,23 +116,19 @@ public class NextGamesView implements Serializable{
 				System.out.println("Next player id: "+nextPlayer.getId());
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!","Done! You are not playing anymore on  "+game.dateToDisplay()));
-			}
-			
-			NextGamesView.games=GameDataAccess.ListNextGames();
+			}	
+			this.games=GameDataAccess.ListNextGames();
 		}
 		
 		public void newGame()
 		{
 			Team first=TeamDataAccess.CreateNewTeam(new Team("First team"));
 			Team second= TeamDataAccess.CreateNewTeam(new Team("Second team"));
-			System.out.println("first id: "+first.getId()+" second : "+second.getId());
-			
 			try
 			{
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-				System.out.println(	format.format(gameDate));
 				Game gameToAdd=new Game(format.format(gameDate),first,second);
-				games.add(GameDataAccess.AddNewGame(gameToAdd));
+				GameDataAccess.AddNewGame(gameToAdd);
 			    FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "New game on "+format.format(gameDate)));
 			}
@@ -134,11 +139,10 @@ public class NextGamesView implements Serializable{
 		}
 		 
 		public void remove(Game game) {
-			System.out.println("Remove game");
 			GameDataAccess.AddToArchive(game.getId());
 			games.remove(game);
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Game successfully canceled! "));
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Game canceled! "));
 		}
 		
 		public void teamsView(Game game)
@@ -148,7 +152,6 @@ public class NextGamesView implements Serializable{
 			ELContext context = FacesContext.getCurrentInstance().getELContext();
 			TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
 			WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
-			teamsBean.setShowNextPrevious(false);
 			if(selectGame!=null)
 			{
 				teamsBean.setGame(selectGame);
@@ -169,7 +172,6 @@ public class NextGamesView implements Serializable{
 			ELContext context = FacesContext.getCurrentInstance().getELContext();
 			TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
 			WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
-			teamsBean.setShowNextPrevious(false);
 			if(selectGame!=null)
 			{
 				teamsBean.setGame(selectGame);
@@ -189,11 +191,8 @@ public class NextGamesView implements Serializable{
 			game.setTeam1(TeamDataAccess.RemoveAllPlayers(game.getTeam1().getId()));
 			game.setTeam2(TeamDataAccess.RemoveAllPlayers(game.getTeam2().getId()));
 			
-			System.out.println(game.getPlayers());
-			
 			if(game.getPlayers().size()<4)
 			{
-				System.out.println("There are less then 4 players");
 				for(Player player:game.getPlayers())
 				{
 					if(game.getTeam1().containsPlayer(player)==false)
@@ -204,7 +203,6 @@ public class NextGamesView implements Serializable{
 			}
 			else
 			{
-				System.out.println("There are more than 4 players");
 				TeamDataAccess.RemoveAllPlayers(game.getTeam1().getId());
 				TeamDataAccess.RemoveAllPlayers(game.getTeam2().getId());
 				TeamGenerator tg=new TeamGenerator(new ArrayList<Player>(game.getPlayers()));

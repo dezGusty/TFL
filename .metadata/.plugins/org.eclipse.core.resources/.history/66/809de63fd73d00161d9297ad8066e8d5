@@ -1,0 +1,94 @@
+package dataAccessLayer;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+import java.sql.Timestamp;
+
+
+/**
+ * The persistent class for the game database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
+public class Game implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+
+	private Boolean archive;
+
+	private Timestamp data;
+
+	@Temporal(TemporalType.DATE)
+	private Date date;
+
+	private Integer difference;
+
+	private Integer firstteam;
+
+	private Integer secondteam;
+
+	public Game() {
+	}
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Boolean getArchive() {
+		return this.archive;
+	}
+
+	public void setArchive(Boolean archive) {
+		this.archive = archive;
+	}
+
+	public Timestamp getData() {
+		return this.data;
+	}
+
+	public void setData(Timestamp data) {
+		this.data = data;
+	}
+
+	public Date getDate() {
+		return this.date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Integer getDifference() {
+		return this.difference;
+	}
+
+	public void setDifference(Integer difference) {
+		this.difference = difference;
+	}
+
+	public Integer getFirstteam() {
+		return this.firstteam;
+	}
+
+	public void setFirstteam(Integer firstteam) {
+		this.firstteam = firstteam;
+	}
+
+	public Integer getSecondteam() {
+		return this.secondteam;
+	}
+
+	public void setSecondteam(Integer secondteam) {
+		this.secondteam = secondteam;
+	}
+
+}
