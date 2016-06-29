@@ -21,16 +21,19 @@
 		<h:form>
 				<div class="navbar navbar-default" style="margin-bottom:0px">
 					<div class="container-fluid">
-						<div class="row">
-						
-							<div class="col-xs-12 col-md-3" style="padding-top: 10px;">
-								<a class="navbar-brand">
-									<h:commandLink  actionListener="#{loginView.redirectToHome}">
-										<h:graphicImage id="home" library="img" name="#{loginView.currentPlayer.picture}" alt="No image" height="40px"/>		
-										<p:tooltip id="toolTipFade" for="home" value="Home" />
-									</h:commandLink>
-									<p:outputLabel style="font-size: 1.4em;" value="Welcome, #{loginView.currentPlayer.username} !" ></p:outputLabel>
-				   				</a>
+						<div class="row">								
+							<div class="col-xs-12 col-md-4" style="padding-top: 10px;">
+								<div class="row">
+									<div class="col-xs-3 col-md-3" style="padding-top: 7px;padding-bottom:10px; text-align:center;">
+										<h:commandLink  actionListener="#{loginView.redirectToHome}">
+											<h:graphicImage id="home" library="img" name="#{loginView.currentPlayer.picture}" alt="No image" height="40px"/>		
+											<p:tooltip id="toolTipFade" for="home" value="Home" />
+										</h:commandLink>
+									</div>
+									<div class="col-xs-9 col-md-9" style="padding-top: 7px;padding-bottom:10px;text-align:left;">
+										<p:outputLabel style="font-size: 1.4em;" value="Welcome, #{loginView.currentPlayer.username} !" ></p:outputLabel>
+									</div>
+								</div>
 							</div>
 							
 							<div class="col-xs-9 col-md-7" style="font-size: 21px;padding-top: 2px;">
@@ -67,7 +70,7 @@
    			 					</ul>
 							</div>
 							
-							<div class="col-xs-3 col-md-2" style="padding-top: 15px; text-align: right; padding-right: 25px;">
+							<div class="col-xs-3 col-md-1" style="padding-top: 15px; text-align: right; padding-right: 25px;">
 								<div class="btn-group">
    			 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   					  					<span class="glyphicon glyphicon-th-large"></span>

@@ -14724,3 +14724,36 @@ iun. 29, 2016 11:13:59.19   Image 'http://localhost:8080/TFL/javax.faces.resourc
 iun. 29, 2016 11:37:23.81 [Child 6740] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
 iun. 29, 2016 11:45:06.67 [Child 8076] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
 iun. 29, 2016 11:45:06.68 [Child 8076] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iun. 29, 2016 15:31:43.20 NEW SESSION
+iun. 29, 2016 15:31:43.21 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 29, 2016 15:32:21.26 console.error: 
+iun. 29, 2016 15:32:21.62   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23
+
+iun. 29, 2016 18:55:37.56 NEW SESSION
+iun. 29, 2016 18:55:37.56 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 29, 2016 18:55:44.59 console.error: 
+iun. 29, 2016 18:55:44.67   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.jpg' failed to load.
+iun. 29, 2016 18:57:05.75 console.error: 
+iun. 29, 2016 18:57:05.84   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.jpg' failed to load.
+iun. 29, 2016 18:57:06.54 console.error: 
+iun. 29, 2016 18:57:06.55   Image 'http://localhost:8080/TFL/javax.faces.resource/images/index.jpg' failed to load.
+iun. 29, 2016 19:00:47.89 console.error: 
+iun. 29, 2016 19:00:47.98   Image 'http://localhost:8080/TFL/styles/images/index.png' failed to load.
+iun. 29, 2016 19:01:59.23 console.error: 
+iun. 29, 2016 19:01:59.34   Image 'http://localhost:8080/TFL/styles/images/index.png' failed to load.
+iun. 29, 2016 19:02:45.64 console.error: 
+iun. 29, 2016 19:02:45.70   Image 'http://localhost:8080/TFL/styles/images/index.png' failed to load.
+iun. 29, 2016 19:02:45.98 console.error: 
+iun. 29, 2016 19:02:45.99   Image 'http://localhost:8080/TFL/styles/images/index.png' failed to load.
+iun. 29, 2016 19:04:25.62 console.warn: Asynchronous operation was aborted as selection changed.
+iun. 29, 2016 19:04:29.20 console.error: 
+iun. 29, 2016 19:04:29.22   Image 'http://localhost:8080/TFL/styles/images/index.png' failed to load.
+iun. 29, 2016 19:04:39.90 console.error: 
+iun. 29, 2016 19:04:39.92   Image 'http://localhost:8080/TFL/styles/images/index.png' failed to load.
+iun. 29, 2016 19:04:40.77 console.error: 
+iun. 29, 2016 19:04:40.78   Image 'http://localhost:8080/TFL/styles/images/index.png' failed to load.
+iun. 29, 2016 19:05:44.54 console.error: 
+iun. 29, 2016 19:05:44.55   Protocol error (noSuchActor): No such actor for ID: server1.conn1.animationsActor23
+iun. 29, 2016 19:09:53.12 console.error: 
+iun. 29, 2016 19:09:53.21   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23

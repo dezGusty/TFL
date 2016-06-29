@@ -1,7 +1,9 @@
 @CHARSET "ISO-8859-1";
 .background
 {
- background: url('../images/index.png') no-repeat center center fixed; 
+ background-image: url(../images/index.png);
+ background-position: center center fixed; 
+ background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

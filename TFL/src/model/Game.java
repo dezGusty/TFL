@@ -1,12 +1,11 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
-
 import dataAccessLayer.GameDataAccess;
+import dataAccessLayer.TeamDataAccess;
 import model.Player;
 import java.util.Date;
 import java.util.HashSet;
@@ -254,12 +253,17 @@ public class Game implements Serializable {
 		SimpleDateFormat dr2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
 		try {
 			date=dr2.parse("2016-03-21 18:00:00");
-			g.setDate(date);
+			Team first=TeamDataAccess.CreateNewTeam(new Team("First team"));
+			Team second= TeamDataAccess.CreateNewTeam(new Team("Second team"));
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Game gameToAdd=new Game(format.format(new Date()),first,second);
+			gameToAdd.setData(new Date());
+			System.out.println(g.getDifference()+g.getArchive().toString()+g.getDate()+g.getData());
+			g=GameDataAccess.AddNewGame(gameToAdd);	
 		} catch (ParseException e) {
-			System.out.println(e.getMessage());
-		} 		
+			e.printStackTrace();
+		} 	
 		//System.out.println(g.getData());
-		g=GameDataAccess.AddNewGame(g);
-		
+		//g=GameDataAccess.AddNewGame(g);	
 	}
 }

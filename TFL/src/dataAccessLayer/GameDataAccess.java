@@ -321,7 +321,7 @@ public class GameDataAccess implements Serializable {
 		}
 		catch(Exception ex)
 		{
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}
 		return null;	
 	}
