@@ -1,5 +1,0 @@
-@CHARSET "UTF-8";
-.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.teamNameEdit
-{
-	background-color: inherit
-}

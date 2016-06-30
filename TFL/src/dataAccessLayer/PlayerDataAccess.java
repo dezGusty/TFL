@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import helpers.EntitiesManager;
 import model.Game;
@@ -21,25 +22,22 @@ public class PlayerDataAccess implements Serializable{
 
 	public static Player FindPlayer(int playerid)
 	{
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Player player=EntitiesManager.EM.find(Player.class, playerid);
+		EntityManager em=EntitiesManager.GetManager();
+		Player player=em.find(Player.class, playerid);
 		return player;
 	}
 	
 	public static Player CreateNewUser(String username, String password,Double rating) {
 		Player emp = new Player(username,password,rating);
 		emp.setStars(rating.intValue());
+		EntityManager em=EntitiesManager.GetManager();
 		try {
-			if(EntitiesManager.EM.getTransaction().isActive()==false)
-			{
-				EntitiesManager.EM.getTransaction().begin();
-			}
-			EntitiesManager.EM.persist(emp);
-			EntitiesManager.EM.getTransaction().commit();
-			EntitiesManager.EM.refresh(emp);
+			em.getTransaction().begin();
+			
+			em.persist(emp);
+			em.getTransaction().commit();
+			em.refresh(emp);
+			em.close();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -47,11 +45,9 @@ public class PlayerDataAccess implements Serializable{
 	}
 
 	public static int LoginUser(String username, String password) {	
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		TypedQuery<Player> query = EntitiesManager.EM.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
+		EntityManager em=EntitiesManager.GetManager();
+		
+		TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
 		query.setParameter("name", username);
 		query.setParameter("pass", password);
 		int result=0;
@@ -68,16 +64,16 @@ public class PlayerDataAccess implements Serializable{
 	}
 	
 	public static Player UpdatePassword(int playerId, String password) {
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Player play =EntitiesManager.EM.find(Player.class, playerId);
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Player play =em.find(Player.class, playerId);
 		try {
 			   play.setPassword(password);
-			   EntitiesManager.EM.persist(play);
-			   EntitiesManager.EM.getTransaction().commit();
-			   EntitiesManager.EM.refresh(play);
+			   em.persist(play);
+			   em.getTransaction().commit();
+			   em.refresh(play);
+			   em.close();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -85,15 +81,15 @@ public class PlayerDataAccess implements Serializable{
 	}
 
 	public static Player updateProfilePicture(int playerId, String newPicture) {
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Player play =EntitiesManager.EM.find(Player.class, playerId);
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Player play =em.find(Player.class, playerId);
 		try {
 			    play.setPicture(newPicture);
-			    EntitiesManager.EM.merge(play);
-			    EntitiesManager.EM.getTransaction().commit();
+			    em.merge(play);
+			    em.getTransaction().commit();
+			    em.close();
 				return play;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -103,43 +99,41 @@ public class PlayerDataAccess implements Serializable{
 	
 	public static Player ChangeAvailable(int playerId, boolean available)
 	{	
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Player play =EntitiesManager.EM.find(Player.class, playerId);
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Player play =em.find(Player.class, playerId);
 		play.setAvailable(available);
-		EntitiesManager.EM.persist(play);
-		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(play);
+		em.persist(play);
+		em.getTransaction().commit();
+		em.refresh(play);
+		em.close();
         return play;
 	}
 	
 	public static Player updateRating(int playerId, Double rating)
 	{	
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Player play =EntitiesManager.EM.find(Player.class,playerId);
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Player play =em.find(Player.class,playerId);
 		if(play!=null)
 		{
 			play.setRating(rating);
 			play.setStars(play.getRating().intValue());
 		}
-		EntitiesManager.EM.merge(play);
-		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(play);
+		em.merge(play);
+		em.getTransaction().commit();
+		em.refresh(play);
         return play;
 	}
 
 	public static List<Player> ListAllPlayers() {
 
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		    TypedQuery<Player> query =EntitiesManager.EM.createQuery("SELECT p FROM Player p",Player.class);
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		    TypedQuery<Player> query =em.createQuery("SELECT p FROM Player p",Player.class);
 			List<Player> result = new ArrayList<Player>();
 			result = query.getResultList();
 			for(Player p:result)
@@ -150,15 +144,15 @@ public class PlayerDataAccess implements Serializable{
 	}
 
 	  public static boolean RemovePlayer(int playerId) {
-		  if(EntitiesManager.EM.getTransaction().isActive()==false)
-			{
-				EntitiesManager.EM.getTransaction().begin();
-			}
-			Player player=EntitiesManager.EM.find(Player.class, playerId);
+		  EntityManager em=EntitiesManager.GetManager();
+		  em.getTransaction().begin();
+			
+			Player player=em.find(Player.class, playerId);
 			if(player!=null)
 			{			
 				player.setArchive(true);
-				EntitiesManager.EM.getTransaction().commit();
+				em.getTransaction().commit();
+				em.close();
 				return true;
 			}
 			else
@@ -169,12 +163,11 @@ public class PlayerDataAccess implements Serializable{
 		}
 	  
 	  public static boolean DeleteRatingsBeforeGame(int playerId,int gameId) {
-		  if(EntitiesManager.EM.getTransaction().isActive()==false)
-			{
-				EntitiesManager.EM.getTransaction().begin();
-			}
-			Player player=EntitiesManager.EM.find(Player.class, playerId);
-			Game game=EntitiesManager.EM.find(Game.class, gameId);
+		  EntityManager em=EntitiesManager.GetManager();
+		  em.getTransaction().begin();
+			
+			Player player=em.find(Player.class, playerId);
+			Game game=em.find(Game.class, gameId);
 			
 			if(player!=null && game!=null)
 			{		
@@ -205,37 +198,37 @@ public class PlayerDataAccess implements Serializable{
 					System.out.println("There is no rating for this game!");
 				}
 			}
-			EntitiesManager.EM.getTransaction().commit();
+			em.getTransaction().commit();
+			em.close();
 			return false;
 		}
 	  
 	  public static Player UpdateLastValidRating(int playerId)
 	  {
-		  if(EntitiesManager.EM.getTransaction().isActive()==false)
-			{
-				EntitiesManager.EM.getTransaction().begin();
-			}
-			Player player=EntitiesManager.EM.find(Player.class, playerId);
+		  EntityManager em=EntitiesManager.GetManager();
+		 em.getTransaction().begin();
+			
+			Player player=em.find(Player.class, playerId);
 			if(player!=null)
 			{
 				player.setRating(player.getLastRating());
 				player.setStars(player.getRating().intValue());
 				System.out.println("last rating is: "+player.getRating());
-				EntitiesManager.EM.merge(player);
-				EntitiesManager.EM.getTransaction().commit();
-				EntitiesManager.EM.refresh(player);
+				em.merge(player);
+				em.getTransaction().commit();
+				em.refresh(player);
+				em.close();
 			}
 			return player;
 	  }
 	  
 	  public static Player NewRatingForGame(int playerId,int gameId)
 	  {
-		  if(EntitiesManager.EM.getTransaction().isActive()==false)
-			{
-				EntitiesManager.EM.getTransaction().begin();
-			}
-			Player player=EntitiesManager.EM.find(Player.class, playerId);
-			Game game=EntitiesManager.EM.find(Game.class, gameId);
+		  EntityManager em=EntitiesManager.GetManager();
+		  em.getTransaction().begin();
+			
+			Player player=em.find(Player.class, playerId);
+			Game game=em.find(Game.class, gameId);
 			if(player!=null && game!=null)
 			{
 				System.out.println("Current player rating: "+player.getRating());
@@ -265,19 +258,19 @@ public class PlayerDataAccess implements Serializable{
 						}
 					}
 				}
-				EntitiesManager.EM.merge(player);
-				EntitiesManager.EM.getTransaction().commit();
-				EntitiesManager.EM.refresh(player);
+				em.merge(player);
+				em.getTransaction().commit();
+				em.refresh(player);
+				em.close();
 			}
 			return player;
 	  }
 	  	  
 	  public static List<Player> ListActivePlayers() {	
-		  if(EntitiesManager.EM.getTransaction().isActive()==false)
-		  {
-			  EntitiesManager.EM.getTransaction().begin();
-		  }
-		  TypedQuery<Player> query = EntitiesManager.EM.createQuery("SELECT p FROM Player p WHERE p.archive = false", Player.class);
+		  EntityManager em=EntitiesManager.GetManager();
+		  em.getTransaction().begin();
+		  
+		  TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p WHERE p.archive = false", Player.class);
 		  List<Player> result = new ArrayList<Player>();
 		  result = query.getResultList();
 		  return result;

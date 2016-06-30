@@ -2,6 +2,8 @@ package dataAccessLayer;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import helpers.EntitiesManager;
 import model.Player;
@@ -10,11 +12,9 @@ import model.Team;
 public class TeamDataAccess {
 	
 	public  static List<Team> listTeams() {
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-	    TypedQuery<Team> query =EntitiesManager.EM.createQuery("SELECT t FROM Team t",Team.class);
+		EntityManager em=EntitiesManager.GetManager();
+
+	    TypedQuery<Team> query =em.createQuery("SELECT t FROM Team t",Team.class);
 		List<Team> result = new ArrayList<Team>();
 		result = query.getResultList();
 		for(Team p:result)
@@ -26,108 +26,109 @@ public class TeamDataAccess {
 	
 	public static Team FindTeam(int teamId)
 	{
-		Team game=EntitiesManager.EM.find(Team.class, teamId);
+		EntityManager em=EntitiesManager.GetManager();
+		Team game=em.find(Team.class, teamId);
+		em.close();
 		return game;
 	}
 	
 	public static Team UpdateTeam(Team teamToSave) {
 
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Team team= EntitiesManager.EM.find(Team.class, teamToSave.getId());			
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Team team= em.find(Team.class, teamToSave.getId());			
 		team.setName(teamToSave.getName());
 		team.setScore(teamToSave.getScore());
 		team.setWinner(teamToSave.getWinner());
 		team.setGoals(teamToSave.getGoals());
 		
-		EntitiesManager.EM.merge(team);
-		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(team);
+		em.merge(team);
+		em.getTransaction().commit();
+		em.refresh(team);
+		em.close();
 		return team;	
 	}
 	
 	public static Team RemoveAllPlayers(int teamId)
 	{
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		};
-		Team team=EntitiesManager.EM.find(Team.class,teamId);	
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Team team=em.find(Team.class,teamId);	
 		
 		if(team !=null)
 		{
 			team.getPlayers().clear();
 			team.setScore(0);
 		}
-		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(team);
+		em.getTransaction().commit();
+		em.refresh(team);
+		em.close();
 		return team;
 	}
 	
 	public static Team RemovePlayerFromTeam(int teamID,int playerID)
 	{
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Team team=EntitiesManager.EM.find(Team.class,teamID);
-		Player player=EntitiesManager.EM.find(Player.class, playerID);
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Team team=em.find(Team.class,teamID);
+		Player player=em.find(Player.class, playerID);
 		
 		if(team !=null && player!=null)
 		{
 			team.getPlayers().remove(player);
 			team.setScore(team.getScore()-player.getRating());
 		}
-		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(team);
+		em.getTransaction().commit();
+		em.refresh(team);
+		em.close();
 		return team;
 	}
 	
 	public static Team SaveTeamName(int teamID,String name)
 	{
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Team team=EntitiesManager.EM.find(Team.class,teamID);		
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Team team=em.find(Team.class,teamID);		
 		
 		if(team !=null)
 		{
 			team.setName(name);
 		}
-		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(team);
+		em.getTransaction().commit();
+		em.refresh(team);
 		return team;
 	}
 	
 	
 	public static Team AddNewPlayer(int teamID, int playerID) {
 
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		}
-		Team t= EntitiesManager.EM.find(Team.class, teamID);			
-		Player p=EntitiesManager.EM.find(Player.class,playerID);
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		Team t= em.find(Team.class, teamID);			
+		Player p=em.find(Player.class,playerID);
 		 
 		t.addNewPlayer(p);
-		EntitiesManager.EM.merge(t);
-		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(t);		
+		em.merge(t);
+		em.getTransaction().commit();
+		em.refresh(t);		
+		em.close();
 		return t;	
 	}
 	
 	public static Team CreateNewTeam(Team team)
 	{
-		if(EntitiesManager.EM.getTransaction().isActive()==false)
-		{
-			EntitiesManager.EM.getTransaction().begin();
-		};
-		EntitiesManager.EM.persist(team);
-		EntitiesManager.EM.getTransaction().commit();
-		EntitiesManager.EM.refresh(team);
+		EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+		
+		em.persist(team);
+		em.getTransaction().commit();
+		em.refresh(team);
+		em.close();
 		return team;
 	}
 }
