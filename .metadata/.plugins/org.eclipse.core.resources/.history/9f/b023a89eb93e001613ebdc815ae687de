@@ -1,0 +1,48 @@
+package dataAccessLayer;
+
+import java.io.Serializable;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import helpers.EntitiesManager;
+import model.PlayerRating;
+
+@ManagedBean(name = "playerRatingAccess")
+@ApplicationScoped
+public class PlayerRatingAccess implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	 public static PlayerRating RegisterNewRating(PlayerRating playerRating)
+	 {
+			try {
+				if(EntitiesManager.EM.getTransaction().isActive()==false)
+				{
+					EntitiesManager.EM.getTransaction().begin();
+				}
+				EntitiesManager.EM.persist(playerRating);
+				EntitiesManager.EM.getTransaction().commit();
+				EntitiesManager.EM.refresh(playerRating);
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+			}
+			return playerRating;
+	 }
+		  
+	 public static void DeleteRating(int ratingId)
+	  {
+		 
+		 if(EntitiesManager.EM.getTransaction().isActive()==false)
+			{
+				EntitiesManager.EM.getTransaction().begin();
+			}
+		 PlayerRating playerRating=EntitiesManager.EM.find(PlayerRating.class, ratingId);
+		 if(playerRating !=null)
+		 {
+			 EntitiesManager.EM.remove(playerRating);
+		 }
+		 EntitiesManager.EM.getTransaction().commit();
+	  }	 
+}
