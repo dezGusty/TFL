@@ -133,6 +133,7 @@ public class TeamsView implements Serializable {
 				  if(game.getDate().after(ga.getDate()))
 				  {
 					  p=PlayerDataAccess.NewRatingForGame(p.getId(), game.getId());
+					  System.out.println("After new rating for game: "+p.getRating());
 					  PlayerRating newwRating=new PlayerRating(game.getDate(),p,p.getRating());
 					  PlayerRatingAccess.RegisterNewRating(newwRating);
 				  }

@@ -1,16 +1,12 @@
 package model;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
-import dataAccessLayer.GameDataAccess;
-import dataAccessLayer.TeamDataAccess;
 import model.Player;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,22 +24,19 @@ public class Game implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	@Temporal(TemporalType.DATE)
-	private Date date;
-
 	private Integer difference;
 
 	private Boolean archive;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date data;
+	private Date date;
 	
 	public Date getData() {
-		return this.data;
+		return this.date;
 	}
 
 	public void setData(Date data) {
-		this.data = data;
+		this.date = data;
 	}
 	//uni-directional many-to-many association to Player
 	@ManyToMany(fetch=FetchType.EAGER)
@@ -79,17 +72,12 @@ public class Game implements Serializable {
 		this.team2=new Team();
 	}
 
-	public Game(String date, Team firstTeam, Team secondTeam)
+	public Game(Date date, Team firstTeam, Team secondTeam)
 	{
 		this();
 		this.team1=firstTeam;
 		this.team2=secondTeam;
-		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
-		try {
-			this.date=dt.parse(date);
-		} catch (ParseException e) {
-			System.out.println(e.getMessage());
-		} 
+		this.date=date;
 	}
 	
 	public Integer getId() {
@@ -223,47 +211,12 @@ public class Game implements Serializable {
 	
 	public String dateToDisplay()
 	{
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy hh:ss");
 		return format.format(this.date);
 	}
 	
 	@Override
 	public String toString() {
 		return "Game [id=" + id + ", date=" + date + ", difference=" + difference + "]";
-	}
-	
-	public static void main(String[] args) {
-		List<Game> games=GameDataAccess.ListNextGames();
-		for(Game g:games)
-		{
-			System.out.println(g.getData());
-			//Date date = new java.sql.Date(g.getData().getTime()); 
-			//System.out.println(date);
-		}
-		Date date= new java.util.Date();
-		Game g=new Game();
-		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
-		try {
-			date=dt.parse("2016-03-21");
-			g.setDate(date);
-		} catch (ParseException e) {
-			System.out.println(e.getMessage());
-		} 
-		
-		SimpleDateFormat dr2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
-		try {
-			date=dr2.parse("2016-03-21 18:00:00");
-			Team first=TeamDataAccess.CreateNewTeam(new Team("First team"));
-			Team second= TeamDataAccess.CreateNewTeam(new Team("Second team"));
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			Game gameToAdd=new Game(format.format(new Date()),first,second);
-			gameToAdd.setData(new Date());
-			System.out.println(g.getDifference()+g.getArchive().toString()+g.getDate()+g.getData());
-			g=GameDataAccess.AddNewGame(gameToAdd);	
-		} catch (ParseException e) {
-			e.printStackTrace();
-		} 	
-		//System.out.println(g.getData());
-		//g=GameDataAccess.AddNewGame(g);	
 	}
 }

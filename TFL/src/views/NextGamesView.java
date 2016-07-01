@@ -127,7 +127,7 @@ public class NextGamesView implements Serializable{
 			try
 			{
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-				Game gameToAdd=new Game(format.format(gameDate),first,second);
+				Game gameToAdd=new Game(this.gameDate,first,second);
 				GameDataAccess.AddNewGame(gameToAdd);
 			    FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "New game on "+format.format(gameDate)));
