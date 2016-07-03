@@ -11,13 +11,17 @@ import java.util.Set;
  * The persistent class for the team database table.
  * 
  */
+/**
+ * @author Paula
+ *
+ */
 @Entity
-@NamedQuery(name="Team.findAll", query="SELECT t FROM Team t")
+@NamedQuery(name = "Team.findAll", query = "SELECT t FROM Team t")
 public class Team implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String name;
@@ -25,7 +29,7 @@ public class Team implements Serializable {
 	private double score;
 
 	private Boolean winner;
-	
+
 	private Integer goals;
 
 	public Integer getGoals() {
@@ -37,32 +41,28 @@ public class Team implements Serializable {
 	}
 
 	@ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="team_player", 
-          joinColumns=@JoinColumn(name="id_team"),
-          inverseJoinColumns=@JoinColumn(name="id_player"))
+	@JoinTable(name = "team_player", joinColumns = @JoinColumn(name = "id_team"), inverseJoinColumns = @JoinColumn(name = "id_player"))
 	private Set<Player> players;
 
 	public Team() {
-		this.goals=0;
-		this.score=0.0;
-		this.players=new HashSet<Player>();
-		this.winner=false;
-		this.name="Team name";
+		this.goals = 0;
+		this.score = 0.0;
+		this.players = new HashSet<Player>();
+		this.winner = false;
+		this.name = "Team name";
 	}
-	
-	public Team(String name)
-	{
+
+	public Team(String name) {
 		this();
-		this.name=name;
+		this.name = name;
 	}
-	
-	public Team(String name,Set<Player> listOfPlayers)
-	{
+
+	public Team(String name, Set<Player> listOfPlayers) {
 		this(name);
-		this.players=listOfPlayers;
+		this.players = listOfPlayers;
 		setNewScore();
 	}
-	
+
 	public Integer getId() {
 		return this.id;
 	}
@@ -94,7 +94,7 @@ public class Team implements Serializable {
 	public void setWinner(Boolean winner) {
 		this.winner = winner;
 	}
-	
+
 	public Set<Player> getPlayers() {
 		return this.players;
 	}
@@ -102,44 +102,34 @@ public class Team implements Serializable {
 	public List<Player> getListPlayers() {
 		return new ArrayList<Player>(this.players);
 	}
-	
+
 	public void setPlayers(Set<Player> set) {
 		this.players.clear();
 		this.players.addAll(set);
 		setNewScore();
 	}
 
-	
-	public void addNewPlayer(Player p)
-	{
-		if(this.players==null)
-		{
-			this.players=new HashSet<Player>();
+	public void addNewPlayer(Player p) {
+		if (this.players == null) {
+			this.players = new HashSet<Player>();
 		}
-		if(this.containsPlayer(p)==false)
-		{
+		if (this.containsPlayer(p) == false) {
 			this.players.add(p);
-			this.score+=p.getRating();
-		}	
-	}
-	
-	private void setNewScore()
-	{
-		this.score=0.0;
-		for(Player player:this.players)
-		{
-			this.score+=player.getRating();
+			this.score += p.getRating();
 		}
 	}
-	
-	public boolean containsPlayer(Player player)
-	{
-		if(this.players!=null)
-		{
-			for(Player p:this.players)
-			{
-				if(p.getId()==player.getId())
-				{
+
+	private void setNewScore() {
+		this.score = 0.0;
+		for (Player player : this.players) {
+			this.score += player.getRating();
+		}
+	}
+
+	public boolean containsPlayer(Player player) {
+		if (this.players != null) {
+			for (Player p : this.players) {
+				if (p.getId() == player.getId()) {
 					return true;
 				}
 			}

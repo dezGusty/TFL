@@ -1,0 +1,4 @@
+@CHARSET "UTF-8";
+.ui-icon-myCancel{
+    background-image: url("#{resource['images/test.jpg']}") !important;
+}

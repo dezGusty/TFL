@@ -1,0 +1,129 @@
+package dataAccessLayer;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import helpers.EntitiesManager;
+import model.Player;
+import model.Team;
+
+/**
+ * @author Paula
+ *
+ */
+@ManagedBean(name = "teamDataAccess")
+@SessionScoped
+public class TeamDataAccess implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static EntityManager em = EntitiesManager.GetManager();
+
+	/**
+	 * @param teamId Id of team
+	 * @return Team with id teamId
+	 */
+	public static Team FindTeam(int teamId) {
+		Team game = em.find(Team.class, teamId);
+		return game;
+	}
+
+	public static Team UpdateTeam(Team teamToSave) {
+
+		em.getTransaction().begin();
+		Team team = em.find(Team.class, teamToSave.getId());
+
+		team.setName(teamToSave.getName());
+		team.setWinner(teamToSave.getWinner());
+		team.setGoals(teamToSave.getGoals());
+		team.setScore(teamToSave.getScore());
+		team.getPlayers().removeAll(team.getPlayers());
+		team.setPlayers(teamToSave.getPlayers());
+		em.merge(team);
+		em.getTransaction().commit();
+		em.refresh(team);
+		// em.close();
+		return team;
+	}
+
+	public static Team RemoveAllPlayers(int teamId) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Team team = em.find(Team.class, teamId);
+
+		if (team != null) {
+			team.getPlayers().clear();
+			team.setScore(0);
+		}
+		em.getTransaction().commit();
+		em.refresh(team);
+		// em.close();
+		return team;
+	}
+
+	public static Team RemovePlayerFromTeam(int teamID, int playerID) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Team team = em.find(Team.class, teamID);
+		Player player = em.find(Player.class, playerID);
+
+		if (team != null && player != null) {
+			team.getPlayers().remove(player);
+			team.setScore(team.getScore() - player.getRating());
+		}
+		em.getTransaction().commit();
+		em.refresh(team);
+		// em.close();
+		return team;
+	}
+
+	public static Team SaveTeamName(int teamID, String name) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Team team = em.find(Team.class, teamID);
+
+		if (team != null) {
+			team.setName(name);
+		}
+		em.getTransaction().commit();
+		em.refresh(team);
+		return team;
+	}
+
+	public static Team AddNewPlayer(int teamID, int playerID) {
+
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Team t = em.find(Team.class, teamID);
+		Player p = em.find(Player.class, playerID);
+
+		t.addNewPlayer(p);
+		em.merge(t);
+		em.getTransaction().commit();
+		em.refresh(t);
+		// em.close();
+		return t;
+	}
+
+	public static Team CreateNewTeam(Team team) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		em.persist(team);
+		em.getTransaction().commit();
+		em.refresh(team);
+		// em.close();
+		return team;
+	}
+}

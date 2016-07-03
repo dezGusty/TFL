@@ -8,14 +8,18 @@ import java.util.Date;
  * The persistent class for the player_ratings database table.
  * 
  */
+/**
+ * @author Paula
+ *
+ */
 @Entity
-@Table(name="player_ratings")
-@NamedQuery(name="PlayerRating.findAll", query="SELECT p FROM PlayerRating p")
+@Table(name = "player_ratings")
+@NamedQuery(name = "PlayerRating.findAll", query = "SELECT p FROM PlayerRating p")
 public class PlayerRating implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -23,26 +27,24 @@ public class PlayerRating implements Serializable {
 
 	private double rating;
 
-	//bi-directional many-to-one association to Player
+	// bi-directional many-to-one association to Player
 	@ManyToOne
-	@JoinColumn(name="id_player")
+	@JoinColumn(name = "id_player")
 	private Player player;
 
 	public PlayerRating() {
-		this.rating=0.0;
-		this.player=new Player();
+		this.rating = 0.0;
+		this.player = new Player();
 	}
-	
-	public PlayerRating(Date date, Player player,double rating)
-	{
-		if(player!=null)
-		{
-			this.player=player;
+
+	public PlayerRating(Date date, Player player, double rating) {
+		if (player != null) {
+			this.player = player;
 		}
-		this.date=date;
-		this.rating=rating;
+		this.date = date;
+		this.rating = rating;
 	}
-	
+
 	public Integer getId() {
 		return this.id;
 	}

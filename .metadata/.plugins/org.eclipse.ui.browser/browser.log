@@ -14757,3 +14757,74 @@ iun. 29, 2016 19:05:44.54 console.error:
 iun. 29, 2016 19:05:44.55   Protocol error (noSuchActor): No such actor for ID: server1.conn1.animationsActor23
 iun. 29, 2016 19:09:53.12 console.error: 
 iun. 29, 2016 19:09:53.21   Protocol error (noSuchActor): No such actor for ID: server1.conn0.animationsActor23
+
+iul. 01, 2016 21:04:55.45 NEW SESSION
+iul. 01, 2016 21:04:55.45 console.warn: Asynchronous operation was aborted as selection changed.
+iul. 01, 2016 21:50:50.79 1467399050796	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iul. 01, 2016 21:50:50.98 1467399050981	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iul. 01, 2016 21:50:51.43 1467399051437	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+
+iul. 02, 2016 10:44:53.83 NEW SESSION
+iul. 02, 2016 10:44:53.83 [Child 4296] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iul. 02, 2016 10:44:53.85 [Child 4296] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iul. 02, 2016 23:56:06.94 NEW SESSION
+iul. 02, 2016 23:56:06.94 1467492966943	addons.update-checker	WARN	Update manifest for e10srollout@mozilla.org did not contain an updates property
+iul. 02, 2016 23:56:07.14 1467492967148	addons.update-checker	WARN	Update manifest for firefox@getpocket.com did not contain an updates property
+iul. 02, 2016 23:56:07.57 1467492967571	addons.update-checker	WARN	Update manifest for {972ce4c6-7e08-4474-a285-3208198ce6fd} did not contain an updates property
+
+iul. 03, 2016 11:05:46.61 NEW SESSION
+iul. 03, 2016 11:05:46.61 [Child 3576] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iul. 03, 2016 11:05:46.63 [Child 3576] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+
+iul. 03, 2016 20:42:07.08 NEW SESSION
+iul. 03, 2016 20:42:07.08 [Child 6428] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iul. 03, 2016 20:42:07.12 [Child 6428] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iul. 03, 2016 20:47:23.72 console.warn: Asynchronous operation was aborted as selection changed.
+iul. 03, 2016 20:49:34.24 console.warn: Asynchronous operation was aborted as selection changed.
+iul. 03, 2016 20:59:57.89 console.error: 
+iul. 03, 2016 20:59:57.89   Message: [Exception... "Component is not available"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js :: imageToImageData< :: line 4284"  data: no]
+iul. 03, 2016 20:59:57.90   Stack:
+iul. 03, 2016 20:59:57.90     imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4284:5
+iul. 03, 2016 20:59:57.90 TaskImpl_run@resource://gre/modules/Task.jsm:319:40
+iul. 03, 2016 20:59:57.91 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:937:23
+iul. 03, 2016 20:59:57.91 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:816:7
+iul. 03, 2016 20:59:57.91 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:750:11
+iul. 03, 2016 20:59:57.92 
+iul. 03, 2016 20:59:57.92 imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4284:5
+iul. 03, 2016 20:59:57.92 TaskImpl_run@resource://gre/modules/Task.jsm:319:40
+iul. 03, 2016 20:59:57.92 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:937:23
+iul. 03, 2016 20:59:57.93 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:816:7
+iul. 03, 2016 20:59:57.93 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:750:11
+iul. 03, 2016 21:00:23.38 console.error: 
+iul. 03, 2016 21:00:23.38   Message: [Exception... "Component is not available"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js :: imageToImageData< :: line 4284"  data: no]
+iul. 03, 2016 21:00:23.38   Stack:
+iul. 03, 2016 21:00:23.39     imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4284:5
+iul. 03, 2016 21:00:23.39 TaskImpl_run@resource://gre/modules/Task.jsm:319:40
+iul. 03, 2016 21:00:23.39 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:937:23
+iul. 03, 2016 21:00:23.40 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:816:7
+iul. 03, 2016 21:00:23.40 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:750:11
+iul. 03, 2016 21:00:23.40 
+iul. 03, 2016 21:00:23.41 imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4284:5
+iul. 03, 2016 21:00:23.41 TaskImpl_run@resource://gre/modules/Task.jsm:319:40
+iul. 03, 2016 21:00:23.41 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:937:23
+iul. 03, 2016 21:00:23.41 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:816:7
+iul. 03, 2016 21:00:23.42 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:750:11
+iul. 03, 2016 21:00:45.18 console.error: 
+iul. 03, 2016 21:00:45.18   Message: [Exception... "Component is not available"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js :: imageToImageData< :: line 4284"  data: no]
+iul. 03, 2016 21:00:45.19   Stack:
+iul. 03, 2016 21:00:45.19     imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4284:5
+iul. 03, 2016 21:00:45.20 TaskImpl_run@resource://gre/modules/Task.jsm:319:40
+iul. 03, 2016 21:00:45.20 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:937:23
+iul. 03, 2016 21:00:45.21 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:816:7
+iul. 03, 2016 21:00:45.21 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:750:11
+iul. 03, 2016 21:00:45.21 
+iul. 03, 2016 21:00:45.22 imageToImageData<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/inspector.js:4284:5
+iul. 03, 2016 21:00:45.22 TaskImpl_run@resource://gre/modules/Task.jsm:319:40
+iul. 03, 2016 21:00:45.22 Handler.prototype.process@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:937:23
+iul. 03, 2016 21:00:45.23 this.PromiseWalker.walkerLoop@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:816:7
+iul. 03, 2016 21:00:45.23 this.PromiseWalker.scheduleWalkerLoop/<@resource://gre/modules/Promise.jsm -> resource://gre/modules/Promise-backend.js:750:11
+iul. 03, 2016 21:22:08.18 [Child 8236] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iul. 03, 2016 21:22:08.18 [Child 8236] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iul. 03, 2016 21:46:24.42 [Child 9392] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333
+iul. 03, 2016 21:46:24.43 [Child 9392] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 333

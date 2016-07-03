@@ -8,41 +8,48 @@ import java.util.Set;
 import model.Player;
 
 public class PlayerHelper {
-	public static boolean ExistsInList(Player player,List<Player> firstList)
-	{
-		for(Player play:firstList)
-		{
-			if(play.getId()==player.getId())
-			{
+
+	/**
+	 * Returns true if player exists in list
+	 * @param player
+	 * @param list
+	 * @return
+	 */
+	public static boolean ExistsInList(Player player, List<Player> list) {
+		for (Player play : list) {
+			if (play.getId() == player.getId()) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	public static List<Player> GetSublist(Set<Player> list, int from, int to)
-	{
-		Iterator<Player> it=list.iterator();
-		List<Player> result=new ArrayList<Player>();
 
-		for(int i=0;i<from;i++)
-		{
+	/**
+	 * @param set  Set of players
+	 * @param from Index for subset start
+	 * @param to Index for subset end
+	 * @return A subslist of players from set
+	 */
+	public static List<Player> GetSublist(Set<Player> set, int from, int to) {
+		Iterator<Player> it = set.iterator();
+		List<Player> result = new ArrayList<Player>();
+		for (int i = 0; i < from; i++) {
 			it.next();
 		}
-		
-		for(int j=from;j<to;j++)
-		{
+		for (int j = from; j < to; j++) {
 			result.add(it.next());
 		}
-		
-		return (List<Player>)result;
+		return (List<Player>) result;
 	}
 
-	public static boolean ExistsInList(Player play, Set<Player> allPlayers) {
-		for(Player play1:allPlayers)
-		{
-			if(play1.getId()==play1.getId())
-			{
+	/**
+	 * @param play
+	 * @param allPlayers
+	 * @return True if player exists in Set of players
+	 */
+	public static boolean ExistsInList(Player play, Set<Player> players) {
+		for (Player play1 : players) {
+			if (play1.getId() == play1.getId()) {
 				return true;
 			}
 		}

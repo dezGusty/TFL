@@ -28,16 +28,17 @@ public class ChartView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public List<Player> players;
 	private LineChartModel lineModel;
-	
+
 	@PostConstruct
 	public void init() {
-		this.players=new ArrayList<Player>();
+		this.players = new ArrayList<Player>();
 		createLineModels();
 	}
-	 
+
 	public List<Player> getPlayers() {
 		return players;
 	}
+
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
@@ -45,66 +46,62 @@ public class ChartView implements Serializable {
 	public LineChartModel getLineModel2() {
 		return lineModel;
 	}
+
 	public void setLineModel2(LineChartModel lineModel2) {
 		this.lineModel = lineModel2;
 	}
 
-    public void addPlayerToChart(Player player)
-    {
-    	if(player.getPlayerRatings().size()==0)
-    	{
-    		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,null, "Player "+player.getUsername()+" has no ratings!"));
-    		return;
-    	}
-    	if(PlayerHelper.ExistsInList(player, players)==false)
-    	{
-    		this.players.add(player);
-    		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Player "+player.getUsername()+" successfully added to chart!"));
-    	}
-    	else
-    	{
-    		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN, null, "Player "+player.getUsername()+" already in chart!"));
-    	}
-    	createLineModels();
-    }
-    
-    private void createLineModels() {      
-   
-        lineModel = initCategoryModel();
-        lineModel.setTitle("Rating chart");
-        lineModel.setLegendPosition("e");
-        lineModel.setShowPointLabels(true);
-        
-        DateAxis axis = new DateAxis("Dates");
-        lineModel.getAxes().put(AxisType.X, axis);
-        
-        axis.setTickFormat("%b %#d, %y");
-        
-        Axis yAxis = lineModel.getAxis(AxisType.Y);
-        yAxis.setLabel("Rating");
-    }
-    
-    private LineChartModel initCategoryModel() {
- 
-        LineChartModel model = new LineChartModel();
- 
-        for(Player player:this.players)
-    	{
-        	System.out.println(player.getUsername());
-        	if(player.getPlayerRatings().size()!=0)
-    		{
-    			System.out.println(player.getUsername()+"has ratings!");
-    			ChartSeries playerLineChart = new ChartSeries();
-    			playerLineChart.setLabel(player.getUsername());
-    			for(PlayerRating playerRating:player.getPlayerRatings())
-    			{
-    				System.out.println(playerRating.getRating());
-    				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-            		playerLineChart.set(sdf.format(playerRating.getDate()), playerRating.getRating());
-    			}
-    			model.addSeries(playerLineChart);
-    		}
-    	}
-        return model;
-    }	
+	public void addPlayerToChart(Player player) {
+		if (player.getPlayerRatings().size() == 0) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, null,
+					"Player " + player.getUsername() + " has no ratings!"));
+			return;
+		}
+		if (PlayerHelper.ExistsInList(player, players) == false) {
+			this.players.add(player);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null,
+					"Player " + player.getUsername() + " successfully added to chart!"));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, null,
+					"Player " + player.getUsername() + " already in chart!"));
+		}
+		createLineModels();
+	}
+
+	private void createLineModels() {
+
+		lineModel = initCategoryModel();
+		lineModel.setTitle("Rating chart");
+		lineModel.setLegendPosition("e");
+		lineModel.setShowPointLabels(true);
+
+		DateAxis axis = new DateAxis("Dates");
+		lineModel.getAxes().put(AxisType.X, axis);
+
+		axis.setTickFormat("%b %#d, %y");
+
+		Axis yAxis = lineModel.getAxis(AxisType.Y);
+		yAxis.setLabel("Rating");
+	}
+
+	private LineChartModel initCategoryModel() {
+
+		LineChartModel model = new LineChartModel();
+
+		for (Player player : this.players) {
+			System.out.println(player.getUsername());
+			if (player.getPlayerRatings().size() != 0) {
+				System.out.println(player.getUsername() + "has ratings!");
+				ChartSeries playerLineChart = new ChartSeries();
+				playerLineChart.setLabel(player.getUsername());
+				for (PlayerRating playerRating : player.getPlayerRatings()) {
+					System.out.println(playerRating.getRating());
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					playerLineChart.set(sdf.format(playerRating.getDate()), playerRating.getRating());
+				}
+				model.addSeries(playerLineChart);
+			}
+		}
+		return model;
+	}
 }

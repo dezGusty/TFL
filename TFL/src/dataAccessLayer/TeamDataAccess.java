@@ -1,134 +1,144 @@
 package dataAccessLayer;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import helpers.EntitiesManager;
 import model.Player;
 import model.Team;
 
-public class TeamDataAccess {
-	
-	public  static List<Team> listTeams() {
-		EntityManager em=EntitiesManager.GetManager();
+/**
+ * @author Paula
+ *
+ */
+@ManagedBean(name = "teamDataAccess")
+@SessionScoped
+public class TeamDataAccess implements Serializable {
 
-	    TypedQuery<Team> query =em.createQuery("SELECT t FROM Team t",Team.class);
-		List<Team> result = new ArrayList<Team>();
-		result = query.getResultList();
-		for(Team p:result)
-		{
-			System.out.println(p.getName());
-		}
-		return result;
-	}
-	
-	public static Team FindTeam(int teamId)
-	{
-		EntityManager em=EntitiesManager.GetManager();
-		Team game=em.find(Team.class, teamId);
-		em.close();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static EntityManager em = EntitiesManager.GetManager();
+
+	/**
+	 * @param teamId
+	 *            Id of team
+	 * @return Team with id teamId
+	 */
+	public static Team FindTeam(int teamId) {
+		Team game = em.find(Team.class, teamId);
 		return game;
 	}
-	
-	public static Team UpdateTeam(Team teamToSave) {
 
-		EntityManager em=EntitiesManager.GetManager();
+	/**
+	 * Updates team with new data from team teamToSave
+	 * 
+	 * @param teamToSave
+	 * @return
+	 */
+	public static Team UpdateTeam(Team teamToSave) {
 		em.getTransaction().begin();
-		
-		Team team= em.find(Team.class, teamToSave.getId());			
+		Team team = em.find(Team.class, teamToSave.getId());
 		team.setName(teamToSave.getName());
-		team.setScore(teamToSave.getScore());
 		team.setWinner(teamToSave.getWinner());
 		team.setGoals(teamToSave.getGoals());
-		
+		team.setScore(teamToSave.getScore());
+		team.getPlayers().removeAll(team.getPlayers());
+		team.setPlayers(teamToSave.getPlayers());
 		em.merge(team);
 		em.getTransaction().commit();
 		em.refresh(team);
-		em.close();
-		return team;	
+		return team;
 	}
-	
-	public static Team RemoveAllPlayers(int teamId)
-	{
-		EntityManager em=EntitiesManager.GetManager();
+
+	/**
+	 * Removes all players from team with id teamId
+	 * 
+	 * @param teamId
+	 * @return
+	 */
+	public static Team RemoveAllPlayers(int teamId) {
 		em.getTransaction().begin();
-		
-		Team team=em.find(Team.class,teamId);	
-		
-		if(team !=null)
-		{
+		Team team = em.find(Team.class, teamId);
+		if (team != null) {
 			team.getPlayers().clear();
 			team.setScore(0);
 		}
 		em.getTransaction().commit();
 		em.refresh(team);
-		em.close();
 		return team;
 	}
-	
-	public static Team RemovePlayerFromTeam(int teamID,int playerID)
-	{
-		EntityManager em=EntitiesManager.GetManager();
+
+	/**
+	 * Removes a player from team
+	 * 
+	 * @param teamID
+	 * @param playerID
+	 * @return
+	 */
+	public static Team RemovePlayerFromTeam(int teamID, int playerID) {
 		em.getTransaction().begin();
-		
-		Team team=em.find(Team.class,teamID);
-		Player player=em.find(Player.class, playerID);
-		
-		if(team !=null && player!=null)
-		{
+		Team team = em.find(Team.class, teamID);
+		Player player = em.find(Player.class, playerID);
+		if (team != null && player != null) {
 			team.getPlayers().remove(player);
-			team.setScore(team.getScore()-player.getRating());
+			team.setScore(team.getScore() - player.getRating());
 		}
 		em.getTransaction().commit();
 		em.refresh(team);
-		em.close();
 		return team;
 	}
-	
-	public static Team SaveTeamName(int teamID,String name)
-	{
-		EntityManager em=EntitiesManager.GetManager();
+
+	/**
+	 * Sets new name for team with id teamID
+	 * 
+	 * @param teamID
+	 * @param name
+	 * @return
+	 */
+	public static Team SaveTeamName(int teamID, String name) {
 		em.getTransaction().begin();
-		
-		Team team=em.find(Team.class,teamID);		
-		
-		if(team !=null)
-		{
+		Team team = em.find(Team.class, teamID);
+		if (team != null) {
 			team.setName(name);
 		}
 		em.getTransaction().commit();
 		em.refresh(team);
 		return team;
 	}
-	
-	
-	public static Team AddNewPlayer(int teamID, int playerID) {
 
-		EntityManager em=EntitiesManager.GetManager();
+	/**
+	 * Adds player with id playerID to team with id teamID
+	 * 
+	 * @param teamID
+	 * @param playerID
+	 * @return
+	 */
+	public static Team AddNewPlayer(int teamID, int playerID) {
 		em.getTransaction().begin();
-		
-		Team t= em.find(Team.class, teamID);			
-		Player p=em.find(Player.class,playerID);
-		 
+		Team t = em.find(Team.class, teamID);
+		Player p = em.find(Player.class, playerID);
 		t.addNewPlayer(p);
 		em.merge(t);
 		em.getTransaction().commit();
-		em.refresh(t);		
-		em.close();
-		return t;	
+		em.refresh(t);
+		return t;
 	}
-	
-	public static Team CreateNewTeam(Team team)
-	{
-		EntityManager em=EntitiesManager.GetManager();
+
+	/**
+	 * Persists new team to database
+	 * 
+	 * @param team
+	 *            Team to persist
+	 * @return
+	 */
+	public static Team CreateNewTeam(Team team) {
 		em.getTransaction().begin();
-		
 		em.persist(team);
 		em.getTransaction().commit();
 		em.refresh(team);
-		em.close();
 		return team;
 	}
 }

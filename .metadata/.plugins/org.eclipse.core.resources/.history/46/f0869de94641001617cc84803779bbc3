@@ -1,0 +1,4 @@
+@CHARSET "UTF-8";
+.myicon{
+    background-image: url("#{resource['img/camera.png']}") !important;
+}

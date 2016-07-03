@@ -3,276 +3,190 @@ package dataAccessLayer;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import helpers.EntitiesManager;
-import model.Game;
 import model.Player;
-import model.PlayerRating;
 
+/**
+ * @author Paula
+ *
+ */
 @ManagedBean(name = "playerDataAccess")
-@ApplicationScoped
-public class PlayerDataAccess implements Serializable{
+@SessionScoped
+public class PlayerDataAccess implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static EntityManager em = EntitiesManager.GetManager();
 
-	public static Player FindPlayer(int playerid)
-	{
-		EntityManager em=EntitiesManager.GetManager();
-		Player player=em.find(Player.class, playerid);
+	/**
+	 * @param playerid
+	 *            Id of player to find
+	 * @return
+	 */
+	public static Player FindPlayer(int playerid) {
+		Player player = em.find(Player.class, playerid);
 		return player;
 	}
-	
-	public static Player CreateNewUser(String username, String password,Double rating) {
-		Player emp = new Player(username,password,rating);
+
+	/**
+	 * @param username
+	 *            Username for new user
+	 * @param password
+	 *            Password for new user
+	 * @param rating
+	 *            New user's rating
+	 * @return Createa user
+	 */
+	public static Player CreateNewUser(String username, String password, Double rating) {
+		Player emp = new Player(username, password, rating);
 		emp.setStars(rating.intValue());
-		EntityManager em=EntitiesManager.GetManager();
 		try {
 			em.getTransaction().begin();
-			
 			em.persist(emp);
 			em.getTransaction().commit();
 			em.refresh(emp);
-			em.close();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 		return emp;
 	}
 
-	public static int LoginUser(String username, String password) {	
-		EntityManager em=EntitiesManager.GetManager();
-		
-		TypedQuery<Player> query = em.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
+	/**
+	 * @param username
+	 *            Username to find in database
+	 * @param password
+	 *            Password to find in database
+	 * @return
+	 */
+	public static int LoginUser(String username, String password) {
+		TypedQuery<Player> query = em
+				.createQuery("SELECT c FROM Player c WHERE c.username = :name AND c.password=:pass", Player.class);
 		query.setParameter("name", username);
 		query.setParameter("pass", password);
-		int result=0;
+		int result = 0;
 		try {
-			Player player=query.getSingleResult();
-			if(player!=null)
-			{
-				result=player.getId();
+			Player player = query.getSingleResult();
+			if (player != null) {
+				result = player.getId();
 			}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 		return result;
 	}
-	
+
+	/**
+	 * Updates password for user with id playerId to new password
+	 * 
+	 * @param playerId
+	 * @param password
+	 *            New password
+	 * @return
+	 */
 	public static Player UpdatePassword(int playerId, String password) {
-		EntityManager em=EntitiesManager.GetManager();
 		em.getTransaction().begin();
-		
-		Player play =em.find(Player.class, playerId);
+
+		Player play = em.find(Player.class, playerId);
 		try {
-			   play.setPassword(password);
-			   em.persist(play);
-			   em.getTransaction().commit();
-			   em.refresh(play);
-			   em.close();
+			play.setPassword(password);
+			em.persist(play);
+			em.getTransaction().commit();
+			em.refresh(play);
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 		return play;
 	}
 
-	public static Player updateProfilePicture(int playerId, String newPicture) {
-		EntityManager em=EntitiesManager.GetManager();
+	/**
+	 * Updates profile picture
+	 * 
+	 * @param playerId
+	 * @param newPicture
+	 * @return
+	 */
+	public static Player UpdateProfilePicture(int playerId, String newPicture) {
 		em.getTransaction().begin();
-		
-		Player play =em.find(Player.class, playerId);
+		Player play = em.find(Player.class, playerId);
 		try {
-			    play.setPicture(newPicture);
-			    em.merge(play);
-			    em.getTransaction().commit();
-			    em.close();
-				return play;
+			play.setPicture(newPicture);
+			em.merge(play);
+			em.getTransaction().commit();
+			return play;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 		return null;
 	}
-	
-	public static Player ChangeAvailable(int playerId, boolean available)
-	{	
-		EntityManager em=EntitiesManager.GetManager();
+
+	/**
+	 * Changes the availability for player with id playerId
+	 * 
+	 * @param playerId
+	 * @param available
+	 * @return
+	 */
+	public static Player ChangeAvailable(int playerId, boolean available) {
 		em.getTransaction().begin();
-		
-		Player play =em.find(Player.class, playerId);
+		Player play = em.find(Player.class, playerId);
 		play.setAvailable(available);
 		em.persist(play);
 		em.getTransaction().commit();
 		em.refresh(play);
-		em.close();
-        return play;
+		return play;
 	}
-	
-	public static Player updateRating(int playerId, Double rating)
-	{	
-		EntityManager em=EntitiesManager.GetManager();
+
+	/**
+	 * Updates rating for player with id playerId
+	 * 
+	 * @param playerId
+	 * @param rating
+	 * @return
+	 */
+	public static Player UpdateRating(int playerId, Double rating) {
 		em.getTransaction().begin();
-		
-		Player play =em.find(Player.class,playerId);
-		if(play!=null)
-		{
+		Player play = em.find(Player.class, playerId);
+		if (play != null) {
 			play.setRating(rating);
 			play.setStars(play.getRating().intValue());
 		}
 		em.merge(play);
 		em.getTransaction().commit();
 		em.refresh(play);
-        return play;
+		return play;
 	}
 
-	public static List<Player> ListAllPlayers() {
-
-		EntityManager em=EntitiesManager.GetManager();
+	/**
+	 * Removes player from database
+	 * 
+	 * @param playerId
+	 * @return
+	 */
+	public static boolean RemovePlayer(int playerId) {
 		em.getTransaction().begin();
-		
-		    TypedQuery<Player> query =em.createQuery("SELECT p FROM Player p",Player.class);
-			List<Player> result = new ArrayList<Player>();
-			result = query.getResultList();
-			for(Player p:result)
-			{
-				System.out.println(p.getUsername());
-			}
-			return result;
-	}
-
-	  public static boolean RemovePlayer(int playerId) {
-		  EntityManager em=EntitiesManager.GetManager();
-		  em.getTransaction().begin();
-			
-			Player player=em.find(Player.class, playerId);
-			if(player!=null)
-			{			
-				player.setArchive(true);
-				em.getTransaction().commit();
-				em.close();
-				return true;
-			}
-			else
-			{
-				System.out.println("Player not found");
-				return false;
-			}
-		}
-	  
-	  public static boolean DeleteRatingsBeforeGame(int playerId,int gameId) {
-		  EntityManager em=EntitiesManager.GetManager();
-		  em.getTransaction().begin();
-			
-			Player player=em.find(Player.class, playerId);
-			Game game=em.find(Game.class, gameId);
-			
-			if(player!=null && game!=null)
-			{		
-				System.out.println("Player games:");
-				for(Game g:player.getGames())
-				{
-					System.out.println(g.toString());
-				}
-				System.out.println("Player ratings:");
-				for(PlayerRating pl:player.getPlayerRatings())
-				{
-					System.out.println(pl.toString());
-				}			
-				if(player.hasRatingForGame(game))
-				{
-					System.out.println("There is already rating for this game!");
-					for(PlayerRating pl:player.getPlayerRatings())
-					{
-						if((pl.getDate().after(game.getDate())) || (pl.getDate().compareTo(game.getDate())==0) )
-						{
-							PlayerRatingAccess.DeleteRating(pl.getId());
-						}
-					}
-					return true; 
-				}
-				else
-				{
-					System.out.println("There is no rating for this game!");
-				}
-			}
+		Player player = em.find(Player.class, playerId);
+		if (player != null) {
+			player.setArchive(true);
 			em.getTransaction().commit();
-			em.close();
+			return true;
+		} else {
+			System.out.println("Player not found");
 			return false;
 		}
-	  
-	  public static Player UpdateLastValidRating(int playerId)
-	  {
-		  EntityManager em=EntitiesManager.GetManager();
-		 em.getTransaction().begin();
-			
-			Player player=em.find(Player.class, playerId);
-			if(player!=null)
-			{
-				player.setRating(player.getLastRating());
-				player.setStars(player.getRating().intValue());
-				System.out.println("last rating is: "+player.getRating());
-				em.merge(player);
-				em.getTransaction().commit();
-				em.refresh(player);
-				em.close();
-			}
-			return player;
-	  }
-	  
-	  public static Player NewRatingForGame(int playerId,int gameId)
-	  {
-		  EntityManager em=EntitiesManager.GetManager();
-		  em.getTransaction().begin();
-			
-			Player player=em.find(Player.class, playerId);
-			Game game=em.find(Game.class, gameId);
-			if(player!=null && game!=null)
-			{
-				System.out.println("Current player rating: "+player.getRating());
-				System.out.println("Game difference: "+game.getDifference());
-				if(game.getTeam1().containsPlayer(player))
-				{
-					if(game.getTeam1().getWinner())
-					{
-						player.setRating(player.getRating()+(game.getDifference()*0.01));
-					}
-					else
-					{
-						player.setRating(player.getRating()-(game.getDifference()*0.01));
-					}
-				}
-				else
-				{
-					if(game.getTeam2().containsPlayer(player))
-					{
-						if(game.getTeam2().getWinner())
-						{
-							player.setRating(player.getRating()+(game.getDifference()*0.01));
-						}
-						else
-						{
-							player.setRating(player.getRating()-(game.getDifference()*0.01));
-						}
-					}
-				}
-				em.merge(player);
-				em.getTransaction().commit();
-				em.refresh(player);
-				em.close();
-			}
-			return player;
-	  }
-	  	  
-	  public static List<Player> ListActivePlayers() {	
-		  EntityManager em=EntitiesManager.GetManager();
-		  em.getTransaction().begin();
-		  
-		  TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p WHERE p.archive = false", Player.class);
-		  List<Player> result = new ArrayList<Player>();
-		  result = query.getResultList();
-		  return result;
-	  }
+	}
+
+	/**
+	 * @return A list of active players
+	 */
+	public static List<Player> ListActivePlayers() {
+		TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p WHERE p.archive = false", Player.class);
+		List<Player> result = new ArrayList<Player>();
+		result = query.getResultList();
+		return result;
+	}
 }

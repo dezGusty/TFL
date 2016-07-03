@@ -24,7 +24,7 @@ import model.Player;
 
 @ManagedBean(name = "userView")
 @SessionScoped
-public class UserView implements Serializable{
+public class UserView implements Serializable {
 	/**
 	 * 
 	 */
@@ -33,13 +33,13 @@ public class UserView implements Serializable{
 	private Game lastGame;
 	private Player lastAddedPlayer;
 	private boolean disabled;
-	
+
 	@PostConstruct
 	public void init() {
-		this.nextGame=new Game();
-		this.lastAddedPlayer=new Player();
-		this.lastGame=new Game();
-		this.disabled=false;
+		this.nextGame = new Game();
+		this.lastAddedPlayer = new Player();
+		this.lastGame = new Game();
+		this.disabled = false;
 	}
 
 	public boolean isDisabled() {
@@ -73,192 +73,160 @@ public class UserView implements Serializable{
 	public void setLastAddedPlayer(Player lastAddedPlayer) {
 		this.lastAddedPlayer = lastAddedPlayer;
 	}
-	
-	public String getNextGameMessage()
-	{
+
+	public String getNextGameMessage() {
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 		loginBean.setCurrentPlayer(PlayerDataAccess.FindPlayer(loginBean.getCurrentPlayer().getId()));
-     	Game game=loginBean.getCurrentPlayer().NextPlayedGame();
-		if(game!=null)
-		{
-			this.nextGame=game;
-			this.disabled=false;
-			return "You are playing on "+game.dateToDisplay();
-		}
-		else
-		{
-			game=GetFirstNextGame();
-			if(game==null)
-			{
-				this.disabled=true;
-				return "No next games!";		
+		Game game = loginBean.getCurrentPlayer().NextPlayedGame();
+		if (game != null) {
+			this.nextGame = game;
+			this.disabled = false;
+			return "You are playing on " + game.dateToDisplay();
+		} else {
+			game = GetFirstNextGame();
+			if (game == null) {
+				this.disabled = true;
+				return "No next games!";
+			} else {
+				this.nextGame = game;
+				this.disabled = false;
+				return "Next game is on " + game.dateToDisplay();
 			}
-			else
-			{
-				this.nextGame=game;
-				this.disabled=false;
-				return "Next game is on "+game.dateToDisplay();			
-			}			
 		}
 	}
-	
-	public String getLastGameMessage()
-	{
+
+	public String getLastGameMessage() {
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 		System.out.println(loginBean.getCurrentPlayer().getUsername());
 		loginBean.setCurrentPlayer(PlayerDataAccess.FindPlayer(loginBean.getCurrentPlayer().getId()));
-		Game game=loginBean.getCurrentPlayer().LastPlayedGame();
-		if(game!=null)
-		{
-			this.lastGame=game;
-			this.disabled=false;
-			return "You played on "+this.lastGame.dateToDisplay();
-		}
-		else
-		{
-			this.disabled=true;
-			return "You have not played any game yet!";		 
+		Game game = loginBean.getCurrentPlayer().LastPlayedGame();
+		if (game != null) {
+			this.lastGame = game;
+			this.disabled = false;
+			return "You played on " + this.lastGame.dateToDisplay();
+		} else {
+			this.disabled = true;
+			return "You have not played any game yet!";
 		}
 	}
-	
-	public void viewTeams()
-	{
+
+	public void viewTeams() {
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
-		WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
+		WaitingPlayers waitToPlay = (WaitingPlayers) context.getELResolver().getValue(context, null, "waitingPlayers");
 		teamsBean.setGame(this.lastGame);
-		if(this.lastGame!=null)
-		{
+		if (this.lastGame != null) {
 			teamsBean.setGame(this.lastGame);
 		}
-		if(this.lastGame.getPlayersWaiting()!=null)
-		{
+		if (this.lastGame.getPlayersWaiting() != null) {
 			waitToPlay.setPlayers(new ArrayList<Player>());
 			waitToPlay.getPlayers().addAll(this.lastGame.getPlayersWaiting());
 		}
-		teamsBean.setPlayers( new DualListModel<>(new ArrayList<Player>(this.lastGame.getTeam1().getPlayers()), new ArrayList<Player>(this.lastGame.getTeam2().getPlayers())));
+		teamsBean.setPlayers(new DualListModel<>(new ArrayList<Player>(this.lastGame.getTeam1().getPlayers()),
+				new ArrayList<Player>(this.lastGame.getTeam2().getPlayers())));
 		RedirectView.Redirect("/resources/historyteams.xhtml");
 	}
-	
-	public String getMessageForPlayer()
-	{
-		Player player=LastAddedPlayer();
-		if(player==null)
-		{
+
+	public String getMessageForPlayer() {
+		Player player = LastAddedPlayer();
+		if (player == null) {
 			return "No new players!";
-		}
-		else
-		{
-			this.lastAddedPlayer=player;
-			return this.lastAddedPlayer.getUsername()+" recenty subscribed!";
+		} else {
+			this.lastAddedPlayer = player;
+			return this.lastAddedPlayer.getUsername() + " recenty subscribed!";
 		}
 	}
-	
-	public  Player LastAddedPlayer() {	
-		List<Player> listOfPlayers=PlayerDataAccess.ListActivePlayers();
-		List<Player> recentPlayers=new ArrayList<Player>();
-		if(listOfPlayers!=null)
-		{
-			for(Player p:listOfPlayers)
-			{
-				if(p.getPlayerRatings()!=null && p.getPlayerRatings().size()==1)
-				{
+
+	public Player LastAddedPlayer() {
+		List<Player> listOfPlayers = PlayerDataAccess.ListActivePlayers();
+		List<Player> recentPlayers = new ArrayList<Player>();
+		if (listOfPlayers != null) {
+			for (Player p : listOfPlayers) {
+				if (p.getPlayerRatings() != null && p.getPlayerRatings().size() == 1) {
 					recentPlayers.add(p);
 				}
 			}
 		}
-		Player result=null;
-		if(recentPlayers.size()!=0)
-		{
-			result=recentPlayers.get(0);
-			long days=getDiffBetweenDates(result.getPlayerRatings().get(0).getDate(),new Date());
-			for(Player p:recentPlayers)
-			{
-				long dayss=getDiffBetweenDates(p.getPlayerRatings().get(0).getDate(),new Date());
-				if(dayss<days)
-				{
-					result=p;
+		Player result = null;
+		if (recentPlayers.size() != 0) {
+			result = recentPlayers.get(0);
+			long days = getDiffBetweenDates(result.getPlayerRatings().iterator().next().getDate(), new Date());
+			for (Player p : recentPlayers) {
+				long dayss = getDiffBetweenDates(p.getPlayerRatings().iterator().next().getDate(), new Date());
+				if (dayss < days) {
+					result = p;
 				}
 			}
 		}
 		return result;
-    }
-	
-	private List<Player> TopPlayers(int number)
-	{
-		List<Player> listOfPlayers=PlayerDataAccess.ListActivePlayers();
-		if(listOfPlayers!=null)
-		{
-			listOfPlayers.sort(new RatingComparator());	
+	}
+
+	private List<Player> TopPlayers(int number) {
+		List<Player> listOfPlayers = PlayerDataAccess.ListActivePlayers();
+		if (listOfPlayers != null) {
+			listOfPlayers.sort(new RatingComparator());
 			Collections.reverse(listOfPlayers);
-			if(listOfPlayers.size()>number)
-			{
+			if (listOfPlayers.size() > number) {
 				return listOfPlayers.subList(0, number);
 			}
 		}
 		return listOfPlayers;
 	}
-	
-	public void redirectToPlayers(ActionEvent actionEvent)
-	{
+
+	public void redirectToPlayers(ActionEvent actionEvent) {
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
-		PlayersView playersView= (PlayersView) context.getELResolver().getValue(context, null, "playersView");
+		PlayersView playersView = (PlayersView) context.getELResolver().getValue(context, null, "playersView");
 		LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 		playersView.setPlayers(TopPlayers(5));
-		RedirectView.Redirect(loginBean.getCurrentPlayer(), "/resources/viewplayers.xhtml", "/resources/adminplayersview.xhtml");	
+		RedirectView.Redirect(loginBean.getCurrentPlayer(), "/resources/viewplayers.xhtml",
+				"/resources/adminplayersview.xhtml");
 	}
-	
-	private  long getDiffBetweenDates(Date date1,Date date2)
-	{
-		  long startDate = date1.getTime();
-		  long endDate =date2.getTime();
-		  long diffTime = Math.abs(startDate - endDate);
-		  long diffDays = diffTime / (1000 * 60 * 60 * 24);
-		  return diffDays;
+
+	private long getDiffBetweenDates(Date date1, Date date2) {
+		long startDate = date1.getTime();
+		long endDate = date2.getTime();
+		long diffTime = Math.abs(startDate - endDate);
+		long diffDays = diffTime / (1000 * 60 * 60 * 24);
+		return diffDays;
 	}
-	
-	public Game GetFirstNextGame()
-	{
-		Game game=null;
-		List<Game> listOfGames=GameDataAccess.ListNextGames();
-		if(listOfGames!=null && listOfGames.size()!=0)
-		{
-			game=listOfGames.get(0);
-			for(Game item:listOfGames)
-			{
-				if(item.getDate().before(game.getDate()))
-				{
-					game=item;
+
+	public Game GetFirstNextGame() {
+		Game game = null;
+		List<Game> listOfGames = GameDataAccess.ListNextGames();
+		if (listOfGames != null && listOfGames.size() != 0) {
+			game = listOfGames.get(0);
+			for (Game item : listOfGames) {
+				if (item.getDate().before(game.getDate())) {
+					game = item;
 				}
 			}
 		}
-		return game;	
+		return game;
 	}
-	
-	public void teamsView()
-	{
+
+	public void teamsView() {
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		TeamsView teamsBean = (TeamsView) context.getELResolver().getValue(context, null, "teamsView");
 		teamsBean.setGame(this.nextGame);
-		WaitingPlayers waitToPlay=(WaitingPlayers)context.getELResolver().getValue(context, null, "waitingPlayers");
-		if(this.nextGame!=null)
-		{
+		WaitingPlayers waitToPlay = (WaitingPlayers) context.getELResolver().getValue(context, null, "waitingPlayers");
+		if (this.nextGame != null) {
 			teamsBean.setGame(this.nextGame);
 		}
-		if(this.nextGame.getPlayersWaiting()!=null)
-		{
+		if (this.nextGame.getPlayersWaiting() != null) {
 			waitToPlay.setPlayers(new ArrayList<Player>());
 			waitToPlay.getPlayers().addAll(this.nextGame.getPlayersWaiting());
 		}
-		teamsBean.setPlayers( new DualListModel<>(new ArrayList<Player>(this.nextGame.getTeam1().getPlayers()), new ArrayList<Player>(this.nextGame.getTeam2().getPlayers())));
+		teamsBean.setPlayers(new DualListModel<>(new ArrayList<Player>(this.nextGame.getTeam1().getPlayers()),
+				new ArrayList<Player>(this.nextGame.getTeam2().getPlayers())));
 		RedirectView.Redirect("/resources/teams.xhtml");
 	}
-	
+
 	public void play() {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		NextGamesView nextGamesBean=(NextGamesView) elContext.getELResolver().getValue(elContext, null, "nextGamesView");
+		NextGamesView nextGamesBean = (NextGamesView) elContext.getELResolver().getValue(elContext, null,
+				"nextGamesView");
 		nextGamesBean.play(this.nextGame);
 		getNextGameMessage();
 	}

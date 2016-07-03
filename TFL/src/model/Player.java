@@ -5,7 +5,6 @@ import javax.persistence.*;
 import model.PlayerRating;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,12 +12,12 @@ import java.util.Set;
  * 
  */
 @Entity
-@NamedQuery(name="Player.findAll", query="SELECT p FROM Player p")
+@NamedQuery(name = "Player.findAll", query = "SELECT p FROM Player p")
 public class Player implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private Boolean available;
@@ -32,62 +31,60 @@ public class Player implements Serializable {
 	private String username;
 
 	private Boolean archive;
-	
-	private String picture;
-	
-	private Integer stars;
-	
-	@ManyToMany(mappedBy="players",fetch=FetchType.EAGER)
-	private Set<Game> games;
-	
-	//bi-directional many-to-one association to PlayerRating
-	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
-	private List<PlayerRating> playerRatings;
 
-	
+	private String picture;
+
+	private Integer stars;
+
+	@ManyToMany(mappedBy = "players", fetch = FetchType.EAGER)
+	private Set<Game> games;
+
+	// bi-directional many-to-one association to PlayerRating
+	@OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+	private Set<PlayerRating> playerRatings;
+
 	@Override
 	public String toString() {
-		return id+"##"+ username+"##"  + password +"##" + rating +"##"+ this.available+"##"+this.type+"##"+this.picture;
+		return id + "##" + username + "##" + password + "##" + rating + "##" + this.available + "##" + this.type + "##"
+				+ this.picture;
 	}
-	
-	public Player()
-	{
-		this.archive=false;
-		this.available=true;
-		this.rating=0.0;
-		this.type=1;
-		this.picture="noimage.png";
+
+	public Player() {
+		this.archive = false;
+		this.available = true;
+		this.rating = 0.0;
+		this.type = 1;
+		this.picture = "noimage.png";
 	}
-	
-	public Player(String username, String password,Double rating)
-	{
+
+	public Player(String username, String password, Double rating) {
 		this();
-		this.username=username;		
-		this.password=password;
+		this.username = username;
+		this.password = password;
 		this.setRating(rating);
 	}
-	
-	public double getMinRating()
-	{
-		double min=this.rating;
-		for(PlayerRating playerRating: this.playerRatings)
-		{
-			if(min>playerRating.getRating())
-			{
-				min=playerRating.getRating();
+
+	/**
+	 * @return Minimum value of current player ratings
+	 */
+	public double getMinRating() {
+		double min = this.rating;
+		for (PlayerRating playerRating : this.playerRatings) {
+			if (min > playerRating.getRating()) {
+				min = playerRating.getRating();
 			}
 		}
 		return min;
 	}
-	
-	public double getMaxRating()
-	{
-		double max=this.rating;
-		for(PlayerRating playerRating: this.playerRatings)
-		{
-			if(max<playerRating.getRating())
-			{
-				max=playerRating.getRating();
+
+	/**
+	 * @return Maximum value of current player ratings
+	 */
+	public double getMaxRating() {
+		double max = this.rating;
+		for (PlayerRating playerRating : this.playerRatings) {
+			if (max < playerRating.getRating()) {
+				max = playerRating.getRating();
 			}
 		}
 		return max;
@@ -104,6 +101,7 @@ public class Player implements Serializable {
 	public String getPicture() {
 		return picture;
 	}
+
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
@@ -163,7 +161,7 @@ public class Player implements Serializable {
 	public void setArchive(Boolean archive) {
 		this.archive = archive;
 	}
-	
+
 	public Set<Game> getGames() {
 		return this.games;
 	}
@@ -172,11 +170,11 @@ public class Player implements Serializable {
 		this.games = games;
 	}
 
-	public List<PlayerRating> getPlayerRatings() {
+	public Set<PlayerRating> getPlayerRatings() {
 		return this.playerRatings;
 	}
 
-	public void setPlayerRatings(List<PlayerRating> playerRatings) {
+	public void setPlayerRatings(Set<PlayerRating> playerRatings) {
 		this.playerRatings = playerRatings;
 	}
 
@@ -187,165 +185,171 @@ public class Player implements Serializable {
 	}
 
 	public PlayerRating removePlayerRating(PlayerRating playerRating) {
-		if(this.playerRatings.contains(playerRating))
-		{
+		if (this.playerRatings.contains(playerRating)) {
 			this.playerRatings.remove(playerRating);
 		}
 		return playerRating;
 	}
-	
-	public int GetTotalPlayedGames()
-	{
-		if(this.games!=null)
-		{
+
+	/**
+	 * @return Number of total played games
+	 */
+	public int GetTotalPlayedGames() {
+		if (this.games != null) {
 			return this.games.size();
 		}
 		return 0;
 	}
-	
-	public boolean disableButtons()
-	{
-		if(this.type==1)
+
+	public boolean disableButtons() {
+		if (this.type == 1)
 			return true;
 		return false;
-	}	
-	
-	public boolean hasRatingForGame(Game game)
-	{
-		for(PlayerRating playerRating:this.playerRatings)
-		{
-			if(playerRating.getDate().compareTo(game.getDate())==0)			
-			{
-				return true;
+	}
+
+	/**
+	 * @param game
+	 * @return True if player has rating for game
+	 */
+	public boolean hasRatingForGame(Game game) {
+		if (this.playerRatings != null) {
+			for (PlayerRating playerRating : this.playerRatings) {
+				if (playerRating.getDate().toString().compareTo(game.getDate().toString()) == 0) {
+					return true;
+				}
 			}
 		}
 		return false;
 	}
-	
-	public double getLastRating()
-	{
-		PlayerRating result=null;
-		if(this.playerRatings!=null && this.playerRatings.size()!=0)
-		{
-			result=this.playerRatings.get(0);
-			System.out.println(result.getDate()+" "+result.getRating());
-			for(PlayerRating playerRating:this.playerRatings)
-			{
-				System.out.println(playerRating.getDate()+" "+playerRating.getRating());
-				if((playerRating.getDate()).after(result.getDate()))			
-				{
-					result=playerRating;
+
+	/**
+	 * @param game
+	 * @return Last rating before game
+	 */
+	public double getRatingBefore(Game game) {
+		PlayerRating result = null;
+		if (this.playerRatings != null && this.playerRatings.size() != 0) {
+			Iterator<PlayerRating> itr = this.playerRatings.iterator();
+			PlayerRating aux = itr.next();
+			while (aux.getDate().after(game.getDate()) && itr.hasNext()
+					|| aux.getDate().compareTo(game.getDate()) == 0) {
+				aux = itr.next();
+			}
+			result = aux;
+			while (itr.hasNext()) {
+				aux = itr.next();
+				if (aux.getDate().before(game.getDate()) && aux.getDate().after(result.getDate())
+						&& aux.getDate().compareTo(result.getDate()) != 0) {
+					result = aux;
 				}
 			}
-		}	
+		}
 		return result.getRating();
 	}
-	
-	public int NumberOfWinnedGames()
-	{
-		int result=0;
-		if(this.games!=null)
-		{
-			for(Game game:this.games)
-			{
-				if(game.getTeam1().containsPlayer(this))
-				{
-					if(game.getTeam1().getWinner())
-					{
-						result++;
-					}
-				}
-				
-				if(game.getTeam2().containsPlayer(this))
-					{
-						if(game.getTeam2().getWinner())
-						{
-							result++;
-						}
-					}
-				}
-		}
-		return result;
-	}
-	
-	public int NumberOfLosedGames()
-	{
-		int result=0;
-		if(this.games!=null)
-		{
-			for(Game game:this.games)
-			{
-				if(game.getTeam1().containsPlayer(this))
-				{
-					if(game.getTeam1().getWinner()==false)
-					{
-						result++;
-					}
-				}
-				
-				if(game.getTeam2().containsPlayer(this))
-					{
-						if(game.getTeam2().getWinner()==false)
-						{
-							result++;
-						}
-					}
-				}
-		}
-		return result;
-	}
-	
 
-	public Game NextPlayedGame()
-	{
-		Game result=null;
-		if(this.games!=null)
-		{
-			 Iterator<Game> itr = this.games.iterator();
-		     while(result==null && itr.hasNext()) {
-		    		 Game aux=itr.next();
-		    		 if(aux.getDate().after(new Date()))
-		    		 {
-		    			 result=aux;
-		    			 System.out.println("Initial next played: "+result.dateToDisplay());
-		    		 }
-		     }
-		     while(itr.hasNext())
-		     {
-		    	 Game aux=itr.next();
-		    	 if(aux.getDate().before(result.getDate()) && aux.getDate().after(new Date()))
-		    	 {
-		    		 result=aux;
-		    		 System.out.println("Next game: "+result.dateToDisplay());
-		    	 }
-		     }
+	/**
+	 * @param game
+	 * @return Rating for game, if exist, null otherwise
+	 */
+	public PlayerRating getRatingForGame(Game game) {
+		if (this.playerRatings != null && this.playerRatings.size() != 0) {
+			for (PlayerRating playerRating : this.playerRatings) {
+				if (playerRating.getDate().compareTo(game.getDate()) == 0) {
+					return playerRating;
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * @return Number of winned games
+	 */
+	public int NumberOfWinnedGames() {
+		int result = 0;
+		if (this.games != null) {
+			for (Game game : this.games) {
+				if (game.getTeam1().containsPlayer(this)) {
+					if (game.getTeam1().getWinner()) {
+						result++;
+					}
+				}
+
+				if (game.getTeam2().containsPlayer(this)) {
+					if (game.getTeam2().getWinner()) {
+						result++;
+					}
+				}
+			}
 		}
 		return result;
 	}
-	
-	public Game LastPlayedGame()
-	{
-		Game result=null;
-		if(this.games!=null)
-		{
-			 Iterator<Game> itr = this.games.iterator();
-		     while(result==null && itr.hasNext()) {
-		    		 Game aux=itr.next();
-		    		 if(aux.getDate().before(new Date()))
-		    		 {
-		    			 result=aux;
-		    			 System.out.println("Initial last played game: "+result.dateToDisplay());
-		    		 }
-		     }
-		     while(itr.hasNext())
-		     {
-		    	 Game aux=itr.next();
-		    	 if(aux.getDate().before(new Date()) && aux.getDate().after(result.getDate()))
-		    	 {
-		    		 result=aux;
-		    		 System.out.println("Last played game: "+result.dateToDisplay());
-		    	 }
-		     }
+
+	/**
+	 * @return Number of losed games
+	 */
+	public int NumberOfLosedGames() {
+		int result = 0;
+		if (this.games != null) {
+			for (Game game : this.games) {
+				if (game.getTeam1().containsPlayer(this)) {
+					if (game.getTeam1().getWinner() == false) {
+						result++;
+					}
+				}
+
+				if (game.getTeam2().containsPlayer(this)) {
+					if (game.getTeam2().getWinner() == false) {
+						result++;
+					}
+				}
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @return Next game
+	 */
+	public Game NextPlayedGame() {
+		Game result = null;
+		if (this.games != null) {
+			Iterator<Game> itr = this.games.iterator();
+			while (result == null && itr.hasNext()) {
+				Game aux = itr.next();
+				if (aux.getDate().after(new Date())) {
+					result = aux;
+				}
+			}
+			while (itr.hasNext()) {
+				Game aux = itr.next();
+				if (aux.getDate().before(result.getDate()) && aux.getDate().after(new Date())) {
+					result = aux;
+				}
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @return Last played game
+	 */
+	public Game LastPlayedGame() {
+		Game result = null;
+		if (this.games != null) {
+			Iterator<Game> itr = this.games.iterator();
+			while (result == null && itr.hasNext()) {
+				Game aux = itr.next();
+				if (aux.getDate().before(new Date())) {
+					result = aux;
+				}
+			}
+			while (itr.hasNext()) {
+				Game aux = itr.next();
+				if (aux.getDate().before(new Date()) && aux.getDate().after(result.getDate())) {
+					result = aux;
+				}
+			}
 		}
 		return result;
 	}

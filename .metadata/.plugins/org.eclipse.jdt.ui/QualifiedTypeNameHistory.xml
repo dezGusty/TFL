@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="helpers.RedirectView"/>
 <fullyQualifiedTypeName name="views.PersonalInformationView"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
 <fullyQualifiedTypeName name="org.hibernate.mapping.Set"/>
@@ -20,13 +19,10 @@
 <fullyQualifiedTypeName name="java.math.BigDecimal"/>
 <fullyQualifiedTypeName name="org.hibernate.dialect.lock.UpdateLockingStrategy"/>
 <fullyQualifiedTypeName name="helpers.TeamGenerator"/>
-<fullyQualifiedTypeName name="model.PlayerRating"/>
 <fullyQualifiedTypeName name="dataAccessLayer.TeamDataAccess"/>
-<fullyQualifiedTypeName name="model.Game"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="views.NextGamesView"/>
 <fullyQualifiedTypeName name="java.text.DateFormat"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="helpers.RatingComparator"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ApplicationScoped"/>
@@ -49,15 +45,19 @@
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="org.apache.commons.io.FilenameUtils"/>
-<fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 <fullyQualifiedTypeName name="helpers.EntitiesManager"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="helpers.PasswordValidation"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="javax.faces.context.ExternalContext"/>
+<fullyQualifiedTypeName name="java.sql.Timestamp"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
+<fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.sql.Timestamp"/>
-<fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
-<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="model.Team"/>
+<fullyQualifiedTypeName name="model.PlayerRating"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="model.Game"/>
 </qualifiedTypeNameHistroy>

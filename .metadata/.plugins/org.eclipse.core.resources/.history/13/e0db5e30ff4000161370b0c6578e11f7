@@ -1,0 +1,267 @@
+package dataAccessLayer;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import helpers.EntitiesManager;
+import model.Game;
+import model.Player;
+import model.Team;
+
+/**
+ * @author Paula
+ *
+ */
+@ManagedBean(name = "gameDataAccess")
+@SessionScoped
+public class GameDataAccess implements Serializable {
+
+	/**
+	* 
+	*/
+	private static final long serialVersionUID = 1L;
+	private static EntityManager em = EntitiesManager.GetManager();
+
+	/**
+	 * @param gameId
+	 *            id-ul jocului cautat
+	 * @return Jocul cu id-ul gameId
+	 */
+	public static Game GetGame(int gameId) {
+		Game game = em.find(Game.class, gameId);
+		return game;
+	}
+
+	/**
+	 * @param gameToUpdate
+	 *            Game which needs update
+	 * @return Updated game
+	 */
+	public static Game UpdateGame(Game gameToUpdate) {
+		em.getTransaction().begin();
+		Game g = em.find(Game.class, gameToUpdate.getId());
+		if (g != null) {
+			g.setTeam1(gameToUpdate.getTeam1());
+			g.setTeam2(gameToUpdate.getTeam2());
+		}
+		em.merge(g);
+		em.getTransaction().commit();
+		em.refresh(g);
+		return g;
+	}
+
+	/**
+	 * @return A list with not archived previous games
+	 */
+	public static List<Game> ListPreviousGames() {
+		TypedQuery<Game> query = em
+				.createQuery("SELECT g FROM Game g where g.date < current_date and g.archive = false", Game.class);
+		List<Game> result = new ArrayList<Game>();
+		result = query.getResultList();
+		return result;
+	}
+
+	/**
+	 * @return A list with not archived next games
+	 */
+	public static List<Game> ListNextGames() {
+		TypedQuery<Game> query = em
+				.createQuery("SELECT g FROM Game g where g.date >= current_date and g.archive = false", Game.class);
+		List<Game> result = new ArrayList<Game>();
+		result = query.getResultList();
+		return result;
+	}
+
+	/**
+	 * @param gameId
+	 *            Id for game to archive
+	 * @return Archived game
+	 */
+	public static Game AddToArchive(int gameId) {
+		em.getTransaction().begin();
+		Game gameToArchive = em.find(Game.class, gameId);
+		if (gameToArchive != null) {
+			gameToArchive.setArchive(true);
+			em.getTransaction().commit();
+			em.refresh(gameToArchive);
+		}
+		return gameToArchive;
+	}
+
+	/**
+	 * @param gameId
+	 *            Game id
+	 * @param difference
+	 *            Difference between first team's goals and second team's goals
+	 * @return
+	 */
+	public static Game SetDifference(int gameId, int difference) {
+		em.getTransaction().begin();
+
+		Game game = em.find(Game.class, gameId);
+		if (game != null) {
+			game.setDifference(difference);
+			em.merge(game);
+			em.getTransaction().commit();
+			em.refresh(game);
+		}
+		return game;
+	}
+
+	/**
+	 * @param gameID
+	 *            Game id
+	 * @param playerID
+	 *            Id of player that will be registered to game with game id
+	 *            gameID
+	 * @return
+	 */
+	public static Game removePlayer(int gameID, int playerID) {
+		em.getTransaction().begin();
+		Game game = em.find(Game.class, gameID);
+		Player player = em.find(Player.class, playerID);
+
+		if (game != null && player != null) {
+			game.getPlayers().remove(player);
+		}
+		em.getTransaction().commit();
+		em.refresh(game);
+		return game;
+	}
+
+	/**
+	 * @param gameID Id for game
+	 * @param playerID Id of player to remove from game with gameID
+	 * @return
+	 */
+	public static Game removeWaitingPlayer(int gameID, int playerID) {
+		em.getTransaction().begin();
+		Game game = em.find(Game.class, gameID);
+		Player player = em.find(Player.class, playerID);
+		if (game != null && player != null) {
+			game.getPlayersWaiting().remove(player);
+		}
+		em.getTransaction().commit();
+		em.refresh(game);
+		return game;
+	}
+
+	public static Game AddTeams(int gameid, int firstTeamId, int secondTeamId) {
+		em.getTransaction().begin();
+
+		Game g = em.find(Game.class, gameid);
+		Team a = em.find(Team.class, firstTeamId);
+		Team b = em.find(Team.class, secondTeamId);
+		g.setTeam1(a);
+		g.setTeam2(b);
+		em.merge(g);
+		em.getTransaction().commit();
+		em.refresh(g);
+		return g;
+	}
+
+	public static Game AddWaitingPlayer(int gameid, int playerId) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Game game = em.find(Game.class, gameid);
+		Player player = em.find(Player.class, playerId);
+
+		game.getPlayersWaiting().add(player);
+		em.merge(game);
+		em.getTransaction().commit();
+		em.refresh(game);
+		// em.close();
+		return game;
+	}
+
+	public static Game AddWaitingPlayerToGame(int gameid, int playerId) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Game game = em.find(Game.class, gameid);
+		Player player = em.find(Player.class, playerId);
+
+		game.getPlayers().add(player);
+		game.getPlayersWaiting().remove(player);
+		em.merge(game);
+		em.getTransaction().commit();
+		em.refresh(game);
+		return game;
+	}
+
+	public static Team addTeamToGame(Team t, int gId) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Game g = em.find(Game.class, gId);
+		Team team = em.find(Team.class, t.getId());
+		em.persist(g);
+		em.getTransaction().commit();
+		em.refresh(g);
+		// em.close();
+		return team;
+	}
+
+	public static List<Game> listGamesForPlayer(Player player) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Player p = em.find(Player.class, player.getId());
+		List<Game> result = new ArrayList<Game>();
+
+		Date currentDate = new Date();
+		currentDate = Calendar.getInstance().getTime();
+		if (p.getGames() != null) {
+			for (Game g : p.getGames()) {
+				if (g.getDate().after(currentDate) && (g.getArchive() == false)) {
+					result.add(g);
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public static Player PlayGame(int gameId, int playerId) {
+		// EntityManager em=EntitiesManager.GetManager();
+		em.getTransaction().begin();
+
+		Player play = em.find(Player.class, playerId);
+		Game findGame = em.find(Game.class, gameId);
+
+		try {
+			findGame.addPlayer(play);
+			em.getTransaction().commit();
+			em.flush();
+			em.refresh(findGame);
+			// em.close();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return play;
+	}
+
+	public static Game AddNewGame(Game game) {
+		// EntityManager em=EntitiesManager.GetManager();
+		if (em.getTransaction().isActive() == false) {
+			em.getTransaction().begin();
+		}
+		try {
+			em.persist(game);
+			em.getTransaction().commit();
+			em.refresh(game);
+			// em.close();
+			return game;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
+}

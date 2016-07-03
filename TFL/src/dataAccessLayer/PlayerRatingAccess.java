@@ -1,49 +1,60 @@
 package dataAccessLayer;
 
 import java.io.Serializable;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 
 import helpers.EntitiesManager;
 import model.PlayerRating;
 
+/**
+ * @author Paula
+ *
+ */
 @ManagedBean(name = "playerRatingAccess")
-@ApplicationScoped
-public class PlayerRatingAccess implements Serializable{
+@SessionScoped
+public class PlayerRatingAccess implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	 public static PlayerRating RegisterNewRating(PlayerRating playerRating)
-	 {
-		 EntityManager em=EntitiesManager.GetManager();
-			try {
-				em.getTransaction().begin();
-				
-				em.persist(playerRating);
-				em.getTransaction().commit();
-				em.refresh(playerRating);
-				em.close();
-			} catch (Exception ex) {
-				System.out.println(ex.getMessage());
-			}
-			return playerRating;
-	 }
-		  
-	 public static void DeleteRating(int ratingId)
-	  {
-		 EntityManager em=EntitiesManager.GetManager();
-		 em.getTransaction().begin();
-			
-		 PlayerRating playerRating=em.find(PlayerRating.class, ratingId);
-		 if(playerRating !=null)
-		 {
-			em.remove(playerRating);
-		 }
-		 em.getTransaction().commit();
-		 em.close();
-	  }	 
+	private static EntityManager em = EntitiesManager.GetManager();
+
+	/**
+	 * Persists new rating for a player
+	 * 
+	 * @param playerRating
+	 *            Rating to persist
+	 * @return
+	 */
+	public static PlayerRating RegisterNewRating(PlayerRating playerRating) {
+		try {
+			em.getTransaction().begin();
+			em.persist(playerRating);
+			em.getTransaction().commit();
+			em.refresh(playerRating);
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return playerRating;
+	}
+
+	/**
+	 * Updates rating to a new value
+	 * 
+	 * @param ratingId
+	 *            Id of rating to update
+	 * @param newValue
+	 *            New value for rating
+	 */
+	public static void UpdateRating(int ratingId, double newValue) {
+		PlayerRating playerRating = em.find(PlayerRating.class, ratingId);
+		if (playerRating != null) {
+			em.getTransaction().begin();
+			playerRating.setRating(newValue);
+			em.getTransaction().commit();
+		}
+	}
 }

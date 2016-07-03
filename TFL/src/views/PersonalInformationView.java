@@ -15,21 +15,20 @@ public class PersonalInformationView implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public  int playedGames;
-    private int winner;
-    private int looser;
-    
+	public int playedGames;
+	private int winner;
+	private int looser;
 
-    @PostConstruct
+	@PostConstruct
 	public void init() {
-    	ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		LoginView firstBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
 		this.setPlayedGames(firstBean.currentPlayer.GetTotalPlayedGames());
-		this.winner=firstBean.currentPlayer.NumberOfWinnedGames();
-		this.looser=firstBean.currentPlayer.NumberOfLosedGames();
+		this.winner = firstBean.currentPlayer.NumberOfWinnedGames();
+		this.looser = firstBean.currentPlayer.NumberOfLosedGames();
 	}
-    
-    public int getPlayedGames() {
+
+	public int getPlayedGames() {
 		return playedGames;
 	}
 
@@ -40,7 +39,7 @@ public class PersonalInformationView implements Serializable {
 	public int getWinner() {
 		return winner;
 	}
-	
+
 	public void setWinner(int winner) {
 		this.winner = winner;
 	}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Thursday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
+	<h:outputStylesheet name="style/style.css" />
+</h:head>
+
+<h:body>
+	<div class="container-fluid">		
+		<div class="row">
+			<div class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
+				<div class="container" >
+					<div class="row" style="color:white">
+						<h1>Thursday Football League</h1>
+					</div>
+  				</div>
+  				
+  				<div class="row">
+					<ui:insert name="header">
+						<ui:include src="/resources/header.xhtml" />
+					</ui:insert>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid withBackground">
+		<h:form enctype="multipart/form-data" id="form">
+		<div class="container">
+
+			<div class="row">
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+			</div>
+		
+			<div class="row" style="text-align:center;">
+				<div class="col-sm-12 col-md-12 col-md-offset-4" style="width:auto;text-align:center">
+					<div class="row">
+						<div class="col-sm-10 col-md-10" style="width:auto;text-align:center">
+						</div>
+						<div class="col-sm-12 col-md-12 col-md-offset-4" style="width:auto;text-align:center">
+						</div>
+					</div>
+					 <table id="personalinfo" class="table" style="width:100%">
+			 			 <tbody>
+      						<tr>
+        						<td >
+        							<h:graphicImage id="image" library="img" name="#{loginView.currentPlayer.picture}" alt="No image" width="80%" />				
+        						</td>
+        						<td style="vertical-align: bottom;width: 20%;">
+        							<p:graphicImage value="../images/camera.png"  id="img" width="70%" onclick="PF('changePicture').show();"/>
+        							<p:tooltip id="toolTipFade" for="img" value="Upload new profile picture" />
+        						</td>
+      						</tr>
+     				 		<tr>
+        						<td><h:outputText style="float:right;font-size:22px" value="Name:" /></td>
+        						<td><h:outputText style="float:left;font-size:22px" value="#{loginView.currentPlayer.username}" /></td>
+      						</tr>
+      						<tr>
+        						<td><h:outputText style="float:right;font-size:22px" value="Rating:" /></td>
+								<td><h:outputText style="float:left;font-size:22px" value="#{loginView.currentPlayer.rating}" /></td>
+      						</tr>
+      						<tr>
+        						<td><h:outputText style="float:right;font-size:22px" value="Played games:" /></td>
+								<td><h:outputText style="float:left;font-size:22px"  value="#{personalInfo.playedGames}" /></td>
+      						</tr>
+      						<tr>
+        						<td><h:outputText style="float:right;font-size:22px" value="Winner:" /></td>
+								<td><h:outputText style="float:left;font-size:22px"  value="#{personalInfo.winner}" /></td>
+      						</tr>
+      						<tr>
+        						<td><h:outputText style="float:right;font-size:22px" value="Loser:" /></td>
+								<td><h:outputText style="float:left;font-size:22px"  value="#{personalInfo.looser}" /></td>
+      						</tr>
+      						<tr>
+        						<td><h:outputText style="float:right;font-size:22px" value="Available: " /></td>
+								<td><p:inputSwitch value="#{loginView.currentPlayer.available}" style="float:left">
+           					 		<p:ajax listener="#{loginView.changeAvailability}"  />
+        							</p:inputSwitch>	
+        						</td>
+      						</tr>
+    					</tbody>
+				 </table>
+			 </div>
+		</div>
+	</div>
+</h:form>  
+</div>
+
+<p:dialog header="Choose photo" widgetVar="changePicture" modal="true" showEffect="scale" hideEffect="explode">  
+	<h:form enctype="multipart/form-data">
+		<p:fileUpload id="fileIdPhoto" update="form" fileUploadListener="#{fileUploadBean.uploadPhoto}" mode="advanced" dragDropSupport="false"
+               sizeLimit="10000000"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+    </h:form>
+</p:dialog>
+
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+</h:body>
+</html>

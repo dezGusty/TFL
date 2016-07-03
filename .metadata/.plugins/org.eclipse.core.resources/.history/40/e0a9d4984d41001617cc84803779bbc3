@@ -1,0 +1,29 @@
+package helpers;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+/**
+ * @author Paula
+ *
+ */
+public class PasswordValidation {
+	
+	/**
+	 * @param password
+	 * @return true if password is valid, false otherwise
+	 */
+	public static boolean isValid(String password) {
+		if (password.contains("##")) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, null, "Password can not contain '##' characters!"));
+			return false;
+		}
+		if (password.length() > 20) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, null, "Passwords too long!"));
+			return false;
+		}
+		return true;
+	}
+}

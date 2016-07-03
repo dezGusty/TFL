@@ -1,0 +1,57 @@
+package helpers;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import model.Player;
+
+public class PlayerHelper {
+
+	/**
+	 * @param player
+	 * @param firstList
+	 * @return
+	 */
+	public static boolean ExistsInList(Player player, List<Player> firstList) {
+		for (Player play : firstList) {
+			if (play.getId() == player.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * @param list
+	 * @param from
+	 * @param to
+	 * @return
+	 */
+	public static List<Player> GetSublist(Set<Player> list, int from, int to) {
+		Iterator<Player> it = list.iterator();
+		List<Player> result = new ArrayList<Player>();
+		for (int i = 0; i < from; i++) {
+			it.next();
+		}
+		for (int j = from; j < to; j++) {
+			result.add(it.next());
+		}
+		return (List<Player>) result;
+	}
+
+	/**
+	 * @param play
+	 * @param allPlayers
+	 * @return
+	 */
+	public static boolean ExistsInList(Player play, Set<Player> allPlayers) {
+		for (Player play1 : allPlayers) {
+			if (play1.getId() == play1.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+}

@@ -16,34 +16,37 @@ import org.primefaces.model.UploadedFile;
 
 import dataAccessLayer.PlayerDataAccess;
 
-@ManagedBean(name="fileUploadBean")
+@ManagedBean(name = "fileUploadBean")
 @SessionScoped
-public class FileUploadBean implements Serializable{
-/**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+public class FileUploadBean implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 
-    public void uploadPhoto(FileUploadEvent e) throws IOException{
- 
-        UploadedFile uploadedPhoto=e.getFile();
-        ExternalContext externalContext=FacesContext.getCurrentInstance().getExternalContext();
-        String absoluteWebPath = externalContext.getRealPath("/");
-        String[] split=absoluteWebPath.split(".metadata");
+	public void uploadPhoto(FileUploadEvent e) throws IOException {
 
-        byte[] bytes=null;
- 
-            if (null!=uploadedPhoto) {
-                bytes = uploadedPhoto.getContents();
-                String filename = FilenameUtils.getName(uploadedPhoto.getFileName());
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(split[0]+"/TFL/WebContent/resources/img/"+filename));
-                stream.write(bytes);
-                stream.close();
-                ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-				LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
-				firstBean.setCurrentPlayer(PlayerDataAccess.updateProfilePicture(firstBean.getCurrentPlayer().getId(),filename));
-            }
- 
-        FacesContext.getCurrentInstance().addMessage("messages",new FacesMessage(FacesMessage.SEVERITY_INFO,"Profile picture uploaded successfully!", ""));
-    }
+		UploadedFile uploadedPhoto = e.getFile();
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		String absoluteWebPath = externalContext.getRealPath("/");
+		String[] split = absoluteWebPath.split(".metadata");
+
+		byte[] bytes = null;
+
+		if (null != uploadedPhoto) {
+			bytes = uploadedPhoto.getContents();
+			String filename = FilenameUtils.getName(uploadedPhoto.getFileName());
+			BufferedOutputStream stream = new BufferedOutputStream(
+					new FileOutputStream(split[0] + "/TFL/WebContent/resources/img/" + filename));
+			stream.write(bytes);
+			stream.close();
+			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+			LoginView firstBean = (LoginView) elContext.getELResolver().getValue(elContext, null, "loginView");
+			firstBean.setCurrentPlayer(
+					PlayerDataAccess.UpdateProfilePicture(firstBean.getCurrentPlayer().getId(), filename));
+		}
+
+		FacesContext.getCurrentInstance().addMessage("messages",
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Profile picture uploaded successfully!", ""));
+	}
 }
