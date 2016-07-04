@@ -52,7 +52,6 @@
 <fullyQualifiedTypeName name="java.sql.Timestamp"/>
 <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
 <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
-<fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="model.PlayerRating"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="model.Game"/>
+<fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
 </qualifiedTypeNameHistroy>

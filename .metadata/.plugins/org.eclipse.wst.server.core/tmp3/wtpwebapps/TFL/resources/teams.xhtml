@@ -36,7 +36,7 @@
 	</div>
 	
 	<div class="container-fluid withBackground" style="min-height:90vh">
-		<h:form>
+		<h:form id="teamsForm">
 			<div class="container">
 			
 				<div class="row">
@@ -153,7 +153,7 @@
            		</p:autoComplete>     		
 			</div>
 			<div class=" col-sm-12 col-md-12" style="text-align:center;padding-bottom:5%">
-				<p:commandButton id="add" value="Add" actionListener="#{autoCompleteView.addPlayerToGame}" ajax="true" update="pick" />
+				<p:commandButton id="add" value="Add" actionListener="#{teamsView.addPlayerToGame}" update="teamsForm"/>
 			</div>
    	</p:dialog>
 		</h:form>

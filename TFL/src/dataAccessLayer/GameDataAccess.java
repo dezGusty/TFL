@@ -207,8 +207,8 @@ public class GameDataAccess implements Serializable {
 		try {
 			findGame.addPlayer(play);
 			em.getTransaction().commit();
-			em.flush();
 			em.refresh(findGame);
+			em.refresh(play);
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}

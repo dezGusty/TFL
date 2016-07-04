@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -207,5 +208,33 @@ public class TeamsView implements Serializable {
 		}
 		PlayerRatingAccess.RegisterNewRating(new PlayerRating(game.getDate(), player, newRating));
 		PlayerDataAccess.UpdateRating(playerId, newRating);
+	}
+	
+	public void addPlayerToGame() {
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+		AutoCompleteView autoCompleteBean = (AutoCompleteView) elContext.getELResolver().getValue(elContext, null, "autoCompleteView");
+		NextGamesView nextGamesView = (NextGamesView) elContext.getELResolver().getValue(elContext, null,
+				"nextGamesView");
+		
+		if (this.game.getPlayers().size() >= nextGamesView.MAXNUMBEROFPLAYERS) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, null,
+					"There are already " + nextGamesView.MAXNUMBEROFPLAYERS + " players! You can not add new player!"));
+		} else {
+			if(this.game.playingThisGame(autoCompleteBean.getSelectedPlayer()))
+			{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, null,
+						"Player " +autoCompleteBean.getSelectedPlayer().getUsername() + " already subscribed to this game!"));
+			}
+			else
+			{
+				GameDataAccess.PlayGame(this.game.getId(), autoCompleteBean.getSelectedPlayer().getId());
+				nextGamesView.generateTeams(this.game.getId());
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null,
+						"Player " + autoCompleteBean.getSelectedPlayer().getUsername() + " added to game!"));
+				this.game=GameDataAccess.GetGame(this.game.getId());
+				this.players.setSource(this.game.getTeam1().getListPlayers());
+				this.players.setTarget(this.game.getTeam2().getListPlayers());
+			}
+		}
 	}
 }

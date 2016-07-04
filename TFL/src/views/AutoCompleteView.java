@@ -62,6 +62,9 @@ public class AutoCompleteView implements Serializable {
 			nextGamesView.generateTeams(teamsBean.getGame().getId());
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null,
 					"Player " + this.selectedPlayer.getUsername() + " added to game!"));
+			teamsBean.setGame(GameDataAccess.GetGame(teamsBean.getGame().getId()));
+			System.out.println("Fisrt team players"+teamsBean.getGame().getTeam1().getPlayers());
+			System.out.println("Second team players"+teamsBean.getGame().getTeam2().getPlayers());
 		}
 	}
 }
