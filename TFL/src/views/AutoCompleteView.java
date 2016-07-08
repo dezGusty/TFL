@@ -4,12 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.el.ELContext;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import dataAccessLayer.GameDataAccess;
 import dataAccessLayer.PlayerDataAccess;
 import model.Player;
 
@@ -47,24 +43,5 @@ public class AutoCompleteView implements Serializable {
 			}
 		}
 		return filteredPlayers;
-	}
-
-	public void addPlayerToGame() {
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		TeamsView teamsBean = (TeamsView) elContext.getELResolver().getValue(elContext, null, "teamsView");
-		NextGamesView nextGamesView = (NextGamesView) elContext.getELResolver().getValue(elContext, null,
-				"nextGamesView");
-		if (teamsBean.getGame().getPlayers().size() >= nextGamesView.MAXNUMBEROFPLAYERS) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, null,
-					"There are already " + nextGamesView.MAXNUMBEROFPLAYERS + " players! You can not add new player!"));
-		} else {
-			GameDataAccess.PlayGame(teamsBean.getGame().getId(), this.selectedPlayer.getId());
-			nextGamesView.generateTeams(teamsBean.getGame().getId());
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null,
-					"Player " + this.selectedPlayer.getUsername() + " added to game!"));
-			teamsBean.setGame(GameDataAccess.GetGame(teamsBean.getGame().getId()));
-			System.out.println("Fisrt team players"+teamsBean.getGame().getTeam1().getPlayers());
-			System.out.println("Second team players"+teamsBean.getGame().getTeam2().getPlayers());
-		}
 	}
 }

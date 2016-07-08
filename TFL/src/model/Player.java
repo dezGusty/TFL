@@ -231,9 +231,17 @@ public class Player implements Serializable {
 		if (this.playerRatings != null && this.playerRatings.size() != 0) {
 			Iterator<PlayerRating> itr = this.playerRatings.iterator();
 			PlayerRating aux = itr.next();
-			while (aux.getDate().after(game.getDate()) && itr.hasNext()
-					|| aux.getDate().compareTo(game.getDate()) == 0) {
-				aux = itr.next();
+			while (aux.getDate().after(game.getDate())
+					|| aux.getDate().compareTo(game.getDate()) == 0)
+			{
+				if(itr.hasNext())
+				{
+					aux = itr.next();
+				}
+				else
+				{
+					return 0;
+				}
 			}
 			result = aux;
 			while (itr.hasNext()) {
@@ -244,7 +252,11 @@ public class Player implements Serializable {
 				}
 			}
 		}
-		return result.getRating();
+		if(result!=null)
+		{
+			return result.getRating();
+		}
+		return 0;
 	}
 
 	/**

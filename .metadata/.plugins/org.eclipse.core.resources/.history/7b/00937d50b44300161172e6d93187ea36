@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Thursday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
+</h:head>
+
+<h:body>
+	<div class="row withBackground">
+		<div class="row">
+			<ui:insert name="header">
+				<ui:include src="/resources/header.xhtml" />
+			</ui:insert>
+		</div>
+		<div class="row withBackground" style="margin-top: 10%;">
+			<h:form>
+				<div class="container">
+					<div class="row">
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</div>
+	--
+	<div class="container-fluid withBackground" style="padding-top: 30px;min-height:90vh">
+		
+		
+		
+		
+		<div class="row">
+			 <div class=" col-sm-12 col-md-12">
+			 	  <p:dataTable id="gamesTable" value="#{nextGamesView.games}" var="game">
+					<f:facet name="header">Next games</f:facet>
+					<p:column style="text-align:center;">
+						<f:facet name="header">
+							<h:outputText value="Date"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{game.dateToDisplay()}"></h:outputText>
+					</p:column>
+					
+					<p:column style="text-align:center;">
+						<p:commandButton value="#{game.playUnplay(loginView.currentPlayer)}" 
+							actionListener="#{nextGamesView.play(game)}"
+							ajax="false" update="gamesTable" />
+					</p:column>
+					
+					<p:column style="text-align:center;">	
+						<p:commandButton value="Cancel" actionListener="#{nextGamesView.remove(game)}" update="gamesTable">
+        					<p:confirm header="Remove game #{game.dateToDisplay()}" message="Are you sure?" icon="ui-icon-alert"/>
+   						 </p:commandButton>
+ 
+    					<p:confirmDialog global="true">
+        					<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+        					<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+   					 	</p:confirmDialog>
+					</p:column>
+
+					<p:column style="text-align:center;">
+						<p:commandButton value="Teams" 
+							actionListener="#{nextGamesView.teamsView(game)}" ajax="true" />
+					</p:column>
+						
+				</p:dataTable>
+			 </div>
+		</div>
+		</div>
+		</h:form>
+	</div>
+	--
+	<script src="../bootstrap/js/bootstrap.min.js"></script>	
+</h:body>
+</html>

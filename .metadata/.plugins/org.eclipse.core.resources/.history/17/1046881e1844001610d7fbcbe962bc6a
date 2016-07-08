@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Thursday  Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
+</h:head>
+
+<h:body>
+	<div class="container-fluid">		
+		<div class="row">
+			<div class="navbar navbar-default navbar-static-top" style="margin-bottom:0px;background:#284d00;">
+				<div class="container">
+					<div class="row" style="color:white">
+						<h1>Thursday Football League</h1>
+					</div>
+  				</div>
+  				
+  				<div class="row">
+					<ui:insert name="header">
+						<ui:include src="/resources/header.xhtml" />
+					</ui:insert>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid withBackground" style="padding-top: 5%;min-height:90vh">
+		<h:form id="historyteams">
+			<div class="container">
+			
+				<div class="row">
+					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+				</div>
+				
+				<div class="row" style="padding-top:4%">
+					 <div class=" col-sm-10 col-md-10" style="text-align:center;">
+						<p:pickList id="pick" value="#{teamsView.players}"  var="player" effect="bounce" itemValue="#{player}"
+									itemLabel="#{player.username}"  showCheckbox="true" responsive="true"
+									filterMatchMode="contains" converter="playerConverter" style="width:100%">
+
+					<f:facet name="sourceCaption">
+						<h:panelGrid columns="4" >
+            				<p:column>
+								<p:inputText style="width: 150px;background-color:inherit;font-weight: bold; border:none;border-box:none;box-shadow:unset;color:white" value="#{teamsView.game.team1.name}" required="true" label="text"/>
+							</p:column>
+							<p:column>
+								<h:outputText value="#{teamsView.game.team1.score}">
+									<f:convertNumber pattern="#0.00" />
+								</h:outputText>
+							</p:column>
+							<p:column>
+       					 		<h:outputText value="Goals:"/>
+       					 	</p:column>
+        					<p:column>
+       					 		 <p:inputText value="#{teamsView.game.team1.goals}"  style="width:50px;background-color:inherit;font-weight: bold; border:none;border-box:none;box-shadow:unset;color:white"  />
+       						 </p:column>
+       					 </h:panelGrid>
+					</f:facet>
+					
+					
+					<f:facet name="targetCaption">
+					<h:panelGrid columns="4">
+						<p:column>
+							<p:inputText style="width: 150px;background-color:inherit;font-weight: bold; border:none;border-box:none;box-shadow:unset;color:white" value="#{teamsView.game.team2.name}" required="true" label="text"/>
+						</p:column>
+						<p:column>
+							<h:outputText value="#{teamsView.game.team2.score}" >
+								<f:convertNumber pattern="#0.00" />
+							</h:outputText>
+						</p:column>
+						<p:column>
+       					 	<h:outputText value="Goals:"/>
+       					 </p:column>
+       					 <p:column>
+       					 	 <p:inputText value="#{teamsView.game.team2.goals}"  style="width:50px;background-color:inherit;font-weight: bold; border:none;border-box:none;box-shadow:unset;color:white"  />
+       					 </p:column>
+       				</h:panelGrid>
+					</f:facet>
+
+					<p:ajax event="transfer" listener="#{teamsView.onTransfer}" update="pick"/>
+					
+					 <p:column style="width:20%;">
+           					 <p:graphicImage value="#{player.picture}" style="height:30% !important" />
+        			</p:column>
+        			
+					 <p:column style="width:80%">
+           					 <h:outputText value="#{player.username}"/>
+        			</p:column>
+					</p:pickList>	
+					
+					</div>
+					
+					<div class=" col-sm-2 col-md-2" style="text-align:center;">
+						<div class="btn-group">
+   			 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  					  			<span class="glyphicon glyphicon-cog"></span>
+  							</button>
+  							<ul class="dropdown-menu dropdown-menu-right">
+    							<li>
+    								<p:commandButton  id="save" value="Save teams" style="height: 35px;width:100%" actionListener="#{teamsView.saveTeamsResult}" disabled="#{loginView.currentPlayer.disableButtons()}" update="historyteams" />
+								</li>
+  							</ul>				
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</div>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>	
+</h:body>
+</html>

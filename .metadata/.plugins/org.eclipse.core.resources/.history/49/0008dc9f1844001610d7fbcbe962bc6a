@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Thursday Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
+</h:head>
+
+<h:body>
+			<ui:insert name="header">
+				<ui:include src="/resources/header.xhtml" />
+			</ui:insert>
+		<div class="row withBackground" style="padding-top: 18%;">
+			<h:form id="form">
+				<div class="container">
+					<div class="row">
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-4">
+    						<div class="thumbnail">
+    			  				<img src="../images/nextgames.png"  class="maxheight" alt="Image" style="height:45%"/>
+     				 			<div class="caption">
+        						<h3>Next game</h3>
+        						<p:outputLabel value="#{userView.getNextGameMessage()}"></p:outputLabel>
+        						<div class="row">
+        							<div class="col-sm-6 col-md-6" style="text-align:center">
+        								<p:commandButton update="form" styleClass="nobackground" value="#{userView.nextGame.playUnplay(loginView.currentPlayer)}" disabled="#{userView.disabled}" actionListener="#{userView.play}" ajax="true" />
+        							</div>
+        							<div class="col-sm-6 col-md-6" style="text-align:center">
+        								<p:commandButton value="Teams" actionListener="#{userView.teamsView}"  disabled="#{userView.disabled}"  ajax="true" />
+        							</div>
+        						</div>
+      							</div>
+    						</div>
+  						</div>
+  						
+  						<div class="col-sm-12 col-md-4">
+    						<div class="thumbnail">
+    			  				<img src="../images/players.png"  class="maxheight" alt="Image" style="height:250px"/>
+     				 			<div class="caption">
+        						<h3>Players</h3>
+        						<p:outputLabel value="#{userView.getMessageForPlayer()}"></p:outputLabel>
+        						<div class="row">
+        							<div class="col-sm-12 col-md-12" style="text-align:center">
+        								<p:commandButton value="View top 10" actionListener="#{userView.redirectToPlayers}" ajax="false" />
+        							</div>
+        						</div>
+      						</div>
+    						</div>
+  						</div>
+  						
+  						<div class="col-sm-12 col-md-4">
+    						<div class="thumbnail">
+    			  			<img src="../images/history.jpeg" alt="Image" class="maxheight" style="height:250px"/>
+     				 		<div class="caption">
+        						<h3>Last game</h3>
+        						<p:outputLabel value="#{userView.getLastGameMessage()}"></p:outputLabel>
+        						<div class="row">
+        							<div class="col-sm-12 col-md-12" style="text-align:center">
+        								<p:commandButton update="form" styleClass="nobackground" value="View teams"  actionListener="#{userView.viewTeams}" ajax="true" />
+        							</div>
+        						</div>
+      						</div>
+    						</div>
+  						</div>			
+  					</div>
+				</div>
+			</h:form>
+		</div>	
+	<script src="../bootstrap/js/bootstrap.min.js"></script>	
+</h:body>
+</html>

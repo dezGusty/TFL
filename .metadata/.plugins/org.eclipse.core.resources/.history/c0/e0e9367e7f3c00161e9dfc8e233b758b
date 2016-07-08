@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14670416001180" configfile="/TFL/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="viewpersonalinfo.xhtml" id="pf14670416678534" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" outlinks="pf14670416678535" inlinks="pf14670416678535" path="viewpersonalinfo.xhtml"/>
-  <links id="pf14670416678535" target="pf14670416678534" source="pf14670416678534" outcome="success" fromaction="#{fileUploadBean.uploadResume}"/>
-</pageflow:Pageflow>

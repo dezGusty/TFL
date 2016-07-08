@@ -82,7 +82,6 @@ public class TeamsView implements Serializable {
 
 		int difference = Math.abs(this.game.getTeam1().getGoals() - this.game.getTeam2().getGoals());
 		this.game = GameDataAccess.SetDifference(this.game.getId(), difference);
-
 		this.game.getTeam1().getPlayers().removeAll(this.game.getTeam1().getPlayers());
 		this.game.getTeam2().getPlayers().removeAll(this.game.getTeam2().getPlayers());
 		this.game.getTeam1().setScore(0);
@@ -103,36 +102,24 @@ public class TeamsView implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Team "+game.getTeam2().getName()+" won this game! Players ratings were updated!"));
 
 		}
-
 		for (Player play : this.players.getSource()) {
 			this.game.setTeam1(TeamDataAccess.AddNewPlayer(this.game.getTeam1().getId(), play.getId()));
 		}
 		for (Player play : this.players.getTarget()) {
 			this.game.setTeam2(TeamDataAccess.AddNewPlayer(this.game.getTeam2().getId(), play.getId()));
 		}
-		System.out.println("first team players" + this.game.getTeam1().getPlayers() + "team rating: "
-				+ this.game.getTeam1().getScore());
-		System.out.println("second team players " + this.game.getTeam2().getPlayers() + "team rating: "
-				+ this.game.getTeam1().getScore());
 		UpdateRatingsForGame(this.game.getId());
 		UpdateRatingsForGame(this.game.getId());
 	}
 
 	public void UpdateRatingsForGame(int gameId) {
 		Game g = GameDataAccess.GetGame(gameId);
-		System.out.println("Will be updated for diff: " + g.getDifference());
 		if (g.getPlayers() != null) {
 			for (Player p : g.getPlayers()) {
-				System.out.println("Rating updated for player: " + p.toString());
-				System.out.println(p.getPlayerRatings());
 				if (p.hasRatingForGame(g)) {
-					System.out.println("Already has rating for game: " + g.getDate());
 					double lastRating = p.getRatingBefore(g);
-					System.out.println("Rating before this game" + p.getRatingBefore(g));
-					System.out.println("Rating id to update: " + p.getRatingForGame(g).getId());
-					ActualizareRating(g.getId(), p.getId(), lastRating);
+					UpdateRating(g.getId(), p.getId(), lastRating);
 				} else {
-					System.out.println("Has no rating for game: " + g.getDate());
 					AddRatingForGame(g.getId(),p.getId());
 				}
 				UpdateRatingForNextGames(p.getId(), game);
@@ -145,36 +132,30 @@ public class TeamsView implements Serializable {
 		List<Game> list = new ArrayList<Game>(p.getGames());
 		for (Game playerGame : list) {
 			if (playerGame.getDate().after(game.getDate())) {
-				System.out.println("game after: " + playerGame.toString());
 				if (p.hasRatingForGame(playerGame)) {
 					double lastRating = p.getRatingBefore(playerGame);
-					System.out.println(lastRating);
-					ActualizareRating(playerGame.getId(), p.getId(), lastRating);
+					UpdateRating(playerGame.getId(), p.getId(), lastRating);
 				}
 			}
 		}
 	}
 
-	private void ActualizareRating(int gameId, int playerId, double oldRating) {
+	private void UpdateRating(int gameId, int playerId, double oldRating) {
 		Game game = GameDataAccess.GetGame(gameId);
 		Player player = PlayerDataAccess.FindPlayer(playerId);
 		double newRating = 0;
 		if (game.getTeam1().containsPlayer(player)) {
 			if (game.getTeam1().getWinner()) {
 				newRating = oldRating + (0.01 * game.getDifference());
-				System.out.println("Rating updated from " + oldRating + "to " + newRating);
 			} else {
 				newRating = oldRating - (0.01 * game.getDifference());
-				System.out.println("Rating updated from " + oldRating + "to " + newRating);
 			}
 		} else {
 			if (game.getTeam2().containsPlayer(player)) {
 				if (game.getTeam2().getWinner()) {
 					newRating = oldRating + (0.01 * game.getDifference());
-					System.out.println("Rating updated from " + oldRating + "to " + newRating);
 				} else {
 					newRating = oldRating - (0.01 * game.getDifference());
-					System.out.println("Rating updated from " + oldRating + "to " + newRating);
 				}
 			}
 		}
@@ -190,19 +171,15 @@ public class TeamsView implements Serializable {
 		if (game.getTeam1().containsPlayer(player)) {
 			if (game.getTeam1().getWinner()) {
 				newRating = player.getRating() + (0.01 * game.getDifference());
-				System.out.println("Rating updated from "  + newRating);
 			} else {
 				newRating = player.getRating()  - (0.01 * game.getDifference());
-				System.out.println("Rating updated from " +"to " + newRating);
 			}
 		} else {
 			if (game.getTeam2().containsPlayer(player)) {
 				if (game.getTeam2().getWinner()) {
 					newRating = player.getRating()  + (0.01 * game.getDifference());
-					System.out.println("Rating updated from " + "to " + newRating);
 				} else {
 					newRating = player.getRating()  - (0.01 * game.getDifference());
-					System.out.println("Rating updated from " + "to " + newRating);
 				}
 			}
 		}

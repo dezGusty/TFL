@@ -31,7 +31,6 @@
 <fullyQualifiedTypeName name="org.primefaces.model.DefaultStreamedContent"/>
 <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
 <fullyQualifiedTypeName name="java.awt.Image"/>
-<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
 <fullyQualifiedTypeName name="model.Player"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="model.Game"/>
 <fullyQualifiedTypeName name="dataAccessLayer.GameDataAccess"/>
+<fullyQualifiedTypeName name="dataAccessLayer.PlayerDataAccess"/>
 </qualifiedTypeNameHistroy>

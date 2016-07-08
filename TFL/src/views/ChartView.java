@@ -69,33 +69,24 @@ public class ChartView implements Serializable {
 	}
 
 	private void createLineModels() {
-
 		lineModel = initCategoryModel();
 		lineModel.setTitle("Rating chart");
 		lineModel.setLegendPosition("e");
 		lineModel.setShowPointLabels(true);
-
 		DateAxis axis = new DateAxis("Dates");
 		lineModel.getAxes().put(AxisType.X, axis);
-
 		axis.setTickFormat("%b %#d, %y");
-
 		Axis yAxis = lineModel.getAxis(AxisType.Y);
 		yAxis.setLabel("Rating");
 	}
 
 	private LineChartModel initCategoryModel() {
-
 		LineChartModel model = new LineChartModel();
-
 		for (Player player : this.players) {
-			System.out.println(player.getUsername());
 			if (player.getPlayerRatings().size() != 0) {
-				System.out.println(player.getUsername() + "has ratings!");
 				ChartSeries playerLineChart = new ChartSeries();
 				playerLineChart.setLabel(player.getUsername());
 				for (PlayerRating playerRating : player.getPlayerRatings()) {
-					System.out.println(playerRating.getRating());
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					playerLineChart.set(sdf.format(playerRating.getDate()), playerRating.getRating());
 				}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+   <title>Thursday  Fotball League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles/custCss.css"/>
+</h:head>
+
+<h:body>
+	
+	<ui:composition>
+		<h:form>
+				<nav class="navbar navbar-default navbar-fixed-top">
+					
+					<div class="container">
+						<div class="row" style="color:white;background-color:#284d00;">
+								<div class="container">	<h1>Thursday  Football League</h1></div>
+							</div>
+						<div class="navbar-header">
+							
+						</div>
+					</div>
+				</nav>
+		</h:form>
+
+		<p:dialog header="New game" widgetVar="dlg2"  height="400" width="500" showEffect="clip" hideEffect="clip">
+			<h:form id="dialogForm">
+				 <p:outputPanel id="gameDetail" style="text-align:center;">
+   				 	<p:panel columns="2" style="border:none">
+   				  		<p:outputLabel for="datetime" value="Datetime:" />
+   				  		<p:calendar id="datetime" value="#{nextGamesView.gameDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+    					<p:commandButton value="Add" actionListener="#{nextGamesView.newGame}" ajax="true" />
+   				  	</p:panel>
+   				 </p:outputPanel>
+   			</h:form>
+   		</p:dialog>
+		
+		<p:dialog header="New player" widgetVar="addPlayerDialog" width="500" showEffect="clip" hideEffect="clip">
+			<h:form id="dialog">
+				<div class="row">
+					<p:messages id="messages"/>
+				</div>
+				<div class="row" style="padding-top: 3%;">
+					<div class="col-sm-5 col-md-5" style="text-align:right">
+						<p:outputLabel  value="Username"></p:outputLabel>
+					</div>
+					<div class="col-sm-7 col-md-7">
+						<p:inputText id="name" value="#{singUpView.name}" required="true" >
+							<f:validateLength minimum="2"></f:validateLength>
+						</p:inputText>
+					</div>
+				</div>
+				<div class="row" style="padding-top: 2%;">
+					<div class="col-sm-5 col-md-5" style="text-align:right">
+						<p:outputLabel  value="Password"></p:outputLabel>
+					</div>
+					<div class="col-sm-7 col-md-7">
+						<p:inputText id="pass" value="#{singUpView.pass}">
+				 			<f:validateLength minimum="2"></f:validateLength>
+				 		</p:inputText>
+					</div>
+				</div>
+				<div class="row" style="padding-top: 2%;">
+					<div class="col-sm-5 col-md-5" style="text-align:right">
+						<p:outputLabel  value="Rating"></p:outputLabel>
+					</div>
+					<div class="col-sm-7 col-md-7">
+						<p:inputText id="rate" value="#{singUpView.initialRating}"/>
+					</div>
+				</div>
+				
+				<div class="row" style="text-align:center;padding-top: 3%;">
+					<p:commandButton value="Add" actionListener="#{singUpView.newPlayer}" ajax="true" style="width:30%"/>
+				</div>
+   			</h:form>
+   		</p:dialog>
+   		
+	</ui:composition>
+</h:body>
+</html>

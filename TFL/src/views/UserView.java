@@ -99,7 +99,6 @@ public class UserView implements Serializable {
 	public String getLastGameMessage() {
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
-		System.out.println(loginBean.getCurrentPlayer().getUsername());
 		loginBean.setCurrentPlayer(PlayerDataAccess.FindPlayer(loginBean.getCurrentPlayer().getId()));
 		Game game = loginBean.getCurrentPlayer().LastPlayedGame();
 		if (game != null) {
@@ -179,7 +178,7 @@ public class UserView implements Serializable {
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		PlayersView playersView = (PlayersView) context.getELResolver().getValue(context, null, "playersView");
 		LoginView loginBean = (LoginView) context.getELResolver().getValue(context, null, "loginView");
-		playersView.setPlayers(TopPlayers(5));
+		playersView.setPlayers(TopPlayers(10));
 		RedirectView.Redirect(loginBean.getCurrentPlayer(), "/resources/viewplayers.xhtml",
 				"/resources/adminplayersview.xhtml");
 	}

@@ -37,7 +37,7 @@ public class FileUploadBean implements Serializable {
 			bytes = uploadedPhoto.getContents();
 			String filename = FilenameUtils.getName(uploadedPhoto.getFileName());
 			BufferedOutputStream stream = new BufferedOutputStream(
-					new FileOutputStream(split[0] + "/TFL/WebContent/resources/img/" + filename));
+					new FileOutputStream(split[0] + "/TFL/WebContent/resources/img/" +filename));
 			stream.write(bytes);
 			stream.close();
 			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
